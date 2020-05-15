@@ -1,6 +1,6 @@
 class MainMenuScene extends Phaser.Scene {
     constructor() {
-        super('MainMenuScene')
+        super(GC.SCENES.MAIN_MENU)
     }
 
     init()
@@ -16,6 +16,9 @@ class MainMenuScene extends Phaser.Scene {
 
         let ribeyeStyles = '@font-face { font-family: "Ribeye"; src: url("/fonts/Ribeye-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(ribeyeStyles, 0);
+
+        let rhodiumLibreStyles = '@font-face { font-family: "RhodiumLibre"; src: url("/fonts/RhodiumLibre-Regular.ttf") format("truetype"); }\n';
+        sheet.insertRule(rhodiumLibreStyles, 0);
     }
 
     preload() {
@@ -25,16 +28,22 @@ class MainMenuScene extends Phaser.Scene {
     create() {
         let add = this.add;
         let game = this.game;
+        let scene = this.scene;
+
+        let sizer = new MainMenuSizer(this);
 
         WebFont.load({
             'custom': {
                 families: [ 'Ribeye', 'RibeyeMarrow' ]
             },
             active: function() {
-                let centerX = game.renderer.width / 2;
-                let centerY = game.renderer.height / 2;
+                let fontSize = sizer.fontSize();
+                let fontColor = sizer.fontColor();
 
-                let playButton = add.text(centerX, centerY - 145, 'Play', { fontFamily: 'RibeyeMarrow', fontSize: 115, color: '#000' });
+                let playButtonPosition = sizer.position('Play');
+                let playButton = add.text(
+                    playButtonPosition.x, playButtonPosition.y,
+                    'Play', { fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
 
                 playButton.setInteractive();
                 playButton.setOrigin(0.5);
@@ -44,8 +53,13 @@ class MainMenuScene extends Phaser.Scene {
                 playButton.on('pointerout', () => {
                     playButton.setFontFamily('RibeyeMarrow');
                 });
+                playButton.on('pointerup', () => {
+                    scene.start(GC.SCENES.LEVEL_MENU);
+                });
 
-                let howToPlayButton = add.text(centerX, centerY, 'How to play', { fontFamily: 'RibeyeMarrow', fontSize: 115, color: '#000' });
+                let howToPlayButtonPosition = sizer.position('How to play');
+                let howToPlayButton = add.text(howToPlayButtonPosition.x, howToPlayButtonPosition.y,
+                    'How to play', { fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor });
 
                 howToPlayButton.setInteractive();
                 howToPlayButton.setOrigin(0.5);
@@ -56,7 +70,9 @@ class MainMenuScene extends Phaser.Scene {
                     howToPlayButton.setFontFamily('RibeyeMarrow');
                 });
 
-                let settingsButton = add.text(centerX, centerY + 145, 'Settings', { fontFamily: 'RibeyeMarrow', fontSize: 115, color: '#000' });
+                let settingsButtonPosition = sizer.position('Settings');
+                let settingsButton = add.text(settingsButtonPosition.x, settingsButtonPosition.y,
+                    'Settings', { fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor });
 
                 settingsButton.setInteractive();
                 settingsButton.setOrigin(0.5);

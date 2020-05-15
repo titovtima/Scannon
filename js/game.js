@@ -1,9 +1,17 @@
 const config = {
-    width: 1200,
-    height: 800,
+    // width: 1200,
+    // height: 900,
     backgroundColor: 0xffcc66,
-    scene: [MainMenuScene],
-    // pixelArt: true,
+    type: Phaser.AUTO,
+    scene: [
+        MainMenuScene,
+        LevelMenuScene,
+        LevelGenerationScene,
+        LoadingResourcesScene,
+        GameScene,
+        GamePauseScene
+    ],
+    pixelArt: true,
     physics: {
         default: 'arcade',
         arcade: {
@@ -11,7 +19,10 @@ const config = {
         }
     },
     scale: {
-        mode: Phaser.Scale.RESIZE
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: 1200,
+        height: 900
     }
 };
 
