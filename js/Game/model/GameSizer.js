@@ -4,6 +4,14 @@ class GameSizer {
         this.scene = scene;
     }
 
+    field_Width() {
+        return this.scene.game.renderer.width;
+    }
+
+    field_Height() {
+        return this.scene.game.renderer.height;
+    }
+
     cardBackground_Width() {
         return 800;
     }
@@ -34,7 +42,7 @@ class GameSizer {
     }
 
     card_SpeedY() {
-        return 2;
+        return 1;
     }
 
     formula_CenterX() {
@@ -100,6 +108,88 @@ class GameSizer {
         let height = this.scene.game.renderer.height;
 
         return height / 2;
+    }
+
+    arrow_Width() {
+        return 32;
+    }
+
+    arrow_Height() {
+        return 29;
+    }
+
+    arrow_ShadowX() {
+        return 6;
+    }
+
+    arrow_ShadowY() {
+        return 8;
+    }
+
+    arrow_CenterX() {
+        let cardLeftX = this.cardBackground_LeftX();
+        let cardWidth = this.cardBackground_Width();
+        let shadowX = this.arrow_ShadowX();
+
+        return cardLeftX + cardWidth / 2 + shadowX / 2;
+    }
+
+    scoreLabel_RightX() {
+        return 1390;
+    }
+
+    scoreLabel_BottomY() {
+        return 86;
+    }
+
+    scoreLabel_FontSize() {
+        return 44;
+    }
+
+    scoreLabel_Color() {
+        return '#000';
+    }
+
+    scoreValue_RightX() {
+        return 1580;
+    }
+
+    scoreValue_BottomY() {
+        return 86;
+    }
+
+    scoreValue_FontSize() {
+        return 44;
+    }
+
+    scoreValue_Color() {
+        return '#000';
+    }
+
+    arrowScore_FontSize() {
+        return 28;
+    }
+
+    arrowScore_Color() {
+        return '#000';
+    }
+
+    arrowScore_DistanceToCenter() {
+        return 25;
+    }
+
+    arrowScoreLeft_RightX() {
+        let centerX = this.arrow_CenterX();
+        let distanceToCenter = this.arrowScore_DistanceToCenter();
+
+        return centerX - distanceToCenter;
+    }
+
+    arrowScoreRight_LeftX() {
+        let centerX = this.arrow_CenterX();
+        let distanceToCenter = this.arrowScore_DistanceToCenter();
+
+        return centerX + distanceToCenter;
     }
 
 }

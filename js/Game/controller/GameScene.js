@@ -5,22 +5,24 @@ class GameScene extends Phaser.Scene {
     }
 
     init(params) {
+        this.levelGenerationInfo = params.levelGenerationInfo;
+
         this.formulas = params.formulas;
 
         this.displayingFormulas = [];
         this.indexOfLastDisplayingFormula = -1;
 
         this.displayingCannonBalls = [];
+        this.score = 0;
 
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.GAME.width, GC.RESOLUTIONS.MEDIUM.GAME.height);
-
     }
 
     create() {
         this.sizer = new GameSizer(this);
 
         this.placeCannon();
-        // this.keyboard = this.input.keyboard.addKeys('M');
+        this.placeScoreLabels();
 
         this.input.on('pointerdown', this.shoot(this));
         this.keyM = this.input.keyboard.addKey('M');
@@ -35,6 +37,23 @@ class GameScene extends Phaser.Scene {
         this.spanNewFormulaIfNeeded();
         this.moveFormulas();
         this.removeFormulasIfNeeded();
+
+        this.finishGameIfNeeded();
+    }
+
+    finishGameIfNeeded() {
+        if (this.isGameFinished()) {
+            Scaler.setResolution(this, 1200, 900);
+
+            this.scene.start(GC.SCENES.GAME_COMPETE, {
+                'score': this.score,
+                'levelGenerationInfo': this.levelGenerationInfo
+            });
+        }
+    }
+
+    isGameFinished() {
+        return this.hasNoDisplayingFormulas() && this.allFormulasHasBeenPlaced()
     }
 
     spanNewFormulaIfNeeded() {
@@ -44,8 +63,8 @@ class GameScene extends Phaser.Scene {
     }
 
     needToSpanNewFormula() {
-        return this.hasNoDisplayingFormulas()
-            || !this.allFormulasHasBeenPlaced() && this.hasEnoughSpaceToPlaceNewFormula();
+        return !this.allFormulasHasBeenPlaced()
+            && (this.hasNoDisplayingFormulas() || this.hasEnoughSpaceToPlaceNewFormula());
     }
 
     hasNoDisplayingFormulas() {
@@ -54,9 +73,8 @@ class GameScene extends Phaser.Scene {
 
     hasEnoughSpaceToPlaceNewFormula() {
         let cardSpeedY = this.sizer.card_SpeedY();
-        let spaceBetweenY = this.sizer.cardBackground_DistanceBetween();
 
-        return 0 <= this.lastCard_TopY() - spaceBetweenY + cardSpeedY;
+        return 0 <= this.lastCard_TopY() + cardSpeedY;
     }
 
     allFormulasHasBeenPlaced() {
@@ -89,12 +107,32 @@ class GameScene extends Phaser.Scene {
         let scoreForHit = this.formulas[index].scoreForHit;
         let scoreForSkip = this.formulas[index].scoreForSkip;
 
-        return {
+        let arrow = undefined;
+        if (0 < index) {
+            let arrowCenterX = this.sizer.arrow_CenterX();
+            let arrowCenterY = this.spanArrow_CenterY();
+
+            console.log('arrowCenterX: ' + arrowCenterX);
+            console.log('arrowCenterY: ' + arrowCenterY);
+
+            arrow = this.add.image(arrowCenterX, arrowCenterY, 'arrow');
+            arrow.setOrigin(0.5);
+        }
+
+        let newFormula = {
             'formula': formula,
             'background': background,
+            'arrow': arrow,
             'scoreForHit': scoreForHit,
-            'scoreForSkip': scoreForSkip
+            'scoreForSkip': scoreForSkip,
+            'isHit': false
+        };
+
+        if (0 === index) {
+            this.formulaHasBeenHit(newFormula);
         }
+
+        return newFormula;
     }
 
     moveFormulas() {
@@ -104,11 +142,56 @@ class GameScene extends Phaser.Scene {
 
             formula.formula.x += this.sizer.card_SpeedX();
             formula.formula.y += this.sizer.card_SpeedY();
+
+            if (formula.arrow) {
+                formula.arrow.x += this.sizer.card_SpeedX();
+                formula.arrow.y += this.sizer.card_SpeedY();
+            }
+
+            if (formula.leftScore) {
+                formula.leftScore.x += this.sizer.card_SpeedX();
+                formula.leftScore.y += this.sizer.card_SpeedY();
+            }
+
+            if (formula.rightScore) {
+                formula.rightScore.x += this.sizer.card_SpeedX();
+                formula.rightScore.y += this.sizer.card_SpeedY();
+            }
         }
     }
 
     removeFormulasIfNeeded() {
+        if (this.needToRemoveFirstFormula()) {
+            this.removeFirstFormula();
+        }
+    }
 
+    needToRemoveFirstFormula() {
+        return 0 < this.displayingFormulas.length
+            && this.sizer.field_Height() < this.displayingFormulas[0].background.y;
+    }
+
+    removeFirstFormula() {
+        this.formulaHasBeenPassed(this.displayingFormulas[0]);
+        this.destroyFormulaObjects(this.displayingFormulas[0]);
+        this.displayingFormulas.shift();
+    }
+
+    formulaHasBeenPassed(formula) {
+        if (!formula.isHit) {
+            this.score += formula.scoreForSkip;
+
+            let formattedScore = this.formatScore(this.score);
+            this.scoreValueText.setText(formattedScore);
+        }
+    }
+
+    destroyFormulaObjects(formula) {
+        formula.formula.destroy();
+        formula.background.destroy();
+        if (formula.arrow) formula.arrow.destroy();
+        if (formula.leftScore) formula.leftScore.destroy();
+        if (formula.rightScore) formula.rightScore.destroy();
     }
 
     // MARK: - Sizes based on the current game state
@@ -137,6 +220,16 @@ class GameScene extends Phaser.Scene {
         let cardHeight = this.sizer.cardBackground_Height();
 
         return cardTopY + cardHeight / 2;
+    }
+
+    spanArrow_CenterY() {
+        let cardTopY = this.spanCardBackground_TopY();
+        let cardHeight = this.sizer.cardBackground_Height();
+        let spaceBetween = this.sizer.cardBackground_DistanceBetween();
+        let cardShadowY = this.sizer.cardBackground_ShadowY();
+        let arrowShadowY = this.sizer.arrow_ShadowY();
+
+        return cardTopY + cardHeight + (spaceBetween + cardShadowY) / 2 + arrowShadowY / 2;
     }
 
     placeCannon() {
@@ -173,10 +266,6 @@ class GameScene extends Phaser.Scene {
 
     handleKeyboardInput() {
 
-        // if (this.keyboard.M.isUp === true) {
-        //     this.showMenu();
-        // }
-        // this.input.keyboard.on('keyup-M', this.showMenu);
         if (Phaser.Input.Keyboard.JustDown(this.keyM)) {
             this.showMenu();
         }
@@ -188,20 +277,9 @@ class GameScene extends Phaser.Scene {
     }
 
     showPauseMenu() {
-        let x = this.sizer.menu_CenterX();
-        let y = this.sizer.menu_CenterY();
-
-        let width = this.sizer.menu_Width();
-        let height = this.sizer.menu_Height();
-
-        let window = this.add.zone(x, y, width, height);
-        window.setInteractive();
-        window.setOrigin(0.5);
-
-        // let menuScene = new GamePauseScene(window);
-
-        // this.scene.add(GC.SCENES.GAME_PAUSE, menuScene, true);
-        this.scene.run(GC.SCENES.GAME_PAUSE);
+        this.scene.run(GC.SCENES.GAME_PAUSE, {
+            'levelGenerationInfo': this.levelGenerationInfo
+        });
     }
 
     shoot(scene) {
@@ -243,14 +321,20 @@ class GameScene extends Phaser.Scene {
     addNewCollisionToDisplayingFormulas(cannonBallObject) {
         for (let formula of this.displayingFormulas) {
 
+            if (formula.isHit) {
+                continue;
+            }
+
             let scene = this;
 
             this.physics.add.collider(
                 formula.background,
                 cannonBallObject,
-                function (_formula, _cannonBall) {
+                function (_background, _cannonBall) {
                     scene.removeCannonBall(cannonBallObject);
-                    scene.formulaHasBeenHit(_formula);
+
+                    let hitFormula = scene.displayingFormulas.find(item => item.background === _background);
+                    scene.formulaHasBeenHit(hitFormula);
                 }
             )
         }
@@ -266,8 +350,6 @@ class GameScene extends Phaser.Scene {
                 cannonBall.cannon,
                 function (_formula, _cannonBall) {
                     console.log("I was trying to destroy a ball (2)");
-                    // _cannonBall.destroy();
-
 
                 }
             )
@@ -281,10 +363,76 @@ class GameScene extends Phaser.Scene {
         cannonBallObject.destroy();
     }
 
-    formulaHasBeenHit(backgroundObject) {
+    formulaHasBeenHit(formula) {
+        formula.isHit = true;
 
+        formula.background.setTexture('cardBackground_Hit');
+
+        let shadowX = this.sizer.cardBackground_ShadowX();
+        formula.formula.x += shadowX;
+
+        let shadowY = this.sizer.cardBackground_ShadowY();
+        formula.formula.y += shadowY;
+
+        if (formula.arrow && formula.scoreForHit < 0) {
+            formula.arrow.setTexture('arrow_Green');
+
+            let scoreRightX = this.sizer.arrowScoreLeft_RightX();
+            let scoreCenterY = formula.arrow.y;
+            let scoreFontSize = this.sizer.arrowScore_FontSize();
+            let scoreColor = this.sizer.arrowScore_Color();
+            formula.leftScore = this.add.text(
+                scoreRightX, scoreCenterY,
+                formula.scoreForHit,
+                { fontSize: scoreFontSize, color: scoreColor }
+            ).setOrigin(1, 0.5);
+
+            this.score += formula.scoreForHit;
+        }
+
+        if (formula.arrow && 0 < formula.scoreForHit) {
+            formula.arrow.setTexture('arrow_Red');
+
+            let scoreLeftX = this.sizer.arrowScoreRight_LeftX();
+            let scoreCenterY = formula.arrow.y;
+            let scoreFontSize = this.sizer.arrowScore_FontSize();
+            let scoreColor = this.sizer.arrowScore_Color();
+            formula.rightScore = this.add.text(
+                scoreLeftX, scoreCenterY,
+                '+' + formula.scoreForHit,
+                { fontSize: scoreFontSize, color: scoreColor }
+            ).setOrigin(0, 0.5);
+
+            this.score += formula.scoreForHit;
+        }
+
+        let formattedScore = this.formatScore(this.score);
+        this.scoreValueText.setText(formattedScore);
     }
 
+    placeScoreLabels() {
+        let labelRightX = this.sizer.scoreLabel_RightX();
+        let labelBottomY = this.sizer.scoreLabel_BottomY();
+        let labelFontSize = this.sizer.scoreLabel_FontSize();
+        let labelColor = this.sizer.scoreLabel_Color();
+        this.add.text(labelRightX, labelBottomY, 'score:',
+            { fontSize: labelFontSize, color: labelColor })
+            .setOrigin(1);
 
+        let valueRightX = this.sizer.scoreValue_RightX();
+        let valueBottomY = this.sizer.scoreValue_BottomY();
+        let valueFontSize = this.sizer.scoreValue_FontSize();
+        let valueColor = this.sizer.scoreValue_Color();
+        this.scoreValueText = this.add.text(valueRightX, valueBottomY, '000000',
+            { fontSize: valueFontSize, color: valueColor })
+            .setOrigin(1);
+    }
+
+    formatScore(score) {
+        let signString = score < 0 ? "-" : "";
+        let valueString = String(Math.abs(this.score)).padStart(6, '0');
+
+        return signString + valueString;
+    }
 
 }

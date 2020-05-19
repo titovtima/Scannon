@@ -1,18 +1,34 @@
 class LevelGenerationScene extends Phaser.Scene {
 
-    constructor(params) {
+    constructor() {
         super(GC.SCENES.LEVEL_GENERATION);
     }
 
     init(params) {
-        this.levelGenerationParams = params;
+        this.levelGenerationInfo = params;
+        this.numberOfFormulas = params.numberOfFormulas;
+        this.initialExpressionsPath = params.initialExpressionPath;
+        this.substitutionsPath = params.substitutionsPath;
 
+        this.generator = undefined;
         this.formulas = [];
     }
 
+    preload() {
+        this.load.json(this.initialExpressionsPath, this.initialExpressionsPath);
+        this.load.json(this.substitutionsPath, this.substitutionsPath);
+    }
+
     create() {
+        this.initialExpressions = this.cache.json.get(this.initialExpressionsPath);
+        this.substitutions = this.cache.json.get(this.substitutionsPath);
+
         this.sizer = new LevelGenerationSizer(this);
-        this.generator = new LevelFormulaGenerator(this, this.levelGenerationParams);
+        this.generator = new LevelFormulaGenerator(this, {
+            'numberOfFormulas': this.numberOfFormulas,
+            'initialExpressions': this.initialExpressions.expressions,
+            'substitutions': this.substitutions.substitutions
+        });
 
         this.placeDescription();
         this.placeLoadingBarBackground();
@@ -27,7 +43,8 @@ class LevelGenerationScene extends Phaser.Scene {
     update() {
         if (this.generator.levelComplete()) {
             this.scene.start(GC.SCENES.LOADING_RESOURCES, {
-                'formulas': this.formulas
+                'formulas': this.formulas,
+                'levelGenerationInfo': this.levelGenerationInfo
             });
         }
 

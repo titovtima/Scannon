@@ -4,6 +4,14 @@ class GamePauseSizer {
         this.scene = scene;
     }
 
+    field_Width() {
+        return this.scene.game.renderer.width;
+    }
+
+    field_Height() {
+        return this.scene.game.renderer.height;
+    }
+
     darkenedBackground_alpha() {
         return 0.7;
     }

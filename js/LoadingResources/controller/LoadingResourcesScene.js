@@ -4,6 +4,7 @@ class LoadingResourcesScene extends Phaser.Scene {
     }
 
     init(params) {
+        this.levelGenerationInfo = params.levelGenerationInfo;
         this.formulas = params.formulas;
     }
 
@@ -11,6 +12,11 @@ class LoadingResourcesScene extends Phaser.Scene {
         this.load.image('cannon', '/js/LoadingResources/assets/cannon.png');
         this.load.image('cannonBall', '/js/LoadingResources/assets/cannonBall.png');
         this.load.image('cardBackground_Regular', '/js/LoadingResources/assets/cardBackground_Regular.png');
+        this.load.image('cardBackground_Hit', '/js/LoadingResources/assets/cardBackground_Hit.png');
+
+        this.load.image('arrow', '/js/LoadingResources/assets/arrow.png');
+        this.load.image('arrow_Green', '/js/LoadingResources/assets/arrow_Green.png');
+        this.load.image('arrow_Red', '/js/LoadingResources/assets/arrow_Red.png');
 
         this.load.image('pauseMenuBackground', '/js/LoadingResources/assets/pauseMenuBackground.png');
 
@@ -43,9 +49,9 @@ class LoadingResourcesScene extends Phaser.Scene {
     }
 
     create() {
-        this.scale.setGameSize(1700, 500);
         this.scene.start(GC.SCENES.GAME, {
-            'formulas': this.formulas
+            'formulas': this.formulas,
+            'levelGenerationInfo': this.levelGenerationInfo
         });
     }
 

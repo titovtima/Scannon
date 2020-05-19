@@ -76,7 +76,7 @@ class LevelMenuSizer {
 
     cardDescription_CenterX(index) {
         let leftX = this.backgroundRectangle_LeftX(index);
-        let cardWidth = this.backgroundRectangle_Width()
+        let cardWidth = this.backgroundRectangle_Width();
 
         return leftX + cardWidth / 2;
     }
@@ -84,11 +84,19 @@ class LevelMenuSizer {
     cardDescription_CenterY(index) {
         let topY = this.backgroundRectangle_TopY(index);
 
-        return topY + 147;
+        // with the stars
+        // return topY + 147;
+
+        // without the stars
+        return topY + 167;
     }
 
     cardDescription_FontSize(index) {
         return 24;
+    }
+
+    cardDescription_Color(index) {
+        return '#000';
     }
 
     mainMenuButton_LeftX() {

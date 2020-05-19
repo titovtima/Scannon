@@ -19,6 +19,12 @@ class MainMenuScene extends Phaser.Scene {
 
         let rhodiumLibreStyles = '@font-face { font-family: "RhodiumLibre"; src: url("/fonts/RhodiumLibre-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(rhodiumLibreStyles, 0);
+
+        let ptMonoStyles = '@font-face { font-family: "PTMono"; src: url("/fonts/PTMono-Regular.ttf") format("truetype"); }\n';
+        sheet.insertRule(ptMonoStyles, 0);
+
+        let poetsenOneStyles = '@font-face { font-family: "PoetsenOne"; src: url("/fonts/PoetsenOne-Regular.ttf") format("truetype"); }\n';
+        sheet.insertRule(poetsenOneStyles, 0);
     }
 
     preload() {

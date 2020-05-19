@@ -24,6 +24,7 @@ class LevelMenuScene extends Phaser.Scene {
         for (let level of this.levelsInfo.levels) {
             let cardBackground = this.placeCardBackground(level.index);
             this.placeCardIndex(level.index, cardBackground);
+            this.placeCardDescription(level.index);
         }
     }
 
@@ -73,8 +74,15 @@ class LevelMenuScene extends Phaser.Scene {
             cardBackground.setTexture('cardBackground');
         });
         cardBackground.on('pointerup', () => {
+            let basePath = "/js/GameConfiguration";
+            let initialExpressionPath = basePath + this.levelsInfo.levels[index - 1].initialExpressions;
+            let substitutionsPath = basePath + this.levelsInfo.levels[index - 1].substitutions;
+            let numberOfFormulas = this.levelsInfo.levels[index - 1].numberOfFormulas;
+
             this.scene.start(GC.SCENES.LEVEL_GENERATION, {
-                'num_formulas': 100
+                'numberOfFormulas': numberOfFormulas,
+                'initialExpressionPath': initialExpressionPath,
+                'substitutionsPath': substitutionsPath
             });
         });
 
@@ -110,10 +118,28 @@ class LevelMenuScene extends Phaser.Scene {
         });
     }
 
-    enableInteraction_Card(cardBackground, cardIndex) {
+    placeCardDescription(index) {
+        let sizer = this.sizer;
+        let add = this.add;
+        let description = this.levelsInfo.levels[index - 1].description;
 
+        WebFont.load({
+            'custom': {
+                families: ['RhodiumLibre']
+            },
+            active: function () {
+                let centerX = sizer.cardDescription_CenterX(index);
+                let centerY = sizer.cardDescription_CenterY(index);
+                let fontSize = sizer.cardDescription_FontSize(index);
+                let color = sizer.cardDescription_Color(index);
 
-
+                add.text(
+                    centerX, centerY,
+                    description,
+                    { fontFamily: 'RhodiumLibre', fontSize: fontSize, color: color }
+                ).setOrigin(0.5);
+            }
+        })
     }
 
 }

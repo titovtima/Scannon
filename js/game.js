@@ -9,7 +9,8 @@ const config = {
         LevelGenerationScene,
         LoadingResourcesScene,
         GameScene,
-        GamePauseScene
+        GamePauseScene,
+        GameCompleteScene
     ],
     pixelArt: true,
     physics: {

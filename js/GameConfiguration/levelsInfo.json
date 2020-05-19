@@ -2,31 +2,37 @@
   "levels": [
     {
       "index": 1,
-      "name": "The adventure starts!"
+      "description": "Training",
+      "numberOfFormulas": 2,
+      "initialExpressions": "/lvl1/init.json",
+      "substitutions": "/lvl1/subs.json"
     },
     {
       "index": 2,
-      "name": "Level 2"
+      "description": "Implication",
+      "numberOfFormulas": 10,
+      "initialExpressions": "/lvl2/init.json",
+      "substitutions": "/lvl2/subs.json"
     },
     {
       "index": 3,
-      "name": "Level 3"
+      "description": "In development"
     },
     {
       "index": 4,
-      "name": "Level 4"
+      "description": "In development"
     },
     {
       "index": 5,
-      "name": "Level 5"
+      "description": "In development"
     },
     {
       "index": 6,
-      "name": "Level 6"
+      "description": "In development"
     },
     {
       "index": 7,
-      "name": "Level 7"
+      "description": "In development"
     }
   ]
 }

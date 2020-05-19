@@ -4,8 +4,11 @@ class GamePauseScene extends Phaser.Scene {
         super(GC.SCENES.GAME_PAUSE);
     }
 
+    init(params) {
+        this.levelGenerationInfo = params.levelGenerationInfo;
+    }
+
     create() {
-        // this.cameras.main.setViewport(200, 200, 700, 700);
         this.sizer = new GamePauseSizer(this);
 
         this.prepareBackground();
@@ -45,7 +48,9 @@ class GamePauseScene extends Phaser.Scene {
             }
         });
 
-        this.blackBox.fillRect(0, 0, 1600, 900);
+        let fieldWidth = this.sizer.field_Width();
+        let fieldHeight = this.sizer.field_Height();
+        this.blackBox.fillRect(0, 0, fieldWidth, fieldHeight);
     }
 
     drawMenuBackground() {
@@ -58,6 +63,7 @@ class GamePauseScene extends Phaser.Scene {
 
     drawMenuItems() {
         let sizer = this.sizer;
+        let scene = this;
         let add = this.add;
 
         WebFont.load({
@@ -71,11 +77,32 @@ class GamePauseScene extends Phaser.Scene {
                     let centerX = sizer.menuItem_CenterX();
                     let centerY = sizer.menuItem_CenterY(label);
 
-                    add.text(centerX, centerY, label, {
+                    let menuItem = add.text(centerX, centerY, label, {
                         fontFamily: 'RibeyeMarrow',
                         fontSize: 84,
                         color: '#000'
                     }).setOrigin(0.5);
+
+                    menuItem.setInteractive();
+                    menuItem.on('pointerover', () => {
+                        menuItem.setFontFamily('Ribeye');
+                    });
+                    menuItem.on('pointerout', () => {
+                        menuItem.setFontFamily('RibeyeMarrow');
+                    });
+                    menuItem.on('pointerup', () => {
+                        switch (label) {
+                            case "Resume":
+                                scene.closeMenu();
+                                break;
+                            case "Restart":
+                                scene.restartLevel();
+                                break;
+                            case "Main Menu":
+                                scene.openMainMenu();
+                                break;
+                        }
+                    })
                 }
             }
         })
@@ -86,6 +113,20 @@ class GamePauseScene extends Phaser.Scene {
     closeMenu() {
         this.scene.run(GC.SCENES.GAME);
         this.scene.stop(GC.SCENES.GAME_PAUSE);
+    }
+
+    restartLevel() {
+        Scaler.setResolution(this, 1200, 900);
+
+        this.scene.stop(GC.SCENES.GAME);
+        this.scene.start(GC.SCENES.LEVEL_GENERATION, this.levelGenerationInfo);
+    }
+
+    openMainMenu() {
+        Scaler.setResolution(this, 1200, 900);
+
+        this.scene.stop(GC.SCENES.GAME);
+        this.scene.start(GC.SCENES.MAIN_MENU);
     }
 
 }
