@@ -10,6 +10,7 @@ app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/index.html');
 })
 
+var port = process.env.PORT || 8081
 server.listen(8081, function() {
 	console.log(`Listening on ${server.address().port}`);
 });
