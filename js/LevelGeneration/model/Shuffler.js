@@ -5,8 +5,10 @@ class Shuffler {
     }
 
     shuffledSubstitutions() {
+        // console.log('shuffledSubstitutions started')
         let formula = this.generator.formula;
         let substitutions = this.generator.substitutions;
+        // console.log('Substitutions to shuffle:', substitutions);
 
         let group1 = substitutions;
         let group2 = [];

@@ -20,10 +20,25 @@ class LevelGenerationScene extends Phaser.Scene {
     }
 
     create() {
+        console.log('LevelGenerationScene create started');
         this.initialExpressions = this.cache.json.get(this.initialExpressionsPath);
-        this.substitutions = this.cache.json.get(this.substitutionsPath);
+        // this.substitutions = Object.assign({}, this.cache.json.get(this.substitutionsPath));
+        this.substitutions = this.copy_object(this.cache.json.get(this.substitutionsPath));
+        console.log('Path for substitutions', this.substitutionsPath);
+        console.log('Substitutions get from path:', this.substitutions);
+        for (let sub of this.substitutions.substitutions) {
+            console.log('Substitution:', sub);
+        }
+        console.log('Path for initialExpressions', this.initialExpressionsPath);
+        console.log('InitialExpressions get from path:', this.initialExpressions);
+
 
         this.sizer = new LevelGenerationSizer(this);
+        console.log({
+            'numberOfFormulas': this.numberOfFormulas,
+            'initialExpressions': this.initialExpressions.expressions,
+            'substitutions': this.substitutions.substitutions
+        });
         this.generator = new LevelFormulaGenerator(this, {
             'numberOfFormulas': this.numberOfFormulas,
             'initialExpressions': this.initialExpressions.expressions,
@@ -38,9 +53,11 @@ class LevelGenerationScene extends Phaser.Scene {
                 color: 0x6B4800
             }
         })
+        console.log('LevelGenerationScene create ended');
     }
 
     update() {
+        // console.log('LevelGenerationScene update started');
         if (this.generator.levelComplete()) {
             this.scene.start(GC.SCENES.LOADING_RESOURCES, {
                 'formulas': this.formulas,
@@ -60,6 +77,7 @@ class LevelGenerationScene extends Phaser.Scene {
         let radius = this.sizer.loadingBar_Radius();
 
         this.loadingBar.fillRoundedRect(leftX, topY, width, height, radius);
+        // console.log('LevelGenerationScene update ended');
     }
 
     placeDescription() {
@@ -100,4 +118,20 @@ class LevelGenerationScene extends Phaser.Scene {
         loadingBarBackground.fillRoundedRect(leftX, topY, width, height, radius);
     }
 
+    copy_object(obj) {
+        if (typeof obj != "object")
+            return obj
+        if (Array.isArray(obj)) {
+            let new_arr = []
+            for (let item of obj)
+                new_arr.push(this.copy_object(item))
+            return new_arr
+        }
+        let new_obj = {}
+        for (let key in obj) {
+            console.log(key, obj[key])
+            new_obj[key] = this.copy_object(obj[key])
+        }
+        return new_obj
+    }
 }

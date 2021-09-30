@@ -12,6 +12,7 @@ class LevelMenuScene extends Phaser.Scene {
 
     create() {
         this.levelsInfo = this.cache.json.get('levelsInfo');
+        console.log('Levels info:', this.levelsInfo);
 
         this.sizer = new LevelMenuSizer(this);
 
@@ -47,7 +48,7 @@ class LevelMenuScene extends Phaser.Scene {
                     '<- main menu', { fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor });
                 mainMenuButton.setInteractive();
                 mainMenuButton.on('pointerover', () => {
-                  mainMenuButton.setFontFamily('Ribeye');
+                    mainMenuButton.setFontFamily('Ribeye');
                 });
                 mainMenuButton.on('pointerout', () => {
                     mainMenuButton.setFontFamily('RibeyeMarrow');

@@ -7,14 +7,23 @@ class LevelFormulaGenerator {
         this.numberOfFormulas = params.numberOfFormulas;
         this.initialExpressions = params.initialExpressions;
         this.substitutions = params.substitutions;
+        console.log('Substitutions in levelGenerator:', this.substitutions);
 
         for (let substitution of this.substitutions) {
             substitution.diff = substitution.target.length - substitution.origin.length;
+        }
+        console.log('Substitutions added diff:', this.substitutions);
+        for (let sub of this.substitutions) {
+            console.log('Substitution:', sub);
         }
 
         for (let substitution of this.substitutions) {
             substitution.origin = TWF.api.stringToStructureString(substitution.origin, "setTheory");
             substitution.target = TWF.api.stringToStructureString(substitution.target, "setTheory");
+        }
+        console.log('Substitutions after modifying:', this.substitutions);
+        for (let sub of this.substitutions) {
+            console.log('Substitution:', sub);
         }
 
         this.numberOfGeneratedFormulas = 0;
@@ -73,6 +82,7 @@ class LevelFormulaGenerator {
     transformFormula() {
         let expression = this.formula.label;
         let shuffledSubstitutions = this.shuffler.shuffledSubstitutions();
+        // console.log('Shuffled substitutions:', shuffledSubstitutions);
 
         for (let substitution of shuffledSubstitutions) {
             let substitutionPlaces = this.getSubstitutionPlaces(expression, substitution);
@@ -86,6 +96,7 @@ class LevelFormulaGenerator {
                     'scoreForHit':  substitution.scoreForHit,
                     'scoreForSkip': substitution.scoreForSkip
                 };
+                // console.log('Formula transformed to:', this.formula);
 
                 break;
             }
@@ -102,6 +113,7 @@ class LevelFormulaGenerator {
     }
 
     applySubstitution(expression, substitution, place) {
+        console.log('Apply substitution:', {'expression': expression, 'substitution': substitution, 'place': place})
         if (place.constructor === Array) {
             place = this.pickRandomElement(place);
         }
