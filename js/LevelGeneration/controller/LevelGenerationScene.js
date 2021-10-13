@@ -21,24 +21,16 @@ class LevelGenerationScene extends Phaser.Scene {
 
     create() {
         console.log('LevelGenerationScene create started');
-        this.initialExpressions = this.cache.json.get(this.initialExpressionsPath);
-        // this.substitutions = Object.assign({}, this.cache.json.get(this.substitutionsPath));
+        this.initialExpressions = this.copy_object(this.cache.json.get(this.initialExpressionsPath));
         this.substitutions = this.copy_object(this.cache.json.get(this.substitutionsPath));
-        console.log('Path for substitutions', this.substitutionsPath);
         console.log('Substitutions get from path:', this.substitutions);
         for (let sub of this.substitutions.substitutions) {
             console.log('Substitution:', sub);
         }
-        console.log('Path for initialExpressions', this.initialExpressionsPath);
-        console.log('InitialExpressions get from path:', this.initialExpressions);
+        console.log('Initial Expressions get from path:', this.initialExpressions);
 
 
         this.sizer = new LevelGenerationSizer(this);
-        console.log({
-            'numberOfFormulas': this.numberOfFormulas,
-            'initialExpressions': this.initialExpressions.expressions,
-            'substitutions': this.substitutions.substitutions
-        });
         this.generator = new LevelFormulaGenerator(this, {
             'numberOfFormulas': this.numberOfFormulas,
             'initialExpressions': this.initialExpressions.expressions,
@@ -57,26 +49,39 @@ class LevelGenerationScene extends Phaser.Scene {
     }
 
     update() {
-        // console.log('LevelGenerationScene update started');
-        if (this.generator.levelComplete()) {
-            this.scene.start(GC.SCENES.LOADING_RESOURCES, {
-                'formulas': this.formulas,
-                'levelGenerationInfo': this.levelGenerationInfo
-            });
+        console.log('LevelGenerationScene update started');
+        if (!this.generator) {
+            console.log(this.numberOfFormulas);
+            console.log(this.initialExpressionsPath);
+            console.log(this.substitutionsPath);
+            this.scene.restart({
+                'numberOfFormulas': this.numberOfFormulas,
+                'initialExpressionPath': this.initialExpressionsPath,
+                'substitutionsPath': this.substitutionsPath
+            })
+        } else {
+            if (this.generator.levelComplete()) {
+                // this.generator = undefined;
+                this.scene.start(GC.SCENES.LOADING_RESOURCES, {
+                    'formulas': this.formulas,
+                    'levelGenerationInfo': this.levelGenerationInfo
+                });
+                // this.scene.remove(GC.SCENES.LEVEL_GENERATION);
+            }
+
+            let formula = this.generator.nextFormula();
+            this.formulas.push(formula);
+
+            let progress = this.generator.progress();
+
+            let leftX = this.sizer.loadingBar_LeftX();
+            let topY = this.sizer.loadingBar_TopY();
+            let width = progress * this.sizer.loadingBar_Width();
+            let height = this.sizer.loadingBar_Height();
+            let radius = this.sizer.loadingBar_Radius();
+
+            this.loadingBar.fillRoundedRect(leftX, topY, width, height, radius);
         }
-
-        let formula = this.generator.nextFormula();
-        this.formulas.push(formula);
-
-        let progress = this.generator.progress();
-
-        let leftX = this.sizer.loadingBar_LeftX();
-        let topY = this.sizer.loadingBar_TopY();
-        let width = progress * this.sizer.loadingBar_Width();
-        let height = this.sizer.loadingBar_Height();
-        let radius = this.sizer.loadingBar_Radius();
-
-        this.loadingBar.fillRoundedRect(leftX, topY, width, height, radius);
         // console.log('LevelGenerationScene update ended');
     }
 
@@ -129,7 +134,7 @@ class LevelGenerationScene extends Phaser.Scene {
         }
         let new_obj = {}
         for (let key in obj) {
-            console.log(key, obj[key])
+            // console.log(key, obj[key])
             new_obj[key] = this.copy_object(obj[key])
         }
         return new_obj
