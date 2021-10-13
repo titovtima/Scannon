@@ -25,5 +25,6 @@
   "homepage": "https://github.com/alexander-ahappydandelion/TWF-scaled-game#readme",
   "dependencies": {
     "express": "^4.17.1"
-  }
+  },
+  "devDependencies": {}
 }
