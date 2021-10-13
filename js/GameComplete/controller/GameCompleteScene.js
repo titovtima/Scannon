@@ -8,15 +8,7 @@ class GameCompleteScene extends Phaser.Scene {
         this.score = params.score;
     }
 
-    preload() {
-        this.load.json('/js/GameConfiguration/lvl2/subs.json', '/js/GameConfiguration/lvl2/subs.json');
-    }
-
     create() {
-        let substitutions = this.cache.json.get('/js/GameConfiguration/lvl2/subs.json')
-        for (let sub of substitutions.substitutions) {
-            console.log('Substitution:', sub);
-        }
         this.sizer = new GameCompleteSizer(this);
 
         this.placeScore();

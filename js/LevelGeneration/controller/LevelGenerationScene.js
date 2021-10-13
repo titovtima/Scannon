@@ -23,11 +23,6 @@ class LevelGenerationScene extends Phaser.Scene {
         console.log('LevelGenerationScene create started');
         this.initialExpressions = this.copy_object(this.cache.json.get(this.initialExpressionsPath));
         this.substitutions = this.copy_object(this.cache.json.get(this.substitutionsPath));
-        console.log('Substitutions get from path:', this.substitutions);
-        for (let sub of this.substitutions.substitutions) {
-            console.log('Substitution:', sub);
-        }
-        console.log('Initial Expressions get from path:', this.initialExpressions);
 
 
         this.sizer = new LevelGenerationSizer(this);
@@ -51,9 +46,6 @@ class LevelGenerationScene extends Phaser.Scene {
     update() {
         console.log('LevelGenerationScene update started');
         if (!this.generator) {
-            console.log(this.numberOfFormulas);
-            console.log(this.initialExpressionsPath);
-            console.log(this.substitutionsPath);
             this.scene.restart({
                 'numberOfFormulas': this.numberOfFormulas,
                 'initialExpressionPath': this.initialExpressionsPath,
@@ -61,12 +53,10 @@ class LevelGenerationScene extends Phaser.Scene {
             })
         } else {
             if (this.generator.levelComplete()) {
-                // this.generator = undefined;
                 this.scene.start(GC.SCENES.LOADING_RESOURCES, {
                     'formulas': this.formulas,
                     'levelGenerationInfo': this.levelGenerationInfo
                 });
-                // this.scene.remove(GC.SCENES.LEVEL_GENERATION);
             }
 
             let formula = this.generator.nextFormula();
@@ -82,7 +72,6 @@ class LevelGenerationScene extends Phaser.Scene {
 
             this.loadingBar.fillRoundedRect(leftX, topY, width, height, radius);
         }
-        // console.log('LevelGenerationScene update ended');
     }
 
     placeDescription() {
