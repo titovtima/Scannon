@@ -21,6 +21,7 @@ class LevelGenerationScene extends Phaser.Scene {
 
     create() {
         console.log('LevelGenerationScene create started');
+        this.needRestart = false;
         this.initialExpressions = this.copy_object(this.cache.json.get(this.initialExpressionsPath));
         this.substitutions = this.copy_object(this.cache.json.get(this.substitutionsPath));
 
@@ -45,7 +46,9 @@ class LevelGenerationScene extends Phaser.Scene {
 
     update() {
         console.log('LevelGenerationScene update started');
-        if (!this.generator) {
+        if (this.needRestart) return;
+        if (this.generator === undefined) {
+            this.needRestart = true
             this.scene.restart({
                 'numberOfFormulas': this.numberOfFormulas,
                 'initialExpressionPath': this.initialExpressionsPath,
