@@ -13,8 +13,8 @@ class LevelFormulaGenerator {
         }
 
         for (let substitution of this.substitutions) {
-            substitution.origin = TWF.api.stringToStructureString(substitution.origin, "setTheory");
-            substitution.target = TWF.api.stringToStructureString(substitution.target, "setTheory");
+            substitution.origin = twf_js.stringToStructureString(substitution.origin, "setTheory");
+            substitution.target = twf_js.stringToStructureString(substitution.target, "setTheory");
         }
 
         this.numberOfGeneratedFormulas = 0;
@@ -26,7 +26,7 @@ class LevelFormulaGenerator {
             console.log('formula is undefined');
             this.initializeFormula(); }
         else {
-            console.log('formula: ' + this.formula.label);
+            console.log('formula: ', this.formula);
             this.transformFormula(); }
 
         this.numberOfGeneratedFormulas += 1;
@@ -71,14 +71,18 @@ class LevelFormulaGenerator {
     }
 
     transformFormula() {
-        let expression = this.formula.label;
+        let stringExpression = this.formula.label;
+        let expression = twf_js.stringToExpression(stringExpression, "setTheory");
         let shuffledSubstitutions = this.shuffler.shuffledSubstitutions();
 
         for (let substitution of shuffledSubstitutions) {
-            let substitutionPlaces = this.getSubstitutionPlaces(expression, substitution);
+            let expressionSubstitution = twf_js.expressionSubstitutionFromStructureStrings(
+                substitution.origin, substitution.target, "setTheory");
+            let substitutionPlaces = this.getSubstitutionPlaces(expression, expressionSubstitution);
 
             if (0 < substitutionPlaces.length) {
-                let rawFormula = this.applySubstitution(expression, substitution, substitutionPlaces);
+                let rawFormula = twf_js.expressionToString(
+                    this.applySubstitution(expression, expressionSubstitution, substitutionPlaces));
 
                 this.formula = {
                     'label':        rawFormula,
@@ -93,24 +97,11 @@ class LevelFormulaGenerator {
     }
 
     getSubstitutionPlaces(expression, substitution) {
-        let substitutionPlacesJSON = TWF.api.findSubstitutionPlacesJSON(
-            expression,
-            substitution.origin, substitution.target,
-            "setTheory"
-        );
-        return JSON.parse(substitutionPlacesJSON).substitutionPlaces;
+        return twf_js.findSubstitutionPlacesInExpression(expression, substitution);
     }
 
-    applySubstitution(expression, substitution, place) {
-        if (place.constructor === Array) {
-            place = this.pickRandomElement(place);
-        }
-
-        return TWF.api.applySubstitution(expression,
-            substitution.origin, substitution.target,
-            parseInt(place.parentStartPosition), parseInt(place.parentEndPosition),
-            parseInt(place.startPosition), parseInt(place.endPosition),
-            "setTheory")
+    applySubstitution(expression, substitution, places) {
+        return twf_js.applySubstitution(expression, substitution, places, "setTheory")
     }
 
     pickRandomElement(items) {
