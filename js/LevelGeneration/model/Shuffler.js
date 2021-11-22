@@ -6,20 +6,20 @@ class Shuffler {
 
     shuffledSubstitutions() {
         let formula = this.generator.formula;
-        let substitutions = this.generator.substitutions;
+        let substitutions = this.generator.substitutionsList;
 
         let group1 = substitutions;
         let group2 = [];
 
-        if (formula.length < 8)  {
-            group1 = substitutions.filter( item => 0 < item.diff  );
-            group2 = substitutions.filter( item => item.diff <= 0 );
-        }
-
-        if (12 < formula.length) {
-            group1 = substitutions.filter( item => item.diff < 0 );
-            group2 = substitutions.filter( item => 0 <= item.diff );
-        }
+        // if (formula.length < 8)  {
+        //     group1 = substitutions.filter( item => 0 < item.diff  );
+        //     group2 = substitutions.filter( item => item.diff <= 0 );
+        // }
+        //
+        // if (12 < formula.length) {
+        //     group1 = substitutions.filter( item => item.diff < 0 );
+        //     group2 = substitutions.filter( item => 0 <= item.diff );
+        // }
 
         this.shuffle(group1);
         this.shuffle(group2);

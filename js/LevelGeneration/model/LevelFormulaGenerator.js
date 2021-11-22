@@ -7,14 +7,44 @@ class LevelFormulaGenerator {
         this.numberOfFormulas = params.numberOfFormulas;
         this.initialExpressions = params.initialExpressions;
         this.substitutions = params.substitutions;
+        this.rulesFromPacks = params.rulesFromPacks;
+        this.substitutionsList = [];
+        this.substitutionsMap = new Map();
 
         for (let substitution of this.substitutions) {
-            substitution.diff = substitution.target.length - substitution.origin.length;
+            let exprSubst = twf_js.expressionSubstitutionFromStructureStrings(
+                twf_js.stringToStructureString(substitution.origin, "setTheory"),
+                twf_js.stringToStructureString(substitution.target, "setTheory")
+            );
+            this.substitutionsMap.set(exprSubst.code,
+                {
+                    "scoreForHit": substitution.scoreForHit,
+                    "scoreForSkip": substitution.scoreForSkip
+                });
+            this.substitutionsList.push(exprSubst);
         }
 
-        for (let substitution of this.substitutions) {
-            substitution.origin = twf_js.stringToStructureString(substitution.origin, "setTheory");
-            substitution.target = twf_js.stringToStructureString(substitution.target, "setTheory");
+        console.log('Substitutions', this.substitutions);
+
+        for (let rule of this.rulesFromPacks) {
+            // if (rule.leftStructureString === "") continue;
+            let exprSubst = twf_js.expressionSubstitutionFromStructureStrings(
+                rule.leftStructureString,
+                rule.rightStructureString,
+                rule.basedOnTaskContext,
+                rule.matchJumbledAndNested,
+                rule.simpleAdditional,
+                rule.isExtending,
+                rule.priority,
+                rule.code,
+                rule.nameEn,
+                rule.nameRu
+            )
+            this.substitutionsMap.set(exprSubst.code, {
+                "scoreForHit": rule.scoreForHit,
+                "scoreForSkip": rule.scoreForSkip
+            })
+            this.substitutionsList.push(exprSubst);
         }
 
         this.numberOfGeneratedFormulas = 0;
@@ -68,32 +98,77 @@ class LevelFormulaGenerator {
             'scoreForHit':  0,
             'scoreForPass': 0
         }
+        this.expression = twf_js.stringToExpression(this.formula.label, "setTheory");
     }
 
     transformFormula() {
-        let stringExpression = this.formula.label;
-        let expression = twf_js.stringToExpression(stringExpression, "setTheory");
+        let expression = this.expression;
         let shuffledSubstitutions = this.shuffler.shuffledSubstitutions();
+        console.log('Expression string', this.formula.label);
+        console.log('Expression', expression);
 
-        for (let substitution of shuffledSubstitutions) {
-            let expressionSubstitution = twf_js.expressionSubstitutionFromStructureStrings(
-                substitution.origin, substitution.target, "setTheory");
-            let substitutionPlaces = this.getSubstitutionPlaces(expression, expressionSubstitution);
+        if (false) {
+            for (let substitution of shuffledSubstitutions) {
+                let expressionSubstitution = substitution;
+                console.log('Substitution:', substitution);
+                let substitutionPlaces = this.getSubstitutionPlaces(expression, expressionSubstitution);
 
-            if (0 < substitutionPlaces.length) {
+                if (0 < substitutionPlaces.length) {
+                    this.expression = this.applySubstitution(expression, expressionSubstitution, substitutionPlaces);
+                    let rawFormula = twf_js.expressionToString(this.expression);
+
+                    this.formula = {
+                        'label': rawFormula,
+                        'url': this.urlForRawFormula(rawFormula),
+                        'scoreForHit': this.substitutionsMap.get(expressionSubstitution.code).scoreForHit,
+                        'scoreForSkip': this.substitutionsMap.get(expressionSubstitution.code).scoreForSkip
+                    };
+
+                    break;
+                }
+            }
+        } else {
+            let nodeIds = this.getAllNodeIdsInExpression(expression);
+            console.log('Node ids', nodeIds);
+            console.log('Substitutions', shuffledSubstitutions);
+            let substitutionApplications = this.findApplicableSubstitutionsInSelectedPlace(
+                expression, nodeIds, shuffledSubstitutions
+            );
+            console.log('Substitution applications', substitutionApplications);
+            if (0 < substitutionApplications.length) {
+                let application = this.pickRandomElement(substitutionApplications)
+                this.expression = application.resultExpression;
                 let rawFormula = twf_js.expressionToString(
-                    this.applySubstitution(expression, expressionSubstitution, substitutionPlaces));
+                    application.resultExpression);
+                console.log('Result expression:', rawFormula);
 
                 this.formula = {
-                    'label':        rawFormula,
-                    'url':          this.urlForRawFormula(rawFormula),
-                    'scoreForHit':  substitution.scoreForHit,
-                    'scoreForSkip': substitution.scoreForSkip
+                    'label': rawFormula,
+                    'url': this.urlForRawFormula(rawFormula),
+                    'scoreForHit': this.substitutionsMap
+                        .get(application.expressionSubstitution.code).scoreForHit,
+                    'scoreForSkip': this.substitutionsMap
+                        .get(application.expressionSubstitution.code).scoreForSkip
                 };
-
-                break;
             }
         }
+    }
+
+    findApplicableSubstitutionsInSelectedPlace(expression, nodeIds, substitutions) {
+        return twf_js.findApplicableSubstitutionsInSelectedPlace(
+            expression,
+            nodeIds,
+            twf_js.createCompiledConfigurationFromExpressionSubstitutionsAndParams(substitutions)
+        )
+    }
+
+    getAllNodeIdsInExpression(expression) {
+        let nodeIds = [];
+        if (expression.nodeId !== 0 && twf_js.listToArray(expression.children).length > 0)
+            nodeIds = [expression.nodeId];
+        for (let child of twf_js.listToArray(expression.children))
+            nodeIds = nodeIds.concat(this.getAllNodeIdsInExpression(child))
+        return nodeIds
     }
 
     getSubstitutionPlaces(expression, substitution) {
@@ -101,7 +176,7 @@ class LevelFormulaGenerator {
     }
 
     applySubstitution(expression, substitution, places) {
-        return twf_js.applySubstitution(expression, substitution, places, "setTheory")
+        return twf_js.applySubstitution(expression, substitution, [this.pickRandomElement(places)], "setTheory")
     }
 
     pickRandomElement(items) {

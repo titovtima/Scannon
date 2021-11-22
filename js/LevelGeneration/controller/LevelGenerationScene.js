@@ -9,6 +9,8 @@ class LevelGenerationScene extends Phaser.Scene {
         this.numberOfFormulas = params.numberOfFormulas;
         this.initialExpressionsPath = params.initialExpressionPath;
         this.substitutionsPath = params.substitutionsPath;
+        this.rulePacksPath = '/js/GameConfiguration/allRulePacks.json';
+        this.badRulePacksPath = '/js/GameConfiguration/badRulePacks.json';
 
         this.generator = undefined;
         this.formulas = [];
@@ -17,6 +19,8 @@ class LevelGenerationScene extends Phaser.Scene {
     preload() {
         this.load.json(this.initialExpressionsPath, this.initialExpressionsPath);
         this.load.json(this.substitutionsPath, this.substitutionsPath);
+        this.load.json(this.rulePacksPath, this.rulePacksPath);
+        this.load.json(this.badRulePacksPath, this.badRulePacksPath);
     }
 
     create() {
@@ -24,13 +28,27 @@ class LevelGenerationScene extends Phaser.Scene {
         this.needRestart = false;
         this.initialExpressions = this.copy_object(this.cache.json.get(this.initialExpressionsPath));
         this.substitutions = this.copy_object(this.cache.json.get(this.substitutionsPath));
-
+        this.rulePacks = this.cache.json.get(this.rulePacksPath);
+        this.badRulePacks = this.cache.json.get(this.badRulePacksPath);
+        this.rulesFromPacks = [];
+        for (let rulePack of this.rulePacks.rulePacks) {
+            if (rulePack.code === 'global_test__LogicNotAnd' ||
+                rulePack.code === 'global_test__LogicNotOr')
+                continue;
+            this.rulesFromPacks = this.rulesFromPacks.concat(rulePack.rules);
+        }
+        for (let rulePack of this.badRulePacks.rulePacks) {
+            if (rulePack.code !== 'global_test_bad__LogicBase')
+                continue;
+            this.rulesFromPacks = this.rulesFromPacks.concat(rulePack.rules);
+        }
 
         this.sizer = new LevelGenerationSizer(this);
         this.generator = new LevelFormulaGenerator(this, {
             'numberOfFormulas': this.numberOfFormulas,
             'initialExpressions': this.initialExpressions.expressions,
-            'substitutions': this.substitutions.substitutions
+            'substitutions': this.substitutions.substitutions,
+            'rulesFromPacks': this.rulesFromPacks
         });
 
         this.placeDescription();

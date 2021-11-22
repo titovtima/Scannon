@@ -368,7 +368,7 @@ if (typeof kotlin === 'undefined') {
       simplifyNotSelectedTopArguments = false;
     if (withReadyApplicationResult === void 0)
       withReadyApplicationResult = true;
-    return findApplicableSubstitutionsInSelectedPlace(expression, selectedNodeIds, compiledConfiguration, simplifyNotSelectedTopArguments, withReadyApplicationResult);
+    return copyToArray(findApplicableSubstitutionsInSelectedPlace(expression, selectedNodeIds, compiledConfiguration, simplifyNotSelectedTopArguments, withReadyApplicationResult));
   }
   function findSubstitutionPlacesInExpression(expression, substitution) {
     return copyToArray(findSubstitutionPlacesInExpression_0(expression, substitution));
@@ -616,6 +616,9 @@ if (typeof kotlin === 'undefined') {
   }
   function arrayToList_JS(data) {
     return toList(data);
+  }
+  function listToArray_JS(data) {
+    return copyToArray(data);
   }
   function arrayToSet_JS(data) {
     return toSet_0(data);
@@ -32697,6 +32700,7 @@ if (typeof kotlin === 'undefined') {
   _.createRuleITR = createRuleITR_JS;
   _.createTaskITR = createTaskITR_JS;
   _.arrayToList = arrayToList_JS;
+  _.listToArray = listToArray_JS;
   _.arrayToSet = arrayToSet_JS;
   _.dinamicToMap = dinamicToMap_JS;
   _.jsonStringToMap = jsonStringToMap_JS;
