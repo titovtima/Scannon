@@ -31,7 +31,7 @@ if (typeof kotlin === 'undefined') {
   var toDoubleOrNull = Kotlin.kotlin.text.toDoubleOrNull_pdl1vz$;
   var last = Kotlin.kotlin.collections.last_2p1efm$;
   var numberToInt = Kotlin.numberToInt;
-  var JsMath = Math;
+  var Math_0 = Math;
   var toString = Kotlin.toString;
   var IllegalArgumentException_init = Kotlin.kotlin.IllegalArgumentException_init_pdl1vj$;
   var intersect = Kotlin.kotlin.collections.intersect_q4559j$;
@@ -58,6 +58,7 @@ if (typeof kotlin === 'undefined') {
   var get_lastIndex = Kotlin.kotlin.collections.get_lastIndex_55thoc$;
   var math = Kotlin.kotlin.math;
   var log = Kotlin.kotlin.math.log_lu1900$;
+  var LinkedHashMap_init_0 = Kotlin.kotlin.collections.LinkedHashMap_init_q3lmfv$;
   var union = Kotlin.kotlin.collections.union_q4559j$;
   var compareBy = Kotlin.kotlin.comparisons.compareBy_bvgy4j$;
   var sortedWith = Kotlin.kotlin.collections.sortedWith_eknfly$;
@@ -78,7 +79,8 @@ if (typeof kotlin === 'undefined') {
   var toMutableMap = Kotlin.kotlin.collections.toMutableMap_abgq59$;
   var Collection = Kotlin.kotlin.collections.Collection;
   var NotImplementedError_init = Kotlin.kotlin.NotImplementedError;
-  var LinkedHashMap_init_0 = Kotlin.kotlin.collections.LinkedHashMap_init_q3lmfv$;
+  var firstOrNull_0 = Kotlin.kotlin.text.firstOrNull_gw00vp$;
+  var unboxChar = Kotlin.unboxChar;
   var toIntOrNull = Kotlin.kotlin.text.toIntOrNull_pdl1vz$;
   var mutableListOf = Kotlin.kotlin.collections.mutableListOf_i5x0yv$;
   var startsWith = Kotlin.kotlin.text.startsWith_7epoxm$;
@@ -105,12 +107,11 @@ if (typeof kotlin === 'undefined') {
   var sortWith = Kotlin.kotlin.collections.sortWith_nqfjgj$;
   var max = Kotlin.kotlin.collections.max_exjks8$;
   var contains_1 = Kotlin.kotlin.collections.contains_mjy6jw$;
-  var unboxChar = Kotlin.unboxChar;
   var StringBuilder = Kotlin.kotlin.text.StringBuilder;
   var get_indices = Kotlin.kotlin.text.get_indices_gw00vp$;
   var toBoxedChar = Kotlin.toBoxedChar;
   var get_lastIndex_1 = Kotlin.kotlin.collections.get_lastIndex_m7z4lg$;
-  var firstOrNull_0 = Kotlin.kotlin.collections.firstOrNull_2p1efm$;
+  var firstOrNull_1 = Kotlin.kotlin.collections.firstOrNull_2p1efm$;
   var Unit = Kotlin.kotlin.Unit;
   var toMutableList_0 = Kotlin.kotlin.collections.toMutableList_us0mfu$;
   var indexOf = Kotlin.kotlin.collections.indexOf_bv23uc$;
@@ -122,7 +123,7 @@ if (typeof kotlin === 'undefined') {
   var iterator = Kotlin.kotlin.text.iterator_gw00vp$;
   var Kind_INTERFACE = Kotlin.Kind.INTERFACE;
   var isWhitespace = Kotlin.kotlin.text.isWhitespace_myv2d0$;
-  var firstOrNull_1 = Kotlin.kotlin.text.firstOrNull_gw00vp$;
+  var zip = Kotlin.kotlin.collections.zip_45mdf7$;
   var startsWith_0 = Kotlin.kotlin.text.startsWith_sgbm27$;
   var substringBefore = Kotlin.kotlin.text.substringBefore_8cymmc$;
   var endsWith_0 = Kotlin.kotlin.text.endsWith_7epoxm$;
@@ -159,14 +160,20 @@ if (typeof kotlin === 'undefined') {
   var substringAfter_0 = Kotlin.kotlin.text.substringAfter_8cymmc$;
   var split_0 = Kotlin.kotlin.text.split_o64adg$;
   var indexOf_0 = Kotlin.kotlin.text.indexOf_l5u8uk$;
-  var uppercaseChar = Kotlin.kotlin.text.uppercaseChar_myv2d0$;
+  var minus = Kotlin.kotlin.collections.minus_khz7k3$;
+  var average = Kotlin.kotlin.collections.average_l63kqw$;
+  var sum_0 = Kotlin.kotlin.collections.sum_plj8ka$;
   var lastOrNull = Kotlin.kotlin.collections.lastOrNull_2p1efm$;
   var shuffled = Kotlin.kotlin.collections.shuffled_7wnvza$;
+  var plus_1 = Kotlin.kotlin.collections.plus_iwxh38$;
+  var plus_2 = Kotlin.kotlin.collections.plus_e8164j$;
   var random = Kotlin.kotlin.collections.random_iscd7z$;
   var replaceFirst = Kotlin.kotlin.text.replaceFirst_680rmw$;
   var findAnyOf = Kotlin.kotlin.text.findAnyOf_7utkvz$;
   ComputationType.prototype = Object.create(Enum.prototype);
   ComputationType.prototype.constructor = ComputationType;
+  ComputeExpressionVariableType.prototype = Object.create(Enum.prototype);
+  ComputeExpressionVariableType.prototype.constructor = ComputeExpressionVariableType;
   EmptyDomainException.prototype = Object.create(Throwable.prototype);
   EmptyDomainException.prototype.constructor = EmptyDomainException;
   ComparisonType.prototype = Object.create(Enum.prototype);
@@ -181,8 +188,6 @@ if (typeof kotlin === 'undefined') {
   TaskSetTagCode.prototype.constructor = TaskSetTagCode;
   NodeType.prototype = Object.create(Enum.prototype);
   NodeType.prototype.constructor = NodeType;
-  NumberIntervalType.prototype = Object.create(Enum.prototype);
-  NumberIntervalType.prototype.constructor = NumberIntervalType;
   SubstitutionInstanceVarType.prototype = Object.create(Enum.prototype);
   SubstitutionInstanceVarType.prototype.constructor = SubstitutionInstanceVarType;
   ExpressionSubstitutionNormType.prototype = Object.create(Enum.prototype);
@@ -207,6 +212,8 @@ if (typeof kotlin === 'undefined') {
   MessageType.prototype.constructor = MessageType;
   Form.prototype = Object.create(Enum.prototype);
   Form.prototype.constructor = Form;
+  NumberIntervalType.prototype = Object.create(Enum.prototype);
+  NumberIntervalType.prototype.constructor = NumberIntervalType;
   Case.prototype = Object.create(Enum.prototype);
   Case.prototype.constructor = Case;
   ExpressionGenerationDirection.prototype = Object.create(Enum.prototype);
@@ -291,6 +298,11 @@ if (typeof kotlin === 'undefined') {
     if (characterEscapingDepth === void 0)
       characterEscapingDepth = 1;
     return expressionToString(expressionNode, characterEscapingDepth);
+  }
+  function expressionToUnicodeString_JS(expressionNode, characterEscapingDepth) {
+    if (characterEscapingDepth === void 0)
+      characterEscapingDepth = 1;
+    return expressionToUnicodeString(expressionNode, characterEscapingDepth);
   }
   function expressionToTexString_JS(expressionNode, characterEscapingDepth) {
     if (characterEscapingDepth === void 0)
@@ -676,7 +688,7 @@ if (typeof kotlin === 'undefined') {
     }
     return $receiver;
   }
-  function createConfigurationFromRulePacksAndDetailSolutionCheckingParams(rulePacks, wellKnownFunctionsString, expressionTransformationRulesString, maxExpressionTransformationWeight, unlimitedWellKnownFunctionsString, taskContextExpressionTransformationRules, maxDistBetweenDiffSteps, scopeFilter, wellKnownFunctions, unlimitedWellKnownFunctions, expressionTransformationRules) {
+  function createConfigurationFromRulePacksAndDetailSolutionCheckingParams(rulePacks, wellKnownFunctionsString, expressionTransformationRulesString, maxExpressionTransformationWeight, unlimitedWellKnownFunctionsString, taskContextExpressionTransformationRules, maxDistBetweenDiffSteps, scopeFilter, wellKnownFunctions, unlimitedWellKnownFunctions, expressionTransformationRules, subjectType) {
     if (rulePacks === void 0) {
       rulePacks = copyToArray(listOf('Algebra'));
     }if (wellKnownFunctionsString === void 0)
@@ -699,7 +711,9 @@ if (typeof kotlin === 'undefined') {
       unlimitedWellKnownFunctions = wellKnownFunctions;
     if (expressionTransformationRules === void 0) {
       expressionTransformationRules = emptyList();
-    }var compiledConfiguration = compiledConfigurationBySettings(wellKnownFunctionsString, expressionTransformationRulesString, maxExpressionTransformationWeight, unlimitedWellKnownFunctionsString, taskContextExpressionTransformationRules, maxDistBetweenDiffSteps, scopeFilter, wellKnownFunctions, unlimitedWellKnownFunctions, expressionTransformationRules);
+    }if (subjectType === void 0)
+      subjectType = '';
+    var compiledConfiguration = compiledConfigurationBySettings(wellKnownFunctionsString, expressionTransformationRulesString, maxExpressionTransformationWeight, unlimitedWellKnownFunctionsString, taskContextExpressionTransformationRules, maxDistBetweenDiffSteps, scopeFilter, wellKnownFunctions, unlimitedWellKnownFunctions, expressionTransformationRules, subjectType);
     if (!(rulePacks.length === 0)) {
       var expressionSubstitutions = getSubstitutionsByRulePacks(rulePacks);
       setExpressionSubstitutions(compiledConfiguration, expressionSubstitutions);
@@ -1043,7 +1057,15 @@ if (typeof kotlin === 'undefined') {
   function expressionToString(expressionNode, characterEscapingDepth) {
     if (characterEscapingDepth === void 0)
       characterEscapingDepth = 1;
-    return escapeCharacters(expressionNode.toPlainTextView_bu354u$(), characterEscapingDepth);
+    return escapeCharacters(expressionNode.toPlainTextView_8ellkq$(), characterEscapingDepth);
+  }
+  function expressionToUnicodeString$lambda(it) {
+    return it.unicodeRepresentation;
+  }
+  function expressionToUnicodeString(expressionNode, characterEscapingDepth) {
+    if (characterEscapingDepth === void 0)
+      characterEscapingDepth = 1;
+    return escapeCharacters(expressionNode.toPlainTextView_8ellkq$(void 0, void 0, expressionToUnicodeString$lambda), characterEscapingDepth);
   }
   function expressionToTexString(expressionNode, characterEscapingDepth) {
     if (characterEscapingDepth === void 0)
@@ -1187,7 +1209,7 @@ if (typeof kotlin === 'undefined') {
         result.add_11rb$(new ExpressionSubstitution(addRootNodeToExpression(expressionPart.clone()), addRootNodeToExpression(minusTreeNode)));
         var intCurrentValue = numberToInt(currentValue);
         if (1 < intCurrentValue && intCurrentValue < 145 && toReal_0(intCurrentValue - currentValue).additivelyEqualToZero()) {
-          var sqrtValue = numberToInt(JsMath.sqrt(currentValue));
+          var sqrtValue = numberToInt(Math_0.sqrt(currentValue));
           for (var i = 2; i <= sqrtValue; i++) {
             var div = intCurrentValue / i | 0;
             if (intCurrentValue === Kotlin.imul(i, div)) {
@@ -1232,7 +1254,7 @@ if (typeof kotlin === 'undefined') {
       compiledConfiguration = new CompiledConfiguration(void 0, functionConfiguration);
     return new ExpressionSubstitution(!isBlank(left) ? stringToExpression(left, void 0, void 0, void 0, compiledConfiguration) : new ExpressionNode(NodeType$EMPTY_getInstance(), ''), !isBlank(right) ? stringToExpression(right, void 0, void 0, void 0, compiledConfiguration) : new ExpressionNode(NodeType$EMPTY_getInstance(), ''), void 0, basedOnTaskContext, !isBlank(code) ? code : "'" + stringToStructureString(left, void 0, void 0, void 0, compiledConfiguration) + "'->'" + stringToStructureString(right, void 0, void 0, void 0, compiledConfiguration) + "'", nameEn, nameRu, void 0, void 0, matchJumbledAndNested, priority);
   }
-  function expressionSubstitutionFromStructureStrings(leftStructureString, rightStructureString, basedOnTaskContext, matchJumbledAndNested, simpleAdditional, isExtending, priority, code, nameEn, nameRu, normalizationType, weight, weightInTaskAutoGeneration) {
+  function expressionSubstitutionFromStructureStrings(leftStructureString, rightStructureString, basedOnTaskContext, matchJumbledAndNested, simpleAdditional, isExtending, priority, code, nameEn, nameRu, normalizationType, weight, weightInTaskAutoGeneration, useWhenPostprocessGeneratedExpression) {
     if (leftStructureString === void 0)
       leftStructureString = '';
     if (rightStructureString === void 0)
@@ -1259,11 +1281,13 @@ if (typeof kotlin === 'undefined') {
       weight = 1.0;
     if (weightInTaskAutoGeneration === void 0)
       weightInTaskAutoGeneration = 1.0;
-    return new ExpressionSubstitution(!isBlank(leftStructureString) ? structureStringToExpression(leftStructureString) : new ExpressionNode(NodeType$EMPTY_getInstance(), ''), !isBlank(rightStructureString) ? structureStringToExpression(rightStructureString) : new ExpressionNode(NodeType$EMPTY_getInstance(), ''), weight, basedOnTaskContext, !isBlank(code) ? code : "'" + leftStructureString + "'->'" + rightStructureString + "'", nameEn, nameRu, void 0, void 0, matchJumbledAndNested, priority, void 0, simpleAdditional, isExtending, normalizationType, weightInTaskAutoGeneration);
+    if (useWhenPostprocessGeneratedExpression === void 0)
+      useWhenPostprocessGeneratedExpression = false;
+    return new ExpressionSubstitution(!isBlank(leftStructureString) ? structureStringToExpression(leftStructureString) : new ExpressionNode(NodeType$EMPTY_getInstance(), ''), !isBlank(rightStructureString) ? structureStringToExpression(rightStructureString) : new ExpressionNode(NodeType$EMPTY_getInstance(), ''), weight, basedOnTaskContext, !isBlank(code) ? code : "'" + leftStructureString + "'->'" + rightStructureString + "'", nameEn, nameRu, void 0, void 0, matchJumbledAndNested, priority, void 0, simpleAdditional, isExtending, normalizationType, weightInTaskAutoGeneration, useWhenPostprocessGeneratedExpression);
   }
   function expressionSubstitutionFromRuleITR(ruleITR) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11;
-    return expressionSubstitutionFromStructureStrings((tmp$ = ruleITR.leftStructureString) != null ? tmp$ : '', (tmp$_0 = ruleITR.rightStructureString) != null ? tmp$_0 : '', (tmp$_1 = ruleITR.basedOnTaskContext) != null ? tmp$_1 : false, (tmp$_2 = ruleITR.matchJumbledAndNested) != null ? tmp$_2 : false, (tmp$_3 = ruleITR.simpleAdditional) != null ? tmp$_3 : false, (tmp$_4 = ruleITR.isExtending) != null ? tmp$_4 : false, (tmp$_5 = ruleITR.priority) != null ? tmp$_5 : 50, (tmp$_6 = ruleITR.code) != null ? tmp$_6 : '', (tmp$_7 = ruleITR.nameEn) != null ? tmp$_7 : '', (tmp$_8 = ruleITR.nameRu) != null ? tmp$_8 : '', ExpressionSubstitutionNormType$valueOf((tmp$_9 = ruleITR.normalizationType) != null ? tmp$_9 : 'ORIGINAL'), (tmp$_10 = ruleITR.weight) != null ? tmp$_10 : 1.0, (tmp$_11 = ruleITR.weightInTaskAutoGeneration) != null ? tmp$_11 : 1.0);
+    return expressionSubstitutionFromStructureStrings((tmp$ = ruleITR.leftStructureString) != null ? tmp$ : '', (tmp$_0 = ruleITR.rightStructureString) != null ? tmp$_0 : '', (tmp$_1 = ruleITR.basedOnTaskContext) != null ? tmp$_1 : false, (tmp$_2 = ruleITR.matchJumbledAndNested) != null ? tmp$_2 : false, (tmp$_3 = ruleITR.simpleAdditional) != null ? tmp$_3 : false, (tmp$_4 = ruleITR.isExtending) != null ? tmp$_4 : false, (tmp$_5 = ruleITR.priority) != null ? tmp$_5 : 50, (tmp$_6 = ruleITR.code) != null ? tmp$_6 : '', (tmp$_7 = ruleITR.nameEn) != null ? tmp$_7 : '', (tmp$_8 = ruleITR.nameRu) != null ? tmp$_8 : '', ExpressionSubstitutionNormType$valueOf((tmp$_9 = ruleITR.normalizationType) != null ? tmp$_9 : 'ORIGINAL'), (tmp$_10 = ruleITR.weight) != null ? tmp$_10 : 1.0, (tmp$_11 = ruleITR.weightInTaskAutoGeneration) != null ? tmp$_11 : 1.0, ruleITR.useWhenPostprocessGeneratedExpression);
   }
   function expressionSubstitutionsFromRulePackITR(rulePackITR, rulePacksITR, includeChildRulePacks) {
     var tmp$, tmp$_0, tmp$_1;
@@ -1382,6 +1406,9 @@ if (typeof kotlin === 'undefined') {
     var substitutionSelectionData = new SubstitutionSelectionData(expression, selectedNodeIds, compiledConfiguration);
     fillSubstitutionSelectionData(substitutionSelectionData);
     return applySubstitution_1(substitutionSelectionData, substitution, simplifyNotSelectedTopArguments);
+  }
+  function checkAndAddNewVariableReplacement(variableName, variableValue, expression, compiledConfiguration) {
+    return compiledConfiguration.checkAndAddNewVariableReplacement_6moki$(variableName, variableValue, expression);
   }
   function findLowestSubtreeTopOfSelectedNodesInExpression(node, selectedNodes) {
     return findLowestSubtreeTopOfNodes(node, selectedNodes);
@@ -1583,6 +1610,9 @@ if (typeof kotlin === 'undefined') {
     var result = tmp$_0;
     return escapeCharacters(expressionToString(result), characterEscapingDepth);
   }
+  function checkAndAddNewVariableReplacement_0(variableName, variableValue, expression, compiledConfiguration) {
+    return checkAndAddNewVariableReplacement(variableName, structureStringToExpression(variableValue), structureStringToExpression(expression), compiledConfiguration);
+  }
   function createExpressionFrontInput(expression, format) {
     return new ExpressionFrontInput(expression, format);
   }
@@ -1712,7 +1742,7 @@ if (typeof kotlin === 'undefined') {
       shortErrorDescription = '0';
     if (skipTrivialCheck === void 0)
       skipTrivialCheck = false;
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12;
     var scopeFilter = LinkedHashSet_init();
     if (contains(listOf_0(['set', 'logic']), taskITR.subjectType)) {
       scopeFilter.add_11rb$('setTheory');
@@ -1721,69 +1751,69 @@ if (typeof kotlin === 'undefined') {
       functionConfiguration.notChangesOnVariablesInComparisonFunction = Kotlin.isType(tmp$ = taskITR.otherCheckSolutionData.get_11rb$(notChangesOnVariablesInComparisonFunctionJsonName), List) ? tmp$ : throwCCE();
     }if (taskITR.otherCheckSolutionData != null && Kotlin.isType(taskITR.otherCheckSolutionData.get_11rb$(notChangesOnVariablesInComparisonFunctionWithoutTransformationsJsonName), List)) {
       functionConfiguration.notChangesOnVariablesInComparisonFunctionWithoutTransformations = Kotlin.isType(tmp$_0 = taskITR.otherCheckSolutionData.get_11rb$(notChangesOnVariablesInComparisonFunctionWithoutTransformationsJsonName), List) ? tmp$_0 : throwCCE();
-    }var tmp$_12 = ((tmp$_1 = taskITR.rules) != null ? !tmp$_1.isEmpty() : null) === true;
-    if (!tmp$_12) {
-      tmp$_12 = ((tmp$_2 = taskITR.rulePacks) != null ? !tmp$_2.isEmpty() : null) === true;
-    }if (tmp$_12) {
+    }var tmp$_13 = ((tmp$_1 = taskITR.rules) != null ? !tmp$_1.isEmpty() : null) === true;
+    if (!tmp$_13) {
+      tmp$_13 = ((tmp$_2 = taskITR.rulePacks) != null ? !tmp$_2.isEmpty() : null) === true;
+    }if (tmp$_13) {
       functionConfiguration.treeTransformationRules = ArrayList_init();
       functionConfiguration.taskContextTreeTransformationRules = ArrayList_init();
-    }var compiledConfiguration = new CompiledConfiguration(void 0, functionConfiguration);
+    }var compiledConfiguration = new CompiledConfiguration(void 0, functionConfiguration, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, (tmp$_3 = taskITR.subjectType) != null ? tmp$_3 : '');
     var expressionSubstitutions = ArrayList_init();
-    if ((tmp$_3 = taskITR.rules) != null) {
-      var tmp$_13;
-      tmp$_13 = tmp$_3.iterator();
-      while (tmp$_13.hasNext()) {
-        var element = tmp$_13.next();
+    if ((tmp$_4 = taskITR.rules) != null) {
+      var tmp$_14;
+      tmp$_14 = tmp$_4.iterator();
+      while (tmp$_14.hasNext()) {
+        var element = tmp$_14.next();
         expressionSubstitutions.add_11rb$(expressionSubstitutionFromRuleITR(element));
       }
     }var destination = ArrayList_init();
-    var tmp$_14;
-    for (tmp$_14 = 0; tmp$_14 !== rulePacksITR.length; ++tmp$_14) {
-      var element_0 = rulePacksITR[tmp$_14];
+    var tmp$_15;
+    for (tmp$_15 = 0; tmp$_15 !== rulePacksITR.length; ++tmp$_15) {
+      var element_0 = rulePacksITR[tmp$_15];
       if (element_0.code != null)
         destination.add_11rb$(element_0);
     }
     var capacity = coerceAtLeast(mapCapacity(collectionSizeOrDefault(destination, 10)), 16);
     var destination_0 = LinkedHashMap_init(capacity);
-    var tmp$_15;
-    tmp$_15 = destination.iterator();
-    while (tmp$_15.hasNext()) {
-      var element_1 = tmp$_15.next();
+    var tmp$_16;
+    tmp$_16 = destination.iterator();
+    while (tmp$_16.hasNext()) {
+      var element_1 = tmp$_16.next();
       destination_0.put_xwzc9p$(ensureNotNull(element_1.code), element_1);
     }
     var rulePacksMap = destination_0;
-    if ((tmp$_4 = taskITR.rulePacks) != null) {
-      var tmp$_16;
-      tmp$_16 = tmp$_4.iterator();
-      while (tmp$_16.hasNext()) {
-        var element_2 = tmp$_16.next();
+    if ((tmp$_5 = taskITR.rulePacks) != null) {
+      var tmp$_17;
+      tmp$_17 = tmp$_5.iterator();
+      while (tmp$_17.hasNext()) {
+        var element_2 = tmp$_17.next();
         var key = element_2.rulePackCode;
-        var tmp$_17;
-        var rulePack = (Kotlin.isType(tmp$_17 = rulePacksMap, Map) ? tmp$_17 : throwCCE()).get_11rb$(key);
+        var tmp$_18;
+        var rulePack = (Kotlin.isType(tmp$_18 = rulePacksMap, Map) ? tmp$_18 : throwCCE()).get_11rb$(key);
         if (rulePack != null) {
           expressionSubstitutions.addAll_brywnq$(expressionSubstitutionsFromRulePackITR(rulePack, rulePacksMap, true));
         }}
     }if (!expressionSubstitutions.isEmpty()) {
       compiledConfiguration.compiledExpressionTreeTransformationRules.clear();
-      var tmp$_18 = compiledConfiguration.compiledExpressionTreeTransformationRules;
+      var tmp$_19 = compiledConfiguration.compiledExpressionTreeTransformationRules;
       var destination_1 = ArrayList_init();
-      var tmp$_19;
-      tmp$_19 = expressionSubstitutions.iterator();
-      while (tmp$_19.hasNext()) {
-        var element_3 = tmp$_19.next();
+      var tmp$_20;
+      tmp$_20 = expressionSubstitutions.iterator();
+      while (tmp$_20.hasNext()) {
+        var element_3 = tmp$_20.next();
         if (element_3.left.nodeType === NodeType$FUNCTION_getInstance() && element_3.right.nodeType === NodeType$FUNCTION_getInstance())
           destination_1.add_11rb$(element_3);
       }
-      tmp$_18.addAll_brywnq$(destination_1);
+      tmp$_19.addAll_brywnq$(destination_1);
     }if (taskITR.otherCheckSolutionData != null && taskITR.otherCheckSolutionData.get_11rb$('maxExpressionTransformationWeightString') != null) {
-      var maxExpressionTransformationWeightString = typeof (tmp$_5 = taskITR.otherCheckSolutionData.get_11rb$('maxExpressionTransformationWeightString')) === 'string' ? tmp$_5 : throwCCE();
-      compiledConfiguration.comparisonSettings.maxExpressionTransformationWeight = (tmp$_6 = toDoubleOrNull(maxExpressionTransformationWeightString)) != null ? tmp$_6 : 1.0;
+      var maxExpressionTransformationWeightString = typeof (tmp$_6 = taskITR.otherCheckSolutionData.get_11rb$('maxExpressionTransformationWeightString')) === 'string' ? tmp$_6 : throwCCE();
+      compiledConfiguration.comparisonSettings.maxExpressionTransformationWeight = (tmp$_7 = toDoubleOrNull(maxExpressionTransformationWeightString)) != null ? tmp$_7 : 1.0;
     }if (taskITR.otherCheckSolutionData != null && taskITR.otherCheckSolutionData.get_11rb$('maxDistBetweenDiffStepsString') != null) {
-      var maxDistBetweenDiffStepsString = typeof (tmp$_7 = taskITR.otherCheckSolutionData.get_11rb$('maxDistBetweenDiffStepsString')) === 'string' ? tmp$_7 : throwCCE();
-      compiledConfiguration.comparisonSettings.maxDistBetweenDiffSteps = (tmp$_8 = toDoubleOrNull(maxDistBetweenDiffStepsString)) != null ? tmp$_8 : 1.0;
-    }return checkFactsInTex(originalTexSolution, (tmp$_9 = taskITR.originalExpressionStructureString) != null ? tmp$_9 : '', (tmp$_10 = taskITR.goalExpressionStructureString) != null ? tmp$_10 : '', '', (tmp$_11 = taskITR.goalPattern) != null ? tmp$_11 : '', '', '', shortErrorDescription, skipTrivialCheck, compiledConfiguration, taskITR.otherGoalData);
+      var maxDistBetweenDiffStepsString = typeof (tmp$_8 = taskITR.otherCheckSolutionData.get_11rb$('maxDistBetweenDiffStepsString')) === 'string' ? tmp$_8 : throwCCE();
+      compiledConfiguration.comparisonSettings.maxDistBetweenDiffSteps = (tmp$_9 = toDoubleOrNull(maxDistBetweenDiffStepsString)) != null ? tmp$_9 : 1.0;
+    }return checkFactsInTex(originalTexSolution, (tmp$_10 = taskITR.originalExpressionStructureString) != null ? tmp$_10 : '', (tmp$_11 = taskITR.goalExpressionStructureString) != null ? tmp$_11 : '', '', (tmp$_12 = taskITR.goalPattern) != null ? tmp$_12 : '', '', '', shortErrorDescription, skipTrivialCheck, compiledConfiguration, taskITR.otherGoalData);
   }
-  function checkSolutionInTex_0(originalTexSolution, startExpressionIdentifier, targetFactPattern, additionalFactsIdentifiers, endExpressionIdentifier, targetFactIdentifier, comparisonSign, wellKnownFunctions, wellKnownFunctionsString, unlimitedWellKnownFunctions, unlimitedWellKnownFunctionsString, expressionTransformationRules, expressionTransformationRulesString, taskContextExpressionTransformationRules, rulePacks, maxExpressionTransformationWeight, maxDistBetweenDiffSteps, scopeFilter, shortErrorDescription, skipTrivialCheck, otherGoalData) {
+  function checkSolutionInTex_0(originalTexSolution, startExpressionIdentifier, targetFactPattern, additionalFactsIdentifiers, endExpressionIdentifier, targetFactIdentifier, comparisonSign, wellKnownFunctions, wellKnownFunctionsString, unlimitedWellKnownFunctions, unlimitedWellKnownFunctionsString, expressionTransformationRules, expressionTransformationRulesString, taskContextExpressionTransformationRules, rulePacks, maxExpressionTransformationWeight, maxDistBetweenDiffSteps, scopeFilter, shortErrorDescription, skipTrivialCheck, otherGoalData, subjectType) {
     if (startExpressionIdentifier === void 0)
       startExpressionIdentifier = '';
     if (targetFactPattern === void 0)
@@ -1824,7 +1854,9 @@ if (typeof kotlin === 'undefined') {
       skipTrivialCheck = false;
     if (otherGoalData === void 0)
       otherGoalData = null;
-    var compiledConfiguration = createConfigurationFromRulePacksAndDetailSolutionCheckingParams(rulePacks, wellKnownFunctionsString, expressionTransformationRulesString, maxExpressionTransformationWeight, unlimitedWellKnownFunctionsString, taskContextExpressionTransformationRules, maxDistBetweenDiffSteps, scopeFilter, wellKnownFunctions, unlimitedWellKnownFunctions, expressionTransformationRules);
+    if (subjectType === void 0)
+      subjectType = '';
+    var compiledConfiguration = createConfigurationFromRulePacksAndDetailSolutionCheckingParams(rulePacks, wellKnownFunctionsString, expressionTransformationRulesString, maxExpressionTransformationWeight, unlimitedWellKnownFunctionsString, taskContextExpressionTransformationRules, maxDistBetweenDiffSteps, scopeFilter, wellKnownFunctions, unlimitedWellKnownFunctions, expressionTransformationRules, subjectType);
     return checkFactsInTex(originalTexSolution, startExpressionIdentifier, endExpressionIdentifier, targetFactIdentifier, targetFactPattern, comparisonSign, additionalFactsIdentifiers, shortErrorDescription, skipTrivialCheck, compiledConfiguration, otherGoalData);
   }
   function checkSolutionInTexWithCompiledConfiguration(originalTexSolution, compiledConfiguration, startExpressionIdentifier, targetFactPattern, comparisonSign, additionalFactsIdentifiers, endExpressionIdentifier, targetFactIdentifier, shortErrorDescription, skipTrivialCheck, otherGoalData) {
@@ -1848,8 +1880,10 @@ if (typeof kotlin === 'undefined') {
       otherGoalData = null;
     return checkFactsInTex(originalTexSolution, startExpressionIdentifier, endExpressionIdentifier, targetFactIdentifier, targetFactPattern, comparisonSign, additionalFactsIdentifiers, shortErrorDescription, skipTrivialCheck, compiledConfiguration, otherGoalData);
   }
-  function checkChainCorrectnessInTex(originalTexSolution) {
-    return checkSolutionInTex_0(originalTexSolution, '', '', '', '', '', '', emptyList(), '', emptyList(), '', emptyList(), '', '', copyToArray(listOf('')), '', '', '', '', true, null);
+  function checkChainCorrectnessInTex(originalTexSolution, subjectType) {
+    if (subjectType === void 0)
+      subjectType = '';
+    return checkSolutionInTex_0(originalTexSolution, '', '', '', '', '', '', emptyList(), '', emptyList(), '', emptyList(), '', '', copyToArray(listOf('')), '', '', '', '', true, null, subjectType);
   }
   function BaseNumber(number) {
     this.number = number;
@@ -2815,10 +2849,61 @@ if (typeof kotlin === 'undefined') {
   BaseOperationsDefinition.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.name, other.name) && Kotlin.equals(this.numberOfArguments, other.numberOfArguments) && Kotlin.equals(this.calculatingFunction, other.calculatingFunction)))));
   };
-  function BaseOperationsDefinitions(epsilon) {
+  function ComputeExpressionVariableType(name, ordinal) {
+    Enum.call(this);
+    this.name$ = name;
+    this.ordinal$ = ordinal;
+  }
+  function ComputeExpressionVariableType_initFields() {
+    ComputeExpressionVariableType_initFields = function () {
+    };
+    ComputeExpressionVariableType$ALL_TO_NUMBERS_instance = new ComputeExpressionVariableType('ALL_TO_NUMBERS', 0);
+    ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_instance = new ComputeExpressionVariableType('ALL_TO_NUMBERS_OR_PI_OR_E', 1);
+    ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_ADDITIVELY_GROUPED_instance = new ComputeExpressionVariableType('ALL_TO_NUMBERS_OR_PI_OR_E_ADDITIVELY_GROUPED', 2);
+  }
+  var ComputeExpressionVariableType$ALL_TO_NUMBERS_instance;
+  function ComputeExpressionVariableType$ALL_TO_NUMBERS_getInstance() {
+    ComputeExpressionVariableType_initFields();
+    return ComputeExpressionVariableType$ALL_TO_NUMBERS_instance;
+  }
+  var ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_instance;
+  function ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_getInstance() {
+    ComputeExpressionVariableType_initFields();
+    return ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_instance;
+  }
+  var ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_ADDITIVELY_GROUPED_instance;
+  function ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_ADDITIVELY_GROUPED_getInstance() {
+    ComputeExpressionVariableType_initFields();
+    return ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_ADDITIVELY_GROUPED_instance;
+  }
+  ComputeExpressionVariableType.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'ComputeExpressionVariableType',
+    interfaces: [Enum]
+  };
+  function ComputeExpressionVariableType$values() {
+    return [ComputeExpressionVariableType$ALL_TO_NUMBERS_getInstance(), ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_getInstance(), ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_ADDITIVELY_GROUPED_getInstance()];
+  }
+  ComputeExpressionVariableType.values = ComputeExpressionVariableType$values;
+  function ComputeExpressionVariableType$valueOf(name) {
+    switch (name) {
+      case 'ALL_TO_NUMBERS':
+        return ComputeExpressionVariableType$ALL_TO_NUMBERS_getInstance();
+      case 'ALL_TO_NUMBERS_OR_PI_OR_E':
+        return ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_getInstance();
+      case 'ALL_TO_NUMBERS_OR_PI_OR_E_ADDITIVELY_GROUPED':
+        return ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_ADDITIVELY_GROUPED_getInstance();
+      default:throwISE('No enum constant mathhelper.twf.baseoperations.ComputeExpressionVariableType.' + name);
+    }
+  }
+  ComputeExpressionVariableType.valueOf_61zpoe$ = ComputeExpressionVariableType$valueOf;
+  function BaseOperationsDefinitions(epsilon, computeExpressionVariableType) {
     if (epsilon === void 0)
       epsilon = 1.19E-5;
+    if (computeExpressionVariableType === void 0)
+      computeExpressionVariableType = ComputeExpressionVariableType$ALL_TO_NUMBERS_getInstance();
     this.epsilon = epsilon;
+    this.computeExpressionVariableType = computeExpressionVariableType;
     this.baseOperationsDefinitions = listOf_0([new BaseOperationsDefinition('', 0, BaseOperationsDefinitions$baseOperationsDefinitions$lambda(this)), new BaseOperationsDefinition('', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_0(this)), new BaseOperationsDefinition('+', -1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_1(this)), new BaseOperationsDefinition('*', -1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_2(this)), new BaseOperationsDefinition('-', -1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_3(this)), new BaseOperationsDefinition('/', -1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_4(this)), new BaseOperationsDefinition('^', -1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_5(this)), new BaseOperationsDefinition('mod', 2, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_6(this)), new BaseOperationsDefinition('S', 4, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_7(this)), new BaseOperationsDefinition('P', 4, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_8(this)), new BaseOperationsDefinition('and', -1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_9(this)), new BaseOperationsDefinition('or', -1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_10(this)), new BaseOperationsDefinition('xor', -1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_11(this)), new BaseOperationsDefinition('alleq', -1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_12(this)), new BaseOperationsDefinition('not', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_13(this)), new BaseOperationsDefinition('sin', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_14(this)), new BaseOperationsDefinition('cos', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_15(this)), new BaseOperationsDefinition('sh', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_16(this)), new BaseOperationsDefinition('ch', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_17(this)), new BaseOperationsDefinition('tg', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_18(this)), new BaseOperationsDefinition('th', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_19(this)), new BaseOperationsDefinition('asin', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_20(this)), new BaseOperationsDefinition('acos', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_21(this)), new BaseOperationsDefinition('atg', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_22(this)), new BaseOperationsDefinition('actg', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_23(this)), new BaseOperationsDefinition('exp', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_24(this)), new BaseOperationsDefinition('ln', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_25(this)), new BaseOperationsDefinition('abs', 1, BaseOperationsDefinitions$baseOperationsDefinitions$lambda_26(this))]);
     var $receiver = this.baseOperationsDefinitions;
     var capacity = coerceAtLeast(mapCapacity(collectionSizeOrDefault($receiver, 10)), 16);
@@ -2925,20 +3010,37 @@ if (typeof kotlin === 'undefined') {
     return it.nodeType === NodeType$EMPTY_getInstance();
   }
   BaseOperationsDefinitions.prototype.plus_em03xr$ = function (argsParentNode) {
-    var tmp$;
+    var tmp$, tmp$_0, tmp$_1;
     var startSize = argsParentNode.children.size;
     var result = 0.0;
+    var counts = LinkedHashMap_init_0();
     tmp$ = argsParentNode.children.iterator();
     while (tmp$.hasNext()) {
       var argNode = tmp$.next();
       if (!argNode.children.isEmpty())
         continue;
-      var argValue = toDoubleOrNull(argNode.value);
+      var argValue = toDoubleOrNull(argNode.getComputeNodeValue_pp5jxl$(this.computeExpressionVariableType));
       if (argValue != null) {
         result += argValue;
         argNode.nodeType = NodeType$EMPTY_getInstance();
+      } else if (argNode.children.size === 0 && this.computeExpressionVariableType === ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_ADDITIVELY_GROUPED_getInstance()) {
+        var nodeValueStr = argNode.getComputeNodeValue_pp5jxl$(this.computeExpressionVariableType);
+        var value = ((tmp$_0 = counts.get_11rb$(nodeValueStr)) != null ? tmp$_0 : 0) + 1 | 0;
+        counts.put_xwzc9p$(nodeValueStr, value);
+        argNode.nodeType = NodeType$EMPTY_getInstance();
       }}
     removeAll(argsParentNode.children, BaseOperationsDefinitions$plus$lambda);
+    tmp$_1 = counts.entries.iterator();
+    while (tmp$_1.hasNext()) {
+      var tmp$_2 = tmp$_1.next();
+      var constant = tmp$_2.key;
+      var count = tmp$_2.value;
+      if (count > 1) {
+        argsParentNode.addChild_em03xr$(stringToExpression(count.toString() + '*' + constant));
+      } else {
+        argsParentNode.addChild_em03xr$(stringToExpression(constant).children.get_za3lpa$(0));
+      }
+    }
     if (argsParentNode.children.size === 0)
       argsParentNode.setVariable_14dthe$(result);
     else if (this.additivelyEqualToZero_0(result)) {
@@ -2955,7 +3057,7 @@ if (typeof kotlin === 'undefined') {
     var tmp$;
     var startSize = argsParentNode.children.size;
     var result = 0.0;
-    var first = toDoubleOrNull(argsParentNode.children.get_za3lpa$(0).value);
+    var first = toDoubleOrNull(argsParentNode.children.get_za3lpa$(0).getComputeNodeValue_pp5jxl$(this.computeExpressionVariableType));
     var firstIsNumber = first != null && argsParentNode.children.get_za3lpa$(0).children.size === 0;
     if (firstIsNumber)
       result = ensureNotNull(first);
@@ -2968,7 +3070,7 @@ if (typeof kotlin === 'undefined') {
       for (var i = 1; i < tmp$; i++) {
         if (!argsParentNode.children.get_za3lpa$(i).children.isEmpty())
           continue;
-        var argValue = toDoubleOrNull(argsParentNode.children.get_za3lpa$(i).value);
+        var argValue = toDoubleOrNull(argsParentNode.children.get_za3lpa$(i).getComputeNodeValue_pp5jxl$(this.computeExpressionVariableType));
         if (argValue != null) {
           if (firstIsNumber)
             result -= argValue;
@@ -3114,23 +3216,40 @@ if (typeof kotlin === 'undefined') {
     return it.nodeType === NodeType$EMPTY_getInstance();
   }
   BaseOperationsDefinitions.prototype.mul_em03xr$ = function (argsParentNode) {
-    var tmp$;
+    var tmp$, tmp$_0, tmp$_1;
     var startSize = argsParentNode.children.size;
     var result = 1.0;
+    var counts = LinkedHashMap_init_0();
     tmp$ = argsParentNode.children.iterator();
     while (tmp$.hasNext()) {
       var argNode = tmp$.next();
       if (!argNode.children.isEmpty())
         continue;
-      var argValue = toDoubleOrNull(argNode.value);
+      var argValue = toDoubleOrNull(argNode.getComputeNodeValue_pp5jxl$(this.computeExpressionVariableType));
       if (argValue != null) {
         result *= argValue;
         argNode.nodeType = NodeType$EMPTY_getInstance();
         if (this.additivelyEqualToZero_0(result)) {
           argsParentNode.setVariable_61zpoe$('0');
           return argsParentNode;
-        }}}
+        }} else if (argNode.children.size === 0 && this.computeExpressionVariableType === ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_ADDITIVELY_GROUPED_getInstance()) {
+        var nodeValueStr = argNode.getComputeNodeValue_pp5jxl$(this.computeExpressionVariableType);
+        var value = ((tmp$_0 = counts.get_11rb$(nodeValueStr)) != null ? tmp$_0 : 0) + 1 | 0;
+        counts.put_xwzc9p$(nodeValueStr, value);
+        argNode.nodeType = NodeType$EMPTY_getInstance();
+      }}
     removeAll(argsParentNode.children, BaseOperationsDefinitions$mul$lambda);
+    tmp$_1 = counts.entries.iterator();
+    while (tmp$_1.hasNext()) {
+      var tmp$_2 = tmp$_1.next();
+      var constant = tmp$_2.key;
+      var count = tmp$_2.value;
+      if (count > 1) {
+        argsParentNode.addChild_em03xr$(stringToExpression(constant + '^' + count));
+      } else {
+        argsParentNode.addChild_em03xr$(stringToExpression(constant).children.get_za3lpa$(0));
+      }
+    }
     if (argsParentNode.children.size === 0)
       argsParentNode.setVariable_14dthe$(result);
     else if (this.additivelyEqualTo_0(result, 1.0)) {
@@ -3147,7 +3266,7 @@ if (typeof kotlin === 'undefined') {
     var tmp$;
     var startSize = argsParentNode.children.size;
     var result = 1.0;
-    var first = toDoubleOrNull(argsParentNode.children.get_za3lpa$(0).value);
+    var first = toDoubleOrNull(argsParentNode.children.get_za3lpa$(0).getComputeNodeValue_pp5jxl$(this.computeExpressionVariableType));
     var firstIsNumber = first != null && argsParentNode.children.get_za3lpa$(0).children.size === 0;
     if (firstIsNumber)
       result = ensureNotNull(first);
@@ -3160,7 +3279,7 @@ if (typeof kotlin === 'undefined') {
       for (var i = 1; i < tmp$; i++) {
         if (!argsParentNode.children.get_za3lpa$(i).children.isEmpty())
           continue;
-        var argValue = toDoubleOrNull(argsParentNode.children.get_za3lpa$(i).value);
+        var argValue = toDoubleOrNull(argsParentNode.children.get_za3lpa$(i).getComputeNodeValue_pp5jxl$(this.computeExpressionVariableType));
         if (argValue != null) {
           if (firstIsNumber)
             result /= argValue;
@@ -3195,7 +3314,7 @@ if (typeof kotlin === 'undefined') {
       }var argValue = toDoubleOrNull(argsParentNode.children.get_za3lpa$(i).value);
       if (argValue != null) {
         var x = result;
-        result = JsMath.pow(argValue, x);
+        result = Math_0.pow(argValue, x);
         argsParentNode.children.get_za3lpa$(i).nodeType = NodeType$EMPTY_getInstance();
       } else if (this.additivelyEqualToZero_0(result)) {
         result = 1.0;
@@ -3238,7 +3357,7 @@ if (typeof kotlin === 'undefined') {
     if (tmp$ == null) {
       return argsParentNode;
     }var firstArg = tmp$;
-    argsParentNode.setVariable_14dthe$(JsMath.sin(firstArg));
+    argsParentNode.setVariable_14dthe$(Math_0.sin(firstArg));
     return argsParentNode;
   };
   BaseOperationsDefinitions.prototype.cos_em03xr$ = function (argsParentNode) {
@@ -3247,7 +3366,7 @@ if (typeof kotlin === 'undefined') {
     if (tmp$ == null) {
       return argsParentNode;
     }var firstArg = tmp$;
-    argsParentNode.setVariable_14dthe$(JsMath.cos(firstArg));
+    argsParentNode.setVariable_14dthe$(Math_0.cos(firstArg));
     return argsParentNode;
   };
   BaseOperationsDefinitions.prototype.tan_em03xr$ = function (argsParentNode) {
@@ -3256,7 +3375,7 @@ if (typeof kotlin === 'undefined') {
     if (tmp$ == null) {
       return argsParentNode;
     }var firstArg = tmp$;
-    argsParentNode.setVariable_14dthe$(JsMath.tan(firstArg));
+    argsParentNode.setVariable_14dthe$(Math_0.tan(firstArg));
     return argsParentNode;
   };
   BaseOperationsDefinitions.prototype.asin_em03xr$ = function (argsParentNode) {
@@ -3265,7 +3384,7 @@ if (typeof kotlin === 'undefined') {
     if (tmp$ == null) {
       return argsParentNode;
     }var firstArg = tmp$;
-    argsParentNode.setVariable_14dthe$(JsMath.asin(firstArg));
+    argsParentNode.setVariable_14dthe$(Math_0.asin(firstArg));
     return argsParentNode;
   };
   BaseOperationsDefinitions.prototype.acos_em03xr$ = function (argsParentNode) {
@@ -3274,7 +3393,7 @@ if (typeof kotlin === 'undefined') {
     if (tmp$ == null) {
       return argsParentNode;
     }var firstArg = tmp$;
-    argsParentNode.setVariable_14dthe$(JsMath.acos(firstArg));
+    argsParentNode.setVariable_14dthe$(Math_0.acos(firstArg));
     return argsParentNode;
   };
   BaseOperationsDefinitions.prototype.atan_em03xr$ = function (argsParentNode) {
@@ -3283,7 +3402,7 @@ if (typeof kotlin === 'undefined') {
     if (tmp$ == null) {
       return argsParentNode;
     }var firstArg = tmp$;
-    argsParentNode.setVariable_14dthe$(JsMath.atan(firstArg));
+    argsParentNode.setVariable_14dthe$(Math_0.atan(firstArg));
     return argsParentNode;
   };
   BaseOperationsDefinitions.prototype.actan_em03xr$ = function (argsParentNode) {
@@ -3293,7 +3412,7 @@ if (typeof kotlin === 'undefined') {
       return argsParentNode;
     }var firstArg = tmp$;
     var x = 1.0 / firstArg;
-    argsParentNode.setVariable_14dthe$(JsMath.atan(x));
+    argsParentNode.setVariable_14dthe$(Math_0.atan(x));
     return argsParentNode;
   };
   BaseOperationsDefinitions.prototype.sinh_em03xr$ = function (argsParentNode) {
@@ -3302,7 +3421,7 @@ if (typeof kotlin === 'undefined') {
     if (tmp$ == null) {
       return argsParentNode;
     }var firstArg = tmp$;
-    argsParentNode.setVariable_14dthe$(JsMath.sinh(firstArg));
+    argsParentNode.setVariable_14dthe$(Math_0.sinh(firstArg));
     return argsParentNode;
   };
   BaseOperationsDefinitions.prototype.cosh_em03xr$ = function (argsParentNode) {
@@ -3311,7 +3430,7 @@ if (typeof kotlin === 'undefined') {
     if (tmp$ == null) {
       return argsParentNode;
     }var firstArg = tmp$;
-    argsParentNode.setVariable_14dthe$(JsMath.cosh(firstArg));
+    argsParentNode.setVariable_14dthe$(Math_0.cosh(firstArg));
     return argsParentNode;
   };
   BaseOperationsDefinitions.prototype.tanh_em03xr$ = function (argsParentNode) {
@@ -3320,7 +3439,7 @@ if (typeof kotlin === 'undefined') {
     if (tmp$ == null) {
       return argsParentNode;
     }var firstArg = tmp$;
-    argsParentNode.setVariable_14dthe$(JsMath.tanh(firstArg));
+    argsParentNode.setVariable_14dthe$(Math_0.tanh(firstArg));
     return argsParentNode;
   };
   BaseOperationsDefinitions.prototype.exp_em03xr$ = function (argsParentNode) {
@@ -3329,7 +3448,7 @@ if (typeof kotlin === 'undefined') {
     if (tmp$ == null) {
       return argsParentNode;
     }var firstArg = tmp$;
-    argsParentNode.setVariable_14dthe$(JsMath.exp(firstArg));
+    argsParentNode.setVariable_14dthe$(Math_0.exp(firstArg));
     return argsParentNode;
   };
   BaseOperationsDefinitions.prototype.ln_em03xr$ = function (argsParentNode) {
@@ -3347,7 +3466,7 @@ if (typeof kotlin === 'undefined') {
     if (tmp$ == null) {
       return argsParentNode;
     }var firstArg = tmp$;
-    argsParentNode.setVariable_14dthe$(JsMath.abs(firstArg));
+    argsParentNode.setVariable_14dthe$(Math_0.abs(firstArg));
     return argsParentNode;
   };
   BaseOperationsDefinitions.prototype.not_em03xr$ = function (argsParentNode) {
@@ -3813,7 +3932,7 @@ if (typeof kotlin === 'undefined') {
     while (index >= 0) {
       var $receiver = listOfArgs.get_za3lpa$(index);
       var x = currentPow;
-      currentPow = JsMath.pow($receiver, x);
+      currentPow = Math_0.pow($receiver, x);
       index = index - 1 | 0;
     }
     return currentPow;
@@ -3907,85 +4026,85 @@ if (typeof kotlin === 'undefined') {
     if (listOfArgs.size !== 1) {
       throw IllegalArgumentException_init('Given list contains not one argument');
     }var x = listOfArgs.get_za3lpa$(0);
-    return JsMath.sin(x);
+    return Math_0.sin(x);
   };
   DoubleBaseOperation$Companion.prototype.cos_d3e2cz$ = function (listOfArgs) {
     if (listOfArgs.size !== 1) {
       throw IllegalArgumentException_init('Given list contains not one argument');
     }var x = listOfArgs.get_za3lpa$(0);
-    return JsMath.cos(x);
+    return Math_0.cos(x);
   };
   DoubleBaseOperation$Companion.prototype.sinh_d3e2cz$ = function (listOfArgs) {
     if (listOfArgs.size !== 1) {
       throw IllegalArgumentException_init('Given list contains not one argument');
     }var x = listOfArgs.get_za3lpa$(0);
-    return JsMath.sinh(x);
+    return Math_0.sinh(x);
   };
   DoubleBaseOperation$Companion.prototype.cosh_d3e2cz$ = function (listOfArgs) {
     if (listOfArgs.size !== 1) {
       throw IllegalArgumentException_init('Given list contains not one argument');
     }var x = listOfArgs.get_za3lpa$(0);
-    return JsMath.cosh(x);
+    return Math_0.cosh(x);
   };
   DoubleBaseOperation$Companion.prototype.tan_d3e2cz$ = function (listOfArgs) {
     if (listOfArgs.size !== 1) {
       throw IllegalArgumentException_init('Given list contains not one argument');
     }var x = listOfArgs.get_za3lpa$(0);
-    return JsMath.tan(x);
+    return Math_0.tan(x);
   };
   DoubleBaseOperation$Companion.prototype.tanh_d3e2cz$ = function (listOfArgs) {
     if (listOfArgs.size !== 1) {
       throw IllegalArgumentException_init('Given list contains not one argument');
     }var x = listOfArgs.get_za3lpa$(0);
-    return JsMath.tanh(x);
+    return Math_0.tanh(x);
   };
   DoubleBaseOperation$Companion.prototype.asin_d3e2cz$ = function (listOfArgs) {
     if (listOfArgs.size !== 1) {
       throw IllegalArgumentException_init('Given list contains not one argument');
     }var x = listOfArgs.get_za3lpa$(0);
-    return JsMath.asin(x);
+    return Math_0.asin(x);
   };
   DoubleBaseOperation$Companion.prototype.acos_d3e2cz$ = function (listOfArgs) {
     if (listOfArgs.size !== 1) {
       throw IllegalArgumentException_init('Given list contains not one argument');
     }var x = listOfArgs.get_za3lpa$(0);
-    return JsMath.acos(x);
+    return Math_0.acos(x);
   };
   DoubleBaseOperation$Companion.prototype.atan_d3e2cz$ = function (listOfArgs) {
     if (listOfArgs.size !== 1) {
       throw IllegalArgumentException_init('Given list contains not one argument');
     }var x = listOfArgs.get_za3lpa$(0);
-    return JsMath.atan(x);
+    return Math_0.atan(x);
   };
   DoubleBaseOperation$Companion.prototype.actan_d3e2cz$ = function (listOfArgs) {
     if (listOfArgs.size !== 1) {
       throw IllegalArgumentException_init('Given list contains not one argument');
     }var x = 1.0 / listOfArgs.get_za3lpa$(0);
-    return JsMath.atan(x);
+    return Math_0.atan(x);
   };
   DoubleBaseOperation$Companion.prototype.exp_d3e2cz$ = function (listOfArgs) {
     if (listOfArgs.size !== 1) {
       throw IllegalArgumentException_init('Given list contains not one argument');
     }var x = listOfArgs.get_za3lpa$(0);
-    return JsMath.exp(x);
+    return Math_0.exp(x);
   };
   DoubleBaseOperation$Companion.prototype.ln_d3e2cz$ = function (listOfArgs) {
     if (listOfArgs.size !== 1) {
       throw IllegalArgumentException_init('Given list contains not one argument');
     }var x = listOfArgs.get_za3lpa$(0);
-    return JsMath.log(x);
+    return Math_0.log(x);
   };
   DoubleBaseOperation$Companion.prototype.abs_d3e2cz$ = function (listOfArgs) {
     if (listOfArgs.size !== 1) {
       throw IllegalArgumentException_init('Given list contains not one argument');
     }var x = listOfArgs.get_za3lpa$(0);
-    return JsMath.abs(x);
+    return Math_0.abs(x);
   };
   DoubleBaseOperation$Companion.prototype.sqrt_d3e2cz$ = function (listOfArgs) {
     if (listOfArgs.size !== 1) {
       throw IllegalArgumentException_init('Given list contains not one argument');
     }var x = listOfArgs.get_za3lpa$(0);
-    return JsMath.sqrt(x);
+    return Math_0.sqrt(x);
   };
   DoubleBaseOperation$Companion.$metadata$ = {
     kind: Kind_OBJECT,
@@ -4040,10 +4159,10 @@ if (typeof kotlin === 'undefined') {
       return null;
     var a_0 = a.leftBorder;
     var b_0 = b.leftBorder;
-    var newLeft = JsMath.max(a_0, b_0);
+    var newLeft = Math_0.max(a_0, b_0);
     var a_1 = a.rightBorder;
     var b_1 = b.rightBorder;
-    var newRight = JsMath.min(a_1, b_1);
+    var newRight = Math_0.min(a_1, b_1);
     var leftIncl = newLeft === a.leftBorder ? a.leftBorderInc : b.leftBorderInc;
     var rightIncl = newRight === a.rightBorder ? a.rightBorderInc : b.rightBorderInc;
     return new DomainSegment(newLeft, leftIncl, newRight, rightIncl);
@@ -4252,13 +4371,13 @@ if (typeof kotlin === 'undefined') {
     return new DefinitionDomain(this.points, plus_0(toMutableSet_0(newPoints), this.excludedPoints), this.segments);
   };
   function DefinitionDomain$rightMostElement$lambda(a, b) {
-    return JsMath.max(a, b);
+    return Math_0.max(a, b);
   }
   DefinitionDomain.prototype.rightMostElement = function () {
     return this.funcOrNull_0(DefinitionDomain$rightMostElement$lambda, this.rightMostPoint_0(), this.rightMostFromSequence_0());
   };
   function DefinitionDomain$leftMostElement$lambda(a, b) {
-    return JsMath.min(a, b);
+    return Math_0.min(a, b);
   }
   DefinitionDomain.prototype.leftMostElement = function () {
     return this.funcOrNull_0(DefinitionDomain$leftMostElement$lambda, this.leftMostPoint_0(), this.leftMostFromSequence_0());
@@ -4418,7 +4537,7 @@ if (typeof kotlin === 'undefined') {
   var DomainNil;
   function MultivariateDefinitionDomain(expression) {
     this.expression = expression;
-    var $receiver = this.expression.getVariableNames();
+    var $receiver = this.expression.getVariableNames_ywdfdh$();
     var result = LinkedHashMap_init(coerceAtLeast(mapCapacity(collectionSizeOrDefault($receiver, 10)), 16));
     var tmp$;
     tmp$ = $receiver.iterator();
@@ -4601,10 +4720,10 @@ if (typeof kotlin === 'undefined') {
     tmp$ = this.expressions.iterator();
     while (tmp$.hasNext()) {
       var expression = tmp$.next();
-      variablesNamesSet.addAll_brywnq$(expression.getVariableNames());
+      variablesNamesSet.addAll_brywnq$(expression.getVariableNames_ywdfdh$());
       var a = expression.getMaxConstant();
       var b = maxConstant;
-      maxConstant = JsMath.max(a, b);
+      maxConstant = Math_0.max(a, b);
     }
     var tmp$_0;
     tmp$_0 = variablesNamesSet.iterator();
@@ -5147,7 +5266,7 @@ if (typeof kotlin === 'undefined') {
   DebugOutputMessages.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && Kotlin.equals(this.expressionProbabilityComparisonFalseDetailsPrintln, other.expressionProbabilityComparisonFalseDetailsPrintln))));
   };
-  function CompiledConfiguration(variableConfiguration, functionConfiguration, comparisonSettings, checkedFactAccentuation, factsLogicConfiguration, gradientDescentComparisonConfiguration, additionalParamsMap, simpleComputationRuleCodesCandidates, simpleComputationRuleParams, debugOutputMessages) {
+  function CompiledConfiguration(variableConfiguration, functionConfiguration, comparisonSettings, checkedFactAccentuation, factsLogicConfiguration, gradientDescentComparisonConfiguration, additionalParamsMap, simpleComputationRuleCodesCandidates, simpleComputationRuleParams, debugOutputMessages, subjectType) {
     if (variableConfiguration === void 0)
       variableConfiguration = new VariableConfiguration();
     if (functionConfiguration === void 0)
@@ -5168,6 +5287,8 @@ if (typeof kotlin === 'undefined') {
       simpleComputationRuleParams = new SimpleComputationRuleParams(simpleComputationRuleCodesCandidates, true);
     if (debugOutputMessages === void 0)
       debugOutputMessages = new DebugOutputMessages();
+    if (subjectType === void 0)
+      subjectType = '';
     this.variableConfiguration = variableConfiguration;
     this.functionConfiguration = functionConfiguration;
     this.comparisonSettings = comparisonSettings;
@@ -5178,6 +5299,7 @@ if (typeof kotlin === 'undefined') {
     this.simpleComputationRuleCodesCandidates = simpleComputationRuleCodesCandidates;
     this.simpleComputationRuleParams = simpleComputationRuleParams;
     this.debugOutputMessages = debugOutputMessages;
+    this.subjectType = subjectType;
     var $receiver = this.variableConfiguration.variableImmediateReplacementRules;
     var destination = ArrayList_init_0(collectionSizeOrDefault($receiver, 10));
     var tmp$;
@@ -5319,6 +5441,55 @@ if (typeof kotlin === 'undefined') {
     } else {
       return expressionTreeParser.root;
     }
+  };
+  CompiledConfiguration.prototype.checkAndAddNewVariableReplacement_6moki$ = function (variableName, variableValue, expression) {
+    var tmp$, tmp$_0, tmp$_1;
+    var variableNameSet = setOf(variableName);
+    if (expression.containsVariables_ywdfdh$(variableNameSet)) {
+      return new GeneralError('in expression', 'EXISTING_VARIABLE');
+    }if (variableValue.containsVariables_ywdfdh$(variableNameSet)) {
+      return new GeneralError('in variable value', 'EXISTING_VARIABLE');
+    }var $receiver = this.compiledExpressionTreeTransformationRules;
+    var destination = ArrayList_init();
+    var tmp$_2;
+    tmp$_2 = $receiver.iterator();
+    while (tmp$_2.hasNext()) {
+      var element = tmp$_2.next();
+      if (element.basedOnTaskContext)
+        destination.add_11rb$(element);
+    }
+    var any$result;
+    any$break: do {
+      var tmp$_3;
+      if (Kotlin.isType(destination, Collection) && destination.isEmpty()) {
+        any$result = false;
+        break any$break;
+      }tmp$_3 = destination.iterator();
+      while (tmp$_3.hasNext()) {
+        var element_0 = tmp$_3.next();
+        if (element_0.left.containsVariables_ywdfdh$(variableNameSet) || element_0.right.containsVariables_ywdfdh$(variableNameSet)) {
+          any$result = true;
+          break any$break;
+        }}
+      any$result = false;
+    }
+     while (false);
+    if (any$result) {
+      return new GeneralError('in task context rules', 'EXISTING_VARIABLE');
+    }if (((tmp$ = firstOrNull_0(variableName)) != null ? isLetter(unboxChar(tmp$)) : null) !== true) {
+      return new GeneralError((tmp$_1 = (tmp$_0 = firstOrNull_0(variableName)) != null ? String.fromCharCode(unboxChar(tmp$_0)) : null) != null ? tmp$_1 : '', 'INCORRECT_VARIABLE_NAME');
+    }if (this.factComparator.expressionComparator.fastProbabilityCheckOnZero_em03xr$(variableValue)) {
+      return new GeneralError('', 'VARIABLE_VALUE_IS_ZERO');
+    }var $receiver_0 = new ExpressionNode(NodeType$FUNCTION_getInstance(), '');
+    $receiver_0.addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), variableName));
+    var left = $receiver_0;
+    var right = variableValue.clone();
+    var rightAfterImmediateSubstitutions = right.clone();
+    applyAllImmediateSubstitutions(rightAfterImmediateSubstitutions, this);
+    this.compiledImmediateTreeTransformationRules.add_11rb$(new ExpressionSubstitution(left, rightAfterImmediateSubstitutions, void 0, true));
+    this.compiledExpressionTreeTransformationRules.add_11rb$(new ExpressionSubstitution(left, right, void 0, true));
+    this.compiledExpressionTreeTransformationRules.add_11rb$(new ExpressionSubstitution(right, left, void 0, true));
+    return null;
   };
   CompiledConfiguration.prototype.createExpressionFunctionNode_twmih4$ = function (function_0, numberOfArgs, children) {
     if (children === void 0) {
@@ -5637,7 +5808,7 @@ if (typeof kotlin === 'undefined') {
   FunctionIdentifier.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.name, other.name) && Kotlin.equals(this.numberOfArguments, other.numberOfArguments)))));
   };
-  function FunctionProperties(function_0, mainFunction, priority, numberOfArguments, isCommutativeWithNullWeight, mainFunctionIsCommutativeWithNullWeight, numberOfDefinitionArguments, isNameForRuleDesignations, plainTextRepresentation, texRepresentation, defaultStringDefinitionType, texStringDefinitionType, notObligateMainFunction, minNumberOfPointsForEquality, fieldAddZero, fieldMulZero) {
+  function FunctionProperties(function_0, mainFunction, priority, numberOfArguments, isCommutativeWithNullWeight, mainFunctionIsCommutativeWithNullWeight, numberOfDefinitionArguments, isNameForRuleDesignations, plainTextRepresentation, unicodeRepresentation, texRepresentation, defaultStringDefinitionType, texStringDefinitionType, notObligateMainFunction, minNumberOfPointsForEquality, fieldAddZero, fieldMulZero) {
     if (isCommutativeWithNullWeight === void 0)
       isCommutativeWithNullWeight = false;
     if (mainFunctionIsCommutativeWithNullWeight === void 0)
@@ -5648,6 +5819,8 @@ if (typeof kotlin === 'undefined') {
       isNameForRuleDesignations = false;
     if (plainTextRepresentation === void 0)
       plainTextRepresentation = function_0;
+    if (unicodeRepresentation === void 0)
+      unicodeRepresentation = plainTextRepresentation;
     if (texRepresentation === void 0)
       texRepresentation = plainTextRepresentation;
     if (defaultStringDefinitionType === void 0)
@@ -5671,6 +5844,7 @@ if (typeof kotlin === 'undefined') {
     this.numberOfDefinitionArguments = numberOfDefinitionArguments;
     this.isNameForRuleDesignations = isNameForRuleDesignations;
     this.plainTextRepresentation = plainTextRepresentation;
+    this.unicodeRepresentation = unicodeRepresentation;
     this.texRepresentation = texRepresentation;
     this.defaultStringDefinitionType = defaultStringDefinitionType;
     this.texStringDefinitionType = texStringDefinitionType;
@@ -5716,31 +5890,34 @@ if (typeof kotlin === 'undefined') {
     return this.plainTextRepresentation;
   };
   FunctionProperties.prototype.component10 = function () {
-    return this.texRepresentation;
+    return this.unicodeRepresentation;
   };
   FunctionProperties.prototype.component11 = function () {
-    return this.defaultStringDefinitionType;
+    return this.texRepresentation;
   };
   FunctionProperties.prototype.component12 = function () {
+    return this.defaultStringDefinitionType;
+  };
+  FunctionProperties.prototype.component13 = function () {
     return this.texStringDefinitionType;
   };
-  FunctionProperties.prototype.component13_0 = function () {
+  FunctionProperties.prototype.component14_0 = function () {
     return this.notObligateMainFunction_0;
   };
-  FunctionProperties.prototype.component14 = function () {
+  FunctionProperties.prototype.component15 = function () {
     return this.minNumberOfPointsForEquality;
   };
-  FunctionProperties.prototype.component15 = function () {
+  FunctionProperties.prototype.component16 = function () {
     return this.fieldAddZero;
   };
-  FunctionProperties.prototype.component16 = function () {
+  FunctionProperties.prototype.component17 = function () {
     return this.fieldMulZero;
   };
-  FunctionProperties.prototype.copy_o9qpnu$ = function (function_0, mainFunction, priority, numberOfArguments, isCommutativeWithNullWeight, mainFunctionIsCommutativeWithNullWeight, numberOfDefinitionArguments, isNameForRuleDesignations, plainTextRepresentation, texRepresentation, defaultStringDefinitionType, texStringDefinitionType, notObligateMainFunction, minNumberOfPointsForEquality, fieldAddZero, fieldMulZero) {
-    return new FunctionProperties(function_0 === void 0 ? this.function : function_0, mainFunction === void 0 ? this.mainFunction : mainFunction, priority === void 0 ? this.priority : priority, numberOfArguments === void 0 ? this.numberOfArguments : numberOfArguments, isCommutativeWithNullWeight === void 0 ? this.isCommutativeWithNullWeight : isCommutativeWithNullWeight, mainFunctionIsCommutativeWithNullWeight === void 0 ? this.mainFunctionIsCommutativeWithNullWeight : mainFunctionIsCommutativeWithNullWeight, numberOfDefinitionArguments === void 0 ? this.numberOfDefinitionArguments : numberOfDefinitionArguments, isNameForRuleDesignations === void 0 ? this.isNameForRuleDesignations : isNameForRuleDesignations, plainTextRepresentation === void 0 ? this.plainTextRepresentation : plainTextRepresentation, texRepresentation === void 0 ? this.texRepresentation : texRepresentation, defaultStringDefinitionType === void 0 ? this.defaultStringDefinitionType : defaultStringDefinitionType, texStringDefinitionType === void 0 ? this.texStringDefinitionType : texStringDefinitionType, notObligateMainFunction === void 0 ? this.notObligateMainFunction_0 : notObligateMainFunction, minNumberOfPointsForEquality === void 0 ? this.minNumberOfPointsForEquality : minNumberOfPointsForEquality, fieldAddZero === void 0 ? this.fieldAddZero : fieldAddZero, fieldMulZero === void 0 ? this.fieldMulZero : fieldMulZero);
+  FunctionProperties.prototype.copy_j64f24$ = function (function_0, mainFunction, priority, numberOfArguments, isCommutativeWithNullWeight, mainFunctionIsCommutativeWithNullWeight, numberOfDefinitionArguments, isNameForRuleDesignations, plainTextRepresentation, unicodeRepresentation, texRepresentation, defaultStringDefinitionType, texStringDefinitionType, notObligateMainFunction, minNumberOfPointsForEquality, fieldAddZero, fieldMulZero) {
+    return new FunctionProperties(function_0 === void 0 ? this.function : function_0, mainFunction === void 0 ? this.mainFunction : mainFunction, priority === void 0 ? this.priority : priority, numberOfArguments === void 0 ? this.numberOfArguments : numberOfArguments, isCommutativeWithNullWeight === void 0 ? this.isCommutativeWithNullWeight : isCommutativeWithNullWeight, mainFunctionIsCommutativeWithNullWeight === void 0 ? this.mainFunctionIsCommutativeWithNullWeight : mainFunctionIsCommutativeWithNullWeight, numberOfDefinitionArguments === void 0 ? this.numberOfDefinitionArguments : numberOfDefinitionArguments, isNameForRuleDesignations === void 0 ? this.isNameForRuleDesignations : isNameForRuleDesignations, plainTextRepresentation === void 0 ? this.plainTextRepresentation : plainTextRepresentation, unicodeRepresentation === void 0 ? this.unicodeRepresentation : unicodeRepresentation, texRepresentation === void 0 ? this.texRepresentation : texRepresentation, defaultStringDefinitionType === void 0 ? this.defaultStringDefinitionType : defaultStringDefinitionType, texStringDefinitionType === void 0 ? this.texStringDefinitionType : texStringDefinitionType, notObligateMainFunction === void 0 ? this.notObligateMainFunction_0 : notObligateMainFunction, minNumberOfPointsForEquality === void 0 ? this.minNumberOfPointsForEquality : minNumberOfPointsForEquality, fieldAddZero === void 0 ? this.fieldAddZero : fieldAddZero, fieldMulZero === void 0 ? this.fieldMulZero : fieldMulZero);
   };
   FunctionProperties.prototype.toString = function () {
-    return 'FunctionProperties(function=' + Kotlin.toString(this.function) + (', mainFunction=' + Kotlin.toString(this.mainFunction)) + (', priority=' + Kotlin.toString(this.priority)) + (', numberOfArguments=' + Kotlin.toString(this.numberOfArguments)) + (', isCommutativeWithNullWeight=' + Kotlin.toString(this.isCommutativeWithNullWeight)) + (', mainFunctionIsCommutativeWithNullWeight=' + Kotlin.toString(this.mainFunctionIsCommutativeWithNullWeight)) + (', numberOfDefinitionArguments=' + Kotlin.toString(this.numberOfDefinitionArguments)) + (', isNameForRuleDesignations=' + Kotlin.toString(this.isNameForRuleDesignations)) + (', plainTextRepresentation=' + Kotlin.toString(this.plainTextRepresentation)) + (', texRepresentation=' + Kotlin.toString(this.texRepresentation)) + (', defaultStringDefinitionType=' + Kotlin.toString(this.defaultStringDefinitionType)) + (', texStringDefinitionType=' + Kotlin.toString(this.texStringDefinitionType)) + (', notObligateMainFunction=' + Kotlin.toString(this.notObligateMainFunction_0)) + (', minNumberOfPointsForEquality=' + Kotlin.toString(this.minNumberOfPointsForEquality)) + (', fieldAddZero=' + Kotlin.toString(this.fieldAddZero)) + (', fieldMulZero=' + Kotlin.toString(this.fieldMulZero)) + ')';
+    return 'FunctionProperties(function=' + Kotlin.toString(this.function) + (', mainFunction=' + Kotlin.toString(this.mainFunction)) + (', priority=' + Kotlin.toString(this.priority)) + (', numberOfArguments=' + Kotlin.toString(this.numberOfArguments)) + (', isCommutativeWithNullWeight=' + Kotlin.toString(this.isCommutativeWithNullWeight)) + (', mainFunctionIsCommutativeWithNullWeight=' + Kotlin.toString(this.mainFunctionIsCommutativeWithNullWeight)) + (', numberOfDefinitionArguments=' + Kotlin.toString(this.numberOfDefinitionArguments)) + (', isNameForRuleDesignations=' + Kotlin.toString(this.isNameForRuleDesignations)) + (', plainTextRepresentation=' + Kotlin.toString(this.plainTextRepresentation)) + (', unicodeRepresentation=' + Kotlin.toString(this.unicodeRepresentation)) + (', texRepresentation=' + Kotlin.toString(this.texRepresentation)) + (', defaultStringDefinitionType=' + Kotlin.toString(this.defaultStringDefinitionType)) + (', texStringDefinitionType=' + Kotlin.toString(this.texStringDefinitionType)) + (', notObligateMainFunction=' + Kotlin.toString(this.notObligateMainFunction_0)) + (', minNumberOfPointsForEquality=' + Kotlin.toString(this.minNumberOfPointsForEquality)) + (', fieldAddZero=' + Kotlin.toString(this.fieldAddZero)) + (', fieldMulZero=' + Kotlin.toString(this.fieldMulZero)) + ')';
   };
   FunctionProperties.prototype.hashCode = function () {
     var result = 0;
@@ -5753,6 +5930,7 @@ if (typeof kotlin === 'undefined') {
     result = result * 31 + Kotlin.hashCode(this.numberOfDefinitionArguments) | 0;
     result = result * 31 + Kotlin.hashCode(this.isNameForRuleDesignations) | 0;
     result = result * 31 + Kotlin.hashCode(this.plainTextRepresentation) | 0;
+    result = result * 31 + Kotlin.hashCode(this.unicodeRepresentation) | 0;
     result = result * 31 + Kotlin.hashCode(this.texRepresentation) | 0;
     result = result * 31 + Kotlin.hashCode(this.defaultStringDefinitionType) | 0;
     result = result * 31 + Kotlin.hashCode(this.texStringDefinitionType) | 0;
@@ -5763,7 +5941,7 @@ if (typeof kotlin === 'undefined') {
     return result;
   };
   FunctionProperties.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.function, other.function) && Kotlin.equals(this.mainFunction, other.mainFunction) && Kotlin.equals(this.priority, other.priority) && Kotlin.equals(this.numberOfArguments, other.numberOfArguments) && Kotlin.equals(this.isCommutativeWithNullWeight, other.isCommutativeWithNullWeight) && Kotlin.equals(this.mainFunctionIsCommutativeWithNullWeight, other.mainFunctionIsCommutativeWithNullWeight) && Kotlin.equals(this.numberOfDefinitionArguments, other.numberOfDefinitionArguments) && Kotlin.equals(this.isNameForRuleDesignations, other.isNameForRuleDesignations) && Kotlin.equals(this.plainTextRepresentation, other.plainTextRepresentation) && Kotlin.equals(this.texRepresentation, other.texRepresentation) && Kotlin.equals(this.defaultStringDefinitionType, other.defaultStringDefinitionType) && Kotlin.equals(this.texStringDefinitionType, other.texStringDefinitionType) && Kotlin.equals(this.notObligateMainFunction_0, other.notObligateMainFunction_0) && Kotlin.equals(this.minNumberOfPointsForEquality, other.minNumberOfPointsForEquality) && Kotlin.equals(this.fieldAddZero, other.fieldAddZero) && Kotlin.equals(this.fieldMulZero, other.fieldMulZero)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.function, other.function) && Kotlin.equals(this.mainFunction, other.mainFunction) && Kotlin.equals(this.priority, other.priority) && Kotlin.equals(this.numberOfArguments, other.numberOfArguments) && Kotlin.equals(this.isCommutativeWithNullWeight, other.isCommutativeWithNullWeight) && Kotlin.equals(this.mainFunctionIsCommutativeWithNullWeight, other.mainFunctionIsCommutativeWithNullWeight) && Kotlin.equals(this.numberOfDefinitionArguments, other.numberOfDefinitionArguments) && Kotlin.equals(this.isNameForRuleDesignations, other.isNameForRuleDesignations) && Kotlin.equals(this.plainTextRepresentation, other.plainTextRepresentation) && Kotlin.equals(this.unicodeRepresentation, other.unicodeRepresentation) && Kotlin.equals(this.texRepresentation, other.texRepresentation) && Kotlin.equals(this.defaultStringDefinitionType, other.defaultStringDefinitionType) && Kotlin.equals(this.texStringDefinitionType, other.texStringDefinitionType) && Kotlin.equals(this.notObligateMainFunction_0, other.notObligateMainFunction_0) && Kotlin.equals(this.minNumberOfPointsForEquality, other.minNumberOfPointsForEquality) && Kotlin.equals(this.fieldAddZero, other.fieldAddZero) && Kotlin.equals(this.fieldMulZero, other.fieldMulZero)))));
   };
   function FunctionStringDefinition(function_0, definitionType, definition, subAsLast, filter, definitionArgumentsCount, underlinedAsLast, powSeparatedAsPow) {
     if (subAsLast === void 0)
@@ -5930,8 +6108,8 @@ if (typeof kotlin === 'undefined') {
     this.functionDefinitions = mutableListOf([new FunctionDefinition('n!', 'P(i, 1, n, i)'), new FunctionDefinition('U(m,n)', 'm^n'), new FunctionDefinition('A(m,n)', 'm! / (m - n)!'), new FunctionDefinition('P(n)', 'n!'), new FunctionDefinition('C(m,n)', 'm! / (m - n)! / n!'), new FunctionDefinition('V(m,n)', '(m + n - 1)! / (m - 1)! / n!'), new FunctionDefinition('S1(n,k)', 'S(i,0,k,(-1)^(k-i) * i^n * k! / (k - i)! / i!)'), new FunctionDefinition('S2(n,k)', 'S1(n,k) / n!'), new FunctionDefinition('B(m)', 'S(n,0,m,S2(m,n))'), new FunctionDefinition('F(n)', '5^(-0.5) * (((1 + 5^0.5)/2)^(n+1) - ((1 - 5^0.5)/2)^(n+1))'), new FunctionDefinition('C(n)', '(2*n)! / (n!)^2 / (n+1)'), new FunctionDefinition('sec(x)', '1 / cos(x)'), new FunctionDefinition('csc(x)', '1 / sin(x)'), new FunctionDefinition('sech(x)', '1 / ch(x)'), new FunctionDefinition('csch(x)', '1 / sh(x)'), new FunctionDefinition('ctg(x)', '1 / tg(x)'), new FunctionDefinition('actg(x)', 'atg(1/x)'), new FunctionDefinition('cth(x)', '1 / th(x)'), new FunctionDefinition('log(a,b)', 'ln(a) / ln(b)')]);
     this.treeTransformationRules = mutableListOf([new TreeTransformationRule('sin(x)^2', '1 - cos(x)^2'), new TreeTransformationRule('sin(pi/2 - x)', 'cos(x)'), new TreeTransformationRule('S(i, a, a, f(i))', 'f(a)'), new TreeTransformationRule('S(i, a, b, f(i))', 'S(i, a, b-1, f(i)) + f(b)'), new TreeTransformationRule('S(i, a, b, f(i))', 'S(i, a+1, b, f(i)) + f(a)'), new TreeTransformationRule('S(i, a, c, f(i)) + S(i, c+1, b, f(i))', 'S(i, a, b, f(i))'), new TreeTransformationRule('P(i, a, a, f(i))', 'f(a)'), new TreeTransformationRule('P(i, a, b, f(i))', 'P(i, a, b-1, f(i)) * f(b)'), new TreeTransformationRule('P(i, a, b, f(i))', 'P(i, a+1, b, f(i)) * f(a)'), new TreeTransformationRule('P(i, a, c, f(i)) * P(i, c+1, b, f(i))', 'P(i, a, b, f(i))'), new TreeTransformationRule('U(m,n)', 'm^n'), new TreeTransformationRule('A(m,n)', 'm! / (m - n)!'), new TreeTransformationRule('P(n)', 'n!'), new TreeTransformationRule('P(n)', 'A(n,n)'), new TreeTransformationRule('C(m,n)', 'm! / (m - n)! / n!'), new TreeTransformationRule('V(m,n)', '(m + n - 1)! / (m - 1)! / n!'), new TreeTransformationRule('V(m,n)', 'C(m + n - 1, n)'), new TreeTransformationRule('S1(n,k)', 'S(i,0,k,(-1)^(k-i) * i^n * k! / (k - i)! / i!)'), new TreeTransformationRule('S2(n,k)', 'S1(n,k) / n!'), new TreeTransformationRule('S2(n,k)', 'S2(m-1,n-1) + n*S2(m-1,n)'), new TreeTransformationRule('B(m)', 'S(n,0,m,S2(m,n))'), new TreeTransformationRule('F(n)', '5^(-0.5) * (((1 + 5^0.5)/2)^(n+1) - ((1 - 5^0.5)/2)^(n+1))'), new TreeTransformationRule('F(n)', 'F(n-1) + F(n-2)'), new TreeTransformationRule('C(n)', '(2*n)! / (n!)^2 / (n+1)'), new TreeTransformationRule('a^(b+c)', 'a^b*a^c'), new TreeTransformationRule('sqrt(x)', 'x^0.5', true), new TreeTransformationRule('root(x,p)', 'x^(1/p)', true), new TreeTransformationRule('n!', 'P(i,1,n,i)', true), new TreeTransformationRule('d(expr)', 'd(expr,x)', true)]);
     this.taskContextTreeTransformationRules = ArrayList_init();
-    this.functionProperties = mutableListOf([new FunctionProperties('+', '+', 1.0, -1, true, void 0, void 0, void 0, void 0, void 0, StringDefinitionType$BINARY_OPERATION_getInstance(), void 0, void 0, void 0, '0'), new FunctionProperties('-', '+', 1.0, -1, void 0, true, void 0, void 0, void 0, void 0, StringDefinitionType$UNARY_LEFT_OPERATION_getInstance(), void 0, '+'), new FunctionProperties('*', '*', 2.0, -1, true, true, void 0, void 0, void 0, '\\cdot', StringDefinitionType$BINARY_OPERATION_getInstance(), void 0, void 0, void 0, '1', '0'), new FunctionProperties('/', '/', 1.9, -1, void 0, true, void 0, void 0, void 0, '\\frac', StringDefinitionType$BINARY_OPERATION_getInstance(), void 0, '*'), new FunctionProperties('^', '^', 3.0, -1, void 0, void 0, void 0, void 0, void 0, void 0, StringDefinitionType$BINARY_OPERATION_getInstance()), new FunctionProperties('S', 'S', 5.0, 4, void 0, void 0, 1, void 0, void 0, void 0, void 0, void 0, void 0, 2147483647), new FunctionProperties('P', 'P', 5.0, 4, void 0, void 0, 1, void 0, void 0, void 0, void 0, void 0, void 0, 2147483647), new FunctionProperties('sin', 'sin', 5.0, 1), new FunctionProperties('cos', 'cos', 5.0, 1), new FunctionProperties('sh', 'sh', 5.0, 1), new FunctionProperties('ch', 'ch', 5.0, 1), new FunctionProperties('sec', 'sec', 5.0, 1), new FunctionProperties('csc', 'csc', 5.0, 1), new FunctionProperties('tg', 'tg', 5.0, 1), new FunctionProperties('ctg', 'ctg', 5.0, 1), new FunctionProperties('th', 'th', 5.0, 1), new FunctionProperties('cth', 'cth', 5.0, 1), new FunctionProperties('sech', 'sech', 5.0, 1), new FunctionProperties('csch', 'csch', 5.0, 1), new FunctionProperties('asin', 'asin', 5.0, 1), new FunctionProperties('acos', 'acos', 5.0, 1), new FunctionProperties('atg', 'atg', 5.0, 1), new FunctionProperties('actg', 'actg', 5.0, 1), new FunctionProperties('exp', 'exp', 5.0, 1), new FunctionProperties('ln', 'ln', 5.0, 1), new FunctionProperties('abs', 'abs', 5.0, 1, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, 2147483647), new FunctionProperties('compconj', 'compconj', 5.0, 1), new FunctionProperties('log', 'log', 5.0, 2, void 0, void 0, void 0, void 0, void 0, void 0, void 0, StringDefinitionType$BINARY_OPERATION_getInstance()), new FunctionProperties('mod', 'mod', 5.0, 2), new FunctionProperties('and', 'and', 0.7, -1, true, true, void 0, void 0, '&', '\\land', StringDefinitionType$BINARY_OPERATION_getInstance(), void 0, void 0, void 0, '1', '0'), new FunctionProperties('or', 'or', 0.6, -1, true, true, void 0, void 0, '|', '\\lor', StringDefinitionType$BINARY_OPERATION_getInstance(), void 0, void 0, void 0, '0', '1'), new FunctionProperties('xor', 'xor', 0.6, -1, true, true, void 0, void 0, '^', '\\oplus', StringDefinitionType$BINARY_OPERATION_getInstance(), void 0, void 0, void 0, '0'), new FunctionProperties('alleq', 'alleq', 0.4, -1, true, true, void 0, void 0, void 0, void 0, StringDefinitionType$BINARY_OPERATION_getInstance()), new FunctionProperties('not', 'not', 5.0, 1, void 0, void 0, void 0, void 0, '!', '\\neg', StringDefinitionType$UNARY_LEFT_OPERATION_getInstance()), new FunctionProperties('implic', 'implic', 0.5, -1, void 0, void 0, void 0, void 0, '->', '\\implies', StringDefinitionType$BINARY_OPERATION_getInstance()), new FunctionProperties('set-', 'set-', 0.5, -1, void 0, void 0, void 0, void 0, '\\', '\\setminus', StringDefinitionType$BINARY_OPERATION_getInstance()), new FunctionProperties('sqrt', 'sqrt', 5.0, 1, void 0, void 0, void 0, void 0, void 0, void 0, void 0, StringDefinitionType$BINARY_OPERATION_getInstance()), new FunctionProperties('root', 'root', 5.0, 2), new FunctionProperties('mfenced', 'mfenced', 5.0, 1), new FunctionProperties('U', 'U', 5.0, 2), new FunctionProperties('P', 'P', 5.0, 1), new FunctionProperties('A', 'A', 5.0, 2), new FunctionProperties('C', 'C', 5.0, 2), new FunctionProperties('V', 'V', 5.0, 2), new FunctionProperties('B', 'B', 5.0, 1), new FunctionProperties('S1', 'S1', 5.0, 2), new FunctionProperties('S2', 'S2', 5.0, 2), new FunctionProperties('F', 'F', 5.0, 1), new FunctionProperties('C', 'C', 5.0, 1), new FunctionProperties('factorial', 'factorial', 4.0, 1, void 0, void 0, void 0, void 0, '!', void 0, StringDefinitionType$UNARY_RIGHT_OPERATION_getInstance()), new FunctionProperties('double_factorial', 'factorial', 4.0, 1, void 0, void 0, void 0, void 0, '!!', void 0, StringDefinitionType$UNARY_RIGHT_OPERATION_getInstance()), new FunctionProperties('subfactorial', 'subfactorial', 4.0, 1, void 0, void 0, void 0, void 0, '!', void 0, StringDefinitionType$UNARY_LEFT_OPERATION_getInstance()), new FunctionProperties('partial_differential', 'partial_differential', 0.5, 1), new FunctionProperties('d', 'd', 0.5, 2), new FunctionProperties('d', 'd', 0.5, 1), new FunctionProperties('f', 'f', 0.5, 1, void 0, void 0, void 0, true), new FunctionProperties('g', 'g', 0.5, 1, void 0, void 0, void 0, true)]);
-    this.boolFunctions = setOf_0(['and', 'or', 'not', 'alleq', 'xor', 'implic', 'set-']);
+    this.functionProperties = mutableListOf([new FunctionProperties('+', '+', 1.0, -1, true, void 0, void 0, void 0, void 0, void 0, void 0, StringDefinitionType$BINARY_OPERATION_getInstance(), void 0, void 0, void 0, '0'), new FunctionProperties('-', '+', 1.0, -1, void 0, true, void 0, void 0, void 0, void 0, void 0, StringDefinitionType$UNARY_LEFT_OPERATION_getInstance(), void 0, '+'), new FunctionProperties('*', '*', 2.0, -1, true, true, void 0, void 0, void 0, void 0, '\\cdot', StringDefinitionType$BINARY_OPERATION_getInstance(), void 0, void 0, void 0, '1', '0'), new FunctionProperties('/', '/', 1.9, -1, void 0, true, void 0, void 0, void 0, void 0, '\\frac', StringDefinitionType$BINARY_OPERATION_getInstance(), void 0, '*'), new FunctionProperties('^', '^', 3.0, -1, void 0, void 0, void 0, void 0, void 0, void 0, void 0, StringDefinitionType$BINARY_OPERATION_getInstance()), new FunctionProperties('S', 'S', 5.0, 4, void 0, void 0, 1, void 0, void 0, void 0, void 0, void 0, void 0, void 0, 2147483647), new FunctionProperties('P', 'P', 5.0, 4, void 0, void 0, 1, void 0, void 0, void 0, void 0, void 0, void 0, void 0, 2147483647), new FunctionProperties('sin', 'sin', 5.0, 1), new FunctionProperties('cos', 'cos', 5.0, 1), new FunctionProperties('sh', 'sh', 5.0, 1), new FunctionProperties('ch', 'ch', 5.0, 1), new FunctionProperties('sec', 'sec', 5.0, 1), new FunctionProperties('csc', 'csc', 5.0, 1), new FunctionProperties('tg', 'tg', 5.0, 1), new FunctionProperties('ctg', 'ctg', 5.0, 1), new FunctionProperties('th', 'th', 5.0, 1), new FunctionProperties('cth', 'cth', 5.0, 1), new FunctionProperties('sech', 'sech', 5.0, 1), new FunctionProperties('csch', 'csch', 5.0, 1), new FunctionProperties('asin', 'asin', 5.0, 1), new FunctionProperties('acos', 'acos', 5.0, 1), new FunctionProperties('atg', 'atg', 5.0, 1), new FunctionProperties('actg', 'actg', 5.0, 1), new FunctionProperties('exp', 'exp', 5.0, 1), new FunctionProperties('ln', 'ln', 5.0, 1), new FunctionProperties('abs', 'abs', 5.0, 1, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, 2147483647), new FunctionProperties('compconj', 'compconj', 5.0, 1), new FunctionProperties('log', 'log', 5.0, 2, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, StringDefinitionType$BINARY_OPERATION_getInstance()), new FunctionProperties('mod', 'mod', 5.0, 2), new FunctionProperties('and', 'and', 0.7, -1, true, true, void 0, void 0, '&', '\u2227', '\\land', StringDefinitionType$BINARY_OPERATION_getInstance(), void 0, void 0, void 0, '1', '0'), new FunctionProperties('or', 'or', 0.6, -1, true, true, void 0, void 0, '|', '\u2228', '\\lor', StringDefinitionType$BINARY_OPERATION_getInstance(), void 0, void 0, void 0, '0', '1'), new FunctionProperties('xor', 'xor', 0.6, -1, true, true, void 0, void 0, '^', '\u2295', '\\oplus', StringDefinitionType$BINARY_OPERATION_getInstance(), void 0, void 0, void 0, '0'), new FunctionProperties('alleq', 'alleq', 0.4, -1, true, true, void 0, void 0, '==', '\u2261', '\\equiv', StringDefinitionType$BINARY_OPERATION_getInstance()), new FunctionProperties('nand', 'nand', 0.4, -1, true, true, void 0, void 0, '\u2191', '\u2191', '\u2191', StringDefinitionType$BINARY_OPERATION_getInstance()), new FunctionProperties('nor', 'nor', 0.4, -1, true, true, void 0, void 0, '\u2193', '\u2193', '\u2193', StringDefinitionType$BINARY_OPERATION_getInstance()), new FunctionProperties('not', 'not', 5.0, 1, void 0, void 0, void 0, void 0, '!', '\xAC', '\\neg', StringDefinitionType$UNARY_LEFT_OPERATION_getInstance()), new FunctionProperties('implic', 'implic', 0.5, -1, void 0, void 0, void 0, void 0, '->', '\u2192', '\\implies', StringDefinitionType$BINARY_OPERATION_getInstance()), new FunctionProperties('set-', 'set-', 0.5, -1, void 0, void 0, void 0, void 0, '\\', '\u2216', '\\setminus', StringDefinitionType$BINARY_OPERATION_getInstance()), new FunctionProperties('sqrt', 'sqrt', 5.0, 1, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, StringDefinitionType$BINARY_OPERATION_getInstance()), new FunctionProperties('root', 'root', 5.0, 2), new FunctionProperties('mfenced', 'mfenced', 5.0, 1), new FunctionProperties('U', 'U', 5.0, 2), new FunctionProperties('P', 'P', 5.0, 1), new FunctionProperties('A', 'A', 5.0, 2), new FunctionProperties('C', 'C', 5.0, 2), new FunctionProperties('V', 'V', 5.0, 2), new FunctionProperties('B', 'B', 5.0, 1), new FunctionProperties('S1', 'S1', 5.0, 2), new FunctionProperties('S2', 'S2', 5.0, 2), new FunctionProperties('F', 'F', 5.0, 1), new FunctionProperties('C', 'C', 5.0, 1), new FunctionProperties('factorial', 'factorial', 4.0, 1, void 0, void 0, void 0, void 0, '!', void 0, void 0, StringDefinitionType$UNARY_RIGHT_OPERATION_getInstance()), new FunctionProperties('double_factorial', 'factorial', 4.0, 1, void 0, void 0, void 0, void 0, '!!', void 0, void 0, StringDefinitionType$UNARY_RIGHT_OPERATION_getInstance()), new FunctionProperties('subfactorial', 'subfactorial', 4.0, 1, void 0, void 0, void 0, void 0, '!', void 0, void 0, StringDefinitionType$UNARY_LEFT_OPERATION_getInstance()), new FunctionProperties('partial_differential', 'partial_differential', 0.5, 1), new FunctionProperties('d', 'd', 0.5, 2), new FunctionProperties('d', 'd', 0.5, 1), new FunctionProperties('f', 'f', 0.5, 1, void 0, void 0, void 0, true), new FunctionProperties('g', 'g', 0.5, 1, void 0, void 0, void 0, true)]);
+    this.boolFunctions = setOf_0(['and', 'or', 'not', 'alleq', 'xor', 'implic', 'set-', 'nand', 'nor']);
     var $receiver_0 = this.functionProperties;
     var capacity = coerceAtLeast(mapCapacity(collectionSizeOrDefault($receiver_0, 10)), 16);
     var destination_0 = LinkedHashMap_init(capacity);
@@ -5942,7 +6120,7 @@ if (typeof kotlin === 'undefined') {
       destination_0.put_xwzc9p$(element_0.function + '_' + toString(element_0.numberOfArguments), element_0);
     }
     this.functionPropertiesByName = destination_0;
-    this.stringDefinitions = mutableListOf([new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('+_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '+'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('+_-1')), StringDefinitionType$FUNCTION_getInstance(), '+'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('+_-1')), StringDefinitionType$FUNCTION_getInstance(), 'add'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('-_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '-'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('-_-1')), StringDefinitionType$FUNCTION_getInstance(), '-'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('-_-1')), StringDefinitionType$FUNCTION_getInstance(), 'sub'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('factorial_1')), StringDefinitionType$UNARY_RIGHT_OPERATION_getInstance(), '!'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('double_factorial_1')), StringDefinitionType$UNARY_RIGHT_OPERATION_getInstance(), '!!'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('subfactorial_1')), StringDefinitionType$UNARY_LEFT_OPERATION_getInstance(), '!', void 0, 'subfactorial'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('factorial_1')), StringDefinitionType$FUNCTION_getInstance(), 'factorial'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('double_factorial_1')), StringDefinitionType$FUNCTION_getInstance(), 'double_factorial'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('subfactorial_1')), StringDefinitionType$FUNCTION_getInstance(), 'subfactorial'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '*'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&#xD7'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&#xB7'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\cdot'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\times'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\ast'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$FUNCTION_getInstance(), '*'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$FUNCTION_getInstance(), 'mul'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('/_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '/'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('/_-1')), StringDefinitionType$FUNCTION_getInstance(), '/'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('/_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\div'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('/_-1')), StringDefinitionType$FUNCTION_getInstance(), 'div'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('/_-1')), StringDefinitionType$FUNCTION_getInstance(), 'mfrac'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('/_-1')), StringDefinitionType$FUNCTION_getInstance(), '\\frac', void 0, void 0, 2), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('^_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '^'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('^_-1')), StringDefinitionType$FUNCTION_getInstance(), '^'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('^_-1')), StringDefinitionType$FUNCTION_getInstance(), 'pow'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('^_-1')), StringDefinitionType$FUNCTION_getInstance(), 'msup'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('mod_2')), StringDefinitionType$FUNCTION_getInstance(), 'mod'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&amp'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\cap'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\wedge'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\land'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('or_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '|'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('or_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\cup'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('or_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\vee'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('or_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\lor'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '/\\', void 0, 'setTheory'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('or_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\/'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&#x2227'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('or_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&#x2228'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('xor_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '^', void 0, 'setTheory'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('xor_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&#x2295'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('xor_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\oplus'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('not_1')), StringDefinitionType$UNARY_LEFT_OPERATION_getInstance(), '&#xAC'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('not_1')), StringDefinitionType$UNARY_LEFT_OPERATION_getInstance(), '\\neg'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('not_1')), StringDefinitionType$UNARY_LEFT_OPERATION_getInstance(), '!', void 0, 'setTheory'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&#x2192'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '->'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '-<\/mo><mo>&gt;'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\rightarrow'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\Rightarrow'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\to'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\implies'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('set-_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\\\'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('set-_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\setminus'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$FUNCTION_getInstance(), 'and'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('or_-1')), StringDefinitionType$FUNCTION_getInstance(), 'or'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('xor_-1')), StringDefinitionType$FUNCTION_getInstance(), 'xor'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('alleq_-1')), StringDefinitionType$FUNCTION_getInstance(), 'alleq'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('not_1')), StringDefinitionType$FUNCTION_getInstance(), 'not'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$FUNCTION_getInstance(), 'implic'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('set-_-1')), StringDefinitionType$FUNCTION_getInstance(), 'setsub'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('partial_differential_1')), StringDefinitionType$UNARY_LEFT_OPERATION_getInstance(), '&#x2202'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('d_1')), StringDefinitionType$UNARY_RIGHT_OPERATION_getInstance(), "'"), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('d_2')), StringDefinitionType$FUNCTION_getInstance(), "msubsup'"), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('d_1')), StringDefinitionType$FUNCTION_getInstance(), 'd'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('d_2')), StringDefinitionType$FUNCTION_getInstance(), 'd'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('d_1')), StringDefinitionType$FUNCTION_getInstance(), 'diff'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('d_2')), StringDefinitionType$FUNCTION_getInstance(), 'diff'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('S_4')), StringDefinitionType$FUNCTION_getInstance(), 'munderover&#x2211'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('P_4')), StringDefinitionType$FUNCTION_getInstance(), 'munderover&#x220F'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('S_4')), StringDefinitionType$FUNCTION_getInstance(), 'S'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('P_4')), StringDefinitionType$FUNCTION_getInstance(), 'P'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('S_4')), StringDefinitionType$FUNCTION_getInstance(), '\\sum', void 0, void 0, 4), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('P_4')), StringDefinitionType$FUNCTION_getInstance(), '\\prod', void 0, void 0, 4), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sin_1')), StringDefinitionType$FUNCTION_getInstance(), 'sin', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('cos_1')), StringDefinitionType$FUNCTION_getInstance(), 'cos', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('tg_1')), StringDefinitionType$FUNCTION_getInstance(), 'tg', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('ctg_1')), StringDefinitionType$FUNCTION_getInstance(), 'ctg', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('tg_1')), StringDefinitionType$FUNCTION_getInstance(), 'tan', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('ctg_1')), StringDefinitionType$FUNCTION_getInstance(), 'cot', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sin_1')), StringDefinitionType$FUNCTION_getInstance(), '\\sin', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('cos_1')), StringDefinitionType$FUNCTION_getInstance(), '\\cos', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('tg_1')), StringDefinitionType$FUNCTION_getInstance(), '\\tan', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('ctg_1')), StringDefinitionType$FUNCTION_getInstance(), '\\cot', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('asin_1')), StringDefinitionType$FUNCTION_getInstance(), 'asin', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('acos_1')), StringDefinitionType$FUNCTION_getInstance(), 'acos', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('atg_1')), StringDefinitionType$FUNCTION_getInstance(), 'atg', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('atg_1')), StringDefinitionType$FUNCTION_getInstance(), 'atan', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('actg_1')), StringDefinitionType$FUNCTION_getInstance(), 'actg', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('asin_1')), StringDefinitionType$FUNCTION_getInstance(), 'arcsin', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('acos_1')), StringDefinitionType$FUNCTION_getInstance(), 'arccos', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('atg_1')), StringDefinitionType$FUNCTION_getInstance(), 'arctg', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('actg_1')), StringDefinitionType$FUNCTION_getInstance(), 'arcctg', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sh_1')), StringDefinitionType$FUNCTION_getInstance(), 'sh', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('ch_1')), StringDefinitionType$FUNCTION_getInstance(), 'ch', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('th_1')), StringDefinitionType$FUNCTION_getInstance(), 'th', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('cth_1')), StringDefinitionType$FUNCTION_getInstance(), 'cth', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sec_1')), StringDefinitionType$FUNCTION_getInstance(), 'sec', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sec_1')), StringDefinitionType$FUNCTION_getInstance(), '\\sec', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('csc_1')), StringDefinitionType$FUNCTION_getInstance(), 'cosec', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('csc_1')), StringDefinitionType$FUNCTION_getInstance(), 'csc', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('csc_1')), StringDefinitionType$FUNCTION_getInstance(), '\\csc', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sech_1')), StringDefinitionType$FUNCTION_getInstance(), 'sech', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('csch_1')), StringDefinitionType$FUNCTION_getInstance(), 'csch', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('exp_1')), StringDefinitionType$FUNCTION_getInstance(), 'exp'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('exp_1')), StringDefinitionType$FUNCTION_getInstance(), '\\exp', void 0, void 0, 1), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('ln_1')), StringDefinitionType$FUNCTION_getInstance(), 'ln'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('ln_1')), StringDefinitionType$FUNCTION_getInstance(), '\\ln', void 0, void 0, 1), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('ln_1')), StringDefinitionType$FUNCTION_getInstance(), 'log'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('log_2')), StringDefinitionType$FUNCTION_getInstance(), 'log'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('log_2')), StringDefinitionType$FUNCTION_getInstance(), '{log}', true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('log_2')), StringDefinitionType$FUNCTION_getInstance(), '\\log', void 0, void 0, 2, true, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('abs_1')), StringDefinitionType$FUNCTION_getInstance(), 'abs'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('abs_1')), StringDefinitionType$FUNCTION_getInstance(), 'mfenced_|__|'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('compconj_1')), StringDefinitionType$FUNCTION_getInstance(), 'compconj'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('compconj_1')), StringDefinitionType$FUNCTION_getInstance(), '\\compconj'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sqrt_1')), StringDefinitionType$FUNCTION_getInstance(), 'msqrt'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('root_2')), StringDefinitionType$FUNCTION_getInstance(), 'mroot'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sqrt_1')), StringDefinitionType$FUNCTION_getInstance(), 'sqrt'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sqrt_1')), StringDefinitionType$FUNCTION_getInstance(), '\\sqrt', void 0, void 0, 1), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('root_2')), StringDefinitionType$FUNCTION_getInstance(), 'root'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('mfenced_1')), StringDefinitionType$FUNCTION_getInstance(), 'mfenced'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('U_2')), StringDefinitionType$FUNCTION_getInstance(), 'U'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('P_1')), StringDefinitionType$FUNCTION_getInstance(), 'P'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('A_2')), StringDefinitionType$FUNCTION_getInstance(), 'A'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('C_2')), StringDefinitionType$FUNCTION_getInstance(), 'C'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('V_2')), StringDefinitionType$FUNCTION_getInstance(), 'V'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('B_1')), StringDefinitionType$FUNCTION_getInstance(), 'B'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('S1_2')), StringDefinitionType$FUNCTION_getInstance(), 'S1'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('S2_2')), StringDefinitionType$FUNCTION_getInstance(), 'S2'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('F_1')), StringDefinitionType$FUNCTION_getInstance(), 'F'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('C_1')), StringDefinitionType$FUNCTION_getInstance(), 'C'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('f_1')), StringDefinitionType$FUNCTION_getInstance(), 'f'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('g_1')), StringDefinitionType$FUNCTION_getInstance(), 'g')]);
+    this.stringDefinitions = mutableListOf([new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('+_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '+'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('+_-1')), StringDefinitionType$FUNCTION_getInstance(), '+'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('+_-1')), StringDefinitionType$FUNCTION_getInstance(), 'add'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('-_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '-'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('-_-1')), StringDefinitionType$FUNCTION_getInstance(), '-'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('-_-1')), StringDefinitionType$FUNCTION_getInstance(), 'sub'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('factorial_1')), StringDefinitionType$UNARY_RIGHT_OPERATION_getInstance(), '!'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('double_factorial_1')), StringDefinitionType$UNARY_RIGHT_OPERATION_getInstance(), '!!'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('subfactorial_1')), StringDefinitionType$UNARY_LEFT_OPERATION_getInstance(), '!', void 0, 'subfactorial'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('factorial_1')), StringDefinitionType$FUNCTION_getInstance(), 'factorial'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('double_factorial_1')), StringDefinitionType$FUNCTION_getInstance(), 'double_factorial'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('subfactorial_1')), StringDefinitionType$FUNCTION_getInstance(), 'subfactorial'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '*'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&#xD7'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&#xB7'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\cdot'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\times'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\ast'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$FUNCTION_getInstance(), '*'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('*_-1')), StringDefinitionType$FUNCTION_getInstance(), 'mul'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('/_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '/'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('/_-1')), StringDefinitionType$FUNCTION_getInstance(), '/'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('/_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\div'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('/_-1')), StringDefinitionType$FUNCTION_getInstance(), 'div'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('/_-1')), StringDefinitionType$FUNCTION_getInstance(), 'mfrac'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('/_-1')), StringDefinitionType$FUNCTION_getInstance(), '\\frac', void 0, void 0, 2), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('^_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '^'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('^_-1')), StringDefinitionType$FUNCTION_getInstance(), '^'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('^_-1')), StringDefinitionType$FUNCTION_getInstance(), 'pow'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('^_-1')), StringDefinitionType$FUNCTION_getInstance(), 'msup'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('mod_2')), StringDefinitionType$FUNCTION_getInstance(), 'mod'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&amp'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\cap'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\wedge'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\land'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('or_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '|'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('or_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\cup'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('or_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\vee'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('or_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\lor'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '/\\', void 0, 'setTheory'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('or_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\/'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&#x2227'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('or_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&#x2228'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('xor_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '^', void 0, 'setTheory'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('xor_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&#x2295'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('xor_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\oplus'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('not_1')), StringDefinitionType$UNARY_LEFT_OPERATION_getInstance(), '&#xAC'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('not_1')), StringDefinitionType$UNARY_LEFT_OPERATION_getInstance(), '\\neg'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('not_1')), StringDefinitionType$UNARY_LEFT_OPERATION_getInstance(), '!', void 0, 'setTheory'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '&#x2192'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '->'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '-<\/mo><mo>&gt;'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\rightarrow'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\Rightarrow'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\to'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\implies'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('set-_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\\\'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('set-_-1')), StringDefinitionType$BINARY_OPERATION_getInstance(), '\\setminus'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('and_-1')), StringDefinitionType$FUNCTION_getInstance(), 'and'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('or_-1')), StringDefinitionType$FUNCTION_getInstance(), 'or'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('xor_-1')), StringDefinitionType$FUNCTION_getInstance(), 'xor'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('alleq_-1')), StringDefinitionType$FUNCTION_getInstance(), 'alleq'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('nand_-1')), StringDefinitionType$FUNCTION_getInstance(), 'nand'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('nor_-1')), StringDefinitionType$FUNCTION_getInstance(), 'nor'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('not_1')), StringDefinitionType$FUNCTION_getInstance(), 'not'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('implic_-1')), StringDefinitionType$FUNCTION_getInstance(), 'implic'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('set-_-1')), StringDefinitionType$FUNCTION_getInstance(), 'setsub'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('partial_differential_1')), StringDefinitionType$UNARY_LEFT_OPERATION_getInstance(), '&#x2202'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('d_1')), StringDefinitionType$UNARY_RIGHT_OPERATION_getInstance(), "'"), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('d_2')), StringDefinitionType$FUNCTION_getInstance(), "msubsup'"), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('d_1')), StringDefinitionType$FUNCTION_getInstance(), 'd'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('d_2')), StringDefinitionType$FUNCTION_getInstance(), 'd'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('d_1')), StringDefinitionType$FUNCTION_getInstance(), 'diff'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('d_2')), StringDefinitionType$FUNCTION_getInstance(), 'diff'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('S_4')), StringDefinitionType$FUNCTION_getInstance(), 'munderover&#x2211'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('P_4')), StringDefinitionType$FUNCTION_getInstance(), 'munderover&#x220F'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('S_4')), StringDefinitionType$FUNCTION_getInstance(), 'S'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('P_4')), StringDefinitionType$FUNCTION_getInstance(), 'P'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('S_4')), StringDefinitionType$FUNCTION_getInstance(), '\\sum', void 0, void 0, 4), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('P_4')), StringDefinitionType$FUNCTION_getInstance(), '\\prod', void 0, void 0, 4), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sin_1')), StringDefinitionType$FUNCTION_getInstance(), 'sin', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('cos_1')), StringDefinitionType$FUNCTION_getInstance(), 'cos', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('tg_1')), StringDefinitionType$FUNCTION_getInstance(), 'tg', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('ctg_1')), StringDefinitionType$FUNCTION_getInstance(), 'ctg', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('tg_1')), StringDefinitionType$FUNCTION_getInstance(), 'tan', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('ctg_1')), StringDefinitionType$FUNCTION_getInstance(), 'cot', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sin_1')), StringDefinitionType$FUNCTION_getInstance(), '\\sin', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('cos_1')), StringDefinitionType$FUNCTION_getInstance(), '\\cos', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('tg_1')), StringDefinitionType$FUNCTION_getInstance(), '\\tan', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('ctg_1')), StringDefinitionType$FUNCTION_getInstance(), '\\cot', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('asin_1')), StringDefinitionType$FUNCTION_getInstance(), 'asin', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('acos_1')), StringDefinitionType$FUNCTION_getInstance(), 'acos', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('atg_1')), StringDefinitionType$FUNCTION_getInstance(), 'atg', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('atg_1')), StringDefinitionType$FUNCTION_getInstance(), 'atan', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('actg_1')), StringDefinitionType$FUNCTION_getInstance(), 'actg', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('asin_1')), StringDefinitionType$FUNCTION_getInstance(), 'arcsin', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('acos_1')), StringDefinitionType$FUNCTION_getInstance(), 'arccos', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('atg_1')), StringDefinitionType$FUNCTION_getInstance(), 'arctg', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('actg_1')), StringDefinitionType$FUNCTION_getInstance(), 'arcctg', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sh_1')), StringDefinitionType$FUNCTION_getInstance(), 'sh', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('ch_1')), StringDefinitionType$FUNCTION_getInstance(), 'ch', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('th_1')), StringDefinitionType$FUNCTION_getInstance(), 'th', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('cth_1')), StringDefinitionType$FUNCTION_getInstance(), 'cth', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sec_1')), StringDefinitionType$FUNCTION_getInstance(), 'sec', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sec_1')), StringDefinitionType$FUNCTION_getInstance(), '\\sec', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('csc_1')), StringDefinitionType$FUNCTION_getInstance(), 'cosec', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('csc_1')), StringDefinitionType$FUNCTION_getInstance(), 'csc', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('csc_1')), StringDefinitionType$FUNCTION_getInstance(), '\\csc', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sech_1')), StringDefinitionType$FUNCTION_getInstance(), 'sech', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('csch_1')), StringDefinitionType$FUNCTION_getInstance(), 'csch', void 0, void 0, 1, void 0, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('exp_1')), StringDefinitionType$FUNCTION_getInstance(), 'exp'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('exp_1')), StringDefinitionType$FUNCTION_getInstance(), '\\exp', void 0, void 0, 1), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('ln_1')), StringDefinitionType$FUNCTION_getInstance(), 'ln'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('ln_1')), StringDefinitionType$FUNCTION_getInstance(), '\\ln', void 0, void 0, 1), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('ln_1')), StringDefinitionType$FUNCTION_getInstance(), 'log'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('log_2')), StringDefinitionType$FUNCTION_getInstance(), 'log'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('log_2')), StringDefinitionType$FUNCTION_getInstance(), '{log}', true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('log_2')), StringDefinitionType$FUNCTION_getInstance(), '\\log', void 0, void 0, 2, true, true), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('abs_1')), StringDefinitionType$FUNCTION_getInstance(), 'abs'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('abs_1')), StringDefinitionType$FUNCTION_getInstance(), 'mfenced_|__|'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('compconj_1')), StringDefinitionType$FUNCTION_getInstance(), 'compconj'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('compconj_1')), StringDefinitionType$FUNCTION_getInstance(), '\\compconj'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sqrt_1')), StringDefinitionType$FUNCTION_getInstance(), 'msqrt'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('root_2')), StringDefinitionType$FUNCTION_getInstance(), 'mroot'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sqrt_1')), StringDefinitionType$FUNCTION_getInstance(), 'sqrt'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('sqrt_1')), StringDefinitionType$FUNCTION_getInstance(), '\\sqrt', void 0, void 0, 1), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('root_2')), StringDefinitionType$FUNCTION_getInstance(), 'root'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('mfenced_1')), StringDefinitionType$FUNCTION_getInstance(), 'mfenced'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('U_2')), StringDefinitionType$FUNCTION_getInstance(), 'U'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('P_1')), StringDefinitionType$FUNCTION_getInstance(), 'P'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('A_2')), StringDefinitionType$FUNCTION_getInstance(), 'A'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('C_2')), StringDefinitionType$FUNCTION_getInstance(), 'C'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('V_2')), StringDefinitionType$FUNCTION_getInstance(), 'V'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('B_1')), StringDefinitionType$FUNCTION_getInstance(), 'B'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('S1_2')), StringDefinitionType$FUNCTION_getInstance(), 'S1'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('S2_2')), StringDefinitionType$FUNCTION_getInstance(), 'S2'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('F_1')), StringDefinitionType$FUNCTION_getInstance(), 'F'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('C_1')), StringDefinitionType$FUNCTION_getInstance(), 'C'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('f_1')), StringDefinitionType$FUNCTION_getInstance(), 'f'), new FunctionStringDefinition(ensureNotNull(this.functionPropertiesByName.get_11rb$('g_1')), StringDefinitionType$FUNCTION_getInstance(), 'g')]);
     var $receiver_1 = this.stringDefinitions;
     var destination_1 = ArrayList_init();
     var tmp$_1;
@@ -6136,7 +6314,7 @@ if (typeof kotlin === 'undefined') {
   function concatNamespaceAndCode(namespaceCode, code) {
     return namespaceCode + namespaceCodeAndCodeDivider + code;
   }
-  function RuleITR(code, nameEn, nameRu, descriptionShortEn, descriptionShortRu, descriptionEn, descriptionRu, leftStructureString, rightStructureString, priority, isExtending, matchJumbledAndNested, simpleAdditional, basedOnTaskContext, normalizationType, weight, weightInTaskAutoGeneration) {
+  function RuleITR(code, nameEn, nameRu, descriptionShortEn, descriptionShortRu, descriptionEn, descriptionRu, leftStructureString, rightStructureString, priority, isExtending, matchJumbledAndNested, simpleAdditional, basedOnTaskContext, normalizationType, weight, weightInTaskAutoGeneration, useWhenPostprocessGeneratedExpression) {
     if (code === void 0)
       code = null;
     if (nameEn === void 0)
@@ -6171,6 +6349,8 @@ if (typeof kotlin === 'undefined') {
       weight = null;
     if (weightInTaskAutoGeneration === void 0)
       weightInTaskAutoGeneration = null;
+    if (useWhenPostprocessGeneratedExpression === void 0)
+      useWhenPostprocessGeneratedExpression = false;
     this.code = code;
     this.nameEn = nameEn;
     this.nameRu = nameRu;
@@ -6188,6 +6368,7 @@ if (typeof kotlin === 'undefined') {
     this.normalizationType = normalizationType;
     this.weight = weight;
     this.weightInTaskAutoGeneration = weightInTaskAutoGeneration;
+    this.useWhenPostprocessGeneratedExpression = useWhenPostprocessGeneratedExpression;
     var tmp$, tmp$_0;
     var $receiver = this.code;
     var tmp$_1 = $receiver == null || isBlank($receiver);
@@ -6255,11 +6436,14 @@ if (typeof kotlin === 'undefined') {
   RuleITR.prototype.component17 = function () {
     return this.weightInTaskAutoGeneration;
   };
-  RuleITR.prototype.copy_wjiu63$ = function (code, nameEn, nameRu, descriptionShortEn, descriptionShortRu, descriptionEn, descriptionRu, leftStructureString, rightStructureString, priority, isExtending, matchJumbledAndNested, simpleAdditional, basedOnTaskContext, normalizationType, weight, weightInTaskAutoGeneration) {
-    return new RuleITR(code === void 0 ? this.code : code, nameEn === void 0 ? this.nameEn : nameEn, nameRu === void 0 ? this.nameRu : nameRu, descriptionShortEn === void 0 ? this.descriptionShortEn : descriptionShortEn, descriptionShortRu === void 0 ? this.descriptionShortRu : descriptionShortRu, descriptionEn === void 0 ? this.descriptionEn : descriptionEn, descriptionRu === void 0 ? this.descriptionRu : descriptionRu, leftStructureString === void 0 ? this.leftStructureString : leftStructureString, rightStructureString === void 0 ? this.rightStructureString : rightStructureString, priority === void 0 ? this.priority : priority, isExtending === void 0 ? this.isExtending : isExtending, matchJumbledAndNested === void 0 ? this.matchJumbledAndNested : matchJumbledAndNested, simpleAdditional === void 0 ? this.simpleAdditional : simpleAdditional, basedOnTaskContext === void 0 ? this.basedOnTaskContext : basedOnTaskContext, normalizationType === void 0 ? this.normalizationType : normalizationType, weight === void 0 ? this.weight : weight, weightInTaskAutoGeneration === void 0 ? this.weightInTaskAutoGeneration : weightInTaskAutoGeneration);
+  RuleITR.prototype.component18 = function () {
+    return this.useWhenPostprocessGeneratedExpression;
+  };
+  RuleITR.prototype.copy_e86izw$ = function (code, nameEn, nameRu, descriptionShortEn, descriptionShortRu, descriptionEn, descriptionRu, leftStructureString, rightStructureString, priority, isExtending, matchJumbledAndNested, simpleAdditional, basedOnTaskContext, normalizationType, weight, weightInTaskAutoGeneration, useWhenPostprocessGeneratedExpression) {
+    return new RuleITR(code === void 0 ? this.code : code, nameEn === void 0 ? this.nameEn : nameEn, nameRu === void 0 ? this.nameRu : nameRu, descriptionShortEn === void 0 ? this.descriptionShortEn : descriptionShortEn, descriptionShortRu === void 0 ? this.descriptionShortRu : descriptionShortRu, descriptionEn === void 0 ? this.descriptionEn : descriptionEn, descriptionRu === void 0 ? this.descriptionRu : descriptionRu, leftStructureString === void 0 ? this.leftStructureString : leftStructureString, rightStructureString === void 0 ? this.rightStructureString : rightStructureString, priority === void 0 ? this.priority : priority, isExtending === void 0 ? this.isExtending : isExtending, matchJumbledAndNested === void 0 ? this.matchJumbledAndNested : matchJumbledAndNested, simpleAdditional === void 0 ? this.simpleAdditional : simpleAdditional, basedOnTaskContext === void 0 ? this.basedOnTaskContext : basedOnTaskContext, normalizationType === void 0 ? this.normalizationType : normalizationType, weight === void 0 ? this.weight : weight, weightInTaskAutoGeneration === void 0 ? this.weightInTaskAutoGeneration : weightInTaskAutoGeneration, useWhenPostprocessGeneratedExpression === void 0 ? this.useWhenPostprocessGeneratedExpression : useWhenPostprocessGeneratedExpression);
   };
   RuleITR.prototype.toString = function () {
-    return 'RuleITR(code=' + Kotlin.toString(this.code) + (', nameEn=' + Kotlin.toString(this.nameEn)) + (', nameRu=' + Kotlin.toString(this.nameRu)) + (', descriptionShortEn=' + Kotlin.toString(this.descriptionShortEn)) + (', descriptionShortRu=' + Kotlin.toString(this.descriptionShortRu)) + (', descriptionEn=' + Kotlin.toString(this.descriptionEn)) + (', descriptionRu=' + Kotlin.toString(this.descriptionRu)) + (', leftStructureString=' + Kotlin.toString(this.leftStructureString)) + (', rightStructureString=' + Kotlin.toString(this.rightStructureString)) + (', priority=' + Kotlin.toString(this.priority)) + (', isExtending=' + Kotlin.toString(this.isExtending)) + (', matchJumbledAndNested=' + Kotlin.toString(this.matchJumbledAndNested)) + (', simpleAdditional=' + Kotlin.toString(this.simpleAdditional)) + (', basedOnTaskContext=' + Kotlin.toString(this.basedOnTaskContext)) + (', normalizationType=' + Kotlin.toString(this.normalizationType)) + (', weight=' + Kotlin.toString(this.weight)) + (', weightInTaskAutoGeneration=' + Kotlin.toString(this.weightInTaskAutoGeneration)) + ')';
+    return 'RuleITR(code=' + Kotlin.toString(this.code) + (', nameEn=' + Kotlin.toString(this.nameEn)) + (', nameRu=' + Kotlin.toString(this.nameRu)) + (', descriptionShortEn=' + Kotlin.toString(this.descriptionShortEn)) + (', descriptionShortRu=' + Kotlin.toString(this.descriptionShortRu)) + (', descriptionEn=' + Kotlin.toString(this.descriptionEn)) + (', descriptionRu=' + Kotlin.toString(this.descriptionRu)) + (', leftStructureString=' + Kotlin.toString(this.leftStructureString)) + (', rightStructureString=' + Kotlin.toString(this.rightStructureString)) + (', priority=' + Kotlin.toString(this.priority)) + (', isExtending=' + Kotlin.toString(this.isExtending)) + (', matchJumbledAndNested=' + Kotlin.toString(this.matchJumbledAndNested)) + (', simpleAdditional=' + Kotlin.toString(this.simpleAdditional)) + (', basedOnTaskContext=' + Kotlin.toString(this.basedOnTaskContext)) + (', normalizationType=' + Kotlin.toString(this.normalizationType)) + (', weight=' + Kotlin.toString(this.weight)) + (', weightInTaskAutoGeneration=' + Kotlin.toString(this.weightInTaskAutoGeneration)) + (', useWhenPostprocessGeneratedExpression=' + Kotlin.toString(this.useWhenPostprocessGeneratedExpression)) + ')';
   };
   RuleITR.prototype.hashCode = function () {
     var result = 0;
@@ -6280,14 +6464,15 @@ if (typeof kotlin === 'undefined') {
     result = result * 31 + Kotlin.hashCode(this.normalizationType) | 0;
     result = result * 31 + Kotlin.hashCode(this.weight) | 0;
     result = result * 31 + Kotlin.hashCode(this.weightInTaskAutoGeneration) | 0;
+    result = result * 31 + Kotlin.hashCode(this.useWhenPostprocessGeneratedExpression) | 0;
     return result;
   };
   RuleITR.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.code, other.code) && Kotlin.equals(this.nameEn, other.nameEn) && Kotlin.equals(this.nameRu, other.nameRu) && Kotlin.equals(this.descriptionShortEn, other.descriptionShortEn) && Kotlin.equals(this.descriptionShortRu, other.descriptionShortRu) && Kotlin.equals(this.descriptionEn, other.descriptionEn) && Kotlin.equals(this.descriptionRu, other.descriptionRu) && Kotlin.equals(this.leftStructureString, other.leftStructureString) && Kotlin.equals(this.rightStructureString, other.rightStructureString) && Kotlin.equals(this.priority, other.priority) && Kotlin.equals(this.isExtending, other.isExtending) && Kotlin.equals(this.matchJumbledAndNested, other.matchJumbledAndNested) && Kotlin.equals(this.simpleAdditional, other.simpleAdditional) && Kotlin.equals(this.basedOnTaskContext, other.basedOnTaskContext) && Kotlin.equals(this.normalizationType, other.normalizationType) && Kotlin.equals(this.weight, other.weight) && Kotlin.equals(this.weightInTaskAutoGeneration, other.weightInTaskAutoGeneration)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.code, other.code) && Kotlin.equals(this.nameEn, other.nameEn) && Kotlin.equals(this.nameRu, other.nameRu) && Kotlin.equals(this.descriptionShortEn, other.descriptionShortEn) && Kotlin.equals(this.descriptionShortRu, other.descriptionShortRu) && Kotlin.equals(this.descriptionEn, other.descriptionEn) && Kotlin.equals(this.descriptionRu, other.descriptionRu) && Kotlin.equals(this.leftStructureString, other.leftStructureString) && Kotlin.equals(this.rightStructureString, other.rightStructureString) && Kotlin.equals(this.priority, other.priority) && Kotlin.equals(this.isExtending, other.isExtending) && Kotlin.equals(this.matchJumbledAndNested, other.matchJumbledAndNested) && Kotlin.equals(this.simpleAdditional, other.simpleAdditional) && Kotlin.equals(this.basedOnTaskContext, other.basedOnTaskContext) && Kotlin.equals(this.normalizationType, other.normalizationType) && Kotlin.equals(this.weight, other.weight) && Kotlin.equals(this.weightInTaskAutoGeneration, other.weightInTaskAutoGeneration) && Kotlin.equals(this.useWhenPostprocessGeneratedExpression, other.useWhenPostprocessGeneratedExpression)))));
   };
-  function SolutionsStepITR(stepExpression, rule, selectedPlacesNodeIds, stepId, prevStepId) {
+  function SolutionsStepITR(stepExpression, substitution, selectedPlacesNodeIds, stepId, prevStepId) {
     this.stepExpression = stepExpression;
-    this.rule = rule;
+    this.substitution = substitution;
     this.selectedPlacesNodeIds = selectedPlacesNodeIds;
     this.stepId = stepId;
     this.prevStepId = prevStepId;
@@ -6301,7 +6486,7 @@ if (typeof kotlin === 'undefined') {
     return this.stepExpression;
   };
   SolutionsStepITR.prototype.component2 = function () {
-    return this.rule;
+    return this.substitution;
   };
   SolutionsStepITR.prototype.component3 = function () {
     return this.selectedPlacesNodeIds;
@@ -6312,23 +6497,23 @@ if (typeof kotlin === 'undefined') {
   SolutionsStepITR.prototype.component5 = function () {
     return this.prevStepId;
   };
-  SolutionsStepITR.prototype.copy_dg1hlx$ = function (stepExpression, rule, selectedPlacesNodeIds, stepId, prevStepId) {
-    return new SolutionsStepITR(stepExpression === void 0 ? this.stepExpression : stepExpression, rule === void 0 ? this.rule : rule, selectedPlacesNodeIds === void 0 ? this.selectedPlacesNodeIds : selectedPlacesNodeIds, stepId === void 0 ? this.stepId : stepId, prevStepId === void 0 ? this.prevStepId : prevStepId);
+  SolutionsStepITR.prototype.copy_x48ucd$ = function (stepExpression, substitution, selectedPlacesNodeIds, stepId, prevStepId) {
+    return new SolutionsStepITR(stepExpression === void 0 ? this.stepExpression : stepExpression, substitution === void 0 ? this.substitution : substitution, selectedPlacesNodeIds === void 0 ? this.selectedPlacesNodeIds : selectedPlacesNodeIds, stepId === void 0 ? this.stepId : stepId, prevStepId === void 0 ? this.prevStepId : prevStepId);
   };
   SolutionsStepITR.prototype.toString = function () {
-    return 'SolutionsStepITR(stepExpression=' + Kotlin.toString(this.stepExpression) + (', rule=' + Kotlin.toString(this.rule)) + (', selectedPlacesNodeIds=' + Kotlin.toString(this.selectedPlacesNodeIds)) + (', stepId=' + Kotlin.toString(this.stepId)) + (', prevStepId=' + Kotlin.toString(this.prevStepId)) + ')';
+    return 'SolutionsStepITR(stepExpression=' + Kotlin.toString(this.stepExpression) + (', substitution=' + Kotlin.toString(this.substitution)) + (', selectedPlacesNodeIds=' + Kotlin.toString(this.selectedPlacesNodeIds)) + (', stepId=' + Kotlin.toString(this.stepId)) + (', prevStepId=' + Kotlin.toString(this.prevStepId)) + ')';
   };
   SolutionsStepITR.prototype.hashCode = function () {
     var result = 0;
     result = result * 31 + Kotlin.hashCode(this.stepExpression) | 0;
-    result = result * 31 + Kotlin.hashCode(this.rule) | 0;
+    result = result * 31 + Kotlin.hashCode(this.substitution) | 0;
     result = result * 31 + Kotlin.hashCode(this.selectedPlacesNodeIds) | 0;
     result = result * 31 + Kotlin.hashCode(this.stepId) | 0;
     result = result * 31 + Kotlin.hashCode(this.prevStepId) | 0;
     return result;
   };
   SolutionsStepITR.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.stepExpression, other.stepExpression) && Kotlin.equals(this.rule, other.rule) && Kotlin.equals(this.selectedPlacesNodeIds, other.selectedPlacesNodeIds) && Kotlin.equals(this.stepId, other.stepId) && Kotlin.equals(this.prevStepId, other.prevStepId)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.stepExpression, other.stepExpression) && Kotlin.equals(this.substitution, other.substitution) && Kotlin.equals(this.selectedPlacesNodeIds, other.selectedPlacesNodeIds) && Kotlin.equals(this.stepId, other.stepId) && Kotlin.equals(this.prevStepId, other.prevStepId)))));
   };
   function HintITR(textEn, textRu, showPattern, text) {
     if (textEn === void 0)
@@ -6393,7 +6578,7 @@ if (typeof kotlin === 'undefined') {
   InterestingFact.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.textEn, other.textEn) && Kotlin.equals(this.textRu, other.textRu) && Kotlin.equals(this.showCondition, other.showCondition)))));
   };
-  function TaskITR(taskCreationType, code, version, namespaceCode, nameEn, nameRu, descriptionShortEn, descriptionShortRu, descriptionEn, descriptionRu, subjectType, tags, originalExpressionStructureString, originalExpressionTex, originalExpressionPlainText, goalType, goalExpressionStructureString, goalExpressionTex, goalExpressionPlainText, goalPattern, goalNumberProperty, otherGoalData, rulePacks, rules, stepsNumber, time, difficulty, solutionPlainText, solutionsStepsTree, hints, otherCheckSolutionData, countOfAutoGeneratedTasks, otherAutoGenerationData, interestingFacts, otherAwardData, nextRecommendedTasks, otherData, comment, domainConditionDescription, domainConditionDescriptionEn, domainConditionDescriptionRu) {
+  function TaskITR(taskCreationType, code, version, namespaceCode, nameEn, nameRu, descriptionShortEn, descriptionShortRu, descriptionEn, descriptionRu, subjectType, tags, originalExpressionStructureString, originalExpressionTex, originalExpressionPlainText, goalType, goalExpressionStructureString, goalExpressionTex, goalExpressionPlainText, goalPattern, goalNumberProperty, otherGoalData, rulePacks, rules, stepsNumber, time, difficulty, solutionPlainText, solutionsStepsTree, hints, otherCheckSolutionData, countOfAutoGeneratedTasks, otherAutoGenerationData, interestingFacts, otherAwardData, nextRecommendedTasks, otherData, comment, domainConditionDescription, domainConditionDescriptionEn, domainConditionDescriptionRu, expressionTaskIntermediateData) {
     if (taskCreationType === void 0)
       taskCreationType = null;
     if (code === void 0)
@@ -6474,6 +6659,8 @@ if (typeof kotlin === 'undefined') {
       domainConditionDescriptionEn = null;
     if (domainConditionDescriptionRu === void 0)
       domainConditionDescriptionRu = null;
+    if (expressionTaskIntermediateData === void 0)
+      expressionTaskIntermediateData = new ExpressionTaskIntermediateData();
     this.taskCreationType = taskCreationType;
     this.code = code;
     this.version = version;
@@ -6515,6 +6702,7 @@ if (typeof kotlin === 'undefined') {
     this.domainConditionDescription = domainConditionDescription;
     this.domainConditionDescriptionEn = domainConditionDescriptionEn;
     this.domainConditionDescriptionRu = domainConditionDescriptionRu;
+    this.expressionTaskIntermediateData = expressionTaskIntermediateData;
     var tmp$, tmp$_0;
     var expressionStructureConditionConstructor = new ExpressionStructureConditionConstructor(new CompiledConfiguration(void 0, new FunctionConfiguration()));
     var tmp$_1 = equals(this.goalType, 'computation');
@@ -6805,7 +6993,7 @@ if (typeof kotlin === 'undefined') {
       tmp$_1 = destination;
     } else
       tmp$_1 = null;
-    return this.copy_cfir89$(void 0, tmp$, void 0, namespaceCode, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, tmp$_1);
+    return this.copy_s45c2s$(void 0, tmp$, void 0, namespaceCode, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, tmp$_1);
   };
   function TaskITR_init$lambda(it) {
     return it.variableName;
@@ -6959,11 +7147,14 @@ if (typeof kotlin === 'undefined') {
   TaskITR.prototype.component41 = function () {
     return this.domainConditionDescriptionRu;
   };
-  TaskITR.prototype.copy_cfir89$ = function (taskCreationType, code, version, namespaceCode, nameEn, nameRu, descriptionShortEn, descriptionShortRu, descriptionEn, descriptionRu, subjectType, tags, originalExpressionStructureString, originalExpressionTex, originalExpressionPlainText, goalType, goalExpressionStructureString, goalExpressionTex, goalExpressionPlainText, goalPattern, goalNumberProperty, otherGoalData, rulePacks, rules, stepsNumber, time, difficulty, solutionPlainText, solutionsStepsTree, hints, otherCheckSolutionData, countOfAutoGeneratedTasks, otherAutoGenerationData, interestingFacts, otherAwardData, nextRecommendedTasks, otherData, comment, domainConditionDescription, domainConditionDescriptionEn, domainConditionDescriptionRu) {
-    return new TaskITR(taskCreationType === void 0 ? this.taskCreationType : taskCreationType, code === void 0 ? this.code : code, version === void 0 ? this.version : version, namespaceCode === void 0 ? this.namespaceCode : namespaceCode, nameEn === void 0 ? this.nameEn : nameEn, nameRu === void 0 ? this.nameRu : nameRu, descriptionShortEn === void 0 ? this.descriptionShortEn : descriptionShortEn, descriptionShortRu === void 0 ? this.descriptionShortRu : descriptionShortRu, descriptionEn === void 0 ? this.descriptionEn : descriptionEn, descriptionRu === void 0 ? this.descriptionRu : descriptionRu, subjectType === void 0 ? this.subjectType : subjectType, tags === void 0 ? this.tags : tags, originalExpressionStructureString === void 0 ? this.originalExpressionStructureString : originalExpressionStructureString, originalExpressionTex === void 0 ? this.originalExpressionTex : originalExpressionTex, originalExpressionPlainText === void 0 ? this.originalExpressionPlainText : originalExpressionPlainText, goalType === void 0 ? this.goalType : goalType, goalExpressionStructureString === void 0 ? this.goalExpressionStructureString : goalExpressionStructureString, goalExpressionTex === void 0 ? this.goalExpressionTex : goalExpressionTex, goalExpressionPlainText === void 0 ? this.goalExpressionPlainText : goalExpressionPlainText, goalPattern === void 0 ? this.goalPattern : goalPattern, goalNumberProperty === void 0 ? this.goalNumberProperty : goalNumberProperty, otherGoalData === void 0 ? this.otherGoalData : otherGoalData, rulePacks === void 0 ? this.rulePacks : rulePacks, rules === void 0 ? this.rules : rules, stepsNumber === void 0 ? this.stepsNumber : stepsNumber, time === void 0 ? this.time : time, difficulty === void 0 ? this.difficulty : difficulty, solutionPlainText === void 0 ? this.solutionPlainText : solutionPlainText, solutionsStepsTree === void 0 ? this.solutionsStepsTree : solutionsStepsTree, hints === void 0 ? this.hints : hints, otherCheckSolutionData === void 0 ? this.otherCheckSolutionData : otherCheckSolutionData, countOfAutoGeneratedTasks === void 0 ? this.countOfAutoGeneratedTasks : countOfAutoGeneratedTasks, otherAutoGenerationData === void 0 ? this.otherAutoGenerationData : otherAutoGenerationData, interestingFacts === void 0 ? this.interestingFacts : interestingFacts, otherAwardData === void 0 ? this.otherAwardData : otherAwardData, nextRecommendedTasks === void 0 ? this.nextRecommendedTasks : nextRecommendedTasks, otherData === void 0 ? this.otherData : otherData, comment === void 0 ? this.comment : comment, domainConditionDescription === void 0 ? this.domainConditionDescription : domainConditionDescription, domainConditionDescriptionEn === void 0 ? this.domainConditionDescriptionEn : domainConditionDescriptionEn, domainConditionDescriptionRu === void 0 ? this.domainConditionDescriptionRu : domainConditionDescriptionRu);
+  TaskITR.prototype.component42 = function () {
+    return this.expressionTaskIntermediateData;
+  };
+  TaskITR.prototype.copy_s45c2s$ = function (taskCreationType, code, version, namespaceCode, nameEn, nameRu, descriptionShortEn, descriptionShortRu, descriptionEn, descriptionRu, subjectType, tags, originalExpressionStructureString, originalExpressionTex, originalExpressionPlainText, goalType, goalExpressionStructureString, goalExpressionTex, goalExpressionPlainText, goalPattern, goalNumberProperty, otherGoalData, rulePacks, rules, stepsNumber, time, difficulty, solutionPlainText, solutionsStepsTree, hints, otherCheckSolutionData, countOfAutoGeneratedTasks, otherAutoGenerationData, interestingFacts, otherAwardData, nextRecommendedTasks, otherData, comment, domainConditionDescription, domainConditionDescriptionEn, domainConditionDescriptionRu, expressionTaskIntermediateData) {
+    return new TaskITR(taskCreationType === void 0 ? this.taskCreationType : taskCreationType, code === void 0 ? this.code : code, version === void 0 ? this.version : version, namespaceCode === void 0 ? this.namespaceCode : namespaceCode, nameEn === void 0 ? this.nameEn : nameEn, nameRu === void 0 ? this.nameRu : nameRu, descriptionShortEn === void 0 ? this.descriptionShortEn : descriptionShortEn, descriptionShortRu === void 0 ? this.descriptionShortRu : descriptionShortRu, descriptionEn === void 0 ? this.descriptionEn : descriptionEn, descriptionRu === void 0 ? this.descriptionRu : descriptionRu, subjectType === void 0 ? this.subjectType : subjectType, tags === void 0 ? this.tags : tags, originalExpressionStructureString === void 0 ? this.originalExpressionStructureString : originalExpressionStructureString, originalExpressionTex === void 0 ? this.originalExpressionTex : originalExpressionTex, originalExpressionPlainText === void 0 ? this.originalExpressionPlainText : originalExpressionPlainText, goalType === void 0 ? this.goalType : goalType, goalExpressionStructureString === void 0 ? this.goalExpressionStructureString : goalExpressionStructureString, goalExpressionTex === void 0 ? this.goalExpressionTex : goalExpressionTex, goalExpressionPlainText === void 0 ? this.goalExpressionPlainText : goalExpressionPlainText, goalPattern === void 0 ? this.goalPattern : goalPattern, goalNumberProperty === void 0 ? this.goalNumberProperty : goalNumberProperty, otherGoalData === void 0 ? this.otherGoalData : otherGoalData, rulePacks === void 0 ? this.rulePacks : rulePacks, rules === void 0 ? this.rules : rules, stepsNumber === void 0 ? this.stepsNumber : stepsNumber, time === void 0 ? this.time : time, difficulty === void 0 ? this.difficulty : difficulty, solutionPlainText === void 0 ? this.solutionPlainText : solutionPlainText, solutionsStepsTree === void 0 ? this.solutionsStepsTree : solutionsStepsTree, hints === void 0 ? this.hints : hints, otherCheckSolutionData === void 0 ? this.otherCheckSolutionData : otherCheckSolutionData, countOfAutoGeneratedTasks === void 0 ? this.countOfAutoGeneratedTasks : countOfAutoGeneratedTasks, otherAutoGenerationData === void 0 ? this.otherAutoGenerationData : otherAutoGenerationData, interestingFacts === void 0 ? this.interestingFacts : interestingFacts, otherAwardData === void 0 ? this.otherAwardData : otherAwardData, nextRecommendedTasks === void 0 ? this.nextRecommendedTasks : nextRecommendedTasks, otherData === void 0 ? this.otherData : otherData, comment === void 0 ? this.comment : comment, domainConditionDescription === void 0 ? this.domainConditionDescription : domainConditionDescription, domainConditionDescriptionEn === void 0 ? this.domainConditionDescriptionEn : domainConditionDescriptionEn, domainConditionDescriptionRu === void 0 ? this.domainConditionDescriptionRu : domainConditionDescriptionRu, expressionTaskIntermediateData === void 0 ? this.expressionTaskIntermediateData : expressionTaskIntermediateData);
   };
   TaskITR.prototype.toString = function () {
-    return 'TaskITR(taskCreationType=' + Kotlin.toString(this.taskCreationType) + (', code=' + Kotlin.toString(this.code)) + (', version=' + Kotlin.toString(this.version)) + (', namespaceCode=' + Kotlin.toString(this.namespaceCode)) + (', nameEn=' + Kotlin.toString(this.nameEn)) + (', nameRu=' + Kotlin.toString(this.nameRu)) + (', descriptionShortEn=' + Kotlin.toString(this.descriptionShortEn)) + (', descriptionShortRu=' + Kotlin.toString(this.descriptionShortRu)) + (', descriptionEn=' + Kotlin.toString(this.descriptionEn)) + (', descriptionRu=' + Kotlin.toString(this.descriptionRu)) + (', subjectType=' + Kotlin.toString(this.subjectType)) + (', tags=' + Kotlin.toString(this.tags)) + (', originalExpressionStructureString=' + Kotlin.toString(this.originalExpressionStructureString)) + (', originalExpressionTex=' + Kotlin.toString(this.originalExpressionTex)) + (', originalExpressionPlainText=' + Kotlin.toString(this.originalExpressionPlainText)) + (', goalType=' + Kotlin.toString(this.goalType)) + (', goalExpressionStructureString=' + Kotlin.toString(this.goalExpressionStructureString)) + (', goalExpressionTex=' + Kotlin.toString(this.goalExpressionTex)) + (', goalExpressionPlainText=' + Kotlin.toString(this.goalExpressionPlainText)) + (', goalPattern=' + Kotlin.toString(this.goalPattern)) + (', goalNumberProperty=' + Kotlin.toString(this.goalNumberProperty)) + (', otherGoalData=' + Kotlin.toString(this.otherGoalData)) + (', rulePacks=' + Kotlin.toString(this.rulePacks)) + (', rules=' + Kotlin.toString(this.rules)) + (', stepsNumber=' + Kotlin.toString(this.stepsNumber)) + (', time=' + Kotlin.toString(this.time)) + (', difficulty=' + Kotlin.toString(this.difficulty)) + (', solutionPlainText=' + Kotlin.toString(this.solutionPlainText)) + (', solutionsStepsTree=' + Kotlin.toString(this.solutionsStepsTree)) + (', hints=' + Kotlin.toString(this.hints)) + (', otherCheckSolutionData=' + Kotlin.toString(this.otherCheckSolutionData)) + (', countOfAutoGeneratedTasks=' + Kotlin.toString(this.countOfAutoGeneratedTasks)) + (', otherAutoGenerationData=' + Kotlin.toString(this.otherAutoGenerationData)) + (', interestingFacts=' + Kotlin.toString(this.interestingFacts)) + (', otherAwardData=' + Kotlin.toString(this.otherAwardData)) + (', nextRecommendedTasks=' + Kotlin.toString(this.nextRecommendedTasks)) + (', otherData=' + Kotlin.toString(this.otherData)) + (', comment=' + Kotlin.toString(this.comment)) + (', domainConditionDescription=' + Kotlin.toString(this.domainConditionDescription)) + (', domainConditionDescriptionEn=' + Kotlin.toString(this.domainConditionDescriptionEn)) + (', domainConditionDescriptionRu=' + Kotlin.toString(this.domainConditionDescriptionRu)) + ')';
+    return 'TaskITR(taskCreationType=' + Kotlin.toString(this.taskCreationType) + (', code=' + Kotlin.toString(this.code)) + (', version=' + Kotlin.toString(this.version)) + (', namespaceCode=' + Kotlin.toString(this.namespaceCode)) + (', nameEn=' + Kotlin.toString(this.nameEn)) + (', nameRu=' + Kotlin.toString(this.nameRu)) + (', descriptionShortEn=' + Kotlin.toString(this.descriptionShortEn)) + (', descriptionShortRu=' + Kotlin.toString(this.descriptionShortRu)) + (', descriptionEn=' + Kotlin.toString(this.descriptionEn)) + (', descriptionRu=' + Kotlin.toString(this.descriptionRu)) + (', subjectType=' + Kotlin.toString(this.subjectType)) + (', tags=' + Kotlin.toString(this.tags)) + (', originalExpressionStructureString=' + Kotlin.toString(this.originalExpressionStructureString)) + (', originalExpressionTex=' + Kotlin.toString(this.originalExpressionTex)) + (', originalExpressionPlainText=' + Kotlin.toString(this.originalExpressionPlainText)) + (', goalType=' + Kotlin.toString(this.goalType)) + (', goalExpressionStructureString=' + Kotlin.toString(this.goalExpressionStructureString)) + (', goalExpressionTex=' + Kotlin.toString(this.goalExpressionTex)) + (', goalExpressionPlainText=' + Kotlin.toString(this.goalExpressionPlainText)) + (', goalPattern=' + Kotlin.toString(this.goalPattern)) + (', goalNumberProperty=' + Kotlin.toString(this.goalNumberProperty)) + (', otherGoalData=' + Kotlin.toString(this.otherGoalData)) + (', rulePacks=' + Kotlin.toString(this.rulePacks)) + (', rules=' + Kotlin.toString(this.rules)) + (', stepsNumber=' + Kotlin.toString(this.stepsNumber)) + (', time=' + Kotlin.toString(this.time)) + (', difficulty=' + Kotlin.toString(this.difficulty)) + (', solutionPlainText=' + Kotlin.toString(this.solutionPlainText)) + (', solutionsStepsTree=' + Kotlin.toString(this.solutionsStepsTree)) + (', hints=' + Kotlin.toString(this.hints)) + (', otherCheckSolutionData=' + Kotlin.toString(this.otherCheckSolutionData)) + (', countOfAutoGeneratedTasks=' + Kotlin.toString(this.countOfAutoGeneratedTasks)) + (', otherAutoGenerationData=' + Kotlin.toString(this.otherAutoGenerationData)) + (', interestingFacts=' + Kotlin.toString(this.interestingFacts)) + (', otherAwardData=' + Kotlin.toString(this.otherAwardData)) + (', nextRecommendedTasks=' + Kotlin.toString(this.nextRecommendedTasks)) + (', otherData=' + Kotlin.toString(this.otherData)) + (', comment=' + Kotlin.toString(this.comment)) + (', domainConditionDescription=' + Kotlin.toString(this.domainConditionDescription)) + (', domainConditionDescriptionEn=' + Kotlin.toString(this.domainConditionDescriptionEn)) + (', domainConditionDescriptionRu=' + Kotlin.toString(this.domainConditionDescriptionRu)) + (', expressionTaskIntermediateData=' + Kotlin.toString(this.expressionTaskIntermediateData)) + ')';
   };
   TaskITR.prototype.hashCode = function () {
     var result = 0;
@@ -7008,10 +7199,11 @@ if (typeof kotlin === 'undefined') {
     result = result * 31 + Kotlin.hashCode(this.domainConditionDescription) | 0;
     result = result * 31 + Kotlin.hashCode(this.domainConditionDescriptionEn) | 0;
     result = result * 31 + Kotlin.hashCode(this.domainConditionDescriptionRu) | 0;
+    result = result * 31 + Kotlin.hashCode(this.expressionTaskIntermediateData) | 0;
     return result;
   };
   TaskITR.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.taskCreationType, other.taskCreationType) && Kotlin.equals(this.code, other.code) && Kotlin.equals(this.version, other.version) && Kotlin.equals(this.namespaceCode, other.namespaceCode) && Kotlin.equals(this.nameEn, other.nameEn) && Kotlin.equals(this.nameRu, other.nameRu) && Kotlin.equals(this.descriptionShortEn, other.descriptionShortEn) && Kotlin.equals(this.descriptionShortRu, other.descriptionShortRu) && Kotlin.equals(this.descriptionEn, other.descriptionEn) && Kotlin.equals(this.descriptionRu, other.descriptionRu) && Kotlin.equals(this.subjectType, other.subjectType) && Kotlin.equals(this.tags, other.tags) && Kotlin.equals(this.originalExpressionStructureString, other.originalExpressionStructureString) && Kotlin.equals(this.originalExpressionTex, other.originalExpressionTex) && Kotlin.equals(this.originalExpressionPlainText, other.originalExpressionPlainText) && Kotlin.equals(this.goalType, other.goalType) && Kotlin.equals(this.goalExpressionStructureString, other.goalExpressionStructureString) && Kotlin.equals(this.goalExpressionTex, other.goalExpressionTex) && Kotlin.equals(this.goalExpressionPlainText, other.goalExpressionPlainText) && Kotlin.equals(this.goalPattern, other.goalPattern) && Kotlin.equals(this.goalNumberProperty, other.goalNumberProperty) && Kotlin.equals(this.otherGoalData, other.otherGoalData) && Kotlin.equals(this.rulePacks, other.rulePacks) && Kotlin.equals(this.rules, other.rules) && Kotlin.equals(this.stepsNumber, other.stepsNumber) && Kotlin.equals(this.time, other.time) && Kotlin.equals(this.difficulty, other.difficulty) && Kotlin.equals(this.solutionPlainText, other.solutionPlainText) && Kotlin.equals(this.solutionsStepsTree, other.solutionsStepsTree) && Kotlin.equals(this.hints, other.hints) && Kotlin.equals(this.otherCheckSolutionData, other.otherCheckSolutionData) && Kotlin.equals(this.countOfAutoGeneratedTasks, other.countOfAutoGeneratedTasks) && Kotlin.equals(this.otherAutoGenerationData, other.otherAutoGenerationData) && Kotlin.equals(this.interestingFacts, other.interestingFacts) && Kotlin.equals(this.otherAwardData, other.otherAwardData) && Kotlin.equals(this.nextRecommendedTasks, other.nextRecommendedTasks) && Kotlin.equals(this.otherData, other.otherData) && Kotlin.equals(this.comment, other.comment) && Kotlin.equals(this.domainConditionDescription, other.domainConditionDescription) && Kotlin.equals(this.domainConditionDescriptionEn, other.domainConditionDescriptionEn) && Kotlin.equals(this.domainConditionDescriptionRu, other.domainConditionDescriptionRu)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.taskCreationType, other.taskCreationType) && Kotlin.equals(this.code, other.code) && Kotlin.equals(this.version, other.version) && Kotlin.equals(this.namespaceCode, other.namespaceCode) && Kotlin.equals(this.nameEn, other.nameEn) && Kotlin.equals(this.nameRu, other.nameRu) && Kotlin.equals(this.descriptionShortEn, other.descriptionShortEn) && Kotlin.equals(this.descriptionShortRu, other.descriptionShortRu) && Kotlin.equals(this.descriptionEn, other.descriptionEn) && Kotlin.equals(this.descriptionRu, other.descriptionRu) && Kotlin.equals(this.subjectType, other.subjectType) && Kotlin.equals(this.tags, other.tags) && Kotlin.equals(this.originalExpressionStructureString, other.originalExpressionStructureString) && Kotlin.equals(this.originalExpressionTex, other.originalExpressionTex) && Kotlin.equals(this.originalExpressionPlainText, other.originalExpressionPlainText) && Kotlin.equals(this.goalType, other.goalType) && Kotlin.equals(this.goalExpressionStructureString, other.goalExpressionStructureString) && Kotlin.equals(this.goalExpressionTex, other.goalExpressionTex) && Kotlin.equals(this.goalExpressionPlainText, other.goalExpressionPlainText) && Kotlin.equals(this.goalPattern, other.goalPattern) && Kotlin.equals(this.goalNumberProperty, other.goalNumberProperty) && Kotlin.equals(this.otherGoalData, other.otherGoalData) && Kotlin.equals(this.rulePacks, other.rulePacks) && Kotlin.equals(this.rules, other.rules) && Kotlin.equals(this.stepsNumber, other.stepsNumber) && Kotlin.equals(this.time, other.time) && Kotlin.equals(this.difficulty, other.difficulty) && Kotlin.equals(this.solutionPlainText, other.solutionPlainText) && Kotlin.equals(this.solutionsStepsTree, other.solutionsStepsTree) && Kotlin.equals(this.hints, other.hints) && Kotlin.equals(this.otherCheckSolutionData, other.otherCheckSolutionData) && Kotlin.equals(this.countOfAutoGeneratedTasks, other.countOfAutoGeneratedTasks) && Kotlin.equals(this.otherAutoGenerationData, other.otherAutoGenerationData) && Kotlin.equals(this.interestingFacts, other.interestingFacts) && Kotlin.equals(this.otherAwardData, other.otherAwardData) && Kotlin.equals(this.nextRecommendedTasks, other.nextRecommendedTasks) && Kotlin.equals(this.otherData, other.otherData) && Kotlin.equals(this.comment, other.comment) && Kotlin.equals(this.domainConditionDescription, other.domainConditionDescription) && Kotlin.equals(this.domainConditionDescriptionEn, other.domainConditionDescriptionEn) && Kotlin.equals(this.domainConditionDescriptionRu, other.domainConditionDescriptionRu) && Kotlin.equals(this.expressionTaskIntermediateData, other.expressionTaskIntermediateData)))));
   };
   function TaskSetITR(code, version, namespaceCode, nameEn, nameRu, descriptionShortEn, descriptionShortRu, descriptionEn, descriptionRu, subjectType, tags, recommendedByCommunity, otherData, tasks) {
     if (code === void 0)
@@ -7255,7 +7447,7 @@ if (typeof kotlin === 'undefined') {
       tmp$_6 = tmp$_2.iterator();
       while (tmp$_6.hasNext()) {
         var item_0 = tmp$_6.next();
-        destination_0.add_11rb$(item_0.copy_wjiu63$());
+        destination_0.add_11rb$(item_0.copy_e86izw$());
       }
       tmp$_5 = destination_0;
     } else
@@ -7392,9 +7584,12 @@ if (typeof kotlin === 'undefined') {
   var PI_STRING_ASCII;
   var PI_STRING_UNICODE;
   var PI_STRING_TEX;
-  var PI_STRING_USIAL;
+  var E_STRING;
+  var E_STRING_UNICODE;
+  var PI_STRING_USUAL;
+  var E_STRING_USUAL;
   function VariableConfiguration() {
-    this.variableImmediateReplacementRules = listOf_0([new VariableReplacementRule('e', '2.7182818284590452353602874713526'), new VariableReplacementRule('pi', PI_STRING), new VariableReplacementRule('\u03C0', PI_STRING), new VariableReplacementRule('&#x3C0', PI_STRING), new VariableReplacementRule('&#x3C0;', PI_STRING)]);
+    this.variableImmediateReplacementRules = listOf_0([new VariableReplacementRule('e', E_STRING), new VariableReplacementRule('pi', PI_STRING), new VariableReplacementRule('\u03C0', PI_STRING), new VariableReplacementRule('&#x3C0', PI_STRING), new VariableReplacementRule('&#x3C0;', PI_STRING)]);
     var $receiver = this.variableImmediateReplacementRules;
     var destination = ArrayList_init_0(collectionSizeOrDefault($receiver, 10));
     var tmp$;
@@ -8792,7 +8987,7 @@ if (typeof kotlin === 'undefined') {
   }
   function DefaultStandardMathRulePacks$Companion() {
     DefaultStandardMathRulePacks$Companion_instance = this;
-    this.defaultStandardMathRulePacks = plus(listOf_0([new RulePackITR('ArithmeticPositiveAddition', void 0, void 0, 'Addition of Positive Numbers', '\u0421\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u043F\u043E\u043B\u043E\u0436\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0445 \u0447\u0438\u0441\u0435\u043B', 'Addition of Positive Numbers', '\u041F\u0440\u0430\u0432\u0438\u043B \u0434\u043B\u044F \u0437\u0430\u0434\u0430\u0447 \u043D\u0430 \u0441\u0447\u0435\u0442 \u0434\u043B\u044F \u043D\u0430\u0447\u0438\u043D\u0430\u044E\u0449\u0438\u0445', 'Addition of Positive Numbers', '\u041F\u0440\u0430\u0432\u0438\u043B\u0430 \u0434\u043B\u044F \u0437\u0430\u0434\u0430\u0447 \u043D\u0430 \u0441\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0438 \u0432\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435 \u043F\u043E\u043B\u043E\u0436\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0445 \u0447\u0438\u0441\u0435\u043B. \u0421\u043E\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u044B \u0442\u0430\u043A, \u0447\u0442\u043E\u0431\u044B \u043D\u0435 \u0434\u0430\u0442\u044C \u0432\u044B\u0439\u0442\u0438 \u0432 \u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u0443\u044E \u043E\u0431\u043B\u0430\u0441\u0442\u044C', 'standard_math', void 0, listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;b))', '(+(b;a))', 20, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(+(a;0))', 35, true, false, false, false), new RuleITR('SimpleComputation', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 5, false, false, false, false), new RuleITR('ZeroComputation', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 5, false, false, false, false), new RuleITR('PositiveNumberPlusMinus1', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 20, false, false, false, false), new RuleITR('ParentBracketsExpansion', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 30, false, false, false, false), new RuleITR('ArgumentsSwap', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 40, false, false, false, false), new RuleITR('ArgumentsPermutation', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 40, false, false, false, false), new RuleITR('ArgumentsPermutationInOriginalOrder', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 41, false, false, false, false)])), new RulePackITR('ArithmeticAddition', void 0, void 0, 'Addition and Subtraction', '\u0421\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0438 \u0432\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435', 'Arithmetic Addition and Subtraction', '\u0410\u0440\u0438\u0444\u043C\u0435\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0435 \u0441\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0438 \u0432\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435', void 0, void 0, 'standard_math', void 0, listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;b))', '(+(b;a))', 20, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(+(a;0))', 90, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(+(-(a)))))', '(a)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(+(-(a))))', '(a)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(-(a)))', '(a)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(-(+(-(a))))', 95, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;-(a)))', '(0)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(a);a))', '(0)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;+(-(a))))', '(0)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(+(-(a));a))', '(0)', 4, false, false, false, false), new RuleITR('SimpleComputation', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 5, false, false, false, false), new RuleITR('ZeroComputation', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 5, false, false, false, false), new RuleITR('NumberPlusMinus1', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 20, false, false, false, false), new RuleITR('MinusInOutBrackets', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 31, false, false, false, false), new RuleITR('ParentBracketsExpansion', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 30, false, false, false, false), new RuleITR('ArgumentsSwap', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 40, false, false, false, false), new RuleITR('ArgumentsPermutation', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 40, false, false, false, false), new RuleITR('ArgumentsPermutationInOriginalOrder', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 41, false, false, false, false), new RuleITR('AdditiveComplicatingExtension', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 92, false, false, false, false)])), new RulePackITR('ArithmeticMultiplication', void 0, void 0, 'Addition Subtraction Multiplication', '\u0421\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0432\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435 \u0443\u043C\u043D\u043E\u0436\u0435\u043D\u0438\u0435', 'Arithmetic Addition, Subtraction and Multiplication', '\u0410\u0440\u0438\u0444\u043C\u0435\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0435 \u0441\u043B\u043E\u0436\u0435\u043D\u0438\u0435, \u0432\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435 \u0438 \u0443\u043D\u043E\u0436\u0435\u043D\u0438\u0435', void 0, void 0, 'standard_math', listOf(new RulePackLinkITR(void 0, 'ArithmeticAddition')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;0))', '(0)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(0;a))', '(0)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0)', '(*(a;0))', 35, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;1))', '(a)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(1;a))', '(a)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(*(a;1))', 35, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;b))', '(*(b;a))', 20, true, false, false, false), new RuleITR('OpeningBrackets', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 30, false, false, false, false), new RuleITR('ReduceArithmetic', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 10, false, false, false, false), new RuleITR('TwoSidesArithmeticReduce', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 10, false, false, false, false), new RuleITR('MultiplicationFactorization', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 15, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;a))', '(*(2;a))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;+(a)))', '(*(2;a))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(+(a);a))', '(*(2;a))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(2;a))', '(+(a;a))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;*(a;n)))', '(*(a;+(n;1)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;+(n;1)))', '(+(a;*(a;n)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(*(a;n);a))', '(*(a;+(1;n)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;+(1;n)))', '(+(*(a;n);a))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(*(A;C)))', '(*(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(-(A);C))', '(+(-(*(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(*(A;C)))', '(*(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;-(C)))', '(+(-(*(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;-(C)))', '(*(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(-(A);C))', '(*(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(*(A;C))))', '(*(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(-(A));C))', '(+(-(*(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(*(A;C))))', '(*(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;+(-(C))))', '(+(-(*(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;+(-(C))))', '(*(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(-(A));C))', '(*(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(-(A);-(B)))', '(*(A;B))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;B))', '(*(+(-(A));+(-(B))))', 80, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(-(A));+(-(B))))', '(*(A;B))', 35, false, false, false, false)])), new RulePackITR('ArithmeticDivision', void 0, void 0, 'Rational Numbers', '\u0420\u0430\u0446\u0438\u043E\u043D\u0430\u043B\u044C\u043D\u044B\u0435 \u0447\u0438\u0441\u043B\u0430', 'Addition, Subtraction, Multiplication and Division', '\u0421\u043B\u043E\u0436\u0435\u043D\u0438\u0435, \u0432\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435, \u0443\u043D\u043E\u0436\u0435\u043D\u0438\u0435 \u0438 \u0434\u0435\u043B\u0435\u043D\u0438\u0435', void 0, void 0, 'standard_math', listOf(new RulePackLinkITR(void 0, 'ArithmeticMultiplication')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(0;a))', '(0)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(a;1))', '(a)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(a;a))', '(1)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(/(1;a);a))', '(1)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;/(1;a)))', '(a)', 4, false, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(/(1;/(1;a)))', 90, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0.5)', '(/(1;2))', 15, false, false, true, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;2))', '(0.5)', 5, false, false, true, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(a;b))', '(/(*(a;b);*(b;b)))', 90, true, false, false, false), new RuleITR('MultiplicativeComplicatingExtension', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 92, false, false, false, false), new RuleITR('ReduceFraction', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 10, false, false, false, false), new RuleITR('DecimalToFraction', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 15, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(/(A;C)))', '(/(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(-(A);C))', '(+(-(/(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(/(A;C)))', '(/(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;-(C)))', '(+(-(/(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;-(C)))', '(/(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(-(A);C))', '(/(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(/(A;C))))', '(/(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(-(A));C))', '(+(-(/(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(/(A;C))))', '(/(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;+(-(C))))', '(+(-(/(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;+(-(C))))', '(/(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(-(A));C))', '(/(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(-(A);-(B)))', '(/(A;B))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;B))', '(/(+(-(A));+(-(B))))', 80, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(-(A));+(-(B))))', '(/(A;B))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(/(B;C);/(A;D)))', '(/(+(*(B;D);*(C;A));*(C;D)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(/(B;C);-(/(A;D))))', '(/(+(*(B;D);-(*(C;A)));*(C;D)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;/(B;A)))', '(B)', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(/(B;A);A))', '(B)', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;/(B;C)))', '(/(*(A;B);C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(/(B;C);A))', '(/(*(A;B);C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;B))', '(/(1;/(B;A)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;/(B;A)))', '(/(A;B))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(A;B);C))', '(*(A;/(B;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(/(B;C);A))', '(/(B;*(A;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(B;*(A;C)))', '(/(/(B;C);A))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;/(B;C)))', '(/(*(A;C);B))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(A;C);B))', '(/(A;/(B;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;*(B;C)))', '(*(/(A;B);/(1;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;*(B;C)))', '(*(/(1;B);/(A;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(/(A;B);/(1;C)))', '(/(A;*(B;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(/(1;B);/(A;C)))', '(/(A;*(B;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(/(D;B);/(A;C)))', '(/(*(D;A);*(B;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(D;A);*(B;C)))', '(*(/(D;B);/(A;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(D;A);*(B;A)))', '(/(D;B))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(D;A);*(D;C)))', '(/(A;C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(D;A);D))', '(A)', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(A;D);D))', '(A)', 35, false, false, false, false)])), new RulePackITR('ArithmeticExponentiation', void 0, void 0, 'Algebraic Numbers', '\u0410\u043B\u0433\u0435\u0431\u0440\u0430\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0447\u0438\u0441\u043B\u0430', 'Pow, Ratio, Product, Difference, Sum', '\u0421\u0442\u0435\u043F\u0435\u043D\u044C, \u0447\u0430\u0441\u0442\u043D\u043E\u0435, \u0443\u043C\u043D\u043E\u0436\u0435\u043D\u0438\u0435, \u0440\u0430\u0437\u043D\u043E\u0441\u0442\u044C, \u0441\u0443\u043C\u043C\u0430', 'Pow, Division, Multiplication, Subtraction, Addition', '\u0412\u043E\u0437\u0432\u0435\u0434\u0435\u043D\u0438\u0435 \u0432 \u0441\u0442\u0435\u043F\u0435\u043D\u044C, \u0434\u0435\u043B\u0435\u043D\u0438\u0435, \u0443\u043C\u043D\u043E\u0436\u0435\u043D\u0438\u0435, \u0432\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435, \u0441\u043B\u043E\u0436\u0435\u043D\u0438\u0435', 'standard_math', listOf(new RulePackLinkITR(void 0, 'ArithmeticDivision')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(^(a;1))', 95, true, false, true, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(^(1;2))', 95, true, false, true, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(^(1;3))', 95, true, false, true, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;a))', '(^(a;+(-(1))))', 80, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;+(-(1))))', '(/(1;a))', 40, false, false, false, false), new RuleITR('PowFactorization', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 15, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;+(b;-(c))))', '(/(^(a;b);^(a;c)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(^(a;b);^(a;c)))', '(^(a;+(b;-(c))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(B;^(A;C)))', '(*(B;^(A;+(-(C)))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(B;^(A;+(-(C)))))', '(/(B;^(A;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;^(A;C)))', '(^(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(A;+(-(C))))', '(/(1;^(A;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;B))', '(^(/(B;A);+(-(1))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(/(B;A);+(-(1))))', '(/(A;B))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(A;0))', '(1)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(1;A))', '(1)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(A;1))', '(A)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(0;A))', '(0)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;a))', '(^(a;2))', 40, false, false, true, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;2))', '(*(a;a))', 40, false, false, true, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;^(a;n)))', '(^(a;+(n;1)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;+(n;1)))', '(*(a;^(a;n)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(^(a;n);a))', '(^(a;+(1;n)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;+(1;n)))', '(*(^(a;n);a))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(^(a;n);a))', '(^(a;+(n;-(1))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;+(n;-(1))))', '(/(^(a;n);a))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(A;*(B;C)))', '(^(^(A;B);C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(^(A;B);C))', '(^(A;*(B;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(/(B;C);A))', '(/(^(B;A);^(C;A)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(^(B;A);^(C;A)))', '(^(/(B;C);A))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(-(A);*(2;n)))', '(^(A;*(2;n)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(-(A);2))', '(^(A;2))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(+(-(A));*(2;n)))', '(^(A;*(2;n)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(+(-(A));2))', '(^(A;2))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;*(2;n)))', '(^(+(-(a));*(2;n)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;2))', '(^(+(-(a));2))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(^(a;b);/(1;b)))', '(a)', 5, false, false, false, false)])), new RulePackITR('ArithmeticPowExtension', void 0, void 0, 'Pow from Root and Root from Pow', '\u0421\u0442\u0435\u043F\u0435\u043D\u044C \u0438\u0437 \u043A\u043E\u0440\u043D\u044F \u0438 \u043A\u043E\u0440\u0435\u043D\u044C \u0438\u0437 \u0441\u0442\u0435\u043F\u0435\u043D\u0438', 'Straight and Reverse Application of Root and Pow', '\u041F\u0440\u044F\u043C\u043E\u0435 \u0438 \u043E\u0431\u0440\u0430\u0442\u043D\u043E\u0435 \u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u0435 \u0441\u0442\u0435\u043F\u0435\u043D\u0438 \u0438 \u043A\u043E\u0440\u043D\u044F', 'Moved to separate rule pack because of not full domain', '\u0412\u044B\u043D\u0435\u0441\u0435\u043D\u043E \u0432 \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u043F\u0430\u043A\u0435\u0442 \u043F\u0440\u0430\u0432\u0438\u043B \u0442\u0430\u043A \u043A\u0430\u043A \u043D\u0435 \u0432\u0435\u0437\u0434\u0435 \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043E', 'standard_math', listOf(new RulePackLinkITR(void 0, 'ArithmeticExponentiation')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(^(^(a;2);/(1;2)))', 96, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(^(^(a;/(1;2));2))', 96, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(^(^(a;3);/(1;3)))', 96, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(^(^(a;/(1;3));3))', 96, false, false, false, false)]))]), listOf_0([new RulePackITR('ShortMultiplication', void 0, void 0, 'Short Multiplication', '\u0421\u043E\u043A\u0440\u0430\u0449\u0435\u043D\u043D\u043E\u0435 \u0443\u043C\u043D\u043E\u0436\u0435\u043D\u0438\u0435', 'Short Multiplication Formulas', '\u0424\u043E\u0440\u043C\u0443\u043B\u044B \u0441\u043E\u043A\u0440\u0430\u0449\u0435\u043D\u043D\u043E\u0433\u043E \u0443\u043C\u043D\u043E\u0436\u0435\u043D\u0438\u044F', 'Difference of Squares, Square of Sum, Square of Difference, Sum of Cubes, Difference of Cubes, Cube of Sum, Cube of Difference', '\u0420\u0430\u0437\u043D\u043E\u0441\u0442\u044C \u043A\u0432\u0430\u0434\u0440\u0430\u0442\u043E\u0432, \u043A\u0432\u0430\u0434\u0440\u0430\u0442 \u0441\u0443\u043C\u043C\u044B, \u043A\u0432\u0430\u0434\u0440\u0430\u0442 \u0440\u0430\u0437\u043D\u043E\u0441\u0442\u0438, \u0441\u0443\u043C\u043C\u0430 \u043A\u0443\u0431\u043E\u0432, \u0440\u0430\u0437\u043D\u043E\u0441\u0442\u044C \u043A\u0443\u0431\u043E\u0432, \u043A\u0443\u0431 \u0441\u0443\u043C\u043C\u044B, \u043A\u0443\u0431 \u0440\u0430\u0437\u043D\u043E\u0441\u0442\u0438', 'standard_math', listOf(new RulePackLinkITR(void 0, 'ArithmeticExponentiation')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;2);-(^(b;2))))', '(*(+(a;-(b));+(a;b)))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(a;-(b));+(a;b)))', '(+(^(a;2);-(^(b;2))))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(+(a;b);2))', '(+(^(a;2);*(2;a;b);^(b;2)))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;2);*(2;a;b);^(b;2)))', '(^(+(a;b);2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;2);*(2;a);1))', '(^(+(a;1);2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(+(a;-(b));2))', '(+(^(a;2);-(*(2;a;b));^(b;2)))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;2);-(*(2;a;b));^(b;2)))', '(^(+(a;-(b));2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;2);-(*(2;a));1))', '(^(+(a;-(1));2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(+(a;b);3))', '(+(^(a;3);*(3;^(a;2);b);*(3;a;^(b;2));^(b;3)))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;3);*(3;^(a;2);b);*(3;a;^(b;2));^(b;3)))', '(^(+(a;b);3))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;3);*(3;^(a;2));*(3;a);1))', '(^(+(a;1);3))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(+(a;-(b));3))', '(+(^(a;3);-(*(3;^(a;2);b));*(3;a;^(b;2));-(^(b;3))))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;3);-(*(3;^(a;2);b));*(3;a;^(b;2));-(^(b;3))))', '(^(+(a;-(b));3))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;3);-(*(3;^(a;2)));*(3;a);-(1)))', '(^(+(a;-(1));3))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;3);-(^(b;3))))', '(*(+(a;-(b));+(^(a;2);*(a;b);^(b;2))))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(a;-(b));+(^(a;2);*(a;b);^(b;2))))', '(+(^(a;3);-(^(b;3))))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(a;-(1));+(^(a;2);a;1)))', '(+(^(a;3);-(^(1;3))))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;3);^(b;3)))', '(*(+(a;b);+(^(a;2);-(*(a;b));^(b;2))))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(a;b);+(^(a;2);-(*(a;b));^(b;2))))', '(+(^(a;3);^(b;3)))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(a;1);+(^(a;2);-(a);1)))', '(+(^(a;3);^(1;3)))', 25, false, true, false, false, 'SORTED')])), new RulePackITR('Logarithm', void 0, void 0, 'Logarithm', '\u041B\u043E\u0433\u0430\u0440\u0438\u0444\u043C', 'Basic Properties Without Regard to Domain', '\u041E\u0441\u043D\u043E\u0432\u043D\u044B\u0435 \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u0430 \u0431\u0435\u0437 \u0443\u0447\u0435\u0442\u0430 \u043E\u0431\u043B\u0430\u0441\u0442\u0438 \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u044F', void 0, void 0, 'standard_math', listOf(new RulePackLinkITR(void 0, 'ShortMultiplication')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;log(b;a)))', '(b)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(1;A))', '(0)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(A;A))', '(1)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(*(b;c);a))', '(+(log(b;a);log(c;a)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(log(b;a);log(c;a)))', '(log(*(b;c);a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(*(b;c;d);a))', '(+(log(b;a);log(c;a);log(d;a)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(log(b;a);log(c;a);log(d;a)))', '(log(*(b;c;d);a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(*(b;c;d;e);a))', '(+(log(b;a);log(c;a);log(d;a);log(e;a)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(log(b;a);log(c;a);log(d;a);log(e;a)))', '(log(*(b;c;d;e);a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(/(b;c);a))', '(+(log(b;a);-(log(c;a))))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(log(b;a);-(log(c;a))))', '(log(/(b;c);a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(^(b;c);a))', '(*(c;log(b;a)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(c;log(b;a)))', '(log(^(b;c);a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(log(b;a);c))', '(log(^(b;c);a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(b;^(a;k)))', '(/(log(b;a);k))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(log(b;a);k))', '(log(b;^(a;k)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;log(b;a)))', '(log(a;b))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(a;b))', '(/(1;log(b;a)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(log(c;a);log(b;a)))', '(log(c;b))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(/(b;c);a))', '(+(-(log(/(c;b);a))))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(log(/(c;b);a))))', '(log(/(b;c);a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(b;a))', '(+(-(log(/(1;b);a))))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(log(/(1;b);a))))', '(log(b;a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(/(1;b);a))', '(+(-(log(b;a))))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(log(b;a))))', '(log(/(1;b);a))', 25, false, false, false, false)])), new RulePackITR('BasicTrigonometricDefinitionsIdentity', void 0, void 0, 'Basic Trigonometric Identity', '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435 \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0435 \u0442\u043E\u0436\u0434\u0435\u0441\u0442\u0432\u043E', 'Sin, Cos, Tg, Ctg Definitions and Basic Identity', '\u041E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u044F sin, cos, tg, ctg \u0438 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0435 \u0442\u043E\u0436\u0434\u0435\u0441\u0442\u0432\u043E', void 0, void 0, 'standard_math', listOf(new RulePackLinkITR(void 0, 'ShortMultiplication')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(sin(a);2);^(cos(a);2)))', '(1)', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(1;-(^(sin(a);2))))', '(^(cos(a);2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(cos(a);2))', '(+(1;-(^(sin(a);2))))', 25, false, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(^(+(1;-(^(sin(a);2)));0.5))', 25, false, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(1;-(^(cos(a);2))))', '(^(sin(a);2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(sin(a);2))', '(+(1;-(^(cos(a);2))))', 25, false, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(a))', '(^(+(1;-(^(cos(a);2)));0.5))', 25, false, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;^(cos(a);2)))', '(+(1;^(tg(a);2)))', 25, false, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(1;^(tg(a);2)))', '(/(1;^(cos(a);2)))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;^(sin(a);2)))', '(+(1;^(ctg(a);2)))', 25, false, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(1;^(ctg(a);2)))', '(/(1;^(sin(a);2)))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;+(1;^(tg(a);2))))', '(^(cos(a);2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(cos(a);2))', '(/(1;+(1;^(tg(a);2))))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;+(1;^(ctg(a);2))))', '(^(sin(a);2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(sin(a);2))', '(/(1;+(1;^(ctg(a);2))))', 25, false, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(tg(a);ctg(a)))', '(1)', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(sin(a);cos(a)))', '(tg(a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(a))', '(/(sin(a);cos(a)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(cos(a);sin(a)))', '(ctg(a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(a))', '(/(cos(a);sin(a)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;ctg(a)))', '(tg(a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(a))', '(/(1;ctg(a)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;tg(a)))', '(ctg(a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(a))', '(/(1;tg(a)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(0))', '(0)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0)', '(sin(0))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(\u03C0))', '(0)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(*(2;\u03C0)))', '(0)', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0)', '(sin(\u03C0))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(/(\u03C0;2)))', '(1)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(sin(/(\u03C0;2)))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(0))', '(1)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(cos(0))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(\u03C0))', '(+(-(1)))', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(*(2;\u03C0)))', '(1)', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(1)))', '(cos(\u03C0))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(1))', '(cos(\u03C0))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(/(\u03C0;2)))', '(0)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0)', '(cos(/(\u03C0;2)))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(/(\u03C0;6)))', '(/(1;2))', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0.5)', '(sin(/(\u03C0;6)))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(/(\u03C0;4)))', '(/(^(2;/(1;2));2))', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(^(2;0.5);2))', '(sin(/(\u03C0;4)))', 13, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(/(\u03C0;3)))', '(/(^(3;/(1;2));2))', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(^(3;0.5);2))', '(sin(/(\u03C0;3)))', 13, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(/(\u03C0;3)))', '(/(1;2))', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0.5)', '(cos(/(\u03C0;3)))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(/(\u03C0;4)))', '(/(^(2;/(1;2));2))', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(^(2;0.5);2))', '(cos(/(\u03C0;4)))', 13, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(/(\u03C0;6)))', '(/(^(3;/(1;2));2))', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(^(3;0.5);2))', '(cos(/(\u03C0;6)))', 13, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(/(\u03C0;4)))', '(1)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(tg(/(\u03C0;4)))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(/(\u03C0;4)))', '(1)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(ctg(/(\u03C0;4)))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(0))', '(0)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0)', '(tg(0))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(/(\u03C0;2)))', '(0)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0)', '(ctg(/(\u03C0;2)))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(a;*(2;\u03C0))))', '(sin(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(a;-(*(2;\u03C0)))))', '(sin(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(a))', '(sin(+(a;*(2;\u03C0))))', 80, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;*(2;\u03C0))))', '(cos(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;-(*(2;\u03C0)))))', '(cos(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(cos(+(a;*(2;\u03C0))))', 80, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(+(a;*(2;\u03C0))))', '(tg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(+(a;-(*(2;\u03C0)))))', '(tg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(a))', '(tg(+(a;*(2;\u03C0))))', 80, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(+(a;*(2;\u03C0))))', '(ctg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(+(a;-(*(2;\u03C0)))))', '(ctg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(a))', '(ctg(+(a;*(2;\u03C0))))', 80, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(a;\u03C0)))', '(+(-(sin(a))))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(a;-(\u03C0))))', '(+(-(sin(a))))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(a))', '(+(-(sin(+(a;\u03C0)))))', 85, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(sin(a))))', '(sin(+(a;\u03C0)))', 80, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;\u03C0)))', '(+(-(cos(a))))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;-(\u03C0))))', '(+(-(cos(a))))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(+(-(cos(+(a;\u03C0)))))', 85, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(cos(a))))', '(cos(+(a;\u03C0)))', 80, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(+(a;\u03C0)))', '(tg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(+(a;-(\u03C0))))', '(tg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(a))', '(tg(+(a;\u03C0)))', 85, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(+(a;\u03C0)))', '(ctg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(+(a;-(\u03C0))))', '(ctg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(a))', '(ctg(+(a;\u03C0)))', 85, false, true, false, false, 'SORTED')])), new RulePackITR('TrigonometrySinCosSumReduction', void 0, void 0, "Trigonometry Sin Cos of Sum and it's Reduction", '\u0422\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u044F sin cos \u0441\u0443\u043C\u043C\u044B \u0438 \u0438\u0445 \u043F\u0440\u0438\u0432\u0435\u0434\u0435\u043D\u0438\u0435', 'Sin Cos of sum and difference; reduction Formulas', 'Sin cos \u0441\u0443\u043C\u043C\u044B \u0438 \u0440\u0430\u0437\u043D\u043E\u0441\u0442\u0438; \u0438\u0445 \u0444\u043E\u0440\u043C\u0443\u043B\u044B \u043F\u0440\u0438\u0432\u0435\u0434\u0435\u043D\u0438\u044F', "Placed in separated rule pack for tasks for Derivation of formulas on Sin Cos of Double Argument, also it's Sum, Difference and Product", '\u0412\u044B\u043D\u0435\u0441\u0435\u043D\u044B \u0432 \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u043F\u0430\u043A\u0435\u0442 \u043F\u0440\u0430\u0432\u0438\u043B \u0434\u043B\u044F \u0437\u0430\u0434\u0430\u0447 \u0432\u044B\u0432\u043E\u0434 \u0444\u043E\u0440\u043C\u0443\u043B \u043D\u0430 sin cos \u0434\u0432\u043E\u0439\u043D\u043E\u0433\u043E \u0430\u0440\u0433\u0443\u043C\u0435\u043D\u0442\u0430, \u0430 \u0442\u0430\u043A\u0436\u0435 \u0438\u0445 \u0441\u0443\u043C\u043C\u0443, \u0440\u0430\u0437\u043D\u043E\u0441\u0442\u044C \u0438 \u043F\u0440\u043E\u0438\u0437\u0432\u0435\u0434\u0435\u043D\u0438\u0435', 'standard_math', listOf(new RulePackLinkITR(void 0, 'BasicTrigonometricDefinitionsIdentity')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(a;b)))', '(+(*(sin(a);cos(b));*(sin(b);cos(a))))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(*(sin(a);cos(b));*(sin(b);cos(a))))', '(sin(+(a;b)))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(a;-(b))))', '(+(*(sin(a);cos(b));-(*(sin(b);cos(a)))))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(*(sin(a);cos(b));-(*(sin(b);cos(a)))))', '(sin(+(a;-(b))))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;b)))', '(+(*(cos(a);cos(b));-(*(sin(b);sin(a)))))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(*(cos(a);cos(b));-(*(sin(b);sin(a)))))', '(cos(+(a;b)))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;-(b))))', '(+(*(cos(a);cos(b));*(sin(b);sin(a))))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(*(cos(a);cos(b));*(sin(b);sin(a))))', '(cos(+(a;-(b))))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(-(a))))', '(+(-(sin(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(sin(a))))', '(sin(+(-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(sin(a)))', '(sin(+(-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(-(a)))', '(+(-(sin(a))))', 17, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(-(a))))', '(cos(a))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(cos(+(-(a))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(\u03C0;a)))', '(+(-(cos(-(a)))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(\u03C0;-(a))))', '(+(-(cos(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(cos(a))))', '(cos(+(\u03C0;-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(cos(a)))', '(cos(+(\u03C0;-(a))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(\u03C0;a)))', '(sin(+(-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(\u03C0;-(a))))', '(sin(a))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(a))', '(sin(+(\u03C0;-(a))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(/(\u03C0;2);-(a))))', '(cos(a))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(/(\u03C0;2);a)))', '(cos(+(-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(sin(+(/(\u03C0;2);-(a))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(/(\u03C0;2);-(a))))', '(sin(a))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(/(\u03C0;2);a)))', '(sin(+(-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(a))', '(cos(+(/(\u03C0;2);-(a))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(-(a))))', '(+(-(sin(a))))', 17, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(b;-(a))))', '(+(-(sin(+(a;-(b))))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(sin(+(a;-(b))))))', '(sin(+(b;-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(-(a)))', '(cos(a))', 14, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(cos(+(-(a))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;-(b))))', '(cos(+(b;-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(a))', '(+(-(sin(+(a;\u03C0)))))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(a))', '(+(-(sin(+(a;-(\u03C0))))))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(+(-(cos(+(a;\u03C0)))))', 89, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(+(-(cos(+(a;-(\u03C0))))))', 89, false, false, false, false)])), new RulePackITR('Trigonometry', void 0, void 0, 'Trigonometry', '\u0422\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u044F', 'Basic properties without Tg Ctg of sum and \u03C0k', '\u041E\u0441\u043D\u043E\u0432\u043D\u044B\u0435 \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u0430 \u0431\u0435\u0437 tg ctg \u0441\u0443\u043C\u043C\u043C\u044B \u0438 \u03C0k', void 0, void 0, 'standard_math', listOf(new RulePackLinkITR(void 0, 'TrigonometrySinCosSumReduction')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(*(2;a)))', '(*(2;sin(a);cos(a)))', 24, false, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(2;sin(a);cos(a)))', '(sin(*(2;a)))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(*(2;a)))', '(+(^(cos(a);2);-(^(sin(a);2))))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(cos(a);2);-(^(sin(a);2))))', '(cos(*(2;a)))', 24, false, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(^(sin(a);2));^(cos(a);2)))', '(cos(*(2;a)))', 24, false, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(*(2;a)))', '(+(1;-(*(2;^(sin(a);2)))))', 24, false, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(1;-(*(2;^(sin(a);2)))))', '(cos(*(2;a)))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(*(2;^(sin(a);2)));1))', '(cos(*(2;a)))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(*(2;a)))', '(+(*(2;^(cos(a);2));-(1)))', 24, false, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(*(2;^(cos(a);2));-(1)))', '(cos(*(2;a)))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(1);*(2;^(cos(a);2))))', '(cos(*(2;a)))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(sin(a);sin(b)))', '(*(2;sin(/(+(a;b);2));cos(/(+(a;-(b));2))))', 23, false, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(sin(a);-(sin(b))))', '(*(2;sin(/(+(a;-(b));2));cos(/(+(a;b);2))))', 23, false, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(cos(a);cos(b)))', '(*(2;cos(/(+(a;b);2));cos(/(+(a;-(b));2))))', 23, false, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(cos(a);-(cos(b))))', '(+(-(*(2;sin(/(+(a;-(b));2));sin(/(+(a;b);2))))))', 23, false, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(sin(a);sin(b)))', '(/(+(cos(+(a;-(b)));-(cos(+(a;b))));2))', 23, false, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(sin(a);cos(b)))', '(/(+(sin(+(a;-(b)));sin(+(a;b)));2))', 23, false, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(cos(a);cos(b)))', '(/(+(cos(+(a;-(b)));cos(+(a;b)));2))', 23, false, true, false, false, 'SORTED', void 0, 100.0)])), new RulePackITR('AdvancedTrigonometry', void 0, void 0, 'Advanced Trigonometry', '\u041F\u0440\u043E\u0434\u0432\u0438\u043D\u0443\u0442\u0430\u044F \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u044F', 'With Tg Ctg of Sum and \u03C0k reduction', '\u0421 tg ctg \u0441\u0443\u043C\u043C\u043C\u044B \u0438 \u03C0k \u0443\u043F\u0440\u043E\u0449\u0435\u043D\u0438\u0435\u043C', void 0, void 0, 'standard_math', listOf(new RulePackLinkITR(void 0, 'Trigonometry')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(*(2;a)))', '(/(*(2;tg(a));+(1;^(tg(a);2))))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(2;tg(a));+(1;^(tg(a);2))))', '(sin(*(2;a)))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(*(2;a)))', '(/(+(1;-(^(tg(a);2)));+(1;^(tg(a);2))))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(1;-(^(tg(a);2)));+(1;^(tg(a);2))))', '(cos(*(2;a)))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(+(a;b)))', '(/(+(tg(a);tg(b));+(1;-(*(tg(a);tg(b))))))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(tg(a);tg(b));+(1;-(*(tg(a);tg(b))))))', '(tg(+(a;b)))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(+(a;-(b))))', '(/(+(tg(a);-(tg(b)));+(1;*(tg(a);tg(b)))))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(tg(a);-(tg(b)));+(1;*(tg(a);tg(b)))))', '(tg(+(a;-(b))))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(+(a;b)))', '(/(+(*(ctg(a);ctg(b));-(1));+(ctg(a);ctg(b))))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(*(ctg(a);ctg(b));-(1));+(ctg(a);ctg(b))))', '(ctg(+(a;b)))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(+(a;-(b))))', '(/(+(*(ctg(a);ctg(b));1);+(ctg(b);-(ctg(a)))))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(*(ctg(a);ctg(b));1);+(ctg(b);-(ctg(a)))))', '(ctg(+(a;-(b))))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(*(2;a)))', '(/(*(2;tg(a));+(1;-(^(tg(a);2)))))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(2;tg(a));+(1;-(^(tg(a);2)))))', '(tg(*(2;a)))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(*(2;a)))', '(/(+((^(ctg(a);2));-(1));*(2;ctg(a))))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+((^(ctg(a);2));-(1));*(2;ctg(a))))', '(ctg(*(2;a)))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(a;*(2;\u03C0;k))))', '(sin(a))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;*(2;\u03C0;k))))', '(cos(a))', 30, false, false, false, false, 'SORTED')])), new RulePackITR('InverseTrigonometricFunctions', void 0, void 0, 'Inverse Trigonometric Functions', '\u041E\u0431\u0440\u0430\u0442\u043D\u044B\u0435 \u0442\u0440\u0438\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0444\u0443\u043D\u043A\u0446\u0438\u0438', 'Straight and inverse trigonometric functions', '\u041F\u0440\u044F\u043C\u044B\u0435 \u0438 \u043E\u0431\u0440\u0430\u0442\u043D\u044B\u0435 \u0442\u0440\u0438\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0444\u0443\u043D\u043A\u0446\u0438\u0438', 'Straight and inverse trigonometric functions relations. Defined not on full domain', '\u041F\u0440\u044F\u043C\u044B\u0435 \u0438 \u043E\u0431\u0440\u0430\u0442\u043D\u044B\u0435 \u0442\u0440\u0438\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0444\u0443\u043D\u043A\u0446\u0438\u0438, \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u044B \u043D\u0435 \u0432\u0435\u0437\u0434\u0435', 'standard_math', listOf(new RulePackLinkITR(void 0, 'AdvancedTrigonometry')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(asin(sin(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(asin(sin(a)))', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(acos(cos(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(acos(cos(a)))', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(atg(tg(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(atg(tg(a)))', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(actg(ctg(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(actg(ctg(a)))', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(asin(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(sin(asin(a)))', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(acos(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(cos(acos(a)))', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(atg(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(tg(atg(a)))', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(actg(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(ctg(actg(a)))', 30, false, false, false, false)]))]));
+    this.defaultStandardMathRulePacks = plus(listOf_0([new RulePackITR('ArithmeticPositiveAddition', void 0, void 0, 'Addition of Positive Numbers', '\u0421\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u043F\u043E\u043B\u043E\u0436\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0445 \u0447\u0438\u0441\u0435\u043B', 'Addition of Positive Numbers', '\u041F\u0440\u0430\u0432\u0438\u043B \u0434\u043B\u044F \u0437\u0430\u0434\u0430\u0447 \u043D\u0430 \u0441\u0447\u0435\u0442 \u0434\u043B\u044F \u043D\u0430\u0447\u0438\u043D\u0430\u044E\u0449\u0438\u0445', 'Addition of Positive Numbers', '\u041F\u0440\u0430\u0432\u0438\u043B\u0430 \u0434\u043B\u044F \u0437\u0430\u0434\u0430\u0447 \u043D\u0430 \u0441\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0438 \u0432\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435 \u043F\u043E\u043B\u043E\u0436\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0445 \u0447\u0438\u0441\u0435\u043B. \u0421\u043E\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u044B \u0442\u0430\u043A, \u0447\u0442\u043E\u0431\u044B \u043D\u0435 \u0434\u0430\u0442\u044C \u0432\u044B\u0439\u0442\u0438 \u0432 \u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u0443\u044E \u043E\u0431\u043B\u0430\u0441\u0442\u044C', 'standard_math', void 0, listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;b))', '(+(b;a))', 20, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(+(a;0))', 35, true, false, false, false), new RuleITR('SimpleComputation', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 5, false, false, false, false), new RuleITR('ZeroComputation', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 5, false, false, false, false), new RuleITR('PositiveNumberPlusMinus1', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 20, false, false, false, false), new RuleITR('ParentBracketsExpansion', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 30, false, false, false, false), new RuleITR('ArgumentsSwap', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 40, false, false, false, false), new RuleITR('ArgumentsPermutation', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 40, false, false, false, false), new RuleITR('ArgumentsPermutationInOriginalOrder', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 41, false, false, false, false)])), new RulePackITR('ArithmeticAddition', void 0, void 0, 'Addition and Subtraction', '\u0421\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0438 \u0432\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435', 'Arithmetic Addition and Subtraction', '\u0410\u0440\u0438\u0444\u043C\u0435\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0435 \u0441\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0438 \u0432\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435', void 0, void 0, 'standard_math', void 0, listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;b))', '(+(b;a))', 20, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(+(a;0))', 90, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(+(-(a)))))', '(a)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(+(-(a))))', '(a)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(-(a)))', '(a)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(-(+(-(a))))', 95, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;-(a)))', '(0)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(a);a))', '(0)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;+(-(a))))', '(0)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(+(-(a));a))', '(0)', 4, false, false, false, false), new RuleITR('SimpleComputation', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 5, false, false, false, false), new RuleITR('ZeroComputation', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 5, false, false, false, false), new RuleITR('NumberPlusMinus1', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 20, false, false, false, false), new RuleITR('MinusInOutBrackets', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 31, false, false, false, false), new RuleITR('ParentBracketsExpansion', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 30, false, false, false, false), new RuleITR('ArgumentsSwap', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 40, false, false, false, false), new RuleITR('ArgumentsPermutation', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 40, false, false, false, false), new RuleITR('ArgumentsPermutationInOriginalOrder', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 41, false, false, false, false), new RuleITR('AdditiveComplicatingExtension', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 92, false, false, false, false)])), new RulePackITR('ArithmeticMultiplication', void 0, void 0, 'Addition Subtraction Multiplication', '\u0421\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0432\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435 \u0443\u043C\u043D\u043E\u0436\u0435\u043D\u0438\u0435', 'Arithmetic Addition, Subtraction and Multiplication', '\u0410\u0440\u0438\u0444\u043C\u0435\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0435 \u0441\u043B\u043E\u0436\u0435\u043D\u0438\u0435, \u0432\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435 \u0438 \u0443\u043D\u043E\u0436\u0435\u043D\u0438\u0435', void 0, void 0, 'standard_math', listOf(new RulePackLinkITR(void 0, 'ArithmeticAddition')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;0))', '(0)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(0;a))', '(0)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0)', '(*(a;0))', 35, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;1))', '(a)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(1;a))', '(a)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(*(a;1))', 35, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;b))', '(*(b;a))', 20, true, false, false, false), new RuleITR('OpeningBrackets', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 30, false, false, false, false), new RuleITR('ReduceArithmetic', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 10, false, false, false, false), new RuleITR('TwoSidesArithmeticReduce', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 10, false, false, false, false), new RuleITR('MultiplicationFactorization', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 15, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;a))', '(*(2;a))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;+(a)))', '(*(2;a))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(+(a);a))', '(*(2;a))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(2;a))', '(+(a;a))', 35, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;*(a;n)))', '(*(a;+(n;1)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;+(n;1)))', '(+(a;*(a;n)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(*(a;n);a))', '(*(a;+(1;n)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;+(1;n)))', '(+(*(a;n);a))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(*(A;C)))', '(*(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(-(A);C))', '(+(-(*(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(*(A;C)))', '(*(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;-(C)))', '(+(-(*(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;-(C)))', '(*(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(-(A);C))', '(*(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(*(A;C))))', '(*(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(-(A));C))', '(+(-(*(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(*(A;C))))', '(*(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;+(-(C))))', '(+(-(*(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;+(-(C))))', '(*(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(-(A));C))', '(*(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(-(A);-(B)))', '(*(A;B))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;B))', '(*(+(-(A));+(-(B))))', 80, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(-(A));+(-(B))))', '(*(A;B))', 35, false, false, false, false)])), new RulePackITR('ArithmeticDivision', void 0, void 0, 'Rational Numbers', '\u0420\u0430\u0446\u0438\u043E\u043D\u0430\u043B\u044C\u043D\u044B\u0435 \u0447\u0438\u0441\u043B\u0430', 'Addition, Subtraction, Multiplication and Division', '\u0421\u043B\u043E\u0436\u0435\u043D\u0438\u0435, \u0432\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435, \u0443\u043D\u043E\u0436\u0435\u043D\u0438\u0435 \u0438 \u0434\u0435\u043B\u0435\u043D\u0438\u0435', void 0, void 0, 'standard_math', listOf(new RulePackLinkITR(void 0, 'ArithmeticMultiplication')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(0;a))', '(0)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(a;1))', '(a)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(a;a))', '(1)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(/(1;a);a))', '(1)', 4, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;/(1;a)))', '(a)', 4, false, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(/(1;/(1;a)))', 90, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0.5)', '(/(1;2))', 15, false, false, true, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;2))', '(0.5)', 5, false, false, true, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(a;b))', '(/(*(a;b);*(b;b)))', 90, true, false, false, false), new RuleITR('MultiplicativeComplicatingExtension', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 92, false, false, false, false), new RuleITR('ReduceFraction', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 10, false, false, false, false), new RuleITR('DecimalToFraction', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 15, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(/(A;C)))', '(/(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(-(A);C))', '(+(-(/(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(/(A;C)))', '(/(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;-(C)))', '(+(-(/(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;-(C)))', '(/(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(-(A);C))', '(/(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(/(A;C))))', '(/(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(-(A));C))', '(+(-(/(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(/(A;C))))', '(/(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;+(-(C))))', '(+(-(/(A;C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;+(-(C))))', '(/(+(-(A));C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(-(A));C))', '(/(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(-(A);-(B)))', '(/(A;B))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;B))', '(/(+(-(A));+(-(B))))', 80, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(-(A));+(-(B))))', '(/(A;B))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(/(B;C);/(A;D)))', '(/(+(*(B;D);*(C;A));*(C;D)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(/(B;C);-(/(A;D))))', '(/(+(*(B;D);-(*(C;A)));*(C;D)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;/(B;A)))', '(B)', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(/(B;A);A))', '(B)', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;/(B;C)))', '(/(*(A;B);C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(/(B;C);A))', '(/(*(A;B);C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;B))', '(/(1;/(B;A)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;/(B;A)))', '(/(A;B))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(A;B);C))', '(*(A;/(B;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(/(B;C);A))', '(/(B;*(A;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(B;*(A;C)))', '(/(/(B;C);A))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;/(B;C)))', '(/(*(A;C);B))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(A;C);B))', '(/(A;/(B;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;*(B;C)))', '(*(/(A;B);/(1;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;*(B;C)))', '(*(/(1;B);/(A;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(/(A;B);/(1;C)))', '(/(A;*(B;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(/(1;B);/(A;C)))', '(/(A;*(B;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(/(D;B);/(A;C)))', '(/(*(D;A);*(B;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(D;A);*(B;C)))', '(*(/(D;B);/(A;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(D;A);*(B;A)))', '(/(D;B))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(D;A);*(D;C)))', '(/(A;C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(D;A);D))', '(A)', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(A;D);D))', '(A)', 35, false, false, false, false)])), new RulePackITR('ArithmeticExponentiation', void 0, void 0, 'Algebraic Numbers', '\u0410\u043B\u0433\u0435\u0431\u0440\u0430\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0447\u0438\u0441\u043B\u0430', 'Pow, Ratio, Product, Difference, Sum', '\u0421\u0442\u0435\u043F\u0435\u043D\u044C, \u0447\u0430\u0441\u0442\u043D\u043E\u0435, \u0443\u043C\u043D\u043E\u0436\u0435\u043D\u0438\u0435, \u0440\u0430\u0437\u043D\u043E\u0441\u0442\u044C, \u0441\u0443\u043C\u043C\u0430', 'Pow, Division, Multiplication, Subtraction, Addition', '\u0412\u043E\u0437\u0432\u0435\u0434\u0435\u043D\u0438\u0435 \u0432 \u0441\u0442\u0435\u043F\u0435\u043D\u044C, \u0434\u0435\u043B\u0435\u043D\u0438\u0435, \u0443\u043C\u043D\u043E\u0436\u0435\u043D\u0438\u0435, \u0432\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435, \u0441\u043B\u043E\u0436\u0435\u043D\u0438\u0435', 'standard_math', listOf(new RulePackLinkITR(void 0, 'ArithmeticDivision')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(^(a;1))', 95, true, false, true, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(^(1;2))', 95, true, false, true, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(^(1;3))', 95, true, false, true, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;a))', '(^(a;+(-(1))))', 80, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;+(-(1))))', '(/(1;a))', 40, false, false, false, false), new RuleITR('PowFactorization', void 0, void 0, void 0, void 0, void 0, void 0, '', '', 15, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;+(b;-(c))))', '(/(^(a;b);^(a;c)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(^(a;b);^(a;c)))', '(^(a;+(b;-(c))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(B;^(A;C)))', '(*(B;^(A;+(-(C)))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(B;^(A;+(-(C)))))', '(/(B;^(A;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;^(A;C)))', '(^(A;+(-(C))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(A;+(-(C))))', '(/(1;^(A;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;B))', '(^(/(B;A);+(-(1))))', 35, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(/(B;A);+(-(1))))', '(/(A;B))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(A;0))', '(1)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(1;A))', '(1)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(A;1))', '(A)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(0;A))', '(0)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;a))', '(^(a;2))', 40, false, false, true, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;2))', '(*(a;a))', 40, false, false, true, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;^(a;n)))', '(^(a;+(n;1)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;+(n;1)))', '(*(a;^(a;n)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(^(a;n);a))', '(^(a;+(1;n)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;+(1;n)))', '(*(^(a;n);a))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(^(a;n);a))', '(^(a;+(n;-(1))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;+(n;-(1))))', '(/(^(a;n);a))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(A;*(B;C)))', '(^(^(A;B);C))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(^(A;B);C))', '(^(A;*(B;C)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(/(B;C);A))', '(/(^(B;A);^(C;A)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(^(B;A);^(C;A)))', '(^(/(B;C);A))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(-(A);*(2;n)))', '(^(A;*(2;n)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(-(A);2))', '(^(A;2))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(+(-(A));*(2;n)))', '(^(A;*(2;n)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(+(-(A));2))', '(^(A;2))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;*(2;n)))', '(^(+(-(a));*(2;n)))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;2))', '(^(+(-(a));2))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(^(a;b);/(1;b)))', '(a)', 5, false, false, false, false)])), new RulePackITR('ArithmeticPowExtension', void 0, void 0, 'Pow from Root and Root from Pow', '\u0421\u0442\u0435\u043F\u0435\u043D\u044C \u0438\u0437 \u043A\u043E\u0440\u043D\u044F \u0438 \u043A\u043E\u0440\u0435\u043D\u044C \u0438\u0437 \u0441\u0442\u0435\u043F\u0435\u043D\u0438', 'Straight and Reverse Application of Root and Pow', '\u041F\u0440\u044F\u043C\u043E\u0435 \u0438 \u043E\u0431\u0440\u0430\u0442\u043D\u043E\u0435 \u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u0435 \u0441\u0442\u0435\u043F\u0435\u043D\u0438 \u0438 \u043A\u043E\u0440\u043D\u044F', 'Moved to separate rule pack because of not full domain', '\u0412\u044B\u043D\u0435\u0441\u0435\u043D\u043E \u0432 \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u043F\u0430\u043A\u0435\u0442 \u043F\u0440\u0430\u0432\u0438\u043B \u0442\u0430\u043A \u043A\u0430\u043A \u043D\u0435 \u0432\u0435\u0437\u0434\u0435 \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043E', 'standard_math', listOf(new RulePackLinkITR(void 0, 'ArithmeticExponentiation')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(^(^(a;2);/(1;2)))', 96, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(^(^(a;/(1;2));2))', 96, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(^(^(a;3);/(1;3)))', 96, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(^(^(a;/(1;3));3))', 96, false, false, false, false)]))]), listOf_0([new RulePackITR('ShortMultiplication', void 0, void 0, 'Short Multiplication', '\u0421\u043E\u043A\u0440\u0430\u0449\u0435\u043D\u043D\u043E\u0435 \u0443\u043C\u043D\u043E\u0436\u0435\u043D\u0438\u0435', 'Short Multiplication Formulas', '\u0424\u043E\u0440\u043C\u0443\u043B\u044B \u0441\u043E\u043A\u0440\u0430\u0449\u0435\u043D\u043D\u043E\u0433\u043E \u0443\u043C\u043D\u043E\u0436\u0435\u043D\u0438\u044F', 'Difference of Squares, Square of Sum, Square of Difference, Sum of Cubes, Difference of Cubes, Cube of Sum, Cube of Difference', '\u0420\u0430\u0437\u043D\u043E\u0441\u0442\u044C \u043A\u0432\u0430\u0434\u0440\u0430\u0442\u043E\u0432, \u043A\u0432\u0430\u0434\u0440\u0430\u0442 \u0441\u0443\u043C\u043C\u044B, \u043A\u0432\u0430\u0434\u0440\u0430\u0442 \u0440\u0430\u0437\u043D\u043E\u0441\u0442\u0438, \u0441\u0443\u043C\u043C\u0430 \u043A\u0443\u0431\u043E\u0432, \u0440\u0430\u0437\u043D\u043E\u0441\u0442\u044C \u043A\u0443\u0431\u043E\u0432, \u043A\u0443\u0431 \u0441\u0443\u043C\u043C\u044B, \u043A\u0443\u0431 \u0440\u0430\u0437\u043D\u043E\u0441\u0442\u0438', 'standard_math', listOf(new RulePackLinkITR(void 0, 'ArithmeticExponentiation')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;2);-(^(b;2))))', '(*(+(a;-(b));+(a;b)))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(a;-(b));+(a;b)))', '(+(^(a;2);-(^(b;2))))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(+(a;b);2))', '(+(^(a;2);*(2;a;b);^(b;2)))', 25, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;2);*(2;a;b);^(b;2)))', '(^(+(a;b);2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;2);*(2;a);1))', '(^(+(a;1);2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(+(a;-(b));2))', '(+(^(a;2);-(*(2;a;b));^(b;2)))', 25, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;2);-(*(2;a;b));^(b;2)))', '(^(+(a;-(b));2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;2);-(*(2;a));1))', '(^(+(a;-(1));2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(+(a;b);3))', '(+(^(a;3);*(3;^(a;2);b);*(3;a;^(b;2));^(b;3)))', 25, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;3);*(3;^(a;2);b);*(3;a;^(b;2));^(b;3)))', '(^(+(a;b);3))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;3);*(3;^(a;2));*(3;a);1))', '(^(+(a;1);3))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(+(a;-(b));3))', '(+(^(a;3);-(*(3;^(a;2);b));*(3;a;^(b;2));-(^(b;3))))', 25, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;3);-(*(3;^(a;2);b));*(3;a;^(b;2));-(^(b;3))))', '(^(+(a;-(b));3))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;3);-(*(3;^(a;2)));*(3;a);-(1)))', '(^(+(a;-(1));3))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;3);-(^(b;3))))', '(*(+(a;-(b));+(^(a;2);*(a;b);^(b;2))))', 25, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(a;-(b));+(^(a;2);*(a;b);^(b;2))))', '(+(^(a;3);-(^(b;3))))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(a;-(1));+(^(a;2);a;1)))', '(+(^(a;3);-(^(1;3))))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(a;3);^(b;3)))', '(*(+(a;b);+(^(a;2);-(*(a;b));^(b;2))))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(a;b);+(^(a;2);-(*(a;b));^(b;2))))', '(+(^(a;3);^(b;3)))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(a;1);+(^(a;2);-(a);1)))', '(+(^(a;3);^(1;3)))', 25, false, true, false, false, 'SORTED')])), new RulePackITR('Logarithm', void 0, void 0, 'Logarithm', '\u041B\u043E\u0433\u0430\u0440\u0438\u0444\u043C', 'Basic Properties Without Regard to Domain', '\u041E\u0441\u043D\u043E\u0432\u043D\u044B\u0435 \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u0430 \u0431\u0435\u0437 \u0443\u0447\u0435\u0442\u0430 \u043E\u0431\u043B\u0430\u0441\u0442\u0438 \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u044F', void 0, void 0, 'standard_math', listOf(new RulePackLinkITR(void 0, 'ShortMultiplication')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;log(b;a)))', '(b)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(1;A))', '(0)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(A;A))', '(1)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(*(b;c);a))', '(+(log(b;a);log(c;a)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(log(b;a);log(c;a)))', '(log(*(b;c);a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(*(b;c;d);a))', '(+(log(b;a);log(c;a);log(d;a)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(log(b;a);log(c;a);log(d;a)))', '(log(*(b;c;d);a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(*(b;c;d;e);a))', '(+(log(b;a);log(c;a);log(d;a);log(e;a)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(log(b;a);log(c;a);log(d;a);log(e;a)))', '(log(*(b;c;d;e);a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(/(b;c);a))', '(+(log(b;a);-(log(c;a))))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(log(b;a);-(log(c;a))))', '(log(/(b;c);a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(^(b;c);a))', '(*(c;log(b;a)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(c;log(b;a)))', '(log(^(b;c);a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(log(b;a);c))', '(log(^(b;c);a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(b;^(a;k)))', '(/(log(b;a);k))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(log(b;a);k))', '(log(b;^(a;k)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;log(b;a)))', '(log(a;b))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(a;b))', '(/(1;log(b;a)))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(log(c;a);log(b;a)))', '(log(c;b))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(/(b;c);a))', '(+(-(log(/(c;b);a))))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(log(/(c;b);a))))', '(log(/(b;c);a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(b;a))', '(+(-(log(/(1;b);a))))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(log(/(1;b);a))))', '(log(b;a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(log(/(1;b);a))', '(+(-(log(b;a))))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(log(b;a))))', '(log(/(1;b);a))', 25, false, false, false, false)])), new RulePackITR('BasicTrigonometricDefinitionsIdentity', void 0, void 0, 'Basic Trigonometric Identity', '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435 \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0435 \u0442\u043E\u0436\u0434\u0435\u0441\u0442\u0432\u043E', 'Sin, Cos, Tg, Ctg Definitions and Basic Identity', '\u041E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u044F sin, cos, tg, ctg \u0438 \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0435 \u0442\u043E\u0436\u0434\u0435\u0441\u0442\u0432\u043E', void 0, void 0, 'standard_math', listOf(new RulePackLinkITR(void 0, 'ShortMultiplication')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(sin(a);2);^(cos(a);2)))', '(1)', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(1;-(^(sin(a);2))))', '(^(cos(a);2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(cos(a);2))', '(+(1;-(^(sin(a);2))))', 25, true, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(^(+(1;-(^(sin(a);2)));0.5))', 25, true, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(1;-(^(cos(a);2))))', '(^(sin(a);2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(sin(a);2))', '(+(1;-(^(cos(a);2))))', 25, true, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(a))', '(^(+(1;-(^(cos(a);2)));0.5))', 25, true, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;^(cos(a);2)))', '(+(1;^(tg(a);2)))', 25, false, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(1;^(tg(a);2)))', '(/(1;^(cos(a);2)))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;^(sin(a);2)))', '(+(1;^(ctg(a);2)))', 25, false, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(1;^(ctg(a);2)))', '(/(1;^(sin(a);2)))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;+(1;^(tg(a);2))))', '(^(cos(a);2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(cos(a);2))', '(/(1;+(1;^(tg(a);2))))', 25, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;+(1;^(ctg(a);2))))', '(^(sin(a);2))', 25, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(sin(a);2))', '(/(1;+(1;^(ctg(a);2))))', 25, true, true, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(tg(a);ctg(a)))', '(1)', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(sin(a);cos(a)))', '(tg(a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(a))', '(/(sin(a);cos(a)))', 25, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(cos(a);sin(a)))', '(ctg(a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(a))', '(/(cos(a);sin(a)))', 25, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;ctg(a)))', '(tg(a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(a))', '(/(1;ctg(a)))', 25, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;tg(a)))', '(ctg(a))', 25, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(a))', '(/(1;tg(a)))', 25, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(0))', '(0)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0)', '(sin(0))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(\u03C0))', '(0)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(*(2;\u03C0)))', '(0)', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0)', '(sin(\u03C0))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(/(\u03C0;2)))', '(1)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(sin(/(\u03C0;2)))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(0))', '(1)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(cos(0))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(\u03C0))', '(+(-(1)))', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(*(2;\u03C0)))', '(1)', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(1)))', '(cos(\u03C0))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(1))', '(cos(\u03C0))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(/(\u03C0;2)))', '(0)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0)', '(cos(/(\u03C0;2)))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(/(\u03C0;6)))', '(/(1;2))', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0.5)', '(sin(/(\u03C0;6)))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(/(\u03C0;4)))', '(/(^(2;/(1;2));2))', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(^(2;0.5);2))', '(sin(/(\u03C0;4)))', 13, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(/(\u03C0;3)))', '(/(^(3;/(1;2));2))', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(^(3;0.5);2))', '(sin(/(\u03C0;3)))', 13, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(/(\u03C0;3)))', '(/(1;2))', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0.5)', '(cos(/(\u03C0;3)))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(/(\u03C0;4)))', '(/(^(2;/(1;2));2))', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(^(2;0.5);2))', '(cos(/(\u03C0;4)))', 13, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(/(\u03C0;6)))', '(/(^(3;/(1;2));2))', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(^(3;0.5);2))', '(cos(/(\u03C0;6)))', 13, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(/(\u03C0;4)))', '(1)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(tg(/(\u03C0;4)))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(/(\u03C0;4)))', '(1)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(ctg(/(\u03C0;4)))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(0))', '(0)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0)', '(tg(0))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(/(\u03C0;2)))', '(0)', 5, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(0)', '(ctg(/(\u03C0;2)))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(a;*(2;\u03C0))))', '(sin(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(a;-(*(2;\u03C0)))))', '(sin(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(a))', '(sin(+(a;*(2;\u03C0))))', 80, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;*(2;\u03C0))))', '(cos(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;-(*(2;\u03C0)))))', '(cos(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(cos(+(a;*(2;\u03C0))))', 80, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(+(a;*(2;\u03C0))))', '(tg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(+(a;-(*(2;\u03C0)))))', '(tg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(a))', '(tg(+(a;*(2;\u03C0))))', 80, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(+(a;*(2;\u03C0))))', '(ctg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(+(a;-(*(2;\u03C0)))))', '(ctg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(a))', '(ctg(+(a;*(2;\u03C0))))', 80, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(a;\u03C0)))', '(+(-(sin(a))))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(a;-(\u03C0))))', '(+(-(sin(a))))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(a))', '(+(-(sin(+(a;\u03C0)))))', 85, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(sin(a))))', '(sin(+(a;\u03C0)))', 80, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;\u03C0)))', '(+(-(cos(a))))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;-(\u03C0))))', '(+(-(cos(a))))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(+(-(cos(+(a;\u03C0)))))', 85, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(cos(a))))', '(cos(+(a;\u03C0)))', 80, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(+(a;\u03C0)))', '(tg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(+(a;-(\u03C0))))', '(tg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(a))', '(tg(+(a;\u03C0)))', 85, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(+(a;\u03C0)))', '(ctg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(+(a;-(\u03C0))))', '(ctg(a))', 5, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(a))', '(ctg(+(a;\u03C0)))', 85, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(+(^(+(sin(x);cos(x));2);+(-(sin(*(2;x))))))', 89, true, false, false, false, void 0, void 0, 1000.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(+(^(+(sin(x);-(+(cos(x))));2);sin(*(2;x))))', 89, true, false, false, false, void 0, void 0, 1000.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(*(^(cos(x);2);+(1;^(tg(x);2))))', 89, true, false, false, false, void 0, void 0, 1000.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(*(^(sin(x);2);+(1;^(ctg(x);2))))', 89, true, false, false, false, void 0, void 0, 1000.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(+(*(2;^(sin(x);2));cos(*(2;x))))', 89, true, false, false, false, void 0, void 0, 1000.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(+(*(2;^(sin(/(x;2));2));cos(x)))', 89, true, false, false, false, void 0, void 0, 1000.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(+(/(*(2;tg(/(x;2)));sin(x));+(-(^(tg(/(x;2));2)))))', 89, true, false, false, false, void 0, void 0, 1000.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(1)', '(+(*(2;tg(/(x;2));ctg(x));^(tg(/(x;2));2)))', 89, true, false, false, false, void 0, void 0, 1000.0)])), new RulePackITR('TrigonometrySinCosSumReduction', void 0, void 0, "Trigonometry Sin Cos of Sum and it's Reduction", '\u0422\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u044F sin cos \u0441\u0443\u043C\u043C\u044B \u0438 \u0438\u0445 \u043F\u0440\u0438\u0432\u0435\u0434\u0435\u043D\u0438\u0435', 'Sin Cos of sum and difference; reduction Formulas', 'Sin cos \u0441\u0443\u043C\u043C\u044B \u0438 \u0440\u0430\u0437\u043D\u043E\u0441\u0442\u0438; \u0438\u0445 \u0444\u043E\u0440\u043C\u0443\u043B\u044B \u043F\u0440\u0438\u0432\u0435\u0434\u0435\u043D\u0438\u044F', "Placed in separated rule pack for tasks for Derivation of formulas on Sin Cos of Double Argument, also it's Sum, Difference and Product", '\u0412\u044B\u043D\u0435\u0441\u0435\u043D\u044B \u0432 \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0439 \u043F\u0430\u043A\u0435\u0442 \u043F\u0440\u0430\u0432\u0438\u043B \u0434\u043B\u044F \u0437\u0430\u0434\u0430\u0447 \u0432\u044B\u0432\u043E\u0434 \u0444\u043E\u0440\u043C\u0443\u043B \u043D\u0430 sin cos \u0434\u0432\u043E\u0439\u043D\u043E\u0433\u043E \u0430\u0440\u0433\u0443\u043C\u0435\u043D\u0442\u0430, \u0430 \u0442\u0430\u043A\u0436\u0435 \u0438\u0445 \u0441\u0443\u043C\u043C\u0443, \u0440\u0430\u0437\u043D\u043E\u0441\u0442\u044C \u0438 \u043F\u0440\u043E\u0438\u0437\u0432\u0435\u0434\u0435\u043D\u0438\u0435', 'standard_math', listOf(new RulePackLinkITR(void 0, 'BasicTrigonometricDefinitionsIdentity')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(a;b)))', '(+(*(sin(a);cos(b));*(sin(b);cos(a))))', 24, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(*(sin(a);cos(b));*(sin(b);cos(a))))', '(sin(+(a;b)))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(a;-(b))))', '(+(*(sin(a);cos(b));-(*(sin(b);cos(a)))))', 24, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(*(sin(a);cos(b));-(*(sin(b);cos(a)))))', '(sin(+(a;-(b))))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;b)))', '(+(*(cos(a);cos(b));-(*(sin(b);sin(a)))))', 24, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(*(cos(a);cos(b));-(*(sin(b);sin(a)))))', '(cos(+(a;b)))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;-(b))))', '(+(*(cos(a);cos(b));*(sin(b);sin(a))))', 24, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(*(cos(a);cos(b));*(sin(b);sin(a))))', '(cos(+(a;-(b))))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(-(a))))', '(+(-(sin(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(sin(a))))', '(sin(+(-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(sin(a)))', '(sin(+(-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(-(a)))', '(+(-(sin(a))))', 17, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(-(a))))', '(cos(a))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(cos(+(-(a))))', 35, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(\u03C0;a)))', '(+(-(cos(-(a)))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(\u03C0;-(a))))', '(+(-(cos(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(cos(a))))', '(cos(+(\u03C0;-(a))))', 14, true, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(cos(a)))', '(cos(+(\u03C0;-(a))))', 35, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(\u03C0;a)))', '(sin(+(-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(\u03C0;-(a))))', '(sin(a))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(a))', '(sin(+(\u03C0;-(a))))', 35, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(/(\u03C0;2);-(a))))', '(cos(a))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(/(\u03C0;2);a)))', '(cos(+(-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(sin(+(/(\u03C0;2);-(a))))', 35, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(/(\u03C0;2);-(a))))', '(sin(a))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(/(\u03C0;2);a)))', '(sin(+(-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(a))', '(cos(+(/(\u03C0;2);-(a))))', 35, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(-(a))))', '(+(-(sin(a))))', 17, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(b;-(a))))', '(+(-(sin(+(a;-(b))))))', 14, true, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(sin(+(a;-(b))))))', '(sin(+(b;-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(-(a)))', '(cos(a))', 14, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(cos(+(-(a))))', 35, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;-(b))))', '(cos(+(b;-(a))))', 14, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(a))', '(+(-(sin(+(a;\u03C0)))))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(a))', '(+(-(sin(+(a;-(\u03C0))))))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(+(-(cos(+(a;\u03C0)))))', 89, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(a))', '(+(-(cos(+(a;-(\u03C0))))))', 89, true, false, false, false)])), new RulePackITR('Trigonometry', void 0, void 0, 'Trigonometry', '\u0422\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u044F', 'Basic properties without Tg Ctg of sum and \u03C0k', '\u041E\u0441\u043D\u043E\u0432\u043D\u044B\u0435 \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u0430 \u0431\u0435\u0437 tg ctg \u0441\u0443\u043C\u043C\u043C\u044B \u0438 \u03C0k', void 0, void 0, 'standard_math', listOf(new RulePackLinkITR(void 0, 'TrigonometrySinCosSumReduction')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(*(2;a)))', '(*(2;sin(a);cos(a)))', 24, true, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(2;sin(a);cos(a)))', '(sin(*(2;a)))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(*(2;a)))', '(+(^(cos(a);2);-(^(sin(a);2))))', 24, true, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(^(cos(a);2);-(^(sin(a);2))))', '(cos(*(2;a)))', 24, false, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(^(sin(a);2));^(cos(a);2)))', '(cos(*(2;a)))', 24, false, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(*(2;a)))', '(+(1;-(*(2;^(sin(a);2)))))', 24, true, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(1;-(*(2;^(sin(a);2)))))', '(cos(*(2;a)))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(*(2;^(sin(a);2)));1))', '(cos(*(2;a)))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(*(2;a)))', '(+(*(2;^(cos(a);2));-(1)))', 24, true, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(*(2;^(cos(a);2));-(1)))', '(cos(*(2;a)))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(1);*(2;^(cos(a);2))))', '(cos(*(2;a)))', 24, false, true, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(sin(a);sin(b)))', '(*(2;sin(/(+(a;b);2));cos(/(+(a;-(b));2))))', 23, true, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(sin(a);-(sin(b))))', '(*(2;sin(/(+(a;-(b));2));cos(/(+(a;b);2))))', 23, true, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(cos(a);cos(b)))', '(*(2;cos(/(+(a;b);2));cos(/(+(a;-(b));2))))', 23, true, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(cos(a);-(cos(b))))', '(+(-(*(2;sin(/(+(a;-(b));2));sin(/(+(a;b);2))))))', 23, true, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(sin(a);sin(b)))', '(/(+(cos(+(a;-(b)));-(cos(+(a;b))));2))', 23, true, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(sin(a);cos(b)))', '(/(+(sin(+(a;-(b)));sin(+(a;b)));2))', 23, true, true, false, false, 'SORTED', void 0, 100.0), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(cos(a);cos(b)))', '(/(+(cos(+(a;-(b)));cos(+(a;b)));2))', 23, true, true, false, false, 'SORTED', void 0, 100.0)])), new RulePackITR('AdvancedTrigonometry', void 0, void 0, 'Advanced Trigonometry', '\u041F\u0440\u043E\u0434\u0432\u0438\u043D\u0443\u0442\u0430\u044F \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u044F', 'With Tg Ctg of Sum and \u03C0k reduction', '\u0421 tg ctg \u0441\u0443\u043C\u043C\u043C\u044B \u0438 \u03C0k \u0443\u043F\u0440\u043E\u0449\u0435\u043D\u0438\u0435\u043C', void 0, void 0, 'standard_math', listOf(new RulePackLinkITR(void 0, 'Trigonometry')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(*(2;a)))', '(/(*(2;tg(a));+(1;^(tg(a);2))))', 30, true, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(2;tg(a));+(1;^(tg(a);2))))', '(sin(*(2;a)))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(*(2;a)))', '(/(+(1;-(^(tg(a);2)));+(1;^(tg(a);2))))', 30, true, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(1;-(^(tg(a);2)));+(1;^(tg(a);2))))', '(cos(*(2;a)))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(+(a;b)))', '(/(+(tg(a);tg(b));+(1;-(*(tg(a);tg(b))))))', 30, true, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(tg(a);tg(b));+(1;-(*(tg(a);tg(b))))))', '(tg(+(a;b)))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(+(a;-(b))))', '(/(+(tg(a);-(tg(b)));+(1;*(tg(a);tg(b)))))', 30, true, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(tg(a);-(tg(b)));+(1;*(tg(a);tg(b)))))', '(tg(+(a;-(b))))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(+(a;b)))', '(/(+(*(ctg(a);ctg(b));-(1));+(ctg(a);ctg(b))))', 30, true, false, true, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(*(ctg(a);ctg(b));-(1));+(ctg(a);ctg(b))))', '(ctg(+(a;b)))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(+(a;-(b))))', '(/(+(*(ctg(a);ctg(b));1);+(ctg(b);-(ctg(a)))))', 30, true, false, true, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(*(ctg(a);ctg(b));1);+(ctg(b);-(ctg(a)))))', '(ctg(+(a;-(b))))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(*(2;a)))', '(/(*(2;tg(a));+(1;-(^(tg(a);2)))))', 30, true, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(*(2;tg(a));+(1;-(^(tg(a);2)))))', '(tg(*(2;a)))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(*(2;a)))', '(/(+((^(ctg(a);2));-(1));*(2;ctg(a))))', 30, true, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+((^(ctg(a);2));-(1));*(2;ctg(a))))', '(ctg(*(2;a)))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(+(a;*(2;\u03C0;k))))', '(sin(a))', 30, false, false, false, false, 'SORTED'), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(+(a;*(2;\u03C0;k))))', '(cos(a))', 30, false, false, false, false, 'SORTED')])), new RulePackITR('InverseTrigonometricFunctions', void 0, void 0, 'Inverse Trigonometric Functions', '\u041E\u0431\u0440\u0430\u0442\u043D\u044B\u0435 \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0444\u0443\u043D\u043A\u0446\u0438\u0438', 'Straight and inverse trigonometric functions', '\u041F\u0440\u044F\u043C\u044B\u0435 \u0438 \u043E\u0431\u0440\u0430\u0442\u043D\u044B\u0435 \u0442\u0440\u0438\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0444\u0443\u043D\u043A\u0446\u0438\u0438', 'Straight and inverse trigonometric functions relations. Defined not on full domain', '\u041F\u0440\u044F\u043C\u044B\u0435 \u0438 \u043E\u0431\u0440\u0430\u0442\u043D\u044B\u0435 \u0442\u0440\u0438\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0444\u0443\u043D\u043A\u0446\u0438\u0438, \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u044B \u043D\u0435 \u0432\u0435\u0437\u0434\u0435', 'standard_math', listOf(new RulePackLinkITR(void 0, 'AdvancedTrigonometry')), listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(asin(sin(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(asin(sin(a)))', 30, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(acos(cos(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(acos(cos(a)))', 30, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(atg(tg(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(atg(tg(a)))', 30, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(actg(ctg(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(actg(ctg(a)))', 30, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(sin(asin(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(sin(asin(a)))', 30, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(cos(acos(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(cos(acos(a)))', 30, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(tg(atg(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(tg(atg(a)))', 30, true, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(ctg(actg(a)))', '(a)', 30, false, false, false, false), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(a)', '(ctg(actg(a)))', 30, true, false, false, false)]))]));
   }
   DefaultStandardMathRulePacks$Companion.prototype.get = function () {
     return this.defaultStandardMathRulePacks;
@@ -8851,7 +9046,7 @@ if (typeof kotlin === 'undefined') {
     tmp$_23 = $receiver.iterator();
     while (tmp$_23.hasNext()) {
       var item = tmp$_23.next();
-      destination.add_11rb$(item.copy_cfir89$());
+      destination.add_11rb$(item.copy_s45c2s$());
     }
     this.defaultCombinatoricsTaskSets = listOf(new TaskSetITR('BasicCombinatoricsFormulasCheckYourself', tmp$_18, tmp$_19, '[Check Yourself] Basic Combinatorics Formulas', '[\u041F\u0440\u043E\u0432\u0435\u0440\u044C \u0441\u0435\u0431\u044F] \u0411\u0430\u0437\u043E\u0432\u044B\u0435 \u0444\u043E\u0440\u043C\u0443\u043B\u044B \u043A\u043E\u043C\u0431\u0438\u043D\u0430\u0442\u043E\u0440\u0438\u043A\u0438', 'Combinatorics Expressions Transformations', '\u041F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u043A\u043E\u043C\u0431\u0438\u043D\u0430\u0442\u043E\u0440\u043D\u044B\u0445 \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439', '[Check Yourself] Combinatorics Expressions Transformations by Simple Formulas', '[\u041F\u0440\u043E\u0432\u0435\u0440\u044C \u0441\u0435\u0431\u044F] \u041F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u043A\u043E\u043C\u0431\u0438\u043D\u0430\u0442\u043E\u0440\u043D\u044B\u0445 \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439 \u043F\u043E \u043F\u0440\u043E\u0441\u0442\u044B\u043C \u0444\u043E\u0440\u043C\u0443\u043B\u0430\u043C', 'combinatorics', tmp$_20, tmp$_21, tmp$_22, destination));
   }
@@ -9006,7 +9201,7 @@ if (typeof kotlin === 'undefined') {
     tmp$_79 = $receiver.iterator();
     while (tmp$_79.hasNext()) {
       var item = tmp$_79.next();
-      destination.add_11rb$(item.copy_cfir89$());
+      destination.add_11rb$(item.copy_s45c2s$());
     }
     var tmp$_80 = new TaskSetITR('LogicBaseTrainSet', tmp$_74, tmp$_75, '[Train Set] Basic Boolean Logic', '[\u0422\u0440\u0435\u043D\u0438\u0440\u043E\u0432\u043A\u0430] \u041E\u0441\u043D\u043E\u0432\u044B \u0431\u0443\u043B\u0435\u0432\u043E\u0439 \u043B\u043E\u0433\u0438\u043A\u0438', 'Logic Expressions Transformations', '\u041F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439', "[Train Set] Conjunction, Disjunction, Implication, de Morgan's laws, Absorption", '[\u0422\u0440\u0435\u043D\u0438\u0440\u043E\u0432\u043A\u0430] \u041A\u043E\u043D\u044A\u044E\u043D\u043A\u0446\u0438\u044F, \u0434\u0438\u0437\u044A\u044E\u043D\u043A\u0446\u0438\u044F, \u0438\u043C\u043F\u043B\u0438\u043A\u0430\u0446\u0438\u044F, \u0437\u0430\u043A\u043E\u043D\u044B \u0434\u0435 \u041C\u043E\u0440\u0433\u0430\u043D\u0430, \u043F\u043E\u0433\u043B\u043E\u0449\u0435\u043D\u0438\u0435', 'logic', tmp$_76, tmp$_77, tmp$_78, destination);
     var tmp$_81 = void 0;
@@ -9020,7 +9215,7 @@ if (typeof kotlin === 'undefined') {
     tmp$_86 = $receiver_0.iterator();
     while (tmp$_86.hasNext()) {
       var item_0 = tmp$_86.next();
-      destination_0.add_11rb$(item_0.copy_cfir89$());
+      destination_0.add_11rb$(item_0.copy_s45c2s$());
     }
     var tmp$_87 = new TaskSetITR('LogicRelativeComplementTrainSet', tmp$_81, tmp$_82, '[Train Set] Logic Relative Complement', '[\u0422\u0440\u0435\u043D\u0438\u0440\u043E\u0432\u043A\u0430] \u041B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u043E\u0435 \u0434\u043E\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0435', 'Logic Expressions Transformations', '\u041F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439', "[Train Set] Relative Complement and Conjunction, Disjunction, Implication, de Morgan's laws, Absorption", '[\u0422\u0440\u0435\u043D\u0438\u0440\u043E\u0432\u043A\u0430] \u041B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u043E\u0435 \u0434\u043E\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0435 \u0438 \u043A\u043E\u043D\u044A\u044E\u043D\u043A\u0446\u0438\u044F, \u0434\u0438\u0437\u044A\u044E\u043D\u043A\u0446\u0438\u044F, \u0438\u043C\u043F\u043B\u0438\u043A\u0430\u0446\u0438\u044F, \u0437\u0430\u043A\u043E\u043D\u044B \u0434\u0435 \u041C\u043E\u0440\u0433\u0430\u043D\u0430, \u043F\u043E\u0433\u043B\u043E\u0449\u0435\u043D\u0438\u0435', 'logic', tmp$_83, tmp$_84, tmp$_85, destination_0);
     var tmp$_88 = void 0;
@@ -9034,7 +9229,7 @@ if (typeof kotlin === 'undefined') {
     tmp$_93 = $receiver_1.iterator();
     while (tmp$_93.hasNext()) {
       var item_1 = tmp$_93.next();
-      destination_1.add_11rb$(item_1.copy_cfir89$());
+      destination_1.add_11rb$(item_1.copy_s45c2s$());
     }
     var tmp$_94 = new TaskSetITR('LogicPeculiarOperations', tmp$_88, tmp$_89, 'Logic Peculiar Operations', '\u041D\u0435\u043E\u0431\u044B\u0447\u043D\u044B\u0435 \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u0438', 'Logic Expressions Transformations: Negation of Conjunction and Disjunction', '\u041F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439: \u0448\u0442\u0440\u0438\u0445 \u0428\u0435\u0444\u0444\u0435\u0440\u0440\u0430 \u0438 \u0441\u0442\u0440\u0435\u043B\u043A\u0430 \u041F\u0438\u0440\u0441\u0430', 'Negation of Conjunction, Negation of Disjunction and Other Logic Operations', '\u041E\u0442\u0440\u0438\u0446\u0430\u043D\u0438\u0435 \u043A\u043E\u043D\u044A\u044E\u043D\u043A\u0446\u0438\u0438, \u043E\u0442\u0440\u0438\u0438\u0446\u0430\u043D\u0438\u0435 \u0434\u0438\u0437\u044A\u044E\u043D\u043A\u0446\u0438\u0438 \u0438 \u0434\u0440\u0443\u0433\u0438\u0435 \u043B\u043E\u0433\u0438\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u0438', 'logic', tmp$_90, tmp$_91, tmp$_92, destination_1);
     var tmp$_95 = void 0;
@@ -9048,7 +9243,7 @@ if (typeof kotlin === 'undefined') {
     tmp$_100 = $receiver_2.iterator();
     while (tmp$_100.hasNext()) {
       var item_2 = tmp$_100.next();
-      destination_2.add_11rb$(item_2.copy_cfir89$());
+      destination_2.add_11rb$(item_2.copy_s45c2s$());
     }
     var tmp$_101 = new TaskSetITR('LogicNormalFormsTrainSet', tmp$_95, tmp$_96, '[Train Set] Logic Normal Forms', '[\u0422\u0440\u0435\u043D\u0438\u0440\u043E\u0432\u043A\u0430] \u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u044B\u0435 \u0444\u043E\u0440\u043C\u044B', 'Logic Expressions Transformations', '\u041F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439', '[Train Set] Normal Forms of Logic Expressions', '[\u0422\u0440\u0435\u043D\u0438\u0440\u043E\u0432\u043A\u0430] \u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u044B\u0435 \u0444\u043E\u0440\u043C\u044B \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439', 'logic', tmp$_97, tmp$_98, tmp$_99, destination_2);
     var tmp$_102 = void 0;
@@ -9062,7 +9257,7 @@ if (typeof kotlin === 'undefined') {
     tmp$_107 = $receiver_3.iterator();
     while (tmp$_107.hasNext()) {
       var item_3 = tmp$_107.next();
-      destination_3.add_11rb$(item_3.copy_cfir89$());
+      destination_3.add_11rb$(item_3.copy_s45c2s$());
     }
     var tmp$_108 = new TaskSetITR('LogicResolutionTrainSet', tmp$_102, tmp$_103, '[Train Set] Resolution Method', '[\u0422\u0440\u0435\u043D\u0438\u0440\u043E\u0432\u043A\u0430] \u041C\u0435\u0442\u043E\u0434 \u0440\u0435\u0437\u043E\u043B\u044E\u0446\u0438\u0439', 'Logic Expressions Transformations', '\u041F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439', '[Train Set] Resolution Method for Logic Expressions', '[\u0422\u0440\u0435\u043D\u0438\u0440\u043E\u0432\u043A\u0430] \u041C\u0435\u0442\u043E\u0434 \u0440\u0435\u0437\u043E\u043B\u044E\u0446\u0438\u0439 \u0434\u043B\u044F \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439', 'logic', tmp$_104, tmp$_105, tmp$_106, destination_3);
     var tmp$_109 = void 0;
@@ -9076,7 +9271,7 @@ if (typeof kotlin === 'undefined') {
     tmp$_114 = $receiver_4.iterator();
     while (tmp$_114.hasNext()) {
       var item_4 = tmp$_114.next();
-      destination_4.add_11rb$(item_4.copy_cfir89$());
+      destination_4.add_11rb$(item_4.copy_s45c2s$());
     }
     this.defaultLogicTaskSets = listOf_0([tmp$_80, tmp$_87, tmp$_94, tmp$_101, tmp$_108, new TaskSetITR('LogicMixCheckYourself', tmp$_109, tmp$_110, '[Check Yourself] Mix of Logic Transformations', '[\u041F\u0440\u043E\u0432\u0435\u0440\u044C \u0441\u0435\u0431\u044F] \u041C\u0438\u043A\u0441 \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u043F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u0439', 'Logic Expressions Transformations', '\u041F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439', '[Check Yourself] Logic Expressions Transformations', '[\u041F\u0440\u043E\u0432\u0435\u0440\u044C \u0441\u0435\u0431\u044F] \u041F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439', 'logic', tmp$_111, tmp$_112, tmp$_113, destination_4)]);
   }
@@ -9267,7 +9462,7 @@ if (typeof kotlin === 'undefined') {
     tmp$_153 = $receiver.iterator();
     while (tmp$_153.hasNext()) {
       var item = tmp$_153.next();
-      destination.add_11rb$(item.copy_cfir89$());
+      destination.add_11rb$(item.copy_s45c2s$());
     }
     tmp$_145 = new TaskSetITR('CheckYourselfSimpleTrigonometry', tmp$_148, tmp$_149, '[Check Yourself] Simple Trigonometry', '[\u041F\u0440\u043E\u0432\u0435\u0440\u044C \u0441\u0435\u0431\u044F] \u041F\u0440\u043E\u0441\u0442\u0430\u044F \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u044F', 'Simple expression transformations in trigonometry', '\u041F\u0440\u043E\u0441\u0442\u044B\u0435 \u043F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439 \u0432 \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0438', '[Check Yourself] Complicated expression transformations in trigonometry', '[\u041F\u0440\u043E\u0432\u0435\u0440\u044C \u0441\u0435\u0431\u044F] \u0421\u043B\u043E\u0436\u043D\u044B\u0435 \u043F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439 \u0432 \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0438', 'standard_math', tmp$_150, tmp$_151, tmp$_152, destination);
     var tmp$_154 = void 0;
@@ -9281,7 +9476,7 @@ if (typeof kotlin === 'undefined') {
     tmp$_159 = $receiver_0.iterator();
     while (tmp$_159.hasNext()) {
       var item_0 = tmp$_159.next();
-      destination_0.add_11rb$(item_0.copy_cfir89$());
+      destination_0.add_11rb$(item_0.copy_s45c2s$());
     }
     tmp$_146 = new TaskSetITR('CheckYourselfTrigonometry', tmp$_154, tmp$_155, '[Check Yourself] Trigonometry', '[\u041F\u0440\u043E\u0432\u0435\u0440\u044C \u0441\u0435\u0431\u044F] \u0422\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u044F', 'Expression transformations in trigonometry', '\u041F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439 \u0432 \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0438', '[Check Yourself] Expression transformations in trigonometry', '[\u041F\u0440\u043E\u0432\u0435\u0440\u044C \u0441\u0435\u0431\u044F] \u041F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439 \u0432 \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0438', 'standard_math', tmp$_156, tmp$_157, tmp$_158, destination_0);
     var tmp$_160 = void 0;
@@ -9295,7 +9490,7 @@ if (typeof kotlin === 'undefined') {
     tmp$_165 = $receiver_1.iterator();
     while (tmp$_165.hasNext()) {
       var item_1 = tmp$_165.next();
-      destination_1.add_11rb$(item_1.copy_cfir89$());
+      destination_1.add_11rb$(item_1.copy_s45c2s$());
     }
     tmp$_147 = new TaskSetITR('CheckYourselfCompleteTrigonometry', tmp$_160, tmp$_161, '[Check Yourself] Complete Trigonometry', '[\u041F\u0440\u043E\u0432\u0435\u0440\u044C \u0441\u0435\u0431\u044F] \u0421\u043B\u043E\u0436\u043D\u0430\u044F \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u044F', 'Complicated expression transformations in trigonometry', '\u0421\u043B\u043E\u0436\u043D\u044B\u0435 \u043F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439 \u0432 \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0438', '[Check Yourself] Complicated expression transformations in trigonometry', '[\u041F\u0440\u043E\u0432\u0435\u0440\u044C \u0441\u0435\u0431\u044F] \u0421\u043B\u043E\u0436\u043D\u044B\u0435 \u043F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0439 \u0432 \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0438', 'standard_math', tmp$_162, tmp$_163, tmp$_164, destination_1);
     var tmp$_166 = void 0;
@@ -9309,7 +9504,7 @@ if (typeof kotlin === 'undefined') {
     tmp$_171 = $receiver_2.iterator();
     while (tmp$_171.hasNext()) {
       var item_2 = tmp$_171.next();
-      destination_2.add_11rb$(item_2.copy_cfir89$());
+      destination_2.add_11rb$(item_2.copy_s45c2s$());
     }
     this.defaultTrigonometryTaskSets = listOf_0([tmp$_129, tmp$_130, tmp$_131, tmp$_132, tmp$_133, tmp$_134, tmp$_135, tmp$_136, tmp$_137, tmp$_138, tmp$_139, tmp$_140, tmp$_141, tmp$_142, tmp$_143, tmp$_144, tmp$_145, tmp$_146, tmp$_147, new TaskSetITR('TrigonometryShortMultiplication', tmp$_166, tmp$_167, 'Short Multiplication in Trigonometry', '\u0421\u043E\u043A\u0440\u0430\u0449\u0435\u043D\u043D\u043E\u0435 \u0443\u043C\u043D\u043E\u0436\u0435\u043D\u0438\u0435 \u0432 \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0438', 'New approach to formulas for short multiplication', '\u0412\u044B\u0432\u043E\u0434\u0438 \u0444\u043E\u0440\u043C\u0443\u043B\u044B \u0441\u043E\u043A\u0440\u0430\u0449\u0435\u043D\u043D\u043E\u0433\u043E \u0443\u043C\u043D\u043E\u0436\u0435\u043D\u0438\u044F \u043F\u043E-\u043D\u043E\u0432\u043E\u043C\u0443', 'Derive and use short multiplication formulas using trigonometric transformations', '\u0412\u044B\u0432\u043E\u0434\u0438 \u0438 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 \u0444\u043E\u0440\u043C\u0443\u043B\u044B \u0441\u043E\u043A\u0440\u0430\u0449\u0435\u043D\u043D\u043E\u0433\u043E \u0443\u043C\u043D\u043E\u0436\u0435\u043D\u0438\u044F \u0441 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435\u043C \u0442\u0440\u0438\u0433\u043E\u043D\u043E\u043C\u0435\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u043F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u0439', 'standard_math', tmp$_168, tmp$_169, tmp$_170, destination_2)]);
   }
@@ -9351,7 +9546,7 @@ if (typeof kotlin === 'undefined') {
     tmp$_11 = tasks.iterator();
     while (tmp$_11.hasNext()) {
       var item = tmp$_11.next();
-      destination.add_11rb$(item.copy_cfir89$());
+      destination.add_11rb$(item.copy_s45c2s$());
     }
     return new TaskSetITR(tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, descriptionShortEnResult, descriptionShortRuResult, tmp$_6, tmp$_7, 'standard_math', tmp$_8, tmp$_9, tmp$_10, destination);
   };
@@ -10034,7 +10229,7 @@ if (typeof kotlin === 'undefined') {
         case 'cth':
           return diffCth($receiver, variable, transformationWeight, compiledConfiguration);
       }
-    }var result = $receiver.copy_t305d5$();
+    }var result = $receiver.copy_4anocu$();
     var maxWeight = 0.0;
     tmp$ = $receiver.children.iterator();
     while (tmp$.hasNext()) {
@@ -10245,7 +10440,7 @@ if (typeof kotlin === 'undefined') {
   }
   function diffPlusMinus($receiver, variable, transformationWeight, compiledConfiguration) {
     var tmp$;
-    var result = $receiver.children.get_za3lpa$(0).copy_t305d5$();
+    var result = $receiver.children.get_za3lpa$(0).copy_4anocu$();
     var maxWeight = 0.0;
     tmp$ = $receiver.children.get_za3lpa$(0).children.iterator();
     while (tmp$.hasNext()) {
@@ -10429,13 +10624,13 @@ if (typeof kotlin === 'undefined') {
     return argNum === 0 ? parentDomain : parentDomain.except_yqxtqz$(new Float64Array([0.0]));
   }
   function knownOps$lambda$lambda(a) {
-    return JsMath.asin(a);
+    return Math_0.asin(a);
   }
   function knownOps$lambda_4(node, argnum, parentDomain) {
     return calcSinCosDomain(argnum, parentDomain, knownOps$lambda$lambda);
   }
   function knownOps$lambda$lambda_0(a) {
-    return JsMath.acos(a);
+    return Math_0.acos(a);
   }
   function knownOps$lambda_5(node, argnum, parentDomain) {
     return calcSinCosDomain(argnum, parentDomain, knownOps$lambda$lambda_0);
@@ -10588,10 +10783,13 @@ if (typeof kotlin === 'undefined') {
   ParserError.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.position, other.position) && Kotlin.equals(this.description, other.description) && Kotlin.equals(this.endPosition, other.endPosition)))));
   };
-  function GeneralError(description) {
+  function GeneralError(description, code) {
     if (description === void 0)
       description = '';
+    if (code === void 0)
+      code = '';
     this.description = description;
+    this.code = code;
   }
   GeneralError.$metadata$ = {
     kind: Kind_CLASS,
@@ -10601,21 +10799,26 @@ if (typeof kotlin === 'undefined') {
   GeneralError.prototype.component1 = function () {
     return this.description;
   };
-  GeneralError.prototype.copy_61zpoe$ = function (description) {
-    return new GeneralError(description === void 0 ? this.description : description);
+  GeneralError.prototype.component2 = function () {
+    return this.code;
+  };
+  GeneralError.prototype.copy_puj7f4$ = function (description, code) {
+    return new GeneralError(description === void 0 ? this.description : description, code === void 0 ? this.code : code);
   };
   GeneralError.prototype.toString = function () {
-    return 'GeneralError(description=' + Kotlin.toString(this.description) + ')';
+    return 'GeneralError(description=' + Kotlin.toString(this.description) + (', code=' + Kotlin.toString(this.code)) + ')';
   };
   GeneralError.prototype.hashCode = function () {
     var result = 0;
     result = result * 31 + Kotlin.hashCode(this.description) | 0;
+    result = result * 31 + Kotlin.hashCode(this.code) | 0;
     return result;
   };
   GeneralError.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && Kotlin.equals(this.description, other.description))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.description, other.description) && Kotlin.equals(this.code, other.code)))));
   };
   function ExpressionComparator(baseOperationsDefinitions, baseOperationsComputationDouble, baseOperationsComputationComplex, debugMode) {
+    ExpressionComparator$Companion_getInstance();
     if (baseOperationsDefinitions === void 0)
       baseOperationsDefinitions = new BaseOperationsDefinitions();
     if (baseOperationsComputationDouble === void 0)
@@ -10630,8 +10833,6 @@ if (typeof kotlin === 'undefined') {
     this.debugMode = debugMode;
     this.compiledConfiguration_wl0p1c$_0 = this.compiledConfiguration_wl0p1c$_0;
     this.definedFunctionNameNumberOfArgsSet_hq5ml2$_0 = this.definedFunctionNameNumberOfArgsSet_hq5ml2$_0;
-    this.algebraAutoCheckingFunctionsSet = setOf_0(['_0', '_1', '+_-1', '-_-1', '*_-1', '/_-1', '^_-1', 'sin_1', 'cos_1', 'sh_1', 'ch_1', 'th_1', 'tg_1', 'asin_1', 'acos_1', 'atg_1', 'exp_1', 'ln_1', 'abs_1']);
-    this.setAutoCheckingFunctionsSet = setOf_0(['_0', '_1', 'and_-1', 'or_-1', 'xor_-1', 'alleq_-1', 'not_1']);
   }
   Object.defineProperty(ExpressionComparator.prototype, 'compiledConfiguration', {
     configurable: true,
@@ -10658,7 +10859,9 @@ if (typeof kotlin === 'undefined') {
   ExpressionComparator.prototype.init_3b06hw$ = function (compiledConfiguration) {
     this.compiledConfiguration = compiledConfiguration;
     this.definedFunctionNameNumberOfArgsSet = compiledConfiguration.definedFunctionNameNumberOfArgsSet;
-  };
+    if (compiledConfiguration.debugOutputMessages.expressionProbabilityComparisonFalseDetailsPrintln) {
+      this.debugMode = true;
+    }};
   ExpressionComparator.prototype.compareAsIs_5gxvt3$ = function (left, right, nameArgsMap, withBracketUnification) {
     if (nameArgsMap === void 0) {
       nameArgsMap = LinkedHashMap_init_0();
@@ -10696,8 +10899,8 @@ if (typeof kotlin === 'undefined') {
     }this.baseOperationsDefinitions.computeExpressionTree_em03xr$(left.children.get_za3lpa$(0));
     this.baseOperationsDefinitions.computeExpressionTree_em03xr$(right.children.get_za3lpa$(0));
     var variablesNamesSet = LinkedHashSet_init();
-    variablesNamesSet.addAll_brywnq$(left.getVariableNames());
-    variablesNamesSet.addAll_brywnq$(right.getVariableNames());
+    variablesNamesSet.addAll_brywnq$(left.getVariableNames_ywdfdh$());
+    variablesNamesSet.addAll_brywnq$(right.getVariableNames_ywdfdh$());
     var variables = toList_0(variablesNamesSet);
     if (1 << variables.size > maxBustCount) {
       return resultIfVariablesCountMoreMaxBust;
@@ -10792,7 +10995,7 @@ if (typeof kotlin === 'undefined') {
       return "(passedTests='" + closure$passedTests.v + "' >= totalTests='" + closure$totalTests + "' * (1 - allowedPartOfErrorTests='" + closure$allowedPartOfErrorTests + "') && " + ("passedTests='" + closure$passedTests.v + "' >= minNumberOfPointsForEquality='" + closure$minNumberOfPointsForEquality + "') || ") + ("(passedTests='" + closure$passedTests.v + "' >= totalTests='" + closure$totalTests + "') failed");
     };
   }
-  ExpressionComparator.prototype.probabilityTestComparison_1lpgi8$ = function (leftOrigin, rightOrigin, comparisonType, justInDomainsIntersection, maxMinNumberOfPointsForEquality, allowedPartOfErrorTests, testWithUndefinedResultIncreasingCoef, useGradientDescentComparison) {
+  ExpressionComparator.prototype.probabilityTestComparison_je0ger$ = function (leftOrigin, rightOrigin, comparisonType, justInDomainsIntersection, maxMinNumberOfPointsForEquality, allowedPartOfErrorTests, testWithUndefinedResultIncreasingCoef, useGradientDescentComparison, numberIntervalType) {
     if (comparisonType === void 0)
       comparisonType = this.compiledConfiguration.comparisonSettings.defaultComparisonType;
     if (justInDomainsIntersection === void 0)
@@ -10805,6 +11008,8 @@ if (typeof kotlin === 'undefined') {
       testWithUndefinedResultIncreasingCoef = this.compiledConfiguration.comparisonSettings.testWithUndefinedResultIncreasingCoef;
     if (useGradientDescentComparison === void 0)
       useGradientDescentComparison = false;
+    if (numberIntervalType === void 0)
+      numberIntervalType = NumberIntervalType$REAL_getInstance();
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12;
     var normalized = normalizeExpressionsForComparison(leftOrigin, rightOrigin);
     var left = normalized.first;
@@ -10817,15 +11022,15 @@ if (typeof kotlin === 'undefined') {
     this.baseOperationsDefinitions.computeExpressionTree_em03xr$(right.children.get_za3lpa$(0));
     var numberOfRemainingTests = left.getCountOfNodes() + right.getCountOfNodes() | 0;
     if (comparisonType === ComparisonType$EQUAL_getInstance()) {
-      var domain = new PointGenerator(this.baseOperationsDefinitions, arrayListOf([left, right]));
+      var domain = new DomainPointGenerator(arrayListOf([left, right]), this.baseOperationsDefinitions, true, numberIntervalType);
       var totalTests = numberOfRemainingTests;
       var passedTests = {v: 0.0};
       var a = left.getMaxMinNumberOfPointsForEquality();
       var b = right.getMaxMinNumberOfPointsForEquality();
-      var a_0 = JsMath.max(a, b);
-      var minNumberOfPointsForEquality = JsMath.max(a_0, maxMinNumberOfPointsForEquality);
+      var a_0 = Math_0.max(a, b);
+      var minNumberOfPointsForEquality = Math_0.max(a_0, maxMinNumberOfPointsForEquality);
       var isHaveComplexNode = left.haveComplexNode() || right.haveComplexNode();
-      if (domain.variablesSet.isEmpty()) {
+      if (domain.variablesNamesSet.isEmpty()) {
         if (isHaveComplexNode) {
           return (Kotlin.isType(tmp$ = this.baseOperationsComputationComplex.compute_em03xr$(left), Complex) ? tmp$ : throwCCE()).equals_m1n3ex$(Kotlin.isType(tmp$_0 = this.baseOperationsComputationComplex.compute_em03xr$(right), Complex) ? tmp$_0 : throwCCE());
         } else {
@@ -10876,7 +11081,7 @@ if (typeof kotlin === 'undefined') {
         return false;
       }
     } else {
-      var domain_0 = new DomainPointGenerator(arrayListOf([left, right]), this.baseOperationsDefinitions);
+      var domain_0 = new DomainPointGenerator(arrayListOf([left, right]), this.baseOperationsDefinitions, false, numberIntervalType);
       if (!domain_0.hasVariables()) {
         return this.compareInequalityInPoint_0(left, LinkedHashMap_init_0(), right, justInDomainsIntersection, comparisonType);
       }var points = domain_0.generateSimplePoints();
@@ -10887,7 +11092,7 @@ if (typeof kotlin === 'undefined') {
           return false;
         }}
       while ((tmp$_12 = numberOfRemainingTests, numberOfRemainingTests = tmp$_12 - 1, tmp$_12) > 0) {
-        var pointI_1 = domain_0.generateNewPoint_mqu1mq$();
+        var pointI_1 = domain_0.generateNewPointInDomain_mqu1mq$();
         if (!this.compareInequalityInPoint_0(left, pointI_1, right, justInDomainsIntersection, comparisonType)) {
           return false;
         }}
@@ -10962,7 +11167,7 @@ if (typeof kotlin === 'undefined') {
       left.replaceNotDefinedFunctionsOnVariables_lvgqkd$(functionIdentifierToVariableMap, definedFunctionNameNumberOfArgs, this, needBooleanComparison);
       right.replaceNotDefinedFunctionsOnVariables_lvgqkd$(functionIdentifierToVariableMap, definedFunctionNameNumberOfArgs, this, needBooleanComparison);
       if (!needBooleanComparison) {
-        return this.probabilityTestComparison_1lpgi8$(left, right, comparisonType, justInDomainsIntersection);
+        return this.probabilityTestComparison_je0ger$(left, right, comparisonType, justInDomainsIntersection);
       } else {
         return this.logicFullSearchComparison_v211zv$(left, right, comparisonType, maxBustCount - 1 | 0, false);
       }
@@ -10979,6 +11184,23 @@ if (typeof kotlin === 'undefined') {
       }}
     return false;
   };
+  function ExpressionComparator$Companion() {
+    ExpressionComparator$Companion_instance = this;
+    this.algebraAutoCheckingFunctionsSet = setOf_0(['_0', '_1', '+_-1', '-_-1', '*_-1', '/_-1', '^_-1', 'sin_1', 'cos_1', 'sh_1', 'ch_1', 'th_1', 'tg_1', 'asin_1', 'acos_1', 'atg_1', 'exp_1', 'ln_1', 'abs_1']);
+    this.setAutoCheckingFunctionsSet = setOf_0(['_0', '_1', 'and_-1', 'or_-1', 'xor_-1', 'alleq_-1', 'not_1']);
+    this.combinatoricsAutoCheckingFunctionsSet = setOf_0(['_0', '_1', '+_-1', '-_-1', '*_-1', '/_-1', '^_-1', 'sin_1', 'cos_1', 'sh_1', 'ch_1', 'th_1', 'tg_1', 'asin_1', 'acos_1', 'atg_1', 'exp_1', 'ln_1', 'abs_1', 'S_4', 'P_4']);
+  }
+  ExpressionComparator$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var ExpressionComparator$Companion_instance = null;
+  function ExpressionComparator$Companion_getInstance() {
+    if (ExpressionComparator$Companion_instance === null) {
+      new ExpressionComparator$Companion();
+    }return ExpressionComparator$Companion_instance;
+  }
   ExpressionComparator.prototype.fastProbabilityCheckOnIncorrectTransformation_41dun6$ = function (l, r, comparisonType, maxBustCount) {
     if (comparisonType === void 0)
       comparisonType = this.compiledConfiguration.comparisonSettings.defaultComparisonType;
@@ -10992,11 +11214,14 @@ if (typeof kotlin === 'undefined') {
     applyAllSubstitutions(right, this.compiledConfiguration.compiledFunctionDefinitions);
     left.variableReplacement_y0zsll$(this.compiledConfiguration.variableConfiguration.variableImmediateReplacementMap);
     right.variableReplacement_y0zsll$(this.compiledConfiguration.variableConfiguration.variableImmediateReplacementMap);
-    if (!left.containsFunctionBesides_ywdfdh$(this.algebraAutoCheckingFunctionsSet) && !right.containsFunctionBesides_ywdfdh$(this.algebraAutoCheckingFunctionsSet)) {
-      if (!this.probabilityTestComparison_1lpgi8$(left, right, comparisonType, this.compiledConfiguration.comparisonSettings.justInDomainsIntersection)) {
+    if (!left.containsFunctionBesides_ywdfdh$(ExpressionComparator$Companion_getInstance().algebraAutoCheckingFunctionsSet) && !right.containsFunctionBesides_ywdfdh$(ExpressionComparator$Companion_getInstance().algebraAutoCheckingFunctionsSet)) {
+      if (!this.probabilityTestComparison_je0ger$(left, right, comparisonType, this.compiledConfiguration.comparisonSettings.justInDomainsIntersection)) {
         return false;
-      }} else if (!left.containsFunctionBesides_ywdfdh$(this.setAutoCheckingFunctionsSet) && !right.containsFunctionBesides_ywdfdh$(this.setAutoCheckingFunctionsSet)) {
+      }} else if (!left.containsFunctionBesides_ywdfdh$(ExpressionComparator$Companion_getInstance().setAutoCheckingFunctionsSet) && !right.containsFunctionBesides_ywdfdh$(ExpressionComparator$Companion_getInstance().setAutoCheckingFunctionsSet)) {
       if (!this.logicFullSearchComparison_v211zv$(left, right, comparisonType, maxBustCount, true)) {
+        return false;
+      }} else if (equals(this.compiledConfiguration.subjectType, 'combinatorics') && !left.containsFunctionBesides_ywdfdh$(ExpressionComparator$Companion_getInstance().combinatoricsAutoCheckingFunctionsSet) && !right.containsFunctionBesides_ywdfdh$(ExpressionComparator$Companion_getInstance().combinatoricsAutoCheckingFunctionsSet)) {
+      if (!this.probabilityTestComparison_je0ger$(left, right, comparisonType, void 0, void 0, void 0, void 0, void 0, NumberIntervalType$SMALL_NATURAL_getInstance())) {
         return false;
       }}return true;
   };
@@ -11055,7 +11280,7 @@ if (typeof kotlin === 'undefined') {
       all$result = true;
     }
      while (false);
-    if (all$result && !this.fastProbabilityCheckOnIncorrectTransformation_41dun6$(leftOriginal, rightOriginal, expressionChainComparisonType, maxBustCount)) {
+    if (all$result && (expressionChainComparisonType !== ComparisonType$EQUAL_getInstance() || !this.compareAsIs_5gxvt3$(leftOriginal, rightOriginal)) && !this.fastProbabilityCheckOnIncorrectTransformation_41dun6$(leftOriginal, rightOriginal, expressionChainComparisonType, maxBustCount)) {
       return false;
     }var resultForOperandsInOriginalOrder = this.compareWithTreeTransformationRulesInternal_l7tdci$(leftOriginal, rightOriginal, transformations, maxTransformationWeight, maxBustCount, minTransformationWeight, expressionChainComparisonType, false, maxDistBetweenDiffSteps);
     if (resultForOperandsInOriginalOrder) {
@@ -11131,7 +11356,7 @@ if (typeof kotlin === 'undefined') {
       var leftDiff = diff(left, leftDiffWeight, this.compiledConfiguration);
       var rightDiff = diff(right, rightDiffWeight, this.compiledConfiguration);
       var x = leftDiffWeight.get_za3lpa$(0) - rightDiffWeight.get_za3lpa$(0);
-      if (JsMath.abs(x) < maxDistBetweenDiffSteps && this.compareWithoutSubstitutions_fb5b0y$(leftDiff, rightDiff, expressionChainComparisonType)) {
+      if (Math_0.abs(x) < maxDistBetweenDiffSteps && this.compareWithoutSubstitutions_fb5b0y$(leftDiff, rightDiff, expressionChainComparisonType)) {
         return true;
       }}if (this.checkOpeningBracketsSubstitutions_f7l7x0$(left, right, expressionChainComparisonType) || this.checkOpeningBracketsSubstitutions_f7l7x0$(right, left, reverse_0(expressionChainComparisonType))) {
       return true;
@@ -11439,7 +11664,7 @@ if (typeof kotlin === 'undefined') {
   ExpressionStrictureIdentifier.prototype.toString = function () {
     return 'ExpressionStrictureIdentifier(originalOrderIdentifier=' + Kotlin.toString(this.originalOrderIdentifier) + (', commutativeSortedIdentifier=' + Kotlin.toString(this.commutativeSortedIdentifier)) + ')';
   };
-  function ExpressionNode(nodeType, value, startPosition, endPosition, subValue, parent, functionStringDefinition, identifier, nodeId, distanceToRoot, expressionStrictureIdentifier) {
+  function ExpressionNode(nodeType, value, startPosition, endPosition, subValue, parent, functionStringDefinition, identifier, nodeId, distanceToRoot, expressionStrictureIdentifier, lastAppliedSubstitution, lastModifiedStepId) {
     if (startPosition === void 0)
       startPosition = -1;
     if (endPosition === void 0)
@@ -11458,6 +11683,10 @@ if (typeof kotlin === 'undefined') {
       distanceToRoot = 0;
     if (expressionStrictureIdentifier === void 0)
       expressionStrictureIdentifier = null;
+    if (lastAppliedSubstitution === void 0)
+      lastAppliedSubstitution = null;
+    if (lastModifiedStepId === void 0)
+      lastModifiedStepId = -1;
     this.nodeType = nodeType;
     this.value = value;
     this.startPosition = startPosition;
@@ -11469,6 +11698,8 @@ if (typeof kotlin === 'undefined') {
     this.nodeId = nodeId;
     this.distanceToRoot = distanceToRoot;
     this.expressionStrictureIdentifier = expressionStrictureIdentifier;
+    this.lastAppliedSubstitution = lastAppliedSubstitution;
+    this.lastModifiedStepId = lastModifiedStepId;
     this.children = ArrayList_init();
     this.rules = ArrayList_init();
     this.parserMark = '';
@@ -11500,6 +11731,24 @@ if (typeof kotlin === 'undefined') {
     this.identifier = value;
     this.functionStringDefinition = null;
   };
+  ExpressionNode.prototype.setLastAppliedSubstitutionForAllNodes_1plxii$ = function (substitution) {
+    var tmp$;
+    this.lastAppliedSubstitution = substitution;
+    tmp$ = this.children.iterator();
+    while (tmp$.hasNext()) {
+      var child = tmp$.next();
+      child.setLastAppliedSubstitutionForAllNodes_1plxii$(substitution);
+    }
+  };
+  ExpressionNode.prototype.setStepIdForAllNodes_za3lpa$ = function (stepId) {
+    var tmp$;
+    this.lastModifiedStepId = stepId;
+    tmp$ = this.children.iterator();
+    while (tmp$.hasNext()) {
+      var child = tmp$.next();
+      child.setStepIdForAllNodes_za3lpa$(stepId);
+    }
+  };
   ExpressionNode.prototype.setNode_em03xr$ = function (value) {
     this.nodeType = value.nodeType;
     this.value = value.value;
@@ -11514,10 +11763,23 @@ if (typeof kotlin === 'undefined') {
     return !isBlank(this.value) && (isNumberPart(first(this.value)) || equals(this.value, '\u03C0'));
   };
   ExpressionNode.prototype.getNodeValueString = function () {
-    if (equals(this.value, PI_STRING))
-      return PI_STRING_USIAL;
-    else
-      return this.value;
+    switch (this.value) {
+      case '3.14159265':
+        return PI_STRING_USUAL;
+      case '2.71828183':
+        return E_STRING_USUAL;
+      default:return this.value;
+    }
+  };
+  ExpressionNode.prototype.getComputeNodeValue_pp5jxl$ = function (computeExpressionVariableType) {
+    switch (computeExpressionVariableType.name) {
+      case 'ALL_TO_NUMBERS':
+        return this.value;
+      case 'ALL_TO_NUMBERS_OR_PI_OR_E':
+      case 'ALL_TO_NUMBERS_OR_PI_OR_E_ADDITIVELY_GROUPED':
+        return this.getNodeValueString();
+      default:return Kotlin.noWhenBranchMatched();
+    }
   };
   ExpressionNode.prototype.getTexNodeValueString = function () {
     if (equals(this.value, PI_STRING))
@@ -11834,13 +12096,18 @@ if (typeof kotlin === 'undefined') {
   function ExpressionNode$toPlainTextView$lambda(it) {
     return it.getNodeValueString();
   }
-  ExpressionNode.prototype.toPlainTextView_bu354u$ = function (functionConfiguration, getNodeValueString) {
+  function ExpressionNode$toPlainTextView$lambda_0(it) {
+    return it.plainTextRepresentation;
+  }
+  ExpressionNode.prototype.toPlainTextView_8ellkq$ = function (functionConfiguration, getNodeValueString, functionNameGetter) {
     if (functionConfiguration === void 0)
       functionConfiguration = new FunctionConfiguration();
     if (getNodeValueString === void 0)
       getNodeValueString = ExpressionNode$toPlainTextView$lambda;
+    if (functionNameGetter === void 0)
+      functionNameGetter = ExpressionNode$toPlainTextView$lambda_0;
     var tmp$;
-    var result = this.toPlainTextViewRec_0(functionConfiguration, getNodeValueString);
+    var result = this.toPlainTextViewRec_0(functionConfiguration, getNodeValueString, functionNameGetter);
     if (first(result) === 40 && last_0(result) === 41) {
       var numberOfOpenBrackets = 1;
       var currentIndex = 1;
@@ -11857,20 +12124,13 @@ if (typeof kotlin === 'undefined') {
         result = $receiver.substring(1, endIndex);
       }}return result;
   };
-  function ExpressionNode$toPlainTextViewRec$lambda(it) {
-    return it.getNodeValueString();
-  }
-  ExpressionNode.prototype.toPlainTextViewRec_0 = function (functionConfiguration, getNodeValueString) {
-    if (functionConfiguration === void 0)
-      functionConfiguration = new FunctionConfiguration();
-    if (getNodeValueString === void 0)
-      getNodeValueString = ExpressionNode$toPlainTextViewRec$lambda;
+  ExpressionNode.prototype.toPlainTextViewRec_0 = function (functionConfiguration, getNodeValueString, functionNameGetter) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
     var identifier = '';
     if (this.nodeType === NodeType$VARIABLE_getInstance()) {
       identifier = getNodeValueString(this);
     } else if (equals(this.value, '') && this.children.size === 1) {
-      identifier = first_0(this.children).toPlainTextViewRec_0(functionConfiguration);
+      identifier = first_0(this.children).toPlainTextViewRec_0(functionConfiguration, getNodeValueString, functionNameGetter);
     } else {
       var $receiver = functionConfiguration.functionProperties;
       var destination = ArrayList_init();
@@ -11903,12 +12163,12 @@ if (typeof kotlin === 'undefined') {
               identifier = '(';
             }
             if (this.children.size > 0) {
-              identifier += first_0(this.children).toPlainTextViewRec_0(functionConfiguration);
+              identifier += first_0(this.children).toPlainTextViewRec_0(functionConfiguration, getNodeValueString, functionNameGetter);
               tmp$ = get_lastIndex(this.children);
               for (var i = 1; i <= tmp$; i++) {
                 if (!equals((tmp$_0 = functionConfiguration.functionPropertiesByName.get_11rb$(this.children.get_za3lpa$(i).value + '_-1')) != null ? tmp$_0.mainFunction : null, functionIdentifier.function) || equals((tmp$_1 = functionConfiguration.functionPropertiesByName.get_11rb$(this.children.get_za3lpa$(i).value + '_-1')) != null ? tmp$_1.function : null, functionIdentifier.function)) {
-                  identifier += functionIdentifier.plainTextRepresentation;
-                }identifier += this.children.get_za3lpa$(i).toPlainTextViewRec_0(functionConfiguration);
+                  identifier += functionNameGetter(functionIdentifier);
+                }identifier += this.children.get_za3lpa$(i).toPlainTextViewRec_0(functionConfiguration, getNodeValueString, functionNameGetter);
               }
             }
             if (this.binaryOperationNeedBrackets_0()) {
@@ -11933,21 +12193,21 @@ if (typeof kotlin === 'undefined') {
             }
              while (false);
             if (contains(tmp$_3, (tmp$_2 = firstOrNull$result_0) != null ? tmp$_2.defaultStringDefinitionType : null)) {
-              identifier += functionIdentifier.plainTextRepresentation + first_0(this.children).toPlainTextViewRec_0(functionConfiguration);
+              identifier += functionNameGetter(functionIdentifier) + first_0(this.children).toPlainTextViewRec_0(functionConfiguration, getNodeValueString, functionNameGetter);
             } else {
-              identifier += '(' + functionIdentifier.plainTextRepresentation + first_0(this.children).toPlainTextViewRec_0(functionConfiguration) + ')';
+              identifier += '(' + functionNameGetter(functionIdentifier) + first_0(this.children).toPlainTextViewRec_0(functionConfiguration, getNodeValueString, functionNameGetter) + ')';
             }
 
             break;
           case 'UNARY_RIGHT_OPERATION':
-            var childplainTextRepresentation = first_0(this.children).toPlainTextViewRec_0(functionConfiguration);
+            var childplainTextRepresentation = first_0(this.children).toPlainTextViewRec_0(functionConfiguration, getNodeValueString, functionNameGetter);
             if (isSign(first(childplainTextRepresentation), 32, false)) {
               tmp$_4 = '(' + childplainTextRepresentation + ')';
             } else {
               tmp$_4 = childplainTextRepresentation;
             }
 
-            identifier = tmp$_4 + functionIdentifier.plainTextRepresentation;
+            identifier = tmp$_4 + functionNameGetter(functionIdentifier);
             break;
         }
       } else {
@@ -11955,7 +12215,7 @@ if (typeof kotlin === 'undefined') {
         tmp$_5 = this.children.iterator();
         while (tmp$_5.hasNext()) {
           var child = tmp$_5.next();
-          identifier += child.toPlainTextViewRec_0() + ',';
+          identifier += child.toPlainTextViewRec_0(functionConfiguration, getNodeValueString, functionNameGetter) + ',';
         }
         if (this.children.size > 0) {
           var $receiver_2 = identifier;
@@ -12115,6 +12375,21 @@ if (typeof kotlin === 'undefined') {
   ExpressionNode.prototype.isNodeSubtreeIdentifiersEquals_em03xr$ = function (expressionNode) {
     return equals(this.computeIdentifier_5osufp$(), expressionNode.computeIdentifier_5osufp$());
   };
+  ExpressionNode.prototype.isConstant = function () {
+    var tmp$;
+    if (this.children.isEmpty()) {
+      return toDoubleOrNull(this.value) != null;
+    }tmp$ = this.children.iterator();
+    while (tmp$.hasNext()) {
+      var child = tmp$.next();
+      if (!child.isConstant())
+        return false;
+    }
+    return true;
+  };
+  ExpressionNode.prototype.isComputableConstant = function () {
+    return this.isConstant() && this.children.size > 0;
+  };
   function ExpressionNode$sortChildrenAscendingIdentifiers$lambda(it) {
     return it.identifier;
   }
@@ -12218,7 +12493,7 @@ if (typeof kotlin === 'undefined') {
       }
       var maxMinNumberOfPointsForEquality = (tmp$ = max(destination)) != null ? tmp$ : 1;
       var b = (tmp$_2 = (tmp$_1 = (tmp$_0 = this.functionStringDefinition) != null ? tmp$_0.function : null) != null ? tmp$_1.minNumberOfPointsForEquality : null) != null ? tmp$_2 : 1;
-      return JsMath.max(maxMinNumberOfPointsForEquality, b);
+      return Math_0.max(maxMinNumberOfPointsForEquality, b);
     }
   };
   ExpressionNode.prototype.containsVariables_ywdfdh$ = function (names) {
@@ -12252,32 +12527,69 @@ if (typeof kotlin === 'undefined') {
     }
     return false;
   };
-  ExpressionNode.prototype.getVariableNames = function () {
-    var tmp$;
+  ExpressionNode.prototype.getVariableNames_ywdfdh$ = function (withoutNames) {
+    if (withoutNames === void 0)
+      withoutNames = emptySet();
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7;
     var result = LinkedHashSet_init();
     if (this.nodeType === NodeType$VARIABLE_getInstance()) {
-      if (toDoubleOrNull(this.value) == null && !equals(this.value, 'sys_def_i_complex'))
+      if (toDoubleOrNull(this.value) == null && !equals(this.value, 'sys_def_i_complex') && !withoutNames.contains_11rb$(this.value)) {
         result.add_11rb$(this.value);
-    } else {
-      tmp$ = this.children.iterator();
-      while (tmp$.hasNext()) {
-        var child = tmp$.next();
-        result.addAll_brywnq$(child.getVariableNames());
+      }} else {
+      if (((tmp$_1 = (tmp$_0 = (tmp$ = this.functionStringDefinition) != null ? tmp$.function : null) != null ? tmp$_0.numberOfDefinitionArguments : null) != null ? tmp$_1 : 0) > 0) {
+        tmp$_2 = this.enrichNodeDefinitionArgumentsNames_0(withoutNames);
+      } else
+        tmp$_2 = withoutNames;
+      var extraNames = tmp$_2;
+      tmp$_6 = (tmp$_5 = (tmp$_4 = (tmp$_3 = this.functionStringDefinition) != null ? tmp$_3.function : null) != null ? tmp$_4.numberOfDefinitionArguments : null) != null ? tmp$_5 : 0;
+      tmp$_7 = get_lastIndex(this.children);
+      for (var i = tmp$_6; i <= tmp$_7; i++) {
+        result.addAll_brywnq$(this.children.get_za3lpa$(i).getVariableNames_ywdfdh$(extraNames));
       }
     }
     return result;
   };
-  ExpressionNode.prototype.getNonZeroVariables = function () {
-    var tmp$;
+  ExpressionNode.prototype.countNumberOfVariablesInMap_2wsk9e$ = function (counter) {
+    var tmp$, tmp$_0;
+    if (this.nodeType === NodeType$VARIABLE_getInstance()) {
+      if (counter.keys.contains_11rb$(this.value)) {
+        var key = this.value;
+        var value = ((tmp$ = counter.get_11rb$(this.value)) != null ? tmp$ : 0) + 1 | 0;
+        counter.put_xwzc9p$(key, value);
+      }}tmp$_0 = this.children.iterator();
+    while (tmp$_0.hasNext()) {
+      var child = tmp$_0.next();
+      child.countNumberOfVariablesInMap_2wsk9e$(counter);
+    }
+  };
+  ExpressionNode.prototype.getNonZeroVariables_ywdfdh$ = function (withoutNames) {
+    if (withoutNames === void 0)
+      withoutNames = emptySet();
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7;
     var result = LinkedHashSet_init();
     if (equals(this.value, '/') && this.children.size === 2 && last(this.children).nodeType === NodeType$VARIABLE_getInstance() && !equals(last(this.children).value, '') && toDoubleOrNull(last(this.children).value) == null && !equals(last(this.children).value, 'sys_def_i_complex')) {
       result.add_11rb$(last(this.children).value);
-    }tmp$ = this.children.iterator();
-    while (tmp$.hasNext()) {
-      var child = tmp$.next();
-      result.addAll_brywnq$(child.getNonZeroVariables());
+    }if (((tmp$_1 = (tmp$_0 = (tmp$ = this.functionStringDefinition) != null ? tmp$.function : null) != null ? tmp$_0.numberOfDefinitionArguments : null) != null ? tmp$_1 : 0) > 0) {
+      tmp$_2 = this.enrichNodeDefinitionArgumentsNames_0(withoutNames);
+    } else
+      tmp$_2 = withoutNames;
+    var extraNames = tmp$_2;
+    tmp$_6 = (tmp$_5 = (tmp$_4 = (tmp$_3 = this.functionStringDefinition) != null ? tmp$_3.function : null) != null ? tmp$_4.numberOfDefinitionArguments : null) != null ? tmp$_5 : 0;
+    tmp$_7 = get_lastIndex(this.children);
+    for (var i = tmp$_6; i <= tmp$_7; i++) {
+      result.addAll_brywnq$(this.children.get_za3lpa$(i).getNonZeroVariables_ywdfdh$(extraNames));
     }
     return result;
+  };
+  ExpressionNode.prototype.enrichNodeDefinitionArgumentsNames_0 = function (withoutNames) {
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    var newWithoutNames = LinkedHashSet_init();
+    tmp$_2 = (tmp$_1 = (tmp$_0 = (tmp$ = this.functionStringDefinition) != null ? tmp$.function : null) != null ? tmp$_0.numberOfDefinitionArguments : null) != null ? tmp$_1 : 0;
+    for (var i = 0; i < tmp$_2; i++) {
+      newWithoutNames.add_11rb$(this.children.get_za3lpa$(i).value);
+    }
+    newWithoutNames.addAll_brywnq$(withoutNames);
+    return newWithoutNames;
   };
   ExpressionNode.prototype.containsFunctions = function () {
     var tmp$;
@@ -12454,7 +12766,7 @@ if (typeof kotlin === 'undefined') {
       var child = tmp$.next();
       var a = result;
       var b = child.getDepth() + 1 | 0;
-      result = JsMath.max(a, b);
+      result = Math_0.max(a, b);
     }
     return result;
   };
@@ -12468,7 +12780,7 @@ if (typeof kotlin === 'undefined') {
       var child = tmp$_0.next();
       var a = result;
       var b = abs_0(child.getMaxConstant());
-      result = JsMath.max(a, b);
+      result = Math_0.max(a, b);
     }
     return result;
   };
@@ -12535,7 +12847,7 @@ if (typeof kotlin === 'undefined') {
   };
   ExpressionNode.prototype.clone = function () {
     var tmp$;
-    var result = this.copy_t305d5$();
+    var result = this.copy_4anocu$();
     tmp$ = this.children.iterator();
     while (tmp$.hasNext()) {
       var child = tmp$.next();
@@ -12557,7 +12869,7 @@ if (typeof kotlin === 'undefined') {
   };
   ExpressionNode.prototype.cloneWithExpandingNestedSameFunctions = function () {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
-    var result = this.copy_t305d5$();
+    var result = this.copy_4anocu$();
     tmp$ = this.children.iterator();
     while (tmp$.hasNext()) {
       var child = tmp$.next();
@@ -12587,7 +12899,7 @@ if (typeof kotlin === 'undefined') {
         var $receiver = compiledConfiguration.createExpressionVariableNode_14dthe$(computed);
         $receiver.nodeId = actualNodeId;
         return $receiver;
-      }}var result = this.copy_t305d5$();
+      }}var result = this.copy_4anocu$();
     tmp$ = this.children.iterator();
     while (tmp$.hasNext()) {
       var child = tmp$.next();
@@ -12614,7 +12926,7 @@ if (typeof kotlin === 'undefined') {
       var computed = computeNodeIfSimple(this, simpleComputationRuleParams);
       if (computed != null) {
         return new ExpressionNode(NodeType$VARIABLE_getInstance(), toShortString(computed), void 0, void 0, void 0, void 0, void 0, void 0, this.nodeId);
-      }}var result = this.copy_t305d5$();
+      }}var result = this.copy_4anocu$();
     tmp$ = this.children.iterator();
     while (tmp$.hasNext()) {
       var child = tmp$.next();
@@ -12645,7 +12957,7 @@ if (typeof kotlin === 'undefined') {
   ExpressionNode.prototype.cloneWithDeepSubstitutions_qhbxfl$ = function (nameArgsMap) {
     var tmp$;
     if (this.nodeType === NodeType$FUNCTION_getInstance()) {
-      var result = this.copy_t305d5$();
+      var result = this.copy_4anocu$();
       tmp$ = this.children.iterator();
       while (tmp$.hasNext()) {
         var child = tmp$.next();
@@ -12657,7 +12969,7 @@ if (typeof kotlin === 'undefined') {
       if (newNode != null)
         return newNode.cloneWithNormalization_1g1bdl$(void 0, false);
       else
-        return this.copy_t305d5$();
+        return this.copy_4anocu$();
     }
   };
   ExpressionNode.prototype.cloneWithNormalization_1g1bdl$ = function (nameArgsMap, sorted) {
@@ -12755,7 +13067,7 @@ if (typeof kotlin === 'undefined') {
         if (this.children.size === expression.children.size) {
           if (expressionComparator != null && expressionComparator.compiledConfiguration.comparisonSettings.useTestingToCompareFunctionArgumentsInProbabilityComparison && !hasBoolFunctions) {
             if (expressionComparator.baseOperationsDefinitions.definedFunctionNameNumberOfArgsSet.contains_11rb$(this.value + '_' + toString(this.children.size)) || expressionComparator.baseOperationsDefinitions.definedFunctionNameNumberOfArgsSet.contains_11rb$(this.value + '_-1')) {
-              if (expressionComparator.probabilityTestComparison_1lpgi8$(this, expression, ComparisonType$EQUAL_getInstance())) {
+              if (expressionComparator.probabilityTestComparison_je0ger$(this, expression, ComparisonType$EQUAL_getInstance())) {
                 nodeExists = true;
                 this.setVariable_61zpoe$(variable);
                 break;
@@ -12763,7 +13075,7 @@ if (typeof kotlin === 'undefined') {
               var hasDifferentArgs = false;
               tmp$_1 = get_lastIndex(this.children);
               for (var i = 0; i <= tmp$_1; i++) {
-                if (!expressionComparator.probabilityTestComparison_1lpgi8$(this.children.get_za3lpa$(i), expression.children.get_za3lpa$(i), ComparisonType$EQUAL_getInstance())) {
+                if (!expressionComparator.probabilityTestComparison_je0ger$(this.children.get_za3lpa$(i), expression.children.get_za3lpa$(i), ComparisonType$EQUAL_getInstance())) {
                   hasDifferentArgs = true;
                   break;
                 }}
@@ -12882,8 +13194,14 @@ if (typeof kotlin === 'undefined') {
   ExpressionNode.prototype.component11 = function () {
     return this.expressionStrictureIdentifier;
   };
-  ExpressionNode.prototype.copy_t305d5$ = function (nodeType, value, startPosition, endPosition, subValue, parent, functionStringDefinition, identifier, nodeId, distanceToRoot, expressionStrictureIdentifier) {
-    return new ExpressionNode(nodeType === void 0 ? this.nodeType : nodeType, value === void 0 ? this.value : value, startPosition === void 0 ? this.startPosition : startPosition, endPosition === void 0 ? this.endPosition : endPosition, subValue === void 0 ? this.subValue : subValue, parent === void 0 ? this.parent : parent, functionStringDefinition === void 0 ? this.functionStringDefinition : functionStringDefinition, identifier === void 0 ? this.identifier : identifier, nodeId === void 0 ? this.nodeId : nodeId, distanceToRoot === void 0 ? this.distanceToRoot : distanceToRoot, expressionStrictureIdentifier === void 0 ? this.expressionStrictureIdentifier : expressionStrictureIdentifier);
+  ExpressionNode.prototype.component12 = function () {
+    return this.lastAppliedSubstitution;
+  };
+  ExpressionNode.prototype.component13 = function () {
+    return this.lastModifiedStepId;
+  };
+  ExpressionNode.prototype.copy_4anocu$ = function (nodeType, value, startPosition, endPosition, subValue, parent, functionStringDefinition, identifier, nodeId, distanceToRoot, expressionStrictureIdentifier, lastAppliedSubstitution, lastModifiedStepId) {
+    return new ExpressionNode(nodeType === void 0 ? this.nodeType : nodeType, value === void 0 ? this.value : value, startPosition === void 0 ? this.startPosition : startPosition, endPosition === void 0 ? this.endPosition : endPosition, subValue === void 0 ? this.subValue : subValue, parent === void 0 ? this.parent : parent, functionStringDefinition === void 0 ? this.functionStringDefinition : functionStringDefinition, identifier === void 0 ? this.identifier : identifier, nodeId === void 0 ? this.nodeId : nodeId, distanceToRoot === void 0 ? this.distanceToRoot : distanceToRoot, expressionStrictureIdentifier === void 0 ? this.expressionStrictureIdentifier : expressionStrictureIdentifier, lastAppliedSubstitution === void 0 ? this.lastAppliedSubstitution : lastAppliedSubstitution, lastModifiedStepId === void 0 ? this.lastModifiedStepId : lastModifiedStepId);
   };
   ExpressionNode.prototype.hashCode = function () {
     var result = 0;
@@ -12898,10 +13216,12 @@ if (typeof kotlin === 'undefined') {
     result = result * 31 + Kotlin.hashCode(this.nodeId) | 0;
     result = result * 31 + Kotlin.hashCode(this.distanceToRoot) | 0;
     result = result * 31 + Kotlin.hashCode(this.expressionStrictureIdentifier) | 0;
+    result = result * 31 + Kotlin.hashCode(this.lastAppliedSubstitution) | 0;
+    result = result * 31 + Kotlin.hashCode(this.lastModifiedStepId) | 0;
     return result;
   };
   ExpressionNode.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.nodeType, other.nodeType) && Kotlin.equals(this.value, other.value) && Kotlin.equals(this.startPosition, other.startPosition) && Kotlin.equals(this.endPosition, other.endPosition) && Kotlin.equals(this.subValue, other.subValue) && Kotlin.equals(this.parent, other.parent) && Kotlin.equals(this.functionStringDefinition, other.functionStringDefinition) && Kotlin.equals(this.identifier, other.identifier) && Kotlin.equals(this.nodeId, other.nodeId) && Kotlin.equals(this.distanceToRoot, other.distanceToRoot) && Kotlin.equals(this.expressionStrictureIdentifier, other.expressionStrictureIdentifier)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.nodeType, other.nodeType) && Kotlin.equals(this.value, other.value) && Kotlin.equals(this.startPosition, other.startPosition) && Kotlin.equals(this.endPosition, other.endPosition) && Kotlin.equals(this.subValue, other.subValue) && Kotlin.equals(this.parent, other.parent) && Kotlin.equals(this.functionStringDefinition, other.functionStringDefinition) && Kotlin.equals(this.identifier, other.identifier) && Kotlin.equals(this.nodeId, other.nodeId) && Kotlin.equals(this.distanceToRoot, other.distanceToRoot) && Kotlin.equals(this.expressionStrictureIdentifier, other.expressionStrictureIdentifier) && Kotlin.equals(this.lastAppliedSubstitution, other.lastAppliedSubstitution) && Kotlin.equals(this.lastModifiedStepId, other.lastModifiedStepId)))));
   };
   function ExpressionNodeConstructor(functionConfiguration, compiledImmediateVariableReplacements) {
     if (functionConfiguration === void 0)
@@ -13251,7 +13571,7 @@ if (typeof kotlin === 'undefined') {
   }
   function findLowestSubtreeTopOfNodes($receiver, nodes) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
-    tmp$ = firstOrNull_0(nodes);
+    tmp$ = firstOrNull_1(nodes);
     if (tmp$ == null) {
       return null;
     }var currentSubtree = tmp$;
@@ -13299,7 +13619,7 @@ if (typeof kotlin === 'undefined') {
     while (tmp$_5.hasNext()) {
       var item_0 = tmp$_5.next();
       var tmp$_6 = destination_0.add_11rb$;
-      var res = onlyHigherSelection ? item_0.copy_t305d5$() : item_0.clone();
+      var res = onlyHigherSelection ? item_0.copy_4anocu$() : item_0.clone();
       res.linkOnOriginalTreeNode = item_0;
       tmp$_6.call(destination_0, res);
     }
@@ -13349,7 +13669,7 @@ if (typeof kotlin === 'undefined') {
               suchPart.addChild_em03xr$(ensureNotNull(nodeSelectedChains.get_za3lpa$(i)));
             nodeSelectedChains.set_wxm5ur$(i, null);
           } else {
-            var $receiver_1 = nodeChains.get_za3lpa$(i).copy_t305d5$();
+            var $receiver_1 = nodeChains.get_za3lpa$(i).copy_4anocu$();
             $receiver_1.linkOnOriginalTreeNode = nodeChains.get_za3lpa$(i);
             var newChainParent = $receiver_1;
             newChainParent.addChild_em03xr$(ensureNotNull(nodeSelectedChains.get_za3lpa$(i)));
@@ -13377,7 +13697,7 @@ if (typeof kotlin === 'undefined') {
     var tmp$;
     if (selectedTopNodeIds.contains_11rb$($receiver.nodeId)) {
       return new ExpressionNode(NodeType$EMPTY_getInstance(), '');
-    }var result = $receiver.copy_t305d5$();
+    }var result = $receiver.copy_4anocu$();
     if (result.nodeType === NodeType$VARIABLE_getInstance()) {
       return result;
     }tmp$ = $receiver.children.iterator();
@@ -13773,11 +14093,11 @@ if (typeof kotlin === 'undefined') {
     var result = ArrayList_init();
     if (substitutionSelectionData.compiledConfiguration.expressionTreeAutogeneratedTransformationRuleIdentifiers.containsKey_11rb$(PARENT_BRACKETS_EXPANSION)) {
       var subst = ensureNotNull(substitutionSelectionData.compiledConfiguration.expressionTreeAutogeneratedTransformationRuleIdentifiers.get_11rb$(PARENT_BRACKETS_EXPANSION));
-      if (substitutionSelectionData.selectedNodes.size === 1 && equals((tmp$ = firstOrNull_0(substitutionSelectionData.selectedNodes)) != null ? tmp$.value : null, (tmp$_1 = (tmp$_0 = firstOrNull_0(substitutionSelectionData.selectedNodes)) != null ? tmp$_0.parent : null) != null ? tmp$_1.value : null) && ((tmp$_4 = (tmp$_3 = (tmp$_2 = firstOrNull_0(substitutionSelectionData.selectedNodes)) != null ? tmp$_2.functionStringDefinition : null) != null ? tmp$_3.function : null) != null ? tmp$_4.isCommutativeWithNullWeight : null) === true) {
+      if (substitutionSelectionData.selectedNodes.size === 1 && equals((tmp$ = firstOrNull_1(substitutionSelectionData.selectedNodes)) != null ? tmp$.value : null, (tmp$_1 = (tmp$_0 = firstOrNull_1(substitutionSelectionData.selectedNodes)) != null ? tmp$_0.parent : null) != null ? tmp$_1.value : null) && ((tmp$_4 = (tmp$_3 = (tmp$_2 = firstOrNull_1(substitutionSelectionData.selectedNodes)) != null ? tmp$_2.functionStringDefinition : null) != null ? tmp$_3.function : null) != null ? tmp$_4.isCommutativeWithNullWeight : null) === true) {
         var inBracketsNode = first_0(substitutionSelectionData.selectedNodes);
         var inBracketsNodeParent = ensureNotNull(inBracketsNode.parent);
         var inBracketsNodeIndex = inBracketsNodeParent.children.indexOf_11rb$(inBracketsNode);
-        var newParent = inBracketsNodeParent.copy_t305d5$();
+        var newParent = inBracketsNodeParent.copy_4anocu$();
         for (var i = 0; i < inBracketsNodeIndex; i++) {
           newParent.addChild_em03xr$(inBracketsNodeParent.children.get_za3lpa$(i).clone());
         }
@@ -13807,16 +14127,16 @@ if (typeof kotlin === 'undefined') {
   function generateMinusInOutBracketsSubstitution(substitutionSelectionData) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11;
     var result = ArrayList_init();
-    if (substitutionSelectionData.selectedNodes.size === 1 && equals((tmp$_1 = (tmp$_0 = (tmp$ = firstOrNull_0(substitutionSelectionData.selectedNodes)) != null ? tmp$.functionStringDefinition : null) != null ? tmp$_0.function : null) != null ? tmp$_1.mainFunction : null, '+') && substitutionSelectionData.compiledConfiguration.expressionTreeAutogeneratedTransformationRuleIdentifiers.containsKey_11rb$('MinusInOutBrackets')) {
+    if (substitutionSelectionData.selectedNodes.size === 1 && equals((tmp$_1 = (tmp$_0 = (tmp$ = firstOrNull_1(substitutionSelectionData.selectedNodes)) != null ? tmp$.functionStringDefinition : null) != null ? tmp$_0.function : null) != null ? tmp$_1.mainFunction : null, '+') && substitutionSelectionData.compiledConfiguration.expressionTreeAutogeneratedTransformationRuleIdentifiers.containsKey_11rb$('MinusInOutBrackets')) {
       var subst = ensureNotNull(substitutionSelectionData.compiledConfiguration.expressionTreeAutogeneratedTransformationRuleIdentifiers.get_11rb$('MinusInOutBrackets'));
-      if (equals((tmp$_2 = firstOrNull_0(substitutionSelectionData.selectedNodes)) != null ? tmp$_2.value : null, '+')) {
+      if (equals((tmp$_2 = firstOrNull_1(substitutionSelectionData.selectedNodes)) != null ? tmp$_2.value : null, '+')) {
         tmp$_7 = first_0(substitutionSelectionData.selectedNodes);
-      } else if (equals((tmp$_3 = firstOrNull_0(substitutionSelectionData.selectedNodes)) != null ? tmp$_3.value : null, '-') && equals((tmp$_6 = (tmp$_5 = (tmp$_4 = firstOrNull_0(substitutionSelectionData.selectedNodes)) != null ? tmp$_4.children : null) != null ? firstOrNull_0(tmp$_5) : null) != null ? tmp$_6.value : null, '+')) {
+      } else if (equals((tmp$_3 = firstOrNull_1(substitutionSelectionData.selectedNodes)) != null ? tmp$_3.value : null, '-') && equals((tmp$_6 = (tmp$_5 = (tmp$_4 = firstOrNull_1(substitutionSelectionData.selectedNodes)) != null ? tmp$_4.children : null) != null ? firstOrNull_1(tmp$_5) : null) != null ? tmp$_6.value : null, '+')) {
         tmp$_7 = first_0(first_0(substitutionSelectionData.selectedNodes).children);
       } else
         return emptyList();
       var inBracketsNode = tmp$_7;
-      var newInBracketsNode = inBracketsNode.copy_t305d5$();
+      var newInBracketsNode = inBracketsNode.copy_4anocu$();
       tmp$_8 = inBracketsNode.children.iterator();
       while (tmp$_8.hasNext()) {
         var child = tmp$_8.next();
@@ -13921,7 +14241,7 @@ if (typeof kotlin === 'undefined') {
           addApplicationToResults(true, substitutionSelectionData, simplifyNotSelectedTopArguments, selectedPartTransformationResultInSelectedOrderInBrackets, result, new ExpressionSubstitution(addRootNodeToExpression(ensureNotNull(substitutionSelectionData.selectedSubtreeTopArguments).clone()), addRootNodeToExpression(selectedPartTransformationResultInSelectedOrderInBrackets), void 0, void 0, subst_0.code, subst_0.nameEn, subst_0.nameRu), 'ArgumentsPermutation', (tmp$_12 = subst_0.priority) != null ? tmp$_12 : 90);
         } else if (substitutionSelectionData.notSelectedSubtreeTopArguments != null && ensureNotNull(substitutionSelectionData.notSelectedSubtreeTopArguments).children.size > 1 || (!swapSubstitutionSuggested && !equals(ensureNotNull(substitutionSelectionData.selectedSubtreeTopArgumentsInSelectionOrder).toString(), ensureNotNull(substitutionSelectionData.selectedSubtreeTopArguments).toString()))) {
           if (ensureNotNull(substitutionSelectionData.notSelectedSubtreeTopArguments).children.size > 1) {
-            var $receiver_1 = ensureNotNull(substitutionSelectionData.selectedSubtreeTopArgumentsInSelectionOrder).copy_t305d5$();
+            var $receiver_1 = ensureNotNull(substitutionSelectionData.selectedSubtreeTopArgumentsInSelectionOrder).copy_4anocu$();
             $receiver_1.addChild_em03xr$(ensureNotNull(substitutionSelectionData.selectedSubtreeTopArgumentsInSelectionOrder).clone());
             tmp$_13 = $receiver_1;
           } else {
@@ -13932,7 +14252,7 @@ if (typeof kotlin === 'undefined') {
           if (!equals(ensureNotNull(substitutionSelectionData.selectedSubtreeTopArgumentsInSelectionOrder).toString(), ensureNotNull(substitutionSelectionData.selectedSubtreeTopArguments).toString()) && (substitutionSelectionData.notSelectedSubtreeTopArguments != null && ensureNotNull(substitutionSelectionData.notSelectedSubtreeTopArguments).children.size > 1) && !equals(ensureNotNull(substitutionSelectionData.topOfSelection).toString(), ensureNotNull(substitutionSelectionData.selectedSubtreeTopArguments).toString()) && substitutionSelectionData.compiledConfiguration.expressionTreeAutogeneratedTransformationRuleIdentifiers.containsKey_11rb$('ArgumentsPermutationInOriginalOrder')) {
             subst_0 = ensureNotNull(substitutionSelectionData.compiledConfiguration.expressionTreeAutogeneratedTransformationRuleIdentifiers.get_11rb$('ArgumentsPermutationInOriginalOrder'));
             if (ensureNotNull(substitutionSelectionData.notSelectedSubtreeTopArguments).children.size > 1) {
-              var $receiver_2 = ensureNotNull(substitutionSelectionData.selectedSubtreeTopArguments).copy_t305d5$();
+              var $receiver_2 = ensureNotNull(substitutionSelectionData.selectedSubtreeTopArguments).copy_4anocu$();
               $receiver_2.addChild_em03xr$(ensureNotNull(substitutionSelectionData.selectedSubtreeTopArguments).clone());
               tmp$_15 = $receiver_2;
             } else {
@@ -14096,7 +14416,7 @@ if (typeof kotlin === 'undefined') {
          while (false);
         var maxCount = (tmp$_3 = (tmp$_2 = firstOrNull$result) != null ? tmp$_2.count : null) != null ? tmp$_3 : 0;
         var a = possibleMultiplier.count;
-        possibleMultiplier.count = JsMath.min(a, maxCount);
+        possibleMultiplier.count = Math_0.min(a, maxCount);
       }
       var $receiver = possibleMultipliersSet;
       var destination = ArrayList_init();
@@ -14582,7 +14902,7 @@ if (typeof kotlin === 'undefined') {
         tmp$_5 = ensureNotNull(substitutionSelectionData.topOfSelection).children.iterator();
         while (tmp$_5.hasNext()) {
           var child = tmp$_5.next();
-          if (equals(child.value, ensureNotNull(ensureNotNull(ensureNotNull(substitutionSelectionData.topOfSelection).functionStringDefinition).function.fieldAddZero)) || (equals(ensureNotNull(substitutionSelectionData.topOfSelection).value, '+') && equals(child.value, '-') && equals((tmp$_6 = firstOrNull_0(child.children)) != null ? tmp$_6.value : null, ensureNotNull(ensureNotNull(ensureNotNull(substitutionSelectionData.topOfSelection).functionStringDefinition).function.fieldAddZero)))) {
+          if (equals(child.value, ensureNotNull(ensureNotNull(ensureNotNull(substitutionSelectionData.topOfSelection).functionStringDefinition).function.fieldAddZero)) || (equals(ensureNotNull(substitutionSelectionData.topOfSelection).value, '+') && equals(child.value, '-') && equals((tmp$_6 = firstOrNull_1(child.children)) != null ? tmp$_6.value : null, ensureNotNull(ensureNotNull(ensureNotNull(substitutionSelectionData.topOfSelection).functionStringDefinition).function.fieldAddZero)))) {
             zeroElementFound = true;
           } else {
             topNode.addChild_em03xr$(child.clone());
@@ -14755,7 +15075,7 @@ if (typeof kotlin === 'undefined') {
     if (2 <= intCurrentValue && intCurrentValue <= 144 && toReal_0(intCurrentValue - currentValue).additivelyEqualToZero()) {
       if (substitutionSelectionData.compiledConfiguration.expressionTreeAutogeneratedTransformationRuleIdentifiers.containsKey_11rb$('MultiplicationFactorization')) {
         var subst = ensureNotNull(substitutionSelectionData.compiledConfiguration.expressionTreeAutogeneratedTransformationRuleIdentifiers.get_11rb$('MultiplicationFactorization'));
-        var sqrtValue = numberToInt(JsMath.sqrt(currentValue));
+        var sqrtValue = numberToInt(Math_0.sqrt(currentValue));
         for (var i = 2; i <= sqrtValue; i++) {
           var div = intCurrentValue / i | 0;
           if (intCurrentValue === Kotlin.imul(i, div)) {
@@ -14766,14 +15086,14 @@ if (typeof kotlin === 'undefined') {
           }}
       }if (substitutionSelectionData.compiledConfiguration.expressionTreeAutogeneratedTransformationRuleIdentifiers.containsKey_11rb$('PowFactorization')) {
         var subst_0 = ensureNotNull(substitutionSelectionData.compiledConfiguration.expressionTreeAutogeneratedTransformationRuleIdentifiers.get_11rb$('PowFactorization'));
-        var maxPowValue = numberToInt(JsMath.log2(currentValue));
+        var maxPowValue = numberToInt(Math_0.log2(currentValue));
         for (var i_0 = 2; i_0 <= maxPowValue; i_0++) {
           var x = 1.0 / i_0;
-          var base = JsMath.pow(currentValue, x);
+          var base = Math_0.pow(currentValue, x);
           var baseInt = numberToInt(base);
           var tmp$_9 = toReal_0(baseInt - base).additivelyEqualToZero();
           if (tmp$_9) {
-            tmp$_9 = intCurrentValue === numberToInt(JsMath.pow(base, i_0));
+            tmp$_9 = intCurrentValue === numberToInt(Math_0.pow(base, i_0));
           }if (tmp$_9) {
             var degTreeNode = new ExpressionNode(NodeType$FUNCTION_getInstance(), '^');
             degTreeNode.addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), baseInt.toString()));
@@ -14785,7 +15105,7 @@ if (typeof kotlin === 'undefined') {
       var xTenPow = tenPowToMakeZ(currentValue, substitutionSelectionData.compiledConfiguration.simpleComputationRuleParams);
       if (0 < xTenPow && xTenPow < substitutionSelectionData.compiledConfiguration.simpleComputationRuleParams.maxTenPowIterations) {
         var divTreeNode = new ExpressionNode(NodeType$FUNCTION_getInstance(), '/');
-        var multiplier = JsMath.pow(10.0, xTenPow);
+        var multiplier = Math_0.pow(10.0, xTenPow);
         divTreeNode.addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), toShortString(currentValue * multiplier)));
         divTreeNode.addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), toShortString(multiplier)));
         addApplicationToResults(true, substitutionSelectionData, simplifyNotSelectedTopArguments, divTreeNode, result, new ExpressionSubstitution(addRootNodeToExpression(ensureNotNull(substitutionSelectionData.topOfSelection).clone()), addRootNodeToExpression(divTreeNode), void 0, void 0, subst_1.code, subst_1.nameEn, subst_1.nameRu, void 0, void 0, void 0, subst_1.priority), 'NumberTransformation', (tmp$_4 = subst_1.priority) != null ? tmp$_4 : 60);
@@ -14953,7 +15273,7 @@ if (typeof kotlin === 'undefined') {
           $receiver_0.setChildOnPosition_gk94xr$(applicationToSelectedPartResult, 0);
           tmp$_0 = $receiver_0;
         } else {
-          var commutativeOperationNode = ensureNotNull(substitutionSelectionData.notSelectedSubtreeTopArguments).copy_t305d5$();
+          var commutativeOperationNode = ensureNotNull(substitutionSelectionData.notSelectedSubtreeTopArguments).copy_4anocu$();
           commutativeOperationNode.addChild_em03xr$(applicationToSelectedPartResult);
           tmp$ = ensureNotNull(substitutionSelectionData.notSelectedSubtreeTopOriginalTree).children.iterator();
           while (tmp$.hasNext()) {
@@ -15066,7 +15386,7 @@ if (typeof kotlin === 'undefined') {
       while (tmp$_4.hasNext()) {
         var item_0 = tmp$_4.next();
         var tmp$_5, tmp$_6, tmp$_7;
-        destination_0.add_11rb$(new Pair(item_0.expressionSubstitution.code, (tmp$_7 = (tmp$_6 = (tmp$_5 = firstOrNull_0(item_0.expressionSubstitution.right.children)) != null ? tmp$_5.children : null) != null ? tmp$_6.size : null) != null ? tmp$_7 : 0));
+        destination_0.add_11rb$(new Pair(item_0.expressionSubstitution.code, (tmp$_7 = (tmp$_6 = (tmp$_5 = firstOrNull_1(item_0.expressionSubstitution.right.children)) != null ? tmp$_5.children : null) != null ? tmp$_6.size : null) != null ? tmp$_7 : 0));
       }
       var alreadyAddedSubstitutions = toMap(destination_0);
       var destination_1 = ArrayList_init();
@@ -15075,7 +15395,7 @@ if (typeof kotlin === 'undefined') {
       while (tmp$_8.hasNext()) {
         var element = tmp$_8.next();
         var tmp$_9, tmp$_10, tmp$_11;
-        if (alreadyAddedSubstitutions.get_11rb$(element.expressionSubstitution.code) == null || !equals(alreadyAddedSubstitutions.get_11rb$(element.expressionSubstitution.code), (tmp$_11 = (tmp$_10 = (tmp$_9 = firstOrNull_0(element.expressionSubstitution.right.children)) != null ? tmp$_9.children : null) != null ? tmp$_10.size : null) != null ? tmp$_11 : 0))
+        if (alreadyAddedSubstitutions.get_11rb$(element.expressionSubstitution.code) == null || !equals(alreadyAddedSubstitutions.get_11rb$(element.expressionSubstitution.code), (tmp$_11 = (tmp$_10 = (tmp$_9 = firstOrNull_1(element.expressionSubstitution.right.children)) != null ? tmp$_9.children : null) != null ? tmp$_10.size : null) != null ? tmp$_11 : 0))
           destination_1.add_11rb$(element);
       }
       result.addAll_brywnq$(destination_1);
@@ -15129,7 +15449,7 @@ if (typeof kotlin === 'undefined') {
           fillSubstitutionSelectionData(additionalSubstitutionSelectionData);
           resultWithAdditionalSubstitutions.addAll_brywnq$(generateFormDependentSubstitutionsBySelectedNodesWithExpressionSimplifications(additionalSubstitutionSelectionData, simplifyNotSelectedTopArguments, withReadyApplicationResult, fastestAppropriateVersion, false));
         }}
-    } else if (equals((tmp$_3 = (tmp$_2 = firstOrNull_0(substitutionSelectionData.selectedNodes)) != null ? tmp$_2.parent : null) != null ? tmp$_3.value : null, '-') && equals((tmp$_6 = (tmp$_5 = (tmp$_4 = firstOrNull_0(substitutionSelectionData.selectedNodes)) != null ? tmp$_4.parent : null) != null ? tmp$_5.parent : null) != null ? tmp$_6.value : null, '+')) {
+    } else if (equals((tmp$_3 = (tmp$_2 = firstOrNull_1(substitutionSelectionData.selectedNodes)) != null ? tmp$_2.parent : null) != null ? tmp$_3.value : null, '-') && equals((tmp$_6 = (tmp$_5 = (tmp$_4 = firstOrNull_1(substitutionSelectionData.selectedNodes)) != null ? tmp$_4.parent : null) != null ? tmp$_5.parent : null) != null ? tmp$_6.value : null, '+')) {
       var expression_0 = substitutionSelectionData.originalExpression.clone();
       var selectedNodes_0 = nodeIdsToNodeLinksInSameOrder(expression_0, substitutionSelectionData.selectedNodeIds, nodeIdsPositionsMap(substitutionSelectionData.selectedNodeIds));
       var dadPlusNode = ensureNotNull(ensureNotNull(first_0(selectedNodes_0).parent).parent);
@@ -15453,54 +15773,6 @@ if (typeof kotlin === 'undefined') {
   FunctionsCondition.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.treePermittedFunctions, other.treePermittedFunctions) && Kotlin.equals(this.treeForbiddenFunctions, other.treeForbiddenFunctions) && Kotlin.equals(this.parent, other.parent)))));
   };
-  function NumberIntervalType(name, ordinal) {
-    Enum.call(this);
-    this.name$ = name;
-    this.ordinal$ = ordinal;
-  }
-  function NumberIntervalType_initFields() {
-    NumberIntervalType_initFields = function () {
-    };
-    NumberIntervalType$NATURAL_instance = new NumberIntervalType('NATURAL', 0);
-    NumberIntervalType$INTEGER_instance = new NumberIntervalType('INTEGER', 1);
-    NumberIntervalType$REAL_instance = new NumberIntervalType('REAL', 2);
-  }
-  var NumberIntervalType$NATURAL_instance;
-  function NumberIntervalType$NATURAL_getInstance() {
-    NumberIntervalType_initFields();
-    return NumberIntervalType$NATURAL_instance;
-  }
-  var NumberIntervalType$INTEGER_instance;
-  function NumberIntervalType$INTEGER_getInstance() {
-    NumberIntervalType_initFields();
-    return NumberIntervalType$INTEGER_instance;
-  }
-  var NumberIntervalType$REAL_instance;
-  function NumberIntervalType$REAL_getInstance() {
-    NumberIntervalType_initFields();
-    return NumberIntervalType$REAL_instance;
-  }
-  NumberIntervalType.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'NumberIntervalType',
-    interfaces: [Enum]
-  };
-  function NumberIntervalType$values() {
-    return [NumberIntervalType$NATURAL_getInstance(), NumberIntervalType$INTEGER_getInstance(), NumberIntervalType$REAL_getInstance()];
-  }
-  NumberIntervalType.values = NumberIntervalType$values;
-  function NumberIntervalType$valueOf(name) {
-    switch (name) {
-      case 'NATURAL':
-        return NumberIntervalType$NATURAL_getInstance();
-      case 'INTEGER':
-        return NumberIntervalType$INTEGER_getInstance();
-      case 'REAL':
-        return NumberIntervalType$REAL_getInstance();
-      default:throwISE('No enum constant mathhelper.twf.expressiontree.NumberIntervalType.' + name);
-    }
-  }
-  NumberIntervalType.valueOf_61zpoe$ = NumberIntervalType$valueOf;
   function NumberInterval(numbersType, leftBorder, rightBorder, parent) {
     if (numbersType === void 0)
       numbersType = NumberIntervalType$NATURAL_getInstance();
@@ -15527,7 +15799,7 @@ if (typeof kotlin === 'undefined') {
       case 'REAL':
         tmp$ = 'R';
         break;
-      default:tmp$ = Kotlin.noWhenBranchMatched();
+      default:tmp$ = 'N';
         break;
     }
     return replace('[' + this.leftBorder + ';' + this.rightBorder + ']:' + tmp$, 'Infinity', 'Inf');
@@ -15542,13 +15814,14 @@ if (typeof kotlin === 'undefined') {
     if (this.leftBorder - BaseOperationsComputation$Companion_getInstance().epsilon < number && number < this.rightBorder + BaseOperationsComputation$Companion_getInstance().epsilon) {
       switch (this.numbersType.name) {
         case 'NATURAL':
+        case 'SMALL_NATURAL':
           var tmp$ = BaseOperationsComputation$Companion_getInstance();
           var x = number + BaseOperationsComputation$Companion_getInstance().epsilon / 3;
-          return tmp$.additivelyEqual_lu1900$(JsMath.floor(x), number) && 0.0 - BaseOperationsComputation$Companion_getInstance().epsilon < number;
+          return tmp$.additivelyEqual_lu1900$(Math_0.floor(x), number) && 0.0 - BaseOperationsComputation$Companion_getInstance().epsilon < number;
         case 'INTEGER':
           var tmp$_0 = BaseOperationsComputation$Companion_getInstance();
           var x_0 = number + BaseOperationsComputation$Companion_getInstance().epsilon / 3;
-          return tmp$_0.additivelyEqual_lu1900$(JsMath.floor(x_0), number);
+          return tmp$_0.additivelyEqual_lu1900$(Math_0.floor(x_0), number);
         case 'REAL':
           return true;
         default:Kotlin.noWhenBranchMatched();
@@ -15574,7 +15847,7 @@ if (typeof kotlin === 'undefined') {
   NumberInterval.prototype.component4 = function () {
     return this.parent;
   };
-  NumberInterval.prototype.copy_70jlm7$ = function (numbersType, leftBorder, rightBorder, parent) {
+  NumberInterval.prototype.copy_kntbz$ = function (numbersType, leftBorder, rightBorder, parent) {
     return new NumberInterval(numbersType === void 0 ? this.numbersType : numbersType, leftBorder === void 0 ? this.leftBorder : leftBorder, rightBorder === void 0 ? this.rightBorder : rightBorder, parent === void 0 ? this.parent : parent);
   };
   NumberInterval.prototype.hashCode = function () {
@@ -16133,7 +16406,7 @@ if (typeof kotlin === 'undefined') {
        while (false);
       return all$result_0;
     }if (equals(rootNode.value, '') || (listOf_0(['+', '*', '^']).contains_11rb$(rootNode.value) && rootNode.children.size === 1)) {
-      tmp$ = firstOrNull_0(rootNode.children);
+      tmp$ = firstOrNull_1(rootNode.children);
       if (tmp$ == null) {
         return true;
       }return checkExpressionStructure(tmp$, structureNode);
@@ -16331,7 +16604,7 @@ if (typeof kotlin === 'undefined') {
     while (tmp$_0.hasNext()) {
       var element = tmp$_0.next();
       var tmp$_1, tmp$_2;
-      if (!((tmp$_2 = (tmp$_1 = firstOrNull_1(element)) != null ? isLetterOrDigitOrUnderscore(unboxChar(tmp$_1)) : null) != null ? tmp$_2 : true))
+      if (!((tmp$_2 = (tmp$_1 = firstOrNull_0(element)) != null ? isLetterOrDigitOrUnderscore(unboxChar(tmp$_1)) : null) != null ? tmp$_2 : true))
         destination_0.add_11rb$(element);
     }
     this.nameSymbols = joinToString(destination_0, '');
@@ -17110,7 +17383,7 @@ if (typeof kotlin === 'undefined') {
   SubstitutionPlace.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.nodeParent, other.nodeParent) && Kotlin.equals(this.nodeChildIndex, other.nodeChildIndex) && Kotlin.equals(this.substitutionInstance, other.substitutionInstance) && Kotlin.equals(this.originalValue, other.originalValue) && Kotlin.equals(this.originalExpression, other.originalExpression)))));
   };
-  function ExpressionSubstitution(left, right, weight, basedOnTaskContext, code, nameEn, nameRu, comparisonType, leftFunctions, matchJumbledAndNested, priority, changeOnlyOrder, simpleAdditional, isExtending, normalizationType, weightInTaskAutoGeneration) {
+  function ExpressionSubstitution(left, right, weight, basedOnTaskContext, code, nameEn, nameRu, comparisonType, leftFunctions, matchJumbledAndNested, priority, changeOnlyOrder, simpleAdditional, isExtending, normalizationType, weightInTaskAutoGeneration, useWhenPostprocessGeneratedExpression, isCopy) {
     ExpressionSubstitution$Companion_getInstance();
     if (weight === void 0)
       weight = 1.0;
@@ -17140,6 +17413,10 @@ if (typeof kotlin === 'undefined') {
       normalizationType = ExpressionSubstitutionNormType$ORIGINAL_getInstance();
     if (weightInTaskAutoGeneration === void 0)
       weightInTaskAutoGeneration = 1.0;
+    if (useWhenPostprocessGeneratedExpression === void 0)
+      useWhenPostprocessGeneratedExpression = false;
+    if (isCopy === void 0)
+      isCopy = false;
     this.left = left;
     this.right = right;
     this.weight = weight;
@@ -17156,6 +17433,7 @@ if (typeof kotlin === 'undefined') {
     this.isExtending = isExtending;
     this.normalizationType = normalizationType;
     this.weightInTaskAutoGeneration = weightInTaskAutoGeneration;
+    this.useWhenPostprocessGeneratedExpression = useWhenPostprocessGeneratedExpression;
     if (!this.changeOnlyOrder) {
       var $receiver = this.left.clone();
       $receiver.normalizeSubTree_f8z7ch$(void 0, void 0, true);
@@ -17164,15 +17442,24 @@ if (typeof kotlin === 'undefined') {
       $receiver_0.normalizeSubTree_f8z7ch$(void 0, void 0, true);
       var rightSorted = $receiver_0;
       this.changeOnlyOrder = equals(leftSorted.toString(), rightSorted.toString());
+    }if (!isCopy) {
+      this.right.setLastAppliedSubstitutionForAllNodes_1plxii$(this);
     }this.identifier = '';
   }
-  ExpressionSubstitution.prototype.copy = function () {
-    return new ExpressionSubstitution(this.left, this.right, this.weight, this.basedOnTaskContext, this.code, this.nameEn, this.nameRu, this.comparisonType, this.leftFunctions, this.matchJumbledAndNested, this.priority, this.changeOnlyOrder, this.simpleAdditional, this.isExtending, this.normalizationType, this.weightInTaskAutoGeneration);
+  ExpressionSubstitution.prototype.copy_ru8ki6$ = function (isCopy, newWeight) {
+    if (isCopy === void 0)
+      isCopy = false;
+    if (newWeight === void 0)
+      newWeight = null;
+    return new ExpressionSubstitution(this.left, this.right, newWeight != null ? newWeight : this.weight, this.basedOnTaskContext, this.code, this.nameEn, this.nameRu, this.comparisonType, this.leftFunctions, this.matchJumbledAndNested, this.priority, this.changeOnlyOrder, this.simpleAdditional, this.isExtending, this.normalizationType, this.weightInTaskAutoGeneration, this.useWhenPostprocessGeneratedExpression, isCopy);
   };
   ExpressionSubstitution.prototype.computeIdentifier_6taknv$ = function (recomputeIfComputed) {
     if (isBlank(this.identifier) || recomputeIfComputed) {
       this.identifier = '[' + this.left.computeIdentifier_5osufp$() + '->' + this.right.computeIdentifier_5osufp$() + ']';
     }return this.identifier;
+  };
+  ExpressionSubstitution.prototype.setStepIdForRight_za3lpa$ = function (stepId) {
+    this.right.setStepIdForAllNodes_za3lpa$(stepId);
   };
   ExpressionSubstitution.prototype.isAppropriateToFunctions_ywdfdh$ = function (functions) {
     var tmp$ = this.leftFunctions.isEmpty();
@@ -17186,7 +17473,7 @@ if (typeof kotlin === 'undefined') {
     }var tmp$;
     ExpressionSubstitution$Companion_getInstance().checkConditionCompanion_tiu7wf$(expressionNode, conditionNode, substitutionInstance, nameArgsMap, this.basedOnTaskContext, this.matchJumbledAndNested);
     if (substitutionInstance.isApplicable && expressionComparator != null) {
-      var nonZeroVariables = this.right.getNonZeroVariables();
+      var nonZeroVariables = this.right.getNonZeroVariables_ywdfdh$();
       tmp$ = nonZeroVariables.iterator();
       while (tmp$.hasNext()) {
         var nonZeroVariable = tmp$.next();
@@ -17360,11 +17647,11 @@ if (typeof kotlin === 'undefined') {
     return !basedOnTaskContext && conditionNode.functionStringDefinition != null && ensureNotNull(conditionNode.functionStringDefinition).function.isNameForRuleDesignations;
   };
   ExpressionSubstitution$Companion.prototype.applyRightCompanion_kkx7l8$ = function (substitutionInstance, right) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14;
     if (right.value.length === 0 && right.children.size === 1) {
       return this.applyRightCompanion_kkx7l8$(substitutionInstance, right.children.get_za3lpa$(0));
     } else if (right.isNumberValue()) {
-      return right.copy_t305d5$();
+      return right.copy_4anocu$();
     } else if (right.children.size !== 0) {
       if ((tmp$_1 = (tmp$_0 = (tmp$ = right.functionStringDefinition) != null ? tmp$.function : null) != null ? tmp$_0.isNameForRuleDesignations : null) != null ? tmp$_1 : false) {
         var actualNameArgsMap = LinkedHashMap_init_0();
@@ -17377,22 +17664,30 @@ if (typeof kotlin === 'undefined') {
             return null;
           }functionNameArgsToExpressionMap.put_xwzc9p$('sys_def_func_agr_' + j, tmp$_4);
         }
-        tmp$_7 = (tmp$_6 = (tmp$_5 = substitutionInstance.getExprFunc_61zpoe$(right.value + '_' + toString(right.children.size))) != null ? tmp$_5.cloneWithDeepSubstitutions_qhbxfl$(functionNameArgsToExpressionMap) : null) != null ? tmp$_6.normalizeSubTree_f8z7ch$(void 0, void 0, false) : null;
-        if (tmp$_7 == null) {
+        var tmp$_15;
+        if ((tmp$_7 = (tmp$_6 = (tmp$_5 = substitutionInstance.getExprFunc_61zpoe$(right.value + '_' + toString(right.children.size))) != null ? tmp$_5.cloneWithDeepSubstitutions_qhbxfl$(functionNameArgsToExpressionMap) : null) != null ? tmp$_6.normalizeSubTree_f8z7ch$(void 0, void 0, false) : null) != null) {
+          var tmp$_16;
+          if ((tmp$_16 = right.lastAppliedSubstitution) != null) {
+            tmp$_7.setLastAppliedSubstitutionForAllNodes_1plxii$(tmp$_16);
+          }tmp$_15 = tmp$_7;
+        } else
+          tmp$_15 = null;
+        tmp$_8 = tmp$_15;
+        if (tmp$_8 == null) {
           return null;
-        }return tmp$_7;
+        }return tmp$_8;
       } else {
-        var argumentStartIndex = (tmp$_10 = (tmp$_9 = (tmp$_8 = right.functionStringDefinition) != null ? tmp$_8.function : null) != null ? tmp$_9.numberOfDefinitionArguments : null) != null ? tmp$_10 : 0;
+        var argumentStartIndex = (tmp$_11 = (tmp$_10 = (tmp$_9 = right.functionStringDefinition) != null ? tmp$_9.function : null) != null ? tmp$_10.numberOfDefinitionArguments : null) != null ? tmp$_11 : 0;
         for (var i = 0; i < argumentStartIndex; i++) {
           substitutionInstance.putExprVar_sth3hf$(right.children.get_za3lpa$(i).value, right.children.get_za3lpa$(i));
         }
-        var result = right.copy_t305d5$();
-        tmp$_11 = get_lastIndex(right.children);
-        for (var i_0 = 0; i_0 <= tmp$_11; i_0++) {
-          tmp$_12 = this.applyRightCompanion_kkx7l8$(substitutionInstance, right.children.get_za3lpa$(i_0));
-          if (tmp$_12 == null) {
+        var result = right.copy_4anocu$();
+        tmp$_12 = get_lastIndex(right.children);
+        for (var i_0 = 0; i_0 <= tmp$_12; i_0++) {
+          tmp$_13 = this.applyRightCompanion_kkx7l8$(substitutionInstance, right.children.get_za3lpa$(i_0));
+          if (tmp$_13 == null) {
             return null;
-          }result.addChild_em03xr$(tmp$_12);
+          }result.addChild_em03xr$(tmp$_13);
         }
         for (var i_1 = 0; i_1 < argumentStartIndex; i_1++) {
           substitutionInstance.removeExprVar_61zpoe$(right.children.get_za3lpa$(i_1).value);
@@ -17400,7 +17695,7 @@ if (typeof kotlin === 'undefined') {
         return result;
       }
     } else {
-      return ((tmp$_13 = substitutionInstance.getExprVar_61zpoe$(right.value)) != null ? tmp$_13 : right).cloneWithNormalization_1g1bdl$(void 0, false);
+      return ((tmp$_14 = substitutionInstance.getExprVar_61zpoe$(right.value)) != null ? tmp$_14 : right).cloneWithNormalization_1g1bdl$(void 0, false);
     }
   };
   ExpressionSubstitution$Companion.$metadata$ = {
@@ -17493,6 +17788,9 @@ if (typeof kotlin === 'undefined') {
     } else
       return null;
   };
+  ExpressionSubstitution.prototype.isNormalType = function () {
+    return !contains_2(this.code, '__to__');
+  };
   ExpressionSubstitution.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'ExpressionSubstitution',
@@ -17534,7 +17832,7 @@ if (typeof kotlin === 'undefined') {
     this.priority = priority;
   }
   SubstitutionApplication.prototype.toString = function () {
-    return '' + ("result: '" + this.resultExpression.toPlainTextView_bu354u$() + "'" + '\n') + ("expressionSubstitution.left: '" + this.expressionSubstitution.left.toString() + "'" + '\n') + ("expressionSubstitution.right: '" + this.expressionSubstitution.right.toString() + "'" + '\n') + ("originalExpression: '" + this.originalExpression.toString() + "'" + '\n') + ("originalExpressionChangingPart: '" + this.originalExpressionChangingPart.toString() + "'" + '\n') + ("resultExpression: '" + this.resultExpression.toString() + "'" + '\n') + ("resultExpressionChangingPart: '" + this.resultExpressionChangingPart.toString() + "'" + '\n') + ("substitutionType: '" + this.substitutionType + "'" + '\n') + ("priority: '" + this.priority + "'");
+    return '' + ("result: '" + this.resultExpression.toPlainTextView_8ellkq$() + "'" + '\n') + ("expressionSubstitution.left: '" + this.expressionSubstitution.left.toString() + "'" + '\n') + ("expressionSubstitution.right: '" + this.expressionSubstitution.right.toString() + "'" + '\n') + ("originalExpression: '" + this.originalExpression.toString() + "'" + '\n') + ("originalExpressionChangingPart: '" + this.originalExpressionChangingPart.toString() + "'" + '\n') + ("resultExpression: '" + this.resultExpression.toString() + "'" + '\n') + ("resultExpressionChangingPart: '" + this.resultExpressionChangingPart.toString() + "'" + '\n') + ("substitutionType: '" + this.substitutionType + "'" + '\n') + ("priority: '" + this.priority + "'");
   };
   SubstitutionApplication.$metadata$ = {
     kind: Kind_CLASS,
@@ -17579,6 +17877,38 @@ if (typeof kotlin === 'undefined') {
   SubstitutionApplication.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.expressionSubstitution, other.expressionSubstitution) && Kotlin.equals(this.originalExpression, other.originalExpression) && Kotlin.equals(this.originalExpressionChangingPart, other.originalExpressionChangingPart) && Kotlin.equals(this.resultExpression, other.resultExpression) && Kotlin.equals(this.resultExpressionChangingPart, other.resultExpressionChangingPart) && Kotlin.equals(this.substitutionType, other.substitutionType) && Kotlin.equals(this.priority, other.priority)))));
   };
+  function addSubstitutionToDiff($receiver, compareWith, expressionSubstitution) {
+    var tmp$;
+    if (!equals($receiver.value, compareWith.value) || $receiver.children.size !== compareWith.children.size) {
+      $receiver.lastAppliedSubstitution = expressionSubstitution;
+      return;
+    }tmp$ = zip($receiver.children, compareWith.children).iterator();
+    while (tmp$.hasNext()) {
+      var tmp$_0 = tmp$.next();
+      var child = tmp$_0.component1()
+      , compareChild = tmp$_0.component2();
+      addSubstitutionToDiff(child, compareChild, expressionSubstitution);
+    }
+  }
+  function addSubstitutionToResultExpression($receiver) {
+    addSubstitutionToDiff($receiver.resultExpression, $receiver.originalExpression, $receiver.expressionSubstitution);
+  }
+  function addStepIdToDiff($receiver, compareWith, stepId) {
+    var tmp$;
+    if (!equals($receiver.value, compareWith.value) || $receiver.children.size !== compareWith.children.size) {
+      $receiver.lastModifiedStepId = stepId;
+      return;
+    }tmp$ = zip($receiver.children, compareWith.children).iterator();
+    while (tmp$.hasNext()) {
+      var tmp$_0 = tmp$.next();
+      var child = tmp$_0.component1()
+      , compareChild = tmp$_0.component2();
+      addStepIdToDiff(child, compareChild, stepId);
+    }
+  }
+  function addStepIdToResultExpression($receiver, stepId) {
+    addStepIdToDiff($receiver.resultExpression, $receiver.originalExpression, stepId);
+  }
   function MathMlTagTreeNode(type, value, startPosition, endPosition, parent, stringDefinitionType, isNumberRead, needDoubleChild, needOneMoreBracket, isLatexArgument, texArgumentType) {
     if (startPosition === void 0)
       startPosition = -1;
@@ -19303,7 +19633,7 @@ if (typeof kotlin === 'undefined') {
   };
   function ExpressionTreeAnalyzer(analyzingExpression) {
     this.analyzingExpression_0 = analyzingExpression;
-    this.expressionDimension_0 = this.analyzingExpression_0.getVariableNames().size;
+    this.expressionDimension_0 = this.analyzingExpression_0.getVariableNames_ywdfdh$().size;
     this.functionByName_0 = mapOf([to('', ExpressionTreeAnalyzer$functionByName$lambda(this)), to('+', ExpressionTreeAnalyzer$functionByName$lambda_0(this)), to('*', ExpressionTreeAnalyzer$functionByName$lambda_1(this)), to('-', ExpressionTreeAnalyzer$functionByName$lambda_2(this)), to('/', ExpressionTreeAnalyzer$functionByName$lambda_3(this)), to('^', ExpressionTreeAnalyzer$functionByName$lambda_4(this)), to('mod', ExpressionTreeAnalyzer$functionByName$lambda_5(this)), to('S', ExpressionTreeAnalyzer$functionByName$lambda_6(this)), to('P', ExpressionTreeAnalyzer$functionByName$lambda_7(this)), to('and', ExpressionTreeAnalyzer$functionByName$lambda_8(this)), to('or', ExpressionTreeAnalyzer$functionByName$lambda_9(this)), to('xor', ExpressionTreeAnalyzer$functionByName$lambda_10(this)), to('alleq', ExpressionTreeAnalyzer$functionByName$lambda_11(this)), to('not', ExpressionTreeAnalyzer$functionByName$lambda_12(this)), to('sin', ExpressionTreeAnalyzer$functionByName$lambda_13(this)), to('cos', ExpressionTreeAnalyzer$functionByName$lambda_14(this)), to('sh', ExpressionTreeAnalyzer$functionByName$lambda_15(this)), to('ch', ExpressionTreeAnalyzer$functionByName$lambda_16(this)), to('tg', ExpressionTreeAnalyzer$functionByName$lambda_17(this)), to('th', ExpressionTreeAnalyzer$functionByName$lambda_18(this)), to('asin', ExpressionTreeAnalyzer$functionByName$lambda_19(this)), to('acos', ExpressionTreeAnalyzer$functionByName$lambda_20(this)), to('atg', ExpressionTreeAnalyzer$functionByName$lambda_21(this)), to('exp', ExpressionTreeAnalyzer$functionByName$lambda_22(this)), to('ln', ExpressionTreeAnalyzer$functionByName$lambda_23(this)), to('abs', ExpressionTreeAnalyzer$functionByName$lambda_24(this))]);
   }
   ExpressionTreeAnalyzer.prototype.findDomain = function () {
@@ -19949,7 +20279,7 @@ if (typeof kotlin === 'undefined') {
           $receiver_0.setChildOnPosition_gk94xr$(applicationToSelectedPartResult, 0);
           tmp$_0 = $receiver_0;
         } else {
-          var commutativeOperationNode = ensureNotNull(notSelectedSubtreeTopArguments).copy_t305d5$();
+          var commutativeOperationNode = ensureNotNull(notSelectedSubtreeTopArguments).copy_4anocu$();
           commutativeOperationNode.addChild_em03xr$(applicationToSelectedPartResult);
           tmp$ = ensureNotNull(notSelectedSubtreeTopOriginalTree).children.iterator();
           while (tmp$.hasNext()) {
@@ -20081,12 +20411,12 @@ if (typeof kotlin === 'undefined') {
       }}}
   function SimpleComputationRuleParams_init$lambda(this$SimpleComputationRuleParams) {
     return function (args) {
-      return plus_1(args, this$SimpleComputationRuleParams);
+      return plus_3(args, this$SimpleComputationRuleParams);
     };
   }
   function SimpleComputationRuleParams_init$lambda_0(this$SimpleComputationRuleParams) {
     return function (args) {
-      return minus(args, this$SimpleComputationRuleParams);
+      return minus_0(args, this$SimpleComputationRuleParams);
     };
   }
   function SimpleComputationRuleParams_init$lambda_1(this$SimpleComputationRuleParams) {
@@ -20246,7 +20576,7 @@ if (typeof kotlin === 'undefined') {
     return toReal_0(numberToInt(value) - value).additivelyEqualToZero();
   }
   function roundNumber(number) {
-    var current = JsMath.abs(number);
+    var current = Math_0.abs(number);
     var leftIterations = 10;
     while (!toReal_0(current).additivelyEqualToZero() && inZ(current) && leftIterations > 0) {
       current /= 10;
@@ -20262,7 +20592,7 @@ if (typeof kotlin === 'undefined') {
   function tenPowToMakeZ(number, simpleComputationRuleParams) {
     if (simpleComputationRuleParams === void 0)
       simpleComputationRuleParams = simpleComputationRuleParamsDefault;
-    var current = JsMath.abs(number);
+    var current = Math_0.abs(number);
     var iterations = 0;
     while (!inZ(current) && iterations < simpleComputationRuleParams.maxTenPowIterations) {
       current *= 10;
@@ -20270,7 +20600,7 @@ if (typeof kotlin === 'undefined') {
     }
     return iterations;
   }
-  function plus_1(args, simpleComputationRuleParams) {
+  function plus_3(args, simpleComputationRuleParams) {
     if (simpleComputationRuleParams === void 0)
       simpleComputationRuleParams = simpleComputationRuleParamsDefault;
     var tmp$ = args.size === 2;
@@ -20315,7 +20645,7 @@ if (typeof kotlin === 'undefined') {
       return null;
     }return result;
   }
-  function minus(args, simpleComputationRuleParams) {
+  function minus_0(args, simpleComputationRuleParams) {
     if (simpleComputationRuleParams === void 0)
       simpleComputationRuleParams = simpleComputationRuleParamsDefault;
     if (args.size !== 1) {
@@ -20390,7 +20720,7 @@ if (typeof kotlin === 'undefined') {
       return null;
     }var $receiver = first_0(args);
     var x = last(args);
-    var result = JsMath.pow($receiver, x);
+    var result = Math_0.pow($receiver, x);
     if (!isFinite(result)) {
       return null;
     }if (roundNumber(result) > simpleComputationRuleParams.maxResRounded || (roundNumber(first_0(args)) > simpleComputationRuleParams.maxPowBaseRounded && roundNumber(last(args)) > simpleComputationRuleParams.maxPowDegRounded)) {
@@ -20415,7 +20745,7 @@ if (typeof kotlin === 'undefined') {
     if (args.size !== 1) {
       return null;
     }var x = first_0(args);
-    var result = JsMath.sin(x);
+    var result = Math_0.sin(x);
     if (!isFinite(result) || toReal_0(roundNumber(result)).additivelyEqualToZero() || toReal_0(roundNumber(result) - 0.5).additivelyEqualToZero() || toReal_0(roundNumber(result) - 1.0).additivelyEqualToZero()) {
       return null;
     }return result;
@@ -20426,7 +20756,7 @@ if (typeof kotlin === 'undefined') {
     if (args.size !== 1) {
       return null;
     }var x = first_0(args);
-    var result = JsMath.cos(x);
+    var result = Math_0.cos(x);
     if (!isFinite(result) || toReal_0(roundNumber(result)).additivelyEqualToZero() || toReal_0(roundNumber(result) - 0.5).additivelyEqualToZero() || toReal_0(roundNumber(result) - 1.0).additivelyEqualToZero()) {
       return null;
     }return result;
@@ -20437,7 +20767,7 @@ if (typeof kotlin === 'undefined') {
     if (args.size !== 1) {
       return null;
     }var x = first_0(args);
-    var result = JsMath.tan(x);
+    var result = Math_0.tan(x);
     if (!isFinite(result) || toReal_0(roundNumber(result)).additivelyEqualToZero() || toReal_0(roundNumber(result) - 1.0).additivelyEqualToZero()) {
       return null;
     }return result;
@@ -20448,7 +20778,7 @@ if (typeof kotlin === 'undefined') {
     if (args.size !== 1) {
       return null;
     }var x = first_0(args);
-    var result = 1 / JsMath.tan(x);
+    var result = 1 / Math_0.tan(x);
     if (!isFinite(result) || toReal_0(roundNumber(result)).additivelyEqualToZero() || toReal_0(roundNumber(result) - 1.0).additivelyEqualToZero()) {
       return null;
     }return result;
@@ -20752,7 +21082,7 @@ if (typeof kotlin === 'undefined') {
     if (left) {
       if (this.data.containsFunctions()) {
         return new GeneralError('left part of the result contains functions or operations');
-      }var containedVariables = this.data.getVariableNames();
+      }var containedVariables = this.data.getVariableNames_ywdfdh$();
       if (containedVariables.size > 1) {
         return new GeneralError('left part of the result contains more than one variable: ' + joinToString(containedVariables, void 0, void 0, void 0, void 0, void 0, Expression$isSolutionForVariables$lambda));
       } else if (containedVariables.size === 1) {
@@ -20776,7 +21106,7 @@ if (typeof kotlin === 'undefined') {
   };
   Expression.prototype.computeIfNumeric_gb8qxc$ = function (substitutionInstance, baseOperationsDefinitions) {
     var tmp$, tmp$_0;
-    var variableNames = this.data.getVariableNames();
+    var variableNames = this.data.getVariableNames_ywdfdh$();
     var pointI = LinkedHashMap_init_0();
     tmp$ = variableNames.iterator();
     while (tmp$.hasNext()) {
@@ -24163,7 +24493,7 @@ if (typeof kotlin === 'undefined') {
       } else if (equals(l.value, '+') || equals(l.value, '*')) {
         tmp$ = get_lastIndex(l.children);
         for (var i = 0; i <= tmp$; i++) {
-          var $receiver_0 = l.copy_t305d5$();
+          var $receiver_0 = l.copy_4anocu$();
           var tmp$_1;
           tmp$_1 = get_lastIndex(l.children);
           for (var j = 0; j <= tmp$_1; j++) {
@@ -24419,7 +24749,7 @@ if (typeof kotlin === 'undefined') {
     }switch (left.type().name) {
       case 'EXPRESSION':
         log_1.addMessage_cte53e$(FactComparator$compareAsIs$lambda_1, void 0, currentLogLevel.v);
-        tmp$_5 = this.expressionComparator.probabilityTestComparison_1lpgi8$((Kotlin.isType(tmp$ = left, Expression) ? tmp$ : throwCCE()).data.clone(), (Kotlin.isType(tmp$_0 = right, Expression) ? tmp$_0 : throwCCE()).data.clone());
+        tmp$_5 = this.expressionComparator.probabilityTestComparison_je0ger$((Kotlin.isType(tmp$ = left, Expression) ? tmp$ : throwCCE()).data.clone(), (Kotlin.isType(tmp$_0 = right, Expression) ? tmp$_0 : throwCCE()).data.clone());
         break;
       case 'EXPRESSION_COMPARISON':
         var leftComparison = Kotlin.isType(tmp$_1 = left, ExpressionComparison) ? tmp$_1 : throwCCE();
@@ -27730,7 +28060,7 @@ if (typeof kotlin === 'undefined') {
   }
   function getListOfExpressionComparisonFactsFromFirstSystem(solutionRoot) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
-    tmp$_1 = (tmp$_0 = (tmp$ = firstOrNull_0(solutionRoot.factTransformationChains)) != null ? tmp$.chain : null) != null ? firstOrNull_0(tmp$_0) : null;
+    tmp$_1 = (tmp$_0 = (tmp$ = firstOrNull_1(solutionRoot.factTransformationChains)) != null ? tmp$.chain : null) != null ? firstOrNull_1(tmp$_0) : null;
     if (tmp$_1 == null) {
       return emptyList();
     }var firstInputSystem = tmp$_1;
@@ -27984,7 +28314,7 @@ if (typeof kotlin === 'undefined') {
     }
     return result.toString();
   }
-  function compiledConfigurationBySettings(wellKnownFunctionsString, expressionTransformationRulesString, maxExpressionTransformationWeightString, unlimitedWellKnownFunctionsString, taskContextExpressionTransformationRulesString, maxDistBetweenDiffStepsString, scopeFilterString, wellKnownFunctions, unlimitedWellKnownFunctions, expressionTransformationRules) {
+  function compiledConfigurationBySettings(wellKnownFunctionsString, expressionTransformationRulesString, maxExpressionTransformationWeightString, unlimitedWellKnownFunctionsString, taskContextExpressionTransformationRulesString, maxDistBetweenDiffStepsString, scopeFilterString, wellKnownFunctions, unlimitedWellKnownFunctions, expressionTransformationRules, subjectType) {
     if (wellKnownFunctionsString === void 0)
       wellKnownFunctionsString = '';
     if (expressionTransformationRulesString === void 0)
@@ -28005,7 +28335,9 @@ if (typeof kotlin === 'undefined') {
       unlimitedWellKnownFunctions = emptyList();
     }if (expressionTransformationRules === void 0) {
       expressionTransformationRules = emptyList();
-    }var $receiver = split(scopeFilterString, [configSeparator]);
+    }if (subjectType === void 0)
+      subjectType = '';
+    var $receiver = split(scopeFilterString, [configSeparator]);
     var destination = ArrayList_init_0(collectionSizeOrDefault($receiver, 10));
     var tmp$;
     tmp$ = $receiver.iterator();
@@ -28085,7 +28417,7 @@ if (typeof kotlin === 'undefined') {
         destination_5.add_11rb$(new TreeTransformationRule(item_3.first, item_3.second));
       }
       tmp$_7.addAll_brywnq$(destination_5);
-    }var compiledConfiguration = new CompiledConfiguration(void 0, functionConfiguration);
+    }var compiledConfiguration = new CompiledConfiguration(void 0, functionConfiguration, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, subjectType);
     if (!expressionTransformationRules.isEmpty()) {
       compiledConfiguration.expressionTreeAutogeneratedTransformationRuleIdentifiers.clear();
       var tmp$_9 = compiledConfiguration.expressionTreeAutogeneratedTransformationRuleIdentifiers;
@@ -28707,15 +29039,15 @@ if (typeof kotlin === 'undefined') {
   }
   Real$Companion.prototype.sin_lnp2qj$ = function (arg) {
     var x = arg.value;
-    return new Real(JsMath.sin(x));
+    return new Real(Math_0.sin(x));
   };
   Real$Companion.prototype.cos_lnp2qj$ = function (arg) {
     var x = arg.value;
-    return new Real(JsMath.cos(x));
+    return new Real(Math_0.cos(x));
   };
   Real$Companion.prototype.tan_lnp2qj$ = function (arg) {
     var x = arg.value;
-    return new Real(JsMath.tan(x));
+    return new Real(Math_0.tan(x));
   };
   Real$Companion.prototype.exp_lnp2qj$ = function (arg) {
     var tmp$;
@@ -28725,17 +29057,17 @@ if (typeof kotlin === 'undefined') {
       tmp$ = Real_init(0);
     else {
       var x = arg.value;
-      tmp$ = new Real(JsMath.exp(x));
+      tmp$ = new Real(Math_0.exp(x));
     }
     return tmp$;
   };
   Real$Companion.prototype.asin_lnp2qj$ = function (arg) {
     var x = arg.value;
-    return new Real(JsMath.asin(x));
+    return new Real(Math_0.asin(x));
   };
   Real$Companion.prototype.acos_lnp2qj$ = function (arg) {
     var x = arg.value;
-    return new Real(JsMath.acos(x));
+    return new Real(Math_0.acos(x));
   };
   Real$Companion.prototype.atan_lnp2qj$ = function (arg) {
     var tmp$;
@@ -28745,21 +29077,21 @@ if (typeof kotlin === 'undefined') {
       tmp$ = new Real(-math.PI / 2);
     else {
       var x = arg.value;
-      tmp$ = new Real(JsMath.atan(x));
+      tmp$ = new Real(Math_0.atan(x));
     }
     return tmp$;
   };
   Real$Companion.prototype.sinh_lnp2qj$ = function (arg) {
     var x = arg.value;
-    return new Real(JsMath.sinh(x));
+    return new Real(Math_0.sinh(x));
   };
   Real$Companion.prototype.cosh_lnp2qj$ = function (arg) {
     var x = arg.value;
-    return new Real(JsMath.cosh(x));
+    return new Real(Math_0.cosh(x));
   };
   Real$Companion.prototype.tanh_lnp2qj$ = function (arg) {
     var x = arg.value;
-    return new Real(JsMath.tanh(x));
+    return new Real(Math_0.tanh(x));
   };
   Real$Companion.prototype.ln_lnp2qj$ = function (arg) {
     var tmp$;
@@ -28767,11 +29099,11 @@ if (typeof kotlin === 'undefined') {
       tmp$ = this.POSITIVE_INFINITY_0;
     else {
       var x = arg.value;
-      if (JsMath.log(x) === kotlin_js_internal_DoubleCompanionObject.NEGATIVE_INFINITY)
+      if (Math_0.log(x) === kotlin_js_internal_DoubleCompanionObject.NEGATIVE_INFINITY)
         tmp$ = this.NEGATIVE_INFINITY_0;
       else {
         var x_0 = arg.value;
-        tmp$ = new Real(JsMath.log(x_0));
+        tmp$ = new Real(Math_0.log(x_0));
       }
     }
     return tmp$;
@@ -28782,7 +29114,7 @@ if (typeof kotlin === 'undefined') {
       tmp$ = this.POSITIVE_INFINITY_0;
     } else {
       var x = arg.value;
-      tmp$ = new Real(JsMath.abs(x));
+      tmp$ = new Real(Math_0.abs(x));
     }
     return tmp$;
   };
@@ -28801,7 +29133,7 @@ if (typeof kotlin === 'undefined') {
       tmp$ = this.POSITIVE_INFINITY_0;
     } else {
       var x = arg.value;
-      tmp$ = new Real(JsMath.sqrt(x));
+      tmp$ = new Real(Math_0.sqrt(x));
     }
     return tmp$;
   };
@@ -28847,7 +29179,7 @@ if (typeof kotlin === 'undefined') {
     } else {
       var $receiver = this.value;
       var x = arg.value;
-      tmp$ = new Real(JsMath.pow($receiver, x));
+      tmp$ = new Real(Math_0.pow($receiver, x));
     }
     return tmp$;
   };
@@ -28867,6 +29199,62 @@ if (typeof kotlin === 'undefined') {
     Real.call($this, value);
     return $this;
   }
+  function NumberIntervalType(name, ordinal) {
+    Enum.call(this);
+    this.name$ = name;
+    this.ordinal$ = ordinal;
+  }
+  function NumberIntervalType_initFields() {
+    NumberIntervalType_initFields = function () {
+    };
+    NumberIntervalType$SMALL_NATURAL_instance = new NumberIntervalType('SMALL_NATURAL', 0);
+    NumberIntervalType$NATURAL_instance = new NumberIntervalType('NATURAL', 1);
+    NumberIntervalType$INTEGER_instance = new NumberIntervalType('INTEGER', 2);
+    NumberIntervalType$REAL_instance = new NumberIntervalType('REAL', 3);
+  }
+  var NumberIntervalType$SMALL_NATURAL_instance;
+  function NumberIntervalType$SMALL_NATURAL_getInstance() {
+    NumberIntervalType_initFields();
+    return NumberIntervalType$SMALL_NATURAL_instance;
+  }
+  var NumberIntervalType$NATURAL_instance;
+  function NumberIntervalType$NATURAL_getInstance() {
+    NumberIntervalType_initFields();
+    return NumberIntervalType$NATURAL_instance;
+  }
+  var NumberIntervalType$INTEGER_instance;
+  function NumberIntervalType$INTEGER_getInstance() {
+    NumberIntervalType_initFields();
+    return NumberIntervalType$INTEGER_instance;
+  }
+  var NumberIntervalType$REAL_instance;
+  function NumberIntervalType$REAL_getInstance() {
+    NumberIntervalType_initFields();
+    return NumberIntervalType$REAL_instance;
+  }
+  NumberIntervalType.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'NumberIntervalType',
+    interfaces: [Enum]
+  };
+  function NumberIntervalType$values() {
+    return [NumberIntervalType$SMALL_NATURAL_getInstance(), NumberIntervalType$NATURAL_getInstance(), NumberIntervalType$INTEGER_getInstance(), NumberIntervalType$REAL_getInstance()];
+  }
+  NumberIntervalType.values = NumberIntervalType$values;
+  function NumberIntervalType$valueOf(name) {
+    switch (name) {
+      case 'SMALL_NATURAL':
+        return NumberIntervalType$SMALL_NATURAL_getInstance();
+      case 'NATURAL':
+        return NumberIntervalType$NATURAL_getInstance();
+      case 'INTEGER':
+        return NumberIntervalType$INTEGER_getInstance();
+      case 'REAL':
+        return NumberIntervalType$REAL_getInstance();
+      default:throwISE('No enum constant mathhelper.twf.numbers.NumberIntervalType.' + name);
+    }
+  }
+  NumberIntervalType.valueOf_61zpoe$ = NumberIntervalType$valueOf;
   function InequalityApproximateSolver(baseOperationsDefinitions) {
     if (baseOperationsDefinitions === void 0)
       baseOperationsDefinitions = new BaseOperationsDefinitions();
@@ -28958,7 +29346,7 @@ if (typeof kotlin === 'undefined') {
   };
   InequalityApproximateSolver.prototype.fastTopResolver_fno42m$ = function ($receiver, variable) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10;
-    var result = new VariableProperties(variable, mutableListOf([new SegmentsUnion()]));
+    var result = new VariableProperties_0(variable, mutableListOf([new SegmentsUnion_0()]));
     var variableChildNumber = this.findVariableNode_fno42m$($receiver, variable);
     tmp$ = get_lastIndex($receiver.children);
     if (!(0 <= variableChildNumber && variableChildNumber <= tmp$))
@@ -28981,12 +29369,12 @@ if (typeof kotlin === 'undefined') {
               }
             }}
 
-          first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(root));
+          first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(root));
           break;
         case '-':
           if ($receiver.children.size === 1) {
             root.addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), '0'));
-            first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(void 0, root));
+            first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(void 0, root));
           } else {
             if (variableChildNumber === 0) {
               root.addChild_em03xr$(new ExpressionNode(NodeType$FUNCTION_getInstance(), '+'));
@@ -28994,7 +29382,7 @@ if (typeof kotlin === 'undefined') {
               for (var i_0 = 1; i_0 <= tmp$_1; i_0++) {
                 first_0(root.children).addChild_em03xr$($receiver.children.get_za3lpa$(i_0).clone());
               }
-              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(root));
+              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(root));
             } else {
               if ($receiver.children.size === 2)
                 root.addChild_em03xr$($receiver.children.get_za3lpa$(0).clone());
@@ -29006,7 +29394,7 @@ if (typeof kotlin === 'undefined') {
                     first_0(root.children).addChild_em03xr$($receiver.children.get_za3lpa$(i_1).clone());
                   }}
               }
-              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(void 0, root));
+              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(void 0, root));
             }
           }
 
@@ -29019,12 +29407,12 @@ if (typeof kotlin === 'undefined') {
             }var mult = tmp$_3;
             if (mult > 0) {
               root.addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), '0'));
-              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(root));
+              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(root));
             } else if (mult < 0) {
               root.addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), '0'));
-              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(void 0, root));
+              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(void 0, root));
             } else
-              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment());
+              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0());
           } else
             return null;
           break;
@@ -29036,28 +29424,28 @@ if (typeof kotlin === 'undefined') {
             }var mult_0 = tmp$_4;
             if (mult_0 > 0) {
               root.addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), '0'));
-              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(root));
+              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(root));
             } else if (mult_0 < 0) {
               root.addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), '0'));
-              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(void 0, root));
+              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(void 0, root));
             }} else
             return null;
           break;
         case '^':
           if (variableChildNumber === 0) {
             root.addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), '0'));
-            first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(root));
+            first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(root));
           } else if ($receiver.children.size === 2) {
-            first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment());
+            first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0());
           } else
             return null;
           break;
         case 'exp':
-          first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment());
+          first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0());
           break;
         case 'ln':
           root.addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), '1'));
-          first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(root, void 0, void 0, false));
+          first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(root, void 0, void 0, false));
           break;
         case 'S':
           if ($receiver.children.size !== 4)
@@ -29069,7 +29457,7 @@ if (typeof kotlin === 'undefined') {
                 root.addChild_em03xr$(new ExpressionNode(NodeType$FUNCTION_getInstance(), '+'));
                 first_0(root.children).addChild_em03xr$(new ExpressionNode(NodeType$FUNCTION_getInstance(), '-'));
                 first_0(first_0(root.children).children).addChild_em03xr$($receiver.children.get_za3lpa$(variableChildNumber - 1 | 0).clone());
-                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(root));
+                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(root));
               } else
                 return null;
               break;
@@ -29085,14 +29473,14 @@ if (typeof kotlin === 'undefined') {
               var mult_1 = tmp$_5;
               if (mult_1 > 0) {
                 root.addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), '0'));
-                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(root));
+                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(root));
               } else if (mult_1 < 0) {
                 root.addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), '0'));
-                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(void 0, root));
+                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(void 0, root));
               } else
-                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment());
+                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0());
               break;
-            default:first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment());
+            default:first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0());
               break;
           }
 
@@ -29110,7 +29498,7 @@ if (typeof kotlin === 'undefined') {
           case '-':
             if (varChild.children.size === 1) {
               root.addChild_em03xr$($receiver.children.get_za3lpa$(1 - variableChildNumber | 0).clone());
-              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(void 0, root));
+              first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(void 0, root));
             } else {
               root.addChild_em03xr$(new ExpressionNode(NodeType$FUNCTION_getInstance(), '+'));
               if (variableGrandSonNumber === 0) {
@@ -29124,7 +29512,7 @@ if (typeof kotlin === 'undefined') {
                   first_0(root.children).addChild_em03xr$(new ExpressionNode(NodeType$FUNCTION_getInstance(), '-'));
                   first_0(first_0(root.children).children).addChild_em03xr$($receiver.children.get_za3lpa$(1 - variableChildNumber | 0).clone());
                 }
-                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(root));
+                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(root));
               } else {
                 first_0(root.children).addChild_em03xr$($receiver.children.get_za3lpa$(1 - variableChildNumber | 0).clone());
                 if (varChild.children.size === 2)
@@ -29137,7 +29525,7 @@ if (typeof kotlin === 'undefined') {
                       first_0(first_0(root.children).children).addChild_em03xr$(varChild.children.get_za3lpa$(i_3).clone());
                     }}
                 }
-                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(void 0, root));
+                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(void 0, root));
               }
             }
 
@@ -29158,17 +29546,17 @@ if (typeof kotlin === 'undefined') {
               }
               if (mult_2 > 0) {
                 first_0(root.children).addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), mult_2.toString()));
-                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(root));
+                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(root));
               } else if (mult_2 < 0) {
                 first_0(root.children).addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), (-mult_2).toString()));
-                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(void 0, root));
+                first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(void 0, root));
               } else {
                 tmp$_9 = toDoubleOrNull($receiver.children.get_za3lpa$(1 - variableChildNumber | 0).value);
                 if (tmp$_9 == null) {
                   return null;
                 }var const_0 = tmp$_9;
                 if (const_0 > 0)
-                  first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment());
+                  first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0());
               }
             } else
               return null;
@@ -29190,10 +29578,10 @@ if (typeof kotlin === 'undefined') {
                 }
                 if (mult_3 > 0) {
                   first_0(root.children).addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), mult_3.toString()));
-                  first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(root));
+                  first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(root));
                 } else if (mult_3 < 0) {
                   first_0(root.children).addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), (-mult_3).toString()));
-                  first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment(void 0, root));
+                  first_0(result.segmentsUnionsIntersection).segmentsUnion.add_11rb$(new Segment_0(void 0, root));
                 }} else
                 return null;
             } else
@@ -29217,7 +29605,7 @@ if (typeof kotlin === 'undefined') {
     var tmp$;
     var expression = expressionNode.cloneWithNormalization_1g1bdl$(void 0, false);
     this.baseOperationsDefinitions_0.computeExpressionTree_em03xr$(expression.children.get_za3lpa$(0));
-    var variables = expression.getVariableNames();
+    var variables = expression.getVariableNames_ywdfdh$();
     var result = LinkedHashMap_init_0();
     tmp$ = variables.iterator();
     while (tmp$.hasNext()) {
@@ -29225,7 +29613,7 @@ if (typeof kotlin === 'undefined') {
       var fastResolverResult = this.fastTopResolver_fno42m$(expression, variable);
       if (fastResolverResult == null) {
         if (!this.isPolynomThatCanHaveDivsOnlyOnTopLevel_ucqqkr$(expression, setOf(variable)))
-          result.put_xwzc9p$(variable, new VariableProperties(variable, void 0, true));
+          result.put_xwzc9p$(variable, new VariableProperties_0(variable, void 0, true));
       } else {
         result.put_xwzc9p$(variable, fastResolverResult);
       }
@@ -29378,18 +29766,18 @@ if (typeof kotlin === 'undefined') {
           var m = (l + r) / 2;
           if (l > 0 || r < 0) {
             var x = l * r;
-            m = JsMath.sqrt(x) * this.sign_0(l);
+            m = Math_0.sqrt(x) * this.sign_0(l);
           } else {
             if (l * l < r && r > 1) {
               var x_0 = r;
-              var a = JsMath.sqrt(x_0);
+              var a = Math_0.sqrt(x_0);
               var b = m;
-              m = JsMath.min(a, b);
+              m = Math_0.min(a, b);
             }if (r * r < -l && l < -1) {
               var x_1 = -l;
-              var a_0 = -JsMath.sqrt(x_1);
+              var a_0 = -Math_0.sqrt(x_1);
               var b_0 = m;
-              m = JsMath.max(a_0, b_0);
+              m = Math_0.max(a_0, b_0);
             }}
           if (this.sign_0(this.valueAt_0(coefs, m)) !== this.sign_0(values.get_za3lpa$(i_0)))
             l = m;
@@ -29429,7 +29817,7 @@ if (typeof kotlin === 'undefined') {
     var rightPoly = this.toPolynomial_em03xr$(this.right);
     var a = leftPoly.size;
     var b = rightPoly.size;
-    tmp$ = JsMath.max(a, b);
+    tmp$ = Math_0.max(a, b);
     for (var i = 0; i < tmp$; i++) {
       if (i >= leftPoly.size)
         leftPoly.add_11rb$(0.0);
@@ -29581,10 +29969,10 @@ if (typeof kotlin === 'undefined') {
     var pointsToCheck = arrayListOf([leftBorder, rightBorder]);
     var semiDiscriminant = coefs.get_za3lpa$(2) * coefs.get_za3lpa$(2) - 3 * coefs.get_za3lpa$(3) - coefs.get_za3lpa$(1);
     if (semiDiscriminant > this.eps_0) {
-      var r1 = (-coefs.get_za3lpa$(2) + JsMath.sqrt(semiDiscriminant)) / 3 / coefs.get_za3lpa$(3);
+      var r1 = (-coefs.get_za3lpa$(2) + Math_0.sqrt(semiDiscriminant)) / 3 / coefs.get_za3lpa$(3);
       if (r1 > leftBorder - this.eps_0 && r1 < rightBorder + this.eps_0)
         pointsToCheck.add_11rb$(r1);
-      var r2 = (-coefs.get_za3lpa$(2) - JsMath.sqrt(semiDiscriminant)) / 3 / coefs.get_za3lpa$(3);
+      var r2 = (-coefs.get_za3lpa$(2) - Math_0.sqrt(semiDiscriminant)) / 3 / coefs.get_za3lpa$(3);
       if (r2 > leftBorder - this.eps_0 && r2 < rightBorder + this.eps_0)
         pointsToCheck.add_11rb$(r2);
     }return this.checkCertainPoints_0(coefs, pointsToCheck);
@@ -29606,8 +29994,8 @@ if (typeof kotlin === 'undefined') {
     var tmp$;
     var derivative = this.derivativeForPolynomial_l8u4bv$(coefs);
     var b = -1.0E9;
-    var left = JsMath.max(leftBorder, b);
-    var right = JsMath.min(rightBorder, 1.0E9);
+    var left = Math_0.max(leftBorder, b);
+    var right = Math_0.min(rightBorder, 1.0E9);
     var derivativeRoots = this.getPolynomialRoots_0(derivative, left, right);
     derivativeRoots.add_11rb$(left);
     derivativeRoots.add_11rb$(right);
@@ -29645,13 +30033,13 @@ if (typeof kotlin === 'undefined') {
         q.set_wxm5ur$(i, res * m);
       }
       var tmp$_0 = q.get_za3lpa$(0);
-      var x = 1 / JsMath.pow(2.0, iterNumber);
-      var root1 = JsMath.pow(tmp$_0, x);
+      var x = 1 / Math_0.pow(2.0, iterNumber);
+      var root1 = Math_0.pow(tmp$_0, x);
       if (leftBorder - this.eps_0 < root1 && root1 < rightBorder + this.eps_0)
         pointsToCheck.add_11rb$(root1);
       var tmp$_1 = q.get_za3lpa$(0);
-      var x_0 = 1 / JsMath.pow(2.0, iterNumber);
-      var root2 = JsMath.pow(tmp$_1, x_0);
+      var x_0 = 1 / Math_0.pow(2.0, iterNumber);
+      var root2 = Math_0.pow(tmp$_1, x_0);
       if (leftBorder - this.eps_0 < root2 && root2 < rightBorder + this.eps_0)
         pointsToCheck.add_11rb$(root2);
     }
@@ -29670,52 +30058,52 @@ if (typeof kotlin === 'undefined') {
   SpecialCaseSolver.prototype.rootsOfCubicPolynomial_l8u4bv$ = function (poly) {
     var tmp$ = poly.get_za3lpa$(1) / poly.get_za3lpa$(3);
     var $receiver = poly.get_za3lpa$(2);
-    var tmp$_0 = JsMath.pow($receiver, 2) / 3;
+    var tmp$_0 = Math_0.pow($receiver, 2) / 3;
     var $receiver_0 = poly.get_za3lpa$(3);
-    var p = tmp$ - tmp$_0 / JsMath.pow($receiver_0, 2);
+    var p = tmp$ - tmp$_0 / Math_0.pow($receiver_0, 2);
     var tmp$_1 = poly.get_za3lpa$(0) / poly.get_za3lpa$(3);
     var $receiver_1 = poly.get_za3lpa$(2);
-    var tmp$_2 = 2 * JsMath.pow($receiver_1, 3) / 27;
+    var tmp$_2 = 2 * Math_0.pow($receiver_1, 3) / 27;
     var $receiver_2 = poly.get_za3lpa$(3);
-    var tmp$_3 = tmp$_1 + tmp$_2 / JsMath.pow($receiver_2, 3);
+    var tmp$_3 = tmp$_1 + tmp$_2 / Math_0.pow($receiver_2, 3);
     var tmp$_4 = poly.get_za3lpa$(2) * poly.get_za3lpa$(1) / 3;
     var $receiver_3 = poly.get_za3lpa$(3);
-    var q = tmp$_3 - tmp$_4 / JsMath.pow($receiver_3, 2);
+    var q = tmp$_3 - tmp$_4 / Math_0.pow($receiver_3, 2);
     var $receiver_4 = p / 3;
-    var tmp$_5 = JsMath.pow($receiver_4, 3);
+    var tmp$_5 = Math_0.pow($receiver_4, 3);
     var $receiver_5 = q / 2;
-    var Q = tmp$_5 + JsMath.pow($receiver_5, 2);
+    var Q = tmp$_5 + Math_0.pow($receiver_5, 2);
     var r1;
     var r2 = null;
     var r3 = null;
     if (Q > this.eps_0) {
-      var $receiver_6 = -q / 2 + JsMath.sqrt(Q);
+      var $receiver_6 = -q / 2 + Math_0.sqrt(Q);
       var x = 1.0 / 3;
-      var alpha = JsMath.pow($receiver_6, x);
-      var $receiver_7 = -q / 2 - JsMath.sqrt(Q);
+      var alpha = Math_0.pow($receiver_6, x);
+      var $receiver_7 = -q / 2 - Math_0.sqrt(Q);
       var x_0 = 1.0 / 3;
-      var beta = JsMath.pow($receiver_7, x_0);
+      var beta = Math_0.pow($receiver_7, x_0);
       r1 = alpha + beta;
     } else if (Q > -this.eps_0) {
       var $receiver_8 = -q / 2;
       var x_1 = 1.0 / 3;
-      var alpha_0 = JsMath.pow($receiver_8, x_1);
+      var alpha_0 = Math_0.pow($receiver_8, x_1);
       r1 = 2 * alpha_0;
       r2 = -alpha_0;
     } else {
       var $receiver_9 = q / 2;
-      var $receiver_10 = JsMath.pow($receiver_9, 2) + -Q;
+      var $receiver_10 = Math_0.pow($receiver_9, 2) + -Q;
       var x_2 = 1.0 / 6;
-      var r = JsMath.pow($receiver_10, x_2);
+      var r = Math_0.pow($receiver_10, x_2);
       var x_3 = -Q;
-      var y = JsMath.sqrt(x_3);
+      var y = Math_0.sqrt(x_3);
       var x_4 = -q / 2;
-      var phi = JsMath.atan2(y, x_4) / 3;
-      var re = r * JsMath.cos(phi);
-      var im = r * JsMath.sin(phi);
+      var phi = Math_0.atan2(y, x_4) / 3;
+      var re = r * Math_0.cos(phi);
+      var im = r * Math_0.sin(phi);
       r1 = 2 * re;
-      r2 = -re + JsMath.sqrt(3.0) * im;
-      r3 = -re - JsMath.sqrt(3.0) * im;
+      r2 = -re + Math_0.sqrt(3.0) * im;
+      r3 = -re - Math_0.sqrt(3.0) * im;
     }
     var roots = arrayListOf([r1 - poly.get_za3lpa$(2) / 3 / poly.get_za3lpa$(3)]);
     if (r2 != null)
@@ -29791,7 +30179,7 @@ if (typeof kotlin === 'undefined') {
     this.partialDerivativesNodesWithVariables_0 = ArrayList_init();
     var tmp$;
     var variablesNamesList = ArrayList_init();
-    variablesNamesList.addAll_brywnq$(this.expression.getVariableNames());
+    variablesNamesList.addAll_brywnq$(this.expression.getVariableNames_ywdfdh$());
     var tmp$_0;
     tmp$_0 = variablesNamesList.iterator();
     while (tmp$_0.hasNext()) {
@@ -29821,13 +30209,13 @@ if (typeof kotlin === 'undefined') {
     var tmp$, tmp$_0;
     var tmp$_1 = this.domainPointGenerator_0;
     var b = descentStartPointsCount - this.domainPointGenerator_0.foundPointsCount() | 0;
-    tmp$_1.findPoints_za3lpa$(JsMath.max(0, b));
+    tmp$_1.findPoints_za3lpa$(Math_0.max(0, b));
     if (!this.canStart()) {
       return false;
     }var b_0 = this.domainPointGenerator_0.foundPointsCount();
-    tmp$ = JsMath.min(descentStartPointsCount, b_0);
+    tmp$ = Math_0.min(descentStartPointsCount, b_0);
     for (var run = 0; run < tmp$; run++) {
-      var point = this.domainPointGenerator_0.generateNewPoint_mqu1mq$(void 0, void 0, run % this.domainPointGenerator_0.foundPointsCount());
+      var point = this.domainPointGenerator_0.generateNewPointInDomain_mqu1mq$(void 0, void 0, run % this.domainPointGenerator_0.foundPointsCount());
       tmp$_0 = this.variablesList_0.iterator();
       while (tmp$_0.hasNext()) {
         var variable = tmp$_0.next();
@@ -29991,6 +30379,127 @@ if (typeof kotlin === 'undefined') {
   VariableInfo.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.name, other.name) && Kotlin.equals(this.value, other.value)))));
   };
+  function Segment_0(leftBorder, rightBorder, point, isLeftBorderIncluded, isRightBorderIncluded) {
+    if (leftBorder === void 0)
+      leftBorder = null;
+    if (rightBorder === void 0)
+      rightBorder = null;
+    if (point === void 0)
+      point = null;
+    if (isLeftBorderIncluded === void 0)
+      isLeftBorderIncluded = true;
+    if (isRightBorderIncluded === void 0)
+      isRightBorderIncluded = true;
+    this.leftBorder = leftBorder;
+    this.rightBorder = rightBorder;
+    this.point = point;
+    this.isLeftBorderIncluded = isLeftBorderIncluded;
+    this.isRightBorderIncluded = isRightBorderIncluded;
+  }
+  Segment_0.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Segment',
+    interfaces: []
+  };
+  Segment_0.prototype.component1 = function () {
+    return this.leftBorder;
+  };
+  Segment_0.prototype.component2 = function () {
+    return this.rightBorder;
+  };
+  Segment_0.prototype.component3 = function () {
+    return this.point;
+  };
+  Segment_0.prototype.component4 = function () {
+    return this.isLeftBorderIncluded;
+  };
+  Segment_0.prototype.component5 = function () {
+    return this.isRightBorderIncluded;
+  };
+  Segment_0.prototype.copy_l5y7qg$ = function (leftBorder, rightBorder, point, isLeftBorderIncluded, isRightBorderIncluded) {
+    return new Segment_0(leftBorder === void 0 ? this.leftBorder : leftBorder, rightBorder === void 0 ? this.rightBorder : rightBorder, point === void 0 ? this.point : point, isLeftBorderIncluded === void 0 ? this.isLeftBorderIncluded : isLeftBorderIncluded, isRightBorderIncluded === void 0 ? this.isRightBorderIncluded : isRightBorderIncluded);
+  };
+  Segment_0.prototype.toString = function () {
+    return 'Segment(leftBorder=' + Kotlin.toString(this.leftBorder) + (', rightBorder=' + Kotlin.toString(this.rightBorder)) + (', point=' + Kotlin.toString(this.point)) + (', isLeftBorderIncluded=' + Kotlin.toString(this.isLeftBorderIncluded)) + (', isRightBorderIncluded=' + Kotlin.toString(this.isRightBorderIncluded)) + ')';
+  };
+  Segment_0.prototype.hashCode = function () {
+    var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.leftBorder) | 0;
+    result = result * 31 + Kotlin.hashCode(this.rightBorder) | 0;
+    result = result * 31 + Kotlin.hashCode(this.point) | 0;
+    result = result * 31 + Kotlin.hashCode(this.isLeftBorderIncluded) | 0;
+    result = result * 31 + Kotlin.hashCode(this.isRightBorderIncluded) | 0;
+    return result;
+  };
+  Segment_0.prototype.equals = function (other) {
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.leftBorder, other.leftBorder) && Kotlin.equals(this.rightBorder, other.rightBorder) && Kotlin.equals(this.point, other.point) && Kotlin.equals(this.isLeftBorderIncluded, other.isLeftBorderIncluded) && Kotlin.equals(this.isRightBorderIncluded, other.isRightBorderIncluded)))));
+  };
+  function SegmentsUnion_0(segmentsUnion) {
+    if (segmentsUnion === void 0) {
+      segmentsUnion = ArrayList_init();
+    }this.segmentsUnion = segmentsUnion;
+  }
+  SegmentsUnion_0.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'SegmentsUnion',
+    interfaces: []
+  };
+  SegmentsUnion_0.prototype.component1 = function () {
+    return this.segmentsUnion;
+  };
+  SegmentsUnion_0.prototype.copy_hl5wp4$ = function (segmentsUnion) {
+    return new SegmentsUnion_0(segmentsUnion === void 0 ? this.segmentsUnion : segmentsUnion);
+  };
+  SegmentsUnion_0.prototype.toString = function () {
+    return 'SegmentsUnion(segmentsUnion=' + Kotlin.toString(this.segmentsUnion) + ')';
+  };
+  SegmentsUnion_0.prototype.hashCode = function () {
+    var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.segmentsUnion) | 0;
+    return result;
+  };
+  SegmentsUnion_0.prototype.equals = function (other) {
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && Kotlin.equals(this.segmentsUnion, other.segmentsUnion))));
+  };
+  function VariableProperties_0(name, segmentsUnionsIntersection, unableToCompute) {
+    if (segmentsUnionsIntersection === void 0) {
+      segmentsUnionsIntersection = ArrayList_init();
+    }if (unableToCompute === void 0)
+      unableToCompute = false;
+    this.name = name;
+    this.segmentsUnionsIntersection = segmentsUnionsIntersection;
+    this.unableToCompute = unableToCompute;
+  }
+  VariableProperties_0.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'VariableProperties',
+    interfaces: []
+  };
+  VariableProperties_0.prototype.component1 = function () {
+    return this.name;
+  };
+  VariableProperties_0.prototype.component2 = function () {
+    return this.segmentsUnionsIntersection;
+  };
+  VariableProperties_0.prototype.component3 = function () {
+    return this.unableToCompute;
+  };
+  VariableProperties_0.prototype.copy_m9lvhj$ = function (name, segmentsUnionsIntersection, unableToCompute) {
+    return new VariableProperties_0(name === void 0 ? this.name : name, segmentsUnionsIntersection === void 0 ? this.segmentsUnionsIntersection : segmentsUnionsIntersection, unableToCompute === void 0 ? this.unableToCompute : unableToCompute);
+  };
+  VariableProperties_0.prototype.toString = function () {
+    return 'VariableProperties(name=' + Kotlin.toString(this.name) + (', segmentsUnionsIntersection=' + Kotlin.toString(this.segmentsUnionsIntersection)) + (', unableToCompute=' + Kotlin.toString(this.unableToCompute)) + ')';
+  };
+  VariableProperties_0.prototype.hashCode = function () {
+    var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.name) | 0;
+    result = result * 31 + Kotlin.hashCode(this.segmentsUnionsIntersection) | 0;
+    result = result * 31 + Kotlin.hashCode(this.unableToCompute) | 0;
+    return result;
+  };
+  VariableProperties_0.prototype.equals = function (other) {
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.name, other.name) && Kotlin.equals(this.segmentsUnionsIntersection, other.segmentsUnionsIntersection) && Kotlin.equals(this.unableToCompute, other.unableToCompute)))));
+  };
   function CompressedNode(func, value) {
     if (func === void 0)
       func = '';
@@ -30005,10 +30514,11 @@ if (typeof kotlin === 'undefined') {
       var baseFunctions = (new BaseOperationsComputation(ComputationType$COMPLEX_getInstance())).baseComputationComplex;
       var key = this.func;
       var tmp$;
-      if ((Kotlin.isType(tmp$ = baseFunctions, Map) ? tmp$ : throwCCE()).containsKey_11rb$(key))
+      if ((Kotlin.isType(tmp$ = baseFunctions, Map) ? tmp$ : throwCCE()).containsKey_11rb$(key)) {
         this.functor = baseFunctions.get_11rb$(this.func);
-      else
+      } else {
         throw Kotlin.newThrowable('invalid function ' + this.func);
+      }
     }}
   CompressedNode.$metadata$ = {
     kind: Kind_CLASS,
@@ -30036,15 +30546,19 @@ if (typeof kotlin === 'undefined') {
   CompressedNode.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.func, other.func) && Kotlin.equals(this.value, other.value)))));
   };
-  function DomainPointGenerator(_expressions, baseOperationsDefinitions, randomPointCount, goodEnought, annealingRuns, annealingAttemptsCount, annealingIterationCount, annealingTemperatureMultiplier, annealingPenaltyRestrictionMultiplier, gradientDescentRuns, gradientDescentIterationCount, gradientDescentTernarySearchIterationCount, gradientDescentTernarySearchOrderStep, gradientDescentTernarySearchOrderIterCount, gradientDescentDelta) {
+  function DomainPointGenerator(_expressions, baseOperationsDefinitions, fastVersionWithoutConsiderationOfDomain, numberIntervalType, randomPointCount, goodEnough, annealingRuns, annealingAttemptsCount, annealingIterationCount, annealingTemperatureMultiplier, annealingPenaltyRestrictionMultiplier, gradientDescentRuns, gradientDescentIterationCount, gradientDescentTernarySearchIterationCount, gradientDescentTernarySearchOrderStep, gradientDescentTernarySearchOrderIterCount, gradientDescentDelta, maxValueMultiplier) {
     if (_expressions === void 0) {
       _expressions = ArrayList_init();
     }if (baseOperationsDefinitions === void 0)
       baseOperationsDefinitions = new BaseOperationsDefinitions();
+    if (fastVersionWithoutConsiderationOfDomain === void 0)
+      fastVersionWithoutConsiderationOfDomain = false;
+    if (numberIntervalType === void 0)
+      numberIntervalType = NumberIntervalType$REAL_getInstance();
     if (randomPointCount === void 0)
       randomPointCount = 10;
-    if (goodEnought === void 0)
-      goodEnought = 5;
+    if (goodEnough === void 0)
+      goodEnough = 5;
     if (annealingRuns === void 0)
       annealingRuns = 2;
     if (annealingAttemptsCount === void 0)
@@ -30067,7 +30581,11 @@ if (typeof kotlin === 'undefined') {
       gradientDescentTernarySearchOrderIterCount = 3;
     if (gradientDescentDelta === void 0)
       gradientDescentDelta = 0.001;
+    if (maxValueMultiplier === void 0)
+      maxValueMultiplier = 10.0;
     this.baseOperationsDefinitions = baseOperationsDefinitions;
+    this.fastVersionWithoutConsiderationOfDomain = fastVersionWithoutConsiderationOfDomain;
+    this.numberIntervalType = numberIntervalType;
     this.annealingAttemptsCount_0 = annealingAttemptsCount;
     this.annealingIterationCount_0 = annealingIterationCount;
     this.annealingTemperatureMultiplier_0 = annealingTemperatureMultiplier;
@@ -30078,9 +30596,12 @@ if (typeof kotlin === 'undefined') {
     this.gradientDescentTernarySearchOrderStep_0 = gradientDescentTernarySearchOrderStep;
     this.gradientDescentTernarySearchOrderIterCount_0 = gradientDescentTernarySearchOrderIterCount;
     this.gradientDescentDelta_0 = gradientDescentDelta;
+    this.maxValueMultiplier = maxValueMultiplier;
+    this.variablesNamesSet = ArrayList_init();
     this.variablesList_0 = ArrayList_init();
     this.pointsInDomain_0 = ArrayList_init();
     this.maxConstant_0 = 1.0;
+    this.border_0 = 1.0;
     this.pointsFoundUsingAnnealing_0 = 0;
     this.pointsFoundUsingGradientDescent_0 = 0;
     this.epsilon = 1.0E-6;
@@ -30088,41 +30609,44 @@ if (typeof kotlin === 'undefined') {
     this.treeNodes_0 = ArrayList_init();
     this.nodesWithVariables_0 = ArrayList_init();
     var tmp$, tmp$_0, tmp$_1;
-    var variablesNamesList = ArrayList_init();
     tmp$ = _expressions.iterator();
     while (tmp$.hasNext()) {
       var expression = tmp$.next();
-      variablesNamesList.addAll_brywnq$(expression.getVariableNames());
+      this.variablesNamesSet.addAll_brywnq$(expression.getVariableNames_ywdfdh$());
       var a = expression.getMaxConstant();
       var b = this.maxConstant_0;
-      this.maxConstant_0 = JsMath.max(a, b);
+      this.maxConstant_0 = Math_0.max(a, b);
     }
-    var tmp$_2;
-    tmp$_2 = variablesNamesList.iterator();
-    while (tmp$_2.hasNext()) {
-      var element = tmp$_2.next();
-      this.variablesList_0.add_11rb$(new VariableInfo(element));
-    }
-    tmp$_0 = _expressions.iterator();
-    while (tmp$_0.hasNext()) {
-      var expression_0 = tmp$_0.next();
-      this.findAllVariables_0(expression_0);
-    }
-    reverse(this.treeNodes_0);
-    tmp$_1 = randomPointCount;
-    for (var attempt = 0; attempt < tmp$_1; attempt++) {
-      var tmp$_3;
-      tmp$_3 = this.variablesList_0.iterator();
-      while (tmp$_3.hasNext()) {
-        var element_0 = tmp$_3.next();
-        element_0.value = random_1(-this.maxConstant_0, this.maxConstant_0);
+    this.border_0 = this.maxConstant_0 * this.maxValueMultiplier;
+    if (this.numberIntervalType !== NumberIntervalType$REAL_getInstance()) {
+      this.fastVersionWithoutConsiderationOfDomain = true;
+    }if (!this.fastVersionWithoutConsiderationOfDomain) {
+      var tmp$_2;
+      tmp$_2 = this.variablesNamesSet.iterator();
+      while (tmp$_2.hasNext()) {
+        var element = tmp$_2.next();
+        this.variablesList_0.add_11rb$(new VariableInfo(element));
       }
-      if (this.calculatePenalty_0(this.variablesList_0) < this.epsilon)
-        this.pointsInDomain_0.add_11rb$(this.clone_0(this.variablesList_0));
-    }
-    if (this.pointsInDomain_0.size < goodEnought) {
-      this.findPoints_za3lpa$(annealingRuns);
-    }}
+      tmp$_0 = _expressions.iterator();
+      while (tmp$_0.hasNext()) {
+        var expression_0 = tmp$_0.next();
+        this.findAllVariables_0(expression_0);
+      }
+      reverse(this.treeNodes_0);
+      tmp$_1 = randomPointCount;
+      for (var attempt = 0; attempt < tmp$_1; attempt++) {
+        var tmp$_3;
+        tmp$_3 = this.variablesList_0.iterator();
+        while (tmp$_3.hasNext()) {
+          var element_0 = tmp$_3.next();
+          element_0.value = this.typedRandom_lu1900$(-this.maxConstant_0, this.maxConstant_0);
+        }
+        if (this.calculatePenaltyForImaginaryValue_0(this.variablesList_0) < this.epsilon)
+          this.pointsInDomain_0.add_11rb$(this.clone_0(this.variablesList_0));
+      }
+      if (this.pointsInDomain_0.size < goodEnough) {
+        this.findPoints_za3lpa$(annealingRuns);
+      }}}
   DomainPointGenerator.prototype.findPoints_za3lpa$ = function (annealingRuns) {
     var tmp$, tmp$_0;
     for (var attempt = 0; attempt < annealingRuns; attempt++) {
@@ -30130,7 +30654,7 @@ if (typeof kotlin === 'undefined') {
       tmp$_1 = this.variablesList_0.iterator();
       while (tmp$_1.hasNext()) {
         var element = tmp$_1.next();
-        element.value = random_1(-this.maxConstant_0, this.maxConstant_0);
+        element.value = this.typedRandom_lu1900$(-this.maxConstant_0, this.maxConstant_0);
       }
       var foundSomething = false;
       tmp$ = this.annealingAttemptsCount_0;
@@ -30170,7 +30694,7 @@ if (typeof kotlin === 'undefined') {
     }return result;
   };
   DomainPointGenerator.prototype.hasVariables = function () {
-    return this.variablesList_0.size > 0;
+    return this.variablesNamesSet.size > 0;
   };
   DomainPointGenerator.prototype.generateSimplePoints = function () {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8;
@@ -30248,7 +30772,17 @@ if (typeof kotlin === 'undefined') {
     points.add_11rb$(decreasingSmallPoint);
     return points;
   };
-  DomainPointGenerator.prototype.generateNewPoint_mqu1mq$ = function (domainArea, randomPointTries, centreID) {
+  DomainPointGenerator.prototype.generateNewPoint = function () {
+    var tmp$;
+    var result = LinkedHashMap_init_0();
+    tmp$ = this.variablesNamesSet.iterator();
+    while (tmp$.hasNext()) {
+      var variableName = tmp$.next();
+      result.put_xwzc9p$(variableName, this.typedRandom_lu1900$(-this.border_0, this.border_0).toString());
+    }
+    return result;
+  };
+  DomainPointGenerator.prototype.generateNewPointInDomain_mqu1mq$ = function (domainArea, randomPointTries, centreID) {
     if (domainArea === void 0)
       domainArea = 1.0E-5;
     if (randomPointTries === void 0)
@@ -30260,13 +30794,13 @@ if (typeof kotlin === 'undefined') {
       tmp$ = this.variablesList_0.iterator();
       while (tmp$.hasNext()) {
         var variable = tmp$.next();
-        variable.value = random_1(-2 * this.maxConstant_0, 2 * this.maxConstant_0);
+        variable.value = this.typedRandom_lu1900$(-2 * this.maxConstant_0, 2 * this.maxConstant_0);
       }
-      if (this.calculatePenalty_0(this.variablesList_0) < this.epsilon)
+      if (this.calculatePenaltyForImaginaryValue_0(this.variablesList_0) < this.epsilon)
         return this.variablesListToMap_hfc6ya$(this.variablesList_0);
     }
     if (!this.pointsInDomain_0.isEmpty()) {
-      var pointIndex = centreID === -1 ? random_0.nextInt_vux9f0$(0, this.pointsInDomain_0.size) : centreID;
+      var pointIndex = centreID === -1 ? randomInt(0, this.pointsInDomain_0.size) : centreID;
       return this.variablesListToMap_hfc6ya$(this.pointsInDomain_0.get_za3lpa$(pointIndex));
     } else {
       var result = LinkedHashMap_init_0();
@@ -30274,10 +30808,28 @@ if (typeof kotlin === 'undefined') {
       while (tmp$_0.hasNext()) {
         var variable_0 = tmp$_0.next();
         var key = variable_0.name;
-        var value = random_1(-this.maxConstant_0, this.maxConstant_0).toString();
+        var value = this.typedRandom_lu1900$(-this.maxConstant_0, this.maxConstant_0).toString();
         result.put_xwzc9p$(key, value);
       }
       return result;
+    }
+  };
+  DomainPointGenerator.prototype.typedRandom_lu1900$ = function (from, to) {
+    switch (this.numberIntervalType.name) {
+      case 'SMALL_NATURAL':
+        var a = numberToInt(Math_0.floor(from));
+        var tmp$ = Math_0.max(a, 1);
+        var a_0 = numberToInt(Math_0.ceil(to));
+        var a_1 = Math_0.max(a_0, 1);
+        return randomInt(tmp$, Math_0.min(a_1, 5));
+      case 'NATURAL':
+        var a_2 = numberToInt(Math_0.floor(from));
+        var tmp$_0 = Math_0.max(a_2, 1);
+        var a_3 = numberToInt(Math_0.ceil(to));
+        return randomInt(tmp$_0, Math_0.max(a_3, 1));
+      case 'INTEGER':
+        return randomInt(numberToInt(Math_0.floor(from)), numberToInt(Math_0.ceil(to)));
+      default:return random_1(from, to);
     }
   };
   DomainPointGenerator.prototype.variablesListToMap_hfc6ya$ = function (variableList) {
@@ -30304,7 +30856,7 @@ if (typeof kotlin === 'undefined') {
   };
   DomainPointGenerator.prototype.runGradientDescent_0 = function (variableList, iterationCount, ternarySearchIterationCount, ternarySearchOrderStep, ternarySearchOrderIterationCount, delta) {
     var tmp$;
-    var currentPenalty = this.calculatePenalty_0(variableList);
+    var currentPenalty = this.calculatePenaltyForImaginaryValue_0(variableList);
     if (currentPenalty < this.epsilon)
       return true;
     for (var iterNumber = 0; iterNumber < iterationCount; iterNumber++) {
@@ -30315,7 +30867,7 @@ if (typeof kotlin === 'undefined') {
         tmp$ = variableList.size;
         for (var i = 0; i < tmp$; i++)
           variableList.get_za3lpa$(i).value = variableList.get_za3lpa$(i).value + direction.get_za3lpa$(i);
-        currentPenalty = this.calculatePenalty_0(variableList);
+        currentPenalty = this.calculatePenaltyForImaginaryValue_0(variableList);
       }
       if (currentPenalty < this.epsilon)
         return true;
@@ -30341,8 +30893,8 @@ if (typeof kotlin === 'undefined') {
         minPenalty = penalty_0;
         optimalMultiplier = curOrder;
       }}
-    var leftBorder = optimalMultiplier / JsMath.sqrt(orderStep);
-    var rightBorder = JsMath.sqrt(orderStep) * optimalMultiplier;
+    var leftBorder = optimalMultiplier / Math_0.sqrt(orderStep);
+    var rightBorder = Math_0.sqrt(orderStep) * optimalMultiplier;
     var penaltyLeft = null;
     var penaltyRight = null;
     for (var iterNumber = 0; iterNumber < iterationCount; iterNumber++) {
@@ -30380,14 +30932,14 @@ if (typeof kotlin === 'undefined') {
     for (var i = 0; i !== variableList.size; ++i) {
       variableList.get_za3lpa$(i).value = variableList.get_za3lpa$(i).value + coef * direction.get_za3lpa$(i);
     }
-    var penalty = this.calculatePenalty_0(variableList);
+    var penalty = this.calculatePenaltyForImaginaryValue_0(variableList);
     for (var i_0 = 0; i_0 !== variableList.size; ++i_0) {
       variableList.get_za3lpa$(i_0).value = variableList.get_za3lpa$(i_0).value - coef * direction.get_za3lpa$(i_0);
     }
     return penalty;
   };
   DomainPointGenerator.prototype.generateMedians_0 = function (left, right) {
-    var phi = (3 - JsMath.sqrt(5.0)) / 2;
+    var phi = (3 - Math_0.sqrt(5.0)) / 2;
     return new Pair(left + (right - left) * phi, right - (right - left) * phi);
   };
   DomainPointGenerator.prototype.calculateDirection_0 = function (variableList, delta, currentPenalty) {
@@ -30397,10 +30949,10 @@ if (typeof kotlin === 'undefined') {
     while (tmp$.hasNext()) {
       var variable = tmp$.next();
       var x = variable.value;
-      var a = JsMath.abs(x);
-      var dx = JsMath.max(a, 1.0) * delta;
+      var a = Math_0.abs(x);
+      var dx = Math_0.max(a, 1.0) * delta;
       variable.value = variable.value + dx;
-      direction.add_11rb$(-(this.calculatePenalty_0(variableList) - currentPenalty) / dx);
+      direction.add_11rb$(-(this.calculatePenaltyForImaginaryValue_0(variableList) - currentPenalty) / dx);
       variable.value = variable.value - dx;
     }
     return direction;
@@ -30408,7 +30960,7 @@ if (typeof kotlin === 'undefined') {
   DomainPointGenerator.prototype.runAnnealing_0 = function (variableList, temperatureMultiplier, iterationCount) {
     var tmp$;
     var currentTemperature = 1.0;
-    var currentPenalty = this.calculatePenalty_0(this.variablesList_0);
+    var currentPenalty = this.calculatePenaltyForImaginaryValue_0(this.variablesList_0);
     if (variableList.isEmpty())
       return currentPenalty < this.epsilon;
     if (currentPenalty < this.epsilon)
@@ -30420,9 +30972,9 @@ if (typeof kotlin === 'undefined') {
         var variable = tmp$.next();
         newPoint.add_11rb$(variable.clone());
       }
-      var varIndex = random_0.nextInt_vux9f0$(0, newPoint.size);
+      var varIndex = randomInt(0, newPoint.size);
       newPoint.set_wxm5ur$(varIndex, this.generateNextValue_0(newPoint.get_za3lpa$(varIndex), currentPenalty));
-      var newPenalty = this.calculatePenalty_0(newPoint);
+      var newPenalty = this.calculatePenaltyForImaginaryValue_0(newPoint);
       if (this.newPointGoodEnough_0(currentPenalty, newPenalty, currentTemperature)) {
         currentPenalty = newPenalty;
         for (var i = 0; i !== newPoint.size; ++i) {
@@ -30439,10 +30991,10 @@ if (typeof kotlin === 'undefined') {
     if (!tmp$) {
       var tmp$_0 = random_1(0.0, 1.0);
       var x = (currentPenalty - newPenalty) / temperature;
-      tmp$ = tmp$_0 < JsMath.exp(x) * 0.5;
+      tmp$ = tmp$_0 < Math_0.exp(x) * 0.5;
     }return tmp$;
   };
-  DomainPointGenerator.prototype.calculatePenalty_0 = function (variableList) {
+  DomainPointGenerator.prototype.calculatePenaltyForImaginaryValue_0 = function (variableList) {
     var tmp$, tmp$_0;
     tmp$ = this.nodesWithVariables_0.iterator();
     while (tmp$.hasNext()) {
@@ -30456,10 +31008,10 @@ if (typeof kotlin === 'undefined') {
   DomainPointGenerator.prototype.generateNextValue_0 = function (variable, currentPenalty) {
     var b = abs_0(variable.value) / 10;
     var c = currentPenalty / this.annealingPenaltyRestrictionMultiplier_0;
-    var step = JsMath.max(1.0, b, c);
+    var step = Math_0.max(1.0, b, c);
     var a = step;
     var b_0 = currentPenalty * this.annealingPenaltyRestrictionMultiplier_0;
-    step = JsMath.min(a, b_0);
+    step = Math_0.min(a, b_0);
     variable.value = random_1(variable.value - step, variable.value + step);
     return variable;
   };
@@ -30751,7 +31303,7 @@ if (typeof kotlin === 'undefined') {
       var c = unboxChar(tmp$.next());
       if (isLetterOrDigitOrUnderscore(c)) {
         if (capilizeNext) {
-          result.append_s8itvh$(uppercaseChar(c));
+          result.append_s8itvh$(toChar(String.fromCharCode(c | 0).toUpperCase().charCodeAt(0)));
           capilizeNext = false;
         } else {
           result.append_s8itvh$(c);
@@ -31369,8 +31921,8 @@ if (typeof kotlin === 'undefined') {
     var capitalizedFunctionB = trigonometryFunctions.get_za3lpa$(randomInt(0, trigonometryFunctions.size));
     var functionA = capitalizedFunctionA.toLowerCase();
     var functionB = capitalizedFunctionB.toLowerCase();
-    ensureNotNull(result.tags).add_11rb$(functionA);
-    ensureNotNull(result.tags).add_11rb$(functionB);
+    result.tags.add_11rb$(functionA);
+    result.tags.add_11rb$(functionB);
     var variableA = 'x';
     var variableB = equals(functionA, functionB) ? 'y' : String.fromCharCode(toChar(120 + randomInt(0, 2)));
     var $receiver = compiledConfiguration.createExpressionFunctionNode_twmih4$(functionA, 1);
@@ -31430,6 +31982,171 @@ if (typeof kotlin === 'undefined') {
       }
     }
     return result;
+  }
+  function ExpressionSimilarityMetric() {
+  }
+  ExpressionSimilarityMetric.$metadata$ = {
+    kind: Kind_INTERFACE,
+    simpleName: 'ExpressionSimilarityMetric',
+    interfaces: []
+  };
+  function CompoundSimilarityMetric(metrics, combinator) {
+    if (combinator === void 0)
+      combinator = CompoundSimilarityMetric_init$lambda;
+    this.metrics = metrics;
+    this.combinator = combinator;
+  }
+  CompoundSimilarityMetric.prototype.invoke_heho5o$ = function (lhs, rhs) {
+    var $receiver = this.metrics;
+    var destination = ArrayList_init_0(collectionSizeOrDefault($receiver, 10));
+    var tmp$;
+    tmp$ = $receiver.iterator();
+    while (tmp$.hasNext()) {
+      var item = tmp$.next();
+      destination.add_11rb$(item.invoke_heho5o$(lhs, rhs));
+    }
+    var operation = this.combinator;
+    var tmp$_0;
+    var accumulator = 0.0;
+    tmp$_0 = destination.iterator();
+    while (tmp$_0.hasNext()) {
+      var element = tmp$_0.next();
+      accumulator = operation(accumulator, element);
+    }
+    return accumulator;
+  };
+  function CompoundSimilarityMetric_init$lambda(acc, metricVal) {
+    return acc + metricVal;
+  }
+  CompoundSimilarityMetric.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'CompoundSimilarityMetric',
+    interfaces: [ExpressionSimilarityMetric]
+  };
+  function variableOnlyInLeft$ObjectLiteral() {
+  }
+  variableOnlyInLeft$ObjectLiteral.prototype.invoke_heho5o$ = function (lhs, rhs) {
+    var lhsVars = lhs.getContainedVariables();
+    var rhsVars = rhs.getContainedVariables();
+    return minus(lhsVars, rhsVars).size;
+  };
+  variableOnlyInLeft$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: [ExpressionSimilarityMetric]
+  };
+  var variableOnlyInLeft;
+  function variableOnlyInRight$ObjectLiteral() {
+  }
+  variableOnlyInRight$ObjectLiteral.prototype.invoke_heho5o$ = function (lhs, rhs) {
+    var lhsVars = lhs.getContainedVariables();
+    var rhsVars = rhs.getContainedVariables();
+    return minus(rhsVars, lhsVars).size;
+  };
+  variableOnlyInRight$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: [ExpressionSimilarityMetric]
+  };
+  var variableOnlyInRight;
+  function disparityMatrixMetric$ObjectLiteral() {
+  }
+  disparityMatrixMetric$ObjectLiteral.prototype.invoke_heho5o$ = function (lhs, rhs) {
+    var normalizedLhs = first_0(lhs.cloneWithNormalization_1g1bdl$(void 0, true).children);
+    var normalizedRhs = first_0(rhs.cloneWithNormalization_1g1bdl$(void 0, true).children);
+    var leftSubexpressions = getNonLeafSubexpressions(normalizedLhs);
+    var rightSubexpressions = getNonLeafSubexpressions(normalizedRhs);
+    var comparator = new ExpressionComparator();
+    var destination = ArrayList_init();
+    var tmp$;
+    tmp$ = leftSubexpressions.iterator();
+    loop_label: while (tmp$.hasNext()) {
+      var element = tmp$.next();
+      var all$result;
+      all$break: do {
+        var tmp$_0;
+        if (Kotlin.isType(rightSubexpressions, Collection) && rightSubexpressions.isEmpty()) {
+          all$result = true;
+          break all$break;
+        }tmp$_0 = rightSubexpressions.iterator();
+        while (tmp$_0.hasNext()) {
+          var element_0 = tmp$_0.next();
+          if (!!comparator.compareAsIs_5gxvt3$(element, element_0)) {
+            all$result = false;
+            break all$break;
+          }}
+        all$result = true;
+      }
+       while (false);
+      if (all$result)
+        destination.add_11rb$(element);
+    }
+    var leftScore = destination.size;
+    var destination_0 = ArrayList_init();
+    var tmp$_1;
+    tmp$_1 = rightSubexpressions.iterator();
+    loop_label: while (tmp$_1.hasNext()) {
+      var element_1 = tmp$_1.next();
+      var all$result_0;
+      all$break: do {
+        var tmp$_2;
+        if (Kotlin.isType(leftSubexpressions, Collection) && leftSubexpressions.isEmpty()) {
+          all$result_0 = true;
+          break all$break;
+        }tmp$_2 = leftSubexpressions.iterator();
+        while (tmp$_2.hasNext()) {
+          var element_2 = tmp$_2.next();
+          if (!!comparator.compareAsIs_5gxvt3$(element_2, element_1)) {
+            all$result_0 = false;
+            break all$break;
+          }}
+        all$result_0 = true;
+      }
+       while (false);
+      if (all$result_0)
+        destination_0.add_11rb$(element_1);
+    }
+    var rightScore = destination_0.size;
+    return (leftScore + rightScore) / 2;
+  };
+  disparityMatrixMetric$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: [ExpressionSimilarityMetric]
+  };
+  var disparityMatrixMetric;
+  function isLeafNode($receiver) {
+    return $receiver.children.isEmpty();
+  }
+  function getNonLeafSubexpressions($receiver) {
+    if ($receiver.getDepth() <= 2)
+      return listOf($receiver);
+    var tmp$ = listOf($receiver);
+    var $receiver_0 = $receiver.children;
+    var destination = ArrayList_init();
+    var tmp$_0;
+    tmp$_0 = $receiver_0.iterator();
+    while (tmp$_0.hasNext()) {
+      var element = tmp$_0.next();
+      var list = getNonLeafSubexpressions(element);
+      addAll(destination, list);
+    }
+    return plus(tmp$, destination);
+  }
+  function distanceTo$lambda(it) {
+    return average(it);
+  }
+  function distanceTo($receiver, expressions, metric, selector) {
+    if (metric === void 0)
+      metric = disparityMatrixMetric;
+    if (selector === void 0)
+      selector = distanceTo$lambda;
+    var tmp$ = selector;
+    var destination = ArrayList_init_0(collectionSizeOrDefault(expressions, 10));
+    var tmp$_0;
+    tmp$_0 = expressions.iterator();
+    while (tmp$_0.hasNext()) {
+      var item = tmp$_0.next();
+      destination.add_11rb$(metric.invoke_heho5o$($receiver, item));
+    }
+    return tmp$(destination);
   }
   var compareByDescending$lambda_0 = wrapFunction(function () {
     var compareValues = Kotlin.kotlin.comparisons.compareValues_s00gnj$;
@@ -31577,7 +32294,7 @@ if (typeof kotlin === 'undefined') {
   GeneratedExpression.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.expressionNode, other.expressionNode) && Kotlin.equals(this.code, other.code) && Kotlin.equals(this.nameEn, other.nameEn) && Kotlin.equals(this.nameRu, other.nameRu) && Kotlin.equals(this.descriptionShortEn, other.descriptionShortEn) && Kotlin.equals(this.descriptionShortRu, other.descriptionShortRu) && Kotlin.equals(this.descriptionEn, other.descriptionEn) && Kotlin.equals(this.descriptionRu, other.descriptionRu) && Kotlin.equals(this.subjectType, other.subjectType) && Kotlin.equals(this.tags, other.tags)))));
   };
-  function ExpressionTaskGeneratorSettings(expressionGenerationDirection, goalStepsCount, goalDifferentRulesCount, taskStartGenerator, compiledConfiguration, expressionSubstitutions, maxCountSelectedOfTasksOnIteration, widthOfRulesApplicationsOnIteration, minStepsCountInAutogeneration, goalCompletionStepsCount, extendingExpressionSubstitutions, reducingExpressionSubstitutions, mandatoryResultTransformations) {
+  function ExpressionTaskGeneratorSettings(expressionGenerationDirection, goalStepsCount, goalDifferentRulesCount, taskStartGenerator, compiledConfiguration, expressionSubstitutions, maxCountSelectedOfTasksOnIteration, widthOfRulesApplicationsOnIteration, minStepsCountInAutogeneration, goalCompletionStepsCount, extendingExpressionSubstitutions, reducingExpressionSubstitutions, postprocessExpressionSubstitutions, mandatoryResultTransformations, newVariablesExpressionSubstitutions, nodeIdsToTransformSelector) {
     if (expressionGenerationDirection === void 0)
       expressionGenerationDirection = ExpressionGenerationDirection$FINAL_TO_ORIGINAL_getInstance();
     if (goalStepsCount === void 0)
@@ -31620,9 +32337,15 @@ if (typeof kotlin === 'undefined') {
           destination_0.add_11rb$(element_0);
       }
       reducingExpressionSubstitutions = destination_0;
+    }if (postprocessExpressionSubstitutions === void 0) {
+      postprocessExpressionSubstitutions = expressionSubstitutionsFromRulePackITR(PostprocessorRulePack$Companion_getInstance().get(), emptyMap(), false);
     }if (mandatoryResultTransformations === void 0) {
       mandatoryResultTransformations = emptyList();
-    }this.expressionGenerationDirection = expressionGenerationDirection;
+    }if (newVariablesExpressionSubstitutions === void 0) {
+      newVariablesExpressionSubstitutions = emptyMap();
+    }if (nodeIdsToTransformSelector === void 0)
+      nodeIdsToTransformSelector = ExpressionTaskGeneratorSettings_init$lambda_0;
+    this.expressionGenerationDirection = expressionGenerationDirection;
     this.goalStepsCount = goalStepsCount;
     this.goalDifferentRulesCount = goalDifferentRulesCount;
     this.taskStartGenerator = taskStartGenerator;
@@ -31634,13 +32357,19 @@ if (typeof kotlin === 'undefined') {
     this.goalCompletionStepsCount = goalCompletionStepsCount;
     this.extendingExpressionSubstitutions = extendingExpressionSubstitutions;
     this.reducingExpressionSubstitutions = reducingExpressionSubstitutions;
+    this.postprocessExpressionSubstitutions = postprocessExpressionSubstitutions;
     this.mandatoryResultTransformations = mandatoryResultTransformations;
+    this.newVariablesExpressionSubstitutions = newVariablesExpressionSubstitutions;
+    this.nodeIdsToTransformSelector = nodeIdsToTransformSelector;
     setExpressionSubstitutions(this.compiledConfiguration, this.expressionSubstitutions);
   }
   function ExpressionTaskGeneratorSettings_init$lambda(it) {
     var $receiver = new ExpressionNode(NodeType$FUNCTION_getInstance(), '');
     $receiver.addChild_em03xr$(new ExpressionNode(NodeType$VARIABLE_getInstance(), '1'));
     return new GeneratedExpression($receiver, 'e1', void 0, void 0, void 0, void 0, void 0, void 0, 'standard_math');
+  }
+  function ExpressionTaskGeneratorSettings_init$lambda_0(expressionNode) {
+    return selectRandomNodeIdsToTransform(expressionNode);
   }
   ExpressionTaskGeneratorSettings.$metadata$ = {
     kind: Kind_CLASS,
@@ -31684,13 +32413,22 @@ if (typeof kotlin === 'undefined') {
     return this.reducingExpressionSubstitutions;
   };
   ExpressionTaskGeneratorSettings.prototype.component13 = function () {
+    return this.postprocessExpressionSubstitutions;
+  };
+  ExpressionTaskGeneratorSettings.prototype.component14 = function () {
     return this.mandatoryResultTransformations;
   };
-  ExpressionTaskGeneratorSettings.prototype.copy_bhn6d4$ = function (expressionGenerationDirection, goalStepsCount, goalDifferentRulesCount, taskStartGenerator, compiledConfiguration, expressionSubstitutions, maxCountSelectedOfTasksOnIteration, widthOfRulesApplicationsOnIteration, minStepsCountInAutogeneration, goalCompletionStepsCount, extendingExpressionSubstitutions, reducingExpressionSubstitutions, mandatoryResultTransformations) {
-    return new ExpressionTaskGeneratorSettings(expressionGenerationDirection === void 0 ? this.expressionGenerationDirection : expressionGenerationDirection, goalStepsCount === void 0 ? this.goalStepsCount : goalStepsCount, goalDifferentRulesCount === void 0 ? this.goalDifferentRulesCount : goalDifferentRulesCount, taskStartGenerator === void 0 ? this.taskStartGenerator : taskStartGenerator, compiledConfiguration === void 0 ? this.compiledConfiguration : compiledConfiguration, expressionSubstitutions === void 0 ? this.expressionSubstitutions : expressionSubstitutions, maxCountSelectedOfTasksOnIteration === void 0 ? this.maxCountSelectedOfTasksOnIteration : maxCountSelectedOfTasksOnIteration, widthOfRulesApplicationsOnIteration === void 0 ? this.widthOfRulesApplicationsOnIteration : widthOfRulesApplicationsOnIteration, minStepsCountInAutogeneration === void 0 ? this.minStepsCountInAutogeneration : minStepsCountInAutogeneration, goalCompletionStepsCount === void 0 ? this.goalCompletionStepsCount : goalCompletionStepsCount, extendingExpressionSubstitutions === void 0 ? this.extendingExpressionSubstitutions : extendingExpressionSubstitutions, reducingExpressionSubstitutions === void 0 ? this.reducingExpressionSubstitutions : reducingExpressionSubstitutions, mandatoryResultTransformations === void 0 ? this.mandatoryResultTransformations : mandatoryResultTransformations);
+  ExpressionTaskGeneratorSettings.prototype.component15 = function () {
+    return this.newVariablesExpressionSubstitutions;
+  };
+  ExpressionTaskGeneratorSettings.prototype.component16 = function () {
+    return this.nodeIdsToTransformSelector;
+  };
+  ExpressionTaskGeneratorSettings.prototype.copy_adwrvh$ = function (expressionGenerationDirection, goalStepsCount, goalDifferentRulesCount, taskStartGenerator, compiledConfiguration, expressionSubstitutions, maxCountSelectedOfTasksOnIteration, widthOfRulesApplicationsOnIteration, minStepsCountInAutogeneration, goalCompletionStepsCount, extendingExpressionSubstitutions, reducingExpressionSubstitutions, postprocessExpressionSubstitutions, mandatoryResultTransformations, newVariablesExpressionSubstitutions, nodeIdsToTransformSelector) {
+    return new ExpressionTaskGeneratorSettings(expressionGenerationDirection === void 0 ? this.expressionGenerationDirection : expressionGenerationDirection, goalStepsCount === void 0 ? this.goalStepsCount : goalStepsCount, goalDifferentRulesCount === void 0 ? this.goalDifferentRulesCount : goalDifferentRulesCount, taskStartGenerator === void 0 ? this.taskStartGenerator : taskStartGenerator, compiledConfiguration === void 0 ? this.compiledConfiguration : compiledConfiguration, expressionSubstitutions === void 0 ? this.expressionSubstitutions : expressionSubstitutions, maxCountSelectedOfTasksOnIteration === void 0 ? this.maxCountSelectedOfTasksOnIteration : maxCountSelectedOfTasksOnIteration, widthOfRulesApplicationsOnIteration === void 0 ? this.widthOfRulesApplicationsOnIteration : widthOfRulesApplicationsOnIteration, minStepsCountInAutogeneration === void 0 ? this.minStepsCountInAutogeneration : minStepsCountInAutogeneration, goalCompletionStepsCount === void 0 ? this.goalCompletionStepsCount : goalCompletionStepsCount, extendingExpressionSubstitutions === void 0 ? this.extendingExpressionSubstitutions : extendingExpressionSubstitutions, reducingExpressionSubstitutions === void 0 ? this.reducingExpressionSubstitutions : reducingExpressionSubstitutions, postprocessExpressionSubstitutions === void 0 ? this.postprocessExpressionSubstitutions : postprocessExpressionSubstitutions, mandatoryResultTransformations === void 0 ? this.mandatoryResultTransformations : mandatoryResultTransformations, newVariablesExpressionSubstitutions === void 0 ? this.newVariablesExpressionSubstitutions : newVariablesExpressionSubstitutions, nodeIdsToTransformSelector === void 0 ? this.nodeIdsToTransformSelector : nodeIdsToTransformSelector);
   };
   ExpressionTaskGeneratorSettings.prototype.toString = function () {
-    return 'ExpressionTaskGeneratorSettings(expressionGenerationDirection=' + Kotlin.toString(this.expressionGenerationDirection) + (', goalStepsCount=' + Kotlin.toString(this.goalStepsCount)) + (', goalDifferentRulesCount=' + Kotlin.toString(this.goalDifferentRulesCount)) + (', taskStartGenerator=' + Kotlin.toString(this.taskStartGenerator)) + (', compiledConfiguration=' + Kotlin.toString(this.compiledConfiguration)) + (', expressionSubstitutions=' + Kotlin.toString(this.expressionSubstitutions)) + (', maxCountSelectedOfTasksOnIteration=' + Kotlin.toString(this.maxCountSelectedOfTasksOnIteration)) + (', widthOfRulesApplicationsOnIteration=' + Kotlin.toString(this.widthOfRulesApplicationsOnIteration)) + (', minStepsCountInAutogeneration=' + Kotlin.toString(this.minStepsCountInAutogeneration)) + (', goalCompletionStepsCount=' + Kotlin.toString(this.goalCompletionStepsCount)) + (', extendingExpressionSubstitutions=' + Kotlin.toString(this.extendingExpressionSubstitutions)) + (', reducingExpressionSubstitutions=' + Kotlin.toString(this.reducingExpressionSubstitutions)) + (', mandatoryResultTransformations=' + Kotlin.toString(this.mandatoryResultTransformations)) + ')';
+    return 'ExpressionTaskGeneratorSettings(expressionGenerationDirection=' + Kotlin.toString(this.expressionGenerationDirection) + (', goalStepsCount=' + Kotlin.toString(this.goalStepsCount)) + (', goalDifferentRulesCount=' + Kotlin.toString(this.goalDifferentRulesCount)) + (', taskStartGenerator=' + Kotlin.toString(this.taskStartGenerator)) + (', compiledConfiguration=' + Kotlin.toString(this.compiledConfiguration)) + (', expressionSubstitutions=' + Kotlin.toString(this.expressionSubstitutions)) + (', maxCountSelectedOfTasksOnIteration=' + Kotlin.toString(this.maxCountSelectedOfTasksOnIteration)) + (', widthOfRulesApplicationsOnIteration=' + Kotlin.toString(this.widthOfRulesApplicationsOnIteration)) + (', minStepsCountInAutogeneration=' + Kotlin.toString(this.minStepsCountInAutogeneration)) + (', goalCompletionStepsCount=' + Kotlin.toString(this.goalCompletionStepsCount)) + (', extendingExpressionSubstitutions=' + Kotlin.toString(this.extendingExpressionSubstitutions)) + (', reducingExpressionSubstitutions=' + Kotlin.toString(this.reducingExpressionSubstitutions)) + (', postprocessExpressionSubstitutions=' + Kotlin.toString(this.postprocessExpressionSubstitutions)) + (', mandatoryResultTransformations=' + Kotlin.toString(this.mandatoryResultTransformations)) + (', newVariablesExpressionSubstitutions=' + Kotlin.toString(this.newVariablesExpressionSubstitutions)) + (', nodeIdsToTransformSelector=' + Kotlin.toString(this.nodeIdsToTransformSelector)) + ')';
   };
   ExpressionTaskGeneratorSettings.prototype.hashCode = function () {
     var result = 0;
@@ -31706,13 +32444,53 @@ if (typeof kotlin === 'undefined') {
     result = result * 31 + Kotlin.hashCode(this.goalCompletionStepsCount) | 0;
     result = result * 31 + Kotlin.hashCode(this.extendingExpressionSubstitutions) | 0;
     result = result * 31 + Kotlin.hashCode(this.reducingExpressionSubstitutions) | 0;
+    result = result * 31 + Kotlin.hashCode(this.postprocessExpressionSubstitutions) | 0;
     result = result * 31 + Kotlin.hashCode(this.mandatoryResultTransformations) | 0;
+    result = result * 31 + Kotlin.hashCode(this.newVariablesExpressionSubstitutions) | 0;
+    result = result * 31 + Kotlin.hashCode(this.nodeIdsToTransformSelector) | 0;
     return result;
   };
   ExpressionTaskGeneratorSettings.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.expressionGenerationDirection, other.expressionGenerationDirection) && Kotlin.equals(this.goalStepsCount, other.goalStepsCount) && Kotlin.equals(this.goalDifferentRulesCount, other.goalDifferentRulesCount) && Kotlin.equals(this.taskStartGenerator, other.taskStartGenerator) && Kotlin.equals(this.compiledConfiguration, other.compiledConfiguration) && Kotlin.equals(this.expressionSubstitutions, other.expressionSubstitutions) && Kotlin.equals(this.maxCountSelectedOfTasksOnIteration, other.maxCountSelectedOfTasksOnIteration) && Kotlin.equals(this.widthOfRulesApplicationsOnIteration, other.widthOfRulesApplicationsOnIteration) && Kotlin.equals(this.minStepsCountInAutogeneration, other.minStepsCountInAutogeneration) && Kotlin.equals(this.goalCompletionStepsCount, other.goalCompletionStepsCount) && Kotlin.equals(this.extendingExpressionSubstitutions, other.extendingExpressionSubstitutions) && Kotlin.equals(this.reducingExpressionSubstitutions, other.reducingExpressionSubstitutions) && Kotlin.equals(this.mandatoryResultTransformations, other.mandatoryResultTransformations)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.expressionGenerationDirection, other.expressionGenerationDirection) && Kotlin.equals(this.goalStepsCount, other.goalStepsCount) && Kotlin.equals(this.goalDifferentRulesCount, other.goalDifferentRulesCount) && Kotlin.equals(this.taskStartGenerator, other.taskStartGenerator) && Kotlin.equals(this.compiledConfiguration, other.compiledConfiguration) && Kotlin.equals(this.expressionSubstitutions, other.expressionSubstitutions) && Kotlin.equals(this.maxCountSelectedOfTasksOnIteration, other.maxCountSelectedOfTasksOnIteration) && Kotlin.equals(this.widthOfRulesApplicationsOnIteration, other.widthOfRulesApplicationsOnIteration) && Kotlin.equals(this.minStepsCountInAutogeneration, other.minStepsCountInAutogeneration) && Kotlin.equals(this.goalCompletionStepsCount, other.goalCompletionStepsCount) && Kotlin.equals(this.extendingExpressionSubstitutions, other.extendingExpressionSubstitutions) && Kotlin.equals(this.reducingExpressionSubstitutions, other.reducingExpressionSubstitutions) && Kotlin.equals(this.postprocessExpressionSubstitutions, other.postprocessExpressionSubstitutions) && Kotlin.equals(this.mandatoryResultTransformations, other.mandatoryResultTransformations) && Kotlin.equals(this.newVariablesExpressionSubstitutions, other.newVariablesExpressionSubstitutions) && Kotlin.equals(this.nodeIdsToTransformSelector, other.nodeIdsToTransformSelector)))));
   };
-  function ExpressionTask(startExpression, currentExpression, requiredSubstitutions, usedSubstitutions, previousExpressions, solution, solutionsStepTree, hints, time, badStructureFine) {
+  function ExpressionTaskIntermediateData(expressionBeforePostprocess, appliedPostprocessSubstitutions) {
+    if (expressionBeforePostprocess === void 0)
+      expressionBeforePostprocess = new ExpressionNode(NodeType$FUNCTION_getInstance(), '');
+    if (appliedPostprocessSubstitutions === void 0) {
+      appliedPostprocessSubstitutions = LinkedHashMap_init_0();
+    }this.expressionBeforePostprocess = expressionBeforePostprocess;
+    this.appliedPostprocessSubstitutions = appliedPostprocessSubstitutions;
+  }
+  ExpressionTaskIntermediateData.prototype.clone = function () {
+    return new ExpressionTaskIntermediateData(this.expressionBeforePostprocess.clone(), toMutableMap(this.appliedPostprocessSubstitutions));
+  };
+  ExpressionTaskIntermediateData.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'ExpressionTaskIntermediateData',
+    interfaces: []
+  };
+  ExpressionTaskIntermediateData.prototype.component1 = function () {
+    return this.expressionBeforePostprocess;
+  };
+  ExpressionTaskIntermediateData.prototype.component2 = function () {
+    return this.appliedPostprocessSubstitutions;
+  };
+  ExpressionTaskIntermediateData.prototype.copy_xgubht$ = function (expressionBeforePostprocess, appliedPostprocessSubstitutions) {
+    return new ExpressionTaskIntermediateData(expressionBeforePostprocess === void 0 ? this.expressionBeforePostprocess : expressionBeforePostprocess, appliedPostprocessSubstitutions === void 0 ? this.appliedPostprocessSubstitutions : appliedPostprocessSubstitutions);
+  };
+  ExpressionTaskIntermediateData.prototype.toString = function () {
+    return 'ExpressionTaskIntermediateData(expressionBeforePostprocess=' + Kotlin.toString(this.expressionBeforePostprocess) + (', appliedPostprocessSubstitutions=' + Kotlin.toString(this.appliedPostprocessSubstitutions)) + ')';
+  };
+  ExpressionTaskIntermediateData.prototype.hashCode = function () {
+    var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.expressionBeforePostprocess) | 0;
+    result = result * 31 + Kotlin.hashCode(this.appliedPostprocessSubstitutions) | 0;
+    return result;
+  };
+  ExpressionTaskIntermediateData.prototype.equals = function (other) {
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.expressionBeforePostprocess, other.expressionBeforePostprocess) && Kotlin.equals(this.appliedPostprocessSubstitutions, other.appliedPostprocessSubstitutions)))));
+  };
+  function ExpressionTask(startExpression, currentExpression, requiredSubstitutions, usedSubstitutions, previousExpressions, solution, solutionsStepTree, hints, time, badStructureFine, expressionTaskIntermediateData) {
     if (currentExpression === void 0)
       currentExpression = startExpression;
     if (requiredSubstitutions === void 0) {
@@ -31731,6 +32509,8 @@ if (typeof kotlin === 'undefined') {
       time = 0;
     if (badStructureFine === void 0)
       badStructureFine = 0.0;
+    if (expressionTaskIntermediateData === void 0)
+      expressionTaskIntermediateData = new ExpressionTaskIntermediateData();
     this.startExpression = startExpression;
     this.currentExpression = currentExpression;
     this.requiredSubstitutions = requiredSubstitutions;
@@ -31741,9 +32521,10 @@ if (typeof kotlin === 'undefined') {
     this.hints = hints;
     this.time = time;
     this.badStructureFine = badStructureFine;
+    this.expressionTaskIntermediateData = expressionTaskIntermediateData;
   }
   ExpressionTask.prototype.clone = function () {
-    var result = this.copy_o83avg$();
+    var result = this.copy_uj5a8x$();
     result.currentExpression = this.currentExpression.clone();
     result.requiredSubstitutions = LinkedHashSet_init();
     result.requiredSubstitutions.addAll_brywnq$(this.requiredSubstitutions);
@@ -31755,6 +32536,7 @@ if (typeof kotlin === 'undefined') {
     result.solutionsStepTree.addAll_brywnq$(this.solutionsStepTree);
     result.hints = ArrayList_init();
     result.hints.addAll_brywnq$(this.hints);
+    result.expressionTaskIntermediateData = this.expressionTaskIntermediateData.clone();
     return result;
   };
   ExpressionTask.prototype.badExpressionStructureFine = function () {
@@ -31796,11 +32578,14 @@ if (typeof kotlin === 'undefined') {
   ExpressionTask.prototype.component10 = function () {
     return this.badStructureFine;
   };
-  ExpressionTask.prototype.copy_o83avg$ = function (startExpression, currentExpression, requiredSubstitutions, usedSubstitutions, previousExpressions, solution, solutionsStepTree, hints, time, badStructureFine) {
-    return new ExpressionTask(startExpression === void 0 ? this.startExpression : startExpression, currentExpression === void 0 ? this.currentExpression : currentExpression, requiredSubstitutions === void 0 ? this.requiredSubstitutions : requiredSubstitutions, usedSubstitutions === void 0 ? this.usedSubstitutions : usedSubstitutions, previousExpressions === void 0 ? this.previousExpressions : previousExpressions, solution === void 0 ? this.solution : solution, solutionsStepTree === void 0 ? this.solutionsStepTree : solutionsStepTree, hints === void 0 ? this.hints : hints, time === void 0 ? this.time : time, badStructureFine === void 0 ? this.badStructureFine : badStructureFine);
+  ExpressionTask.prototype.component11 = function () {
+    return this.expressionTaskIntermediateData;
+  };
+  ExpressionTask.prototype.copy_uj5a8x$ = function (startExpression, currentExpression, requiredSubstitutions, usedSubstitutions, previousExpressions, solution, solutionsStepTree, hints, time, badStructureFine, expressionTaskIntermediateData) {
+    return new ExpressionTask(startExpression === void 0 ? this.startExpression : startExpression, currentExpression === void 0 ? this.currentExpression : currentExpression, requiredSubstitutions === void 0 ? this.requiredSubstitutions : requiredSubstitutions, usedSubstitutions === void 0 ? this.usedSubstitutions : usedSubstitutions, previousExpressions === void 0 ? this.previousExpressions : previousExpressions, solution === void 0 ? this.solution : solution, solutionsStepTree === void 0 ? this.solutionsStepTree : solutionsStepTree, hints === void 0 ? this.hints : hints, time === void 0 ? this.time : time, badStructureFine === void 0 ? this.badStructureFine : badStructureFine, expressionTaskIntermediateData === void 0 ? this.expressionTaskIntermediateData : expressionTaskIntermediateData);
   };
   ExpressionTask.prototype.toString = function () {
-    return 'ExpressionTask(startExpression=' + Kotlin.toString(this.startExpression) + (', currentExpression=' + Kotlin.toString(this.currentExpression)) + (', requiredSubstitutions=' + Kotlin.toString(this.requiredSubstitutions)) + (', usedSubstitutions=' + Kotlin.toString(this.usedSubstitutions)) + (', previousExpressions=' + Kotlin.toString(this.previousExpressions)) + (', solution=' + Kotlin.toString(this.solution)) + (', solutionsStepTree=' + Kotlin.toString(this.solutionsStepTree)) + (', hints=' + Kotlin.toString(this.hints)) + (', time=' + Kotlin.toString(this.time)) + (', badStructureFine=' + Kotlin.toString(this.badStructureFine)) + ')';
+    return 'ExpressionTask(startExpression=' + Kotlin.toString(this.startExpression) + (', currentExpression=' + Kotlin.toString(this.currentExpression)) + (', requiredSubstitutions=' + Kotlin.toString(this.requiredSubstitutions)) + (', usedSubstitutions=' + Kotlin.toString(this.usedSubstitutions)) + (', previousExpressions=' + Kotlin.toString(this.previousExpressions)) + (', solution=' + Kotlin.toString(this.solution)) + (', solutionsStepTree=' + Kotlin.toString(this.solutionsStepTree)) + (', hints=' + Kotlin.toString(this.hints)) + (', time=' + Kotlin.toString(this.time)) + (', badStructureFine=' + Kotlin.toString(this.badStructureFine)) + (', expressionTaskIntermediateData=' + Kotlin.toString(this.expressionTaskIntermediateData)) + ')';
   };
   ExpressionTask.prototype.hashCode = function () {
     var result = 0;
@@ -31814,11 +32599,53 @@ if (typeof kotlin === 'undefined') {
     result = result * 31 + Kotlin.hashCode(this.hints) | 0;
     result = result * 31 + Kotlin.hashCode(this.time) | 0;
     result = result * 31 + Kotlin.hashCode(this.badStructureFine) | 0;
+    result = result * 31 + Kotlin.hashCode(this.expressionTaskIntermediateData) | 0;
     return result;
   };
   ExpressionTask.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.startExpression, other.startExpression) && Kotlin.equals(this.currentExpression, other.currentExpression) && Kotlin.equals(this.requiredSubstitutions, other.requiredSubstitutions) && Kotlin.equals(this.usedSubstitutions, other.usedSubstitutions) && Kotlin.equals(this.previousExpressions, other.previousExpressions) && Kotlin.equals(this.solution, other.solution) && Kotlin.equals(this.solutionsStepTree, other.solutionsStepTree) && Kotlin.equals(this.hints, other.hints) && Kotlin.equals(this.time, other.time) && Kotlin.equals(this.badStructureFine, other.badStructureFine)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.startExpression, other.startExpression) && Kotlin.equals(this.currentExpression, other.currentExpression) && Kotlin.equals(this.requiredSubstitutions, other.requiredSubstitutions) && Kotlin.equals(this.usedSubstitutions, other.usedSubstitutions) && Kotlin.equals(this.previousExpressions, other.previousExpressions) && Kotlin.equals(this.solution, other.solution) && Kotlin.equals(this.solutionsStepTree, other.solutionsStepTree) && Kotlin.equals(this.hints, other.hints) && Kotlin.equals(this.time, other.time) && Kotlin.equals(this.badStructureFine, other.badStructureFine) && Kotlin.equals(this.expressionTaskIntermediateData, other.expressionTaskIntermediateData)))));
   };
+  function reweighNewVariablesRules(newVariablesSubstitutionsMap, currentTask) {
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    var counter = LinkedHashMap_init_0();
+    tmp$ = newVariablesSubstitutionsMap.keys.iterator();
+    while (tmp$.hasNext()) {
+      var varName = tmp$.next();
+      counter.put_xwzc9p$(varName, 0);
+    }
+    currentTask.currentExpression.countNumberOfVariablesInMap_2wsk9e$(counter);
+    var $receiver = counter.values;
+    var any$result;
+    any$break: do {
+      var tmp$_3;
+      if (Kotlin.isType($receiver, Collection) && $receiver.isEmpty()) {
+        any$result = false;
+        break any$break;
+      }tmp$_3 = $receiver.iterator();
+      while (tmp$_3.hasNext()) {
+        var element = tmp$_3.next();
+        if (element === 0) {
+          any$result = true;
+          break any$break;
+        }}
+      any$result = false;
+    }
+     while (false);
+    var weightPerVar = any$result ? 50 : 80;
+    var overallNumberOfVariables = sum_0(counter.values) + newVariablesSubstitutionsMap.values.size | 0;
+    var sumMaxWeigh = Kotlin.imul(weightPerVar, newVariablesSubstitutionsMap.values.size);
+    var answer = ArrayList_init();
+    tmp$_0 = newVariablesSubstitutionsMap.keys.iterator();
+    while (tmp$_0.hasNext()) {
+      var varName_0 = tmp$_0.next();
+      tmp$_1 = ensureNotNull(newVariablesSubstitutionsMap.get_11rb$(varName_0)).iterator();
+      while (tmp$_1.hasNext()) {
+        var substitution = tmp$_1.next();
+        answer.add_11rb$(substitution.copy_ru8ki6$(void 0, sumMaxWeigh * (((tmp$_2 = counter.get_11rb$(varName_0)) != null ? tmp$_2 : 0) + 1 | 0) / overallNumberOfVariables));
+      }
+    }
+    return answer;
+  }
   function generateExpressionTransformationTasks$lambda(it) {
     return it.currentExpression.getContainedFunctions().size;
   }
@@ -31829,7 +32656,7 @@ if (typeof kotlin === 'undefined') {
     return it.badExpressionStructureFine();
   }
   function generateExpressionTransformationTasks(expressionTaskGeneratorSettings) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14;
     var compiledConfiguration = expressionTaskGeneratorSettings.compiledConfiguration;
     var expressionComparator = compiledConfiguration.factComparator.expressionComparator;
     if (expressionTaskGeneratorSettings.expressionGenerationDirection === ExpressionGenerationDirection$FINAL_TO_ORIGINAL_getInstance()) {
@@ -31849,8 +32676,7 @@ if (typeof kotlin === 'undefined') {
     var currentTasks = ArrayList_init();
     currentTasks.add_11rb$(new ExpressionTask(taskStart.expressionNode.clone()));
     var iterationsCount = expressionTaskGeneratorSettings.goalStepsCount + 2 | 0;
-    var stepId = 1;
-    setExpressionSubstitutions(compiledConfiguration, expressionTaskGeneratorSettings.extendingExpressionSubstitutions);
+    var stepId = {v: 1};
     while (!currentTasks.isEmpty()) {
       var newCurrentTasks = ArrayList_init();
       tmp$_1 = currentTasks.iterator();
@@ -31858,9 +32684,16 @@ if (typeof kotlin === 'undefined') {
         var currentTask = tmp$_1.next();
         var currentExpression = currentTask.currentExpression;
         currentExpression.computeNodeIdsAsNumbersInDirectTraversalAndDistancesToRoot_ydzd23$();
-        tmp$_2 = expressionTaskGeneratorSettings.widthOfRulesApplicationsOnIteration;
-        for (var j = 1; j <= tmp$_2; j++) {
-          var selectedNodeIds = selectRandomNodeIdsToTransform(currentExpression);
+        var actualNewVariablesExpressionSubstitutions = reweighNewVariablesRules(expressionTaskGeneratorSettings.newVariablesExpressionSubstitutions, currentTask);
+        if (stepId.v < expressionTaskGeneratorSettings.goalCompletionStepsCount) {
+          tmp$_2 = plus(expressionTaskGeneratorSettings.extendingExpressionSubstitutions, actualNewVariablesExpressionSubstitutions);
+        } else {
+          tmp$_2 = expressionTaskGeneratorSettings.reducingExpressionSubstitutions;
+        }
+        setExpressionSubstitutions(compiledConfiguration, tmp$_2);
+        tmp$_3 = expressionTaskGeneratorSettings.widthOfRulesApplicationsOnIteration;
+        for (var j = 1; j <= tmp$_3; j++) {
+          var selectedNodeIds = selectNodeIdsToTransformByLastStepId(currentExpression);
           if (selectedNodeIds.isEmpty() || (selectedNodeIds.size === 1 && randomInt(0, 100) === 0)) {
             var randomNodeId = random(currentExpression.getAllChildrenNodeIds(), Random.Default);
             if (selectedNodeIds.isEmpty() || first_0(selectedNodeIds) !== randomNodeId) {
@@ -31868,23 +32701,26 @@ if (typeof kotlin === 'undefined') {
             }}if (selectedNodeIds.isEmpty()) {
             continue;
           }var applications = findApplicableSubstitutionsInSelectedPlace(currentExpression, copyToArray(selectedNodeIds), compiledConfiguration, void 0, true);
-          tmp$_3 = applications.iterator();
-          loop_label: while (tmp$_3.hasNext()) {
-            var application = tmp$_3.next();
-            var newTask = currentTask.clone();
+          tmp$_4 = applications.iterator();
+          loop_label: while (tmp$_4.hasNext()) {
+            var application = tmp$_4.next();
+            if (!application.expressionSubstitution.isNormalType()) {
+              addSubstitutionToResultExpression(application);
+              addStepIdToResultExpression(application, stepId.v);
+            }var newTask = currentTask.clone();
             newTask.currentExpression = application.resultExpression;
             newTask.previousExpressions.add_11rb$(newTask.currentExpression.clone());
             newTask.usedSubstitutions.add_11rb$(application.expressionSubstitution);
             var $receiver = newTask.previousExpressions;
             var any$result;
             any$break: do {
-              var tmp$_14;
+              var tmp$_15;
               if (Kotlin.isType($receiver, Collection) && $receiver.isEmpty()) {
                 any$result = false;
                 break any$break;
-              }tmp$_14 = $receiver.iterator();
-              while (tmp$_14.hasNext()) {
-                var element = tmp$_14.next();
+              }tmp$_15 = $receiver.iterator();
+              while (tmp$_15.hasNext()) {
+                var element = tmp$_15.next();
                 if (compareExpressionNodes(element, newTask.currentExpression)) {
                   any$result = true;
                   break any$break;
@@ -31894,38 +32730,39 @@ if (typeof kotlin === 'undefined') {
              while (false);
             if (any$result) {
               continue loop_label;
-            }newTask.solutionsStepTree.add_11rb$(new SolutionsStepITR(newTask.currentExpression.toString(), application.expressionSubstitution.code, selectedNodeIds, stepId, (tmp$_5 = (tmp$_4 = lastOrNull(newTask.solutionsStepTree)) != null ? tmp$_4.stepId : null) != null ? tmp$_5 : -1));
+            }newTask.solutionsStepTree.add_11rb$(new SolutionsStepITR(newTask.currentExpression.toString(), application.expressionSubstitution, selectedNodeIds, stepId.v, (tmp$_6 = (tmp$_5 = lastOrNull(newTask.solutionsStepTree)) != null ? tmp$_5.stepId : null) != null ? tmp$_6 : -1));
             newTask.time = newTask.time + (Kotlin.imul(numberToInt(application.expressionSubstitution.weight + 1), selectedNodeIds.size) * 2 | 0) | 0;
             newCurrentTasks.add_11rb$(newTask);
           }
         }
         var functionsInExpression = currentExpression.getContainedFunctions();
         var appropriateSubstitutions = ArrayList_init();
-        if (stepId < expressionTaskGeneratorSettings.goalCompletionStepsCount) {
-          tmp$_6 = actualExtendingExpressionSubstitutions;
+        if (stepId.v < expressionTaskGeneratorSettings.goalCompletionStepsCount) {
+          tmp$_7 = plus(actualExtendingExpressionSubstitutions, actualNewVariablesExpressionSubstitutions);
         } else {
-          tmp$_6 = actualReducingExpressionSubstitutions;
+          tmp$_7 = actualReducingExpressionSubstitutions;
         }
-        var actualExpressionSubstitutions = tmp$_6;
-        tmp$_7 = actualExpressionSubstitutions.iterator();
-        while (tmp$_7.hasNext()) {
-          var expressionSubstitution = tmp$_7.next();
+        var actualExpressionSubstitutions = tmp$_7;
+        tmp$_8 = actualExpressionSubstitutions.iterator();
+        while (tmp$_8.hasNext()) {
+          var expressionSubstitution = tmp$_8.next();
           if (expressionSubstitution.isAppropriateToFunctions_ywdfdh$(functionsInExpression) && expressionSubstitution.left.nodeType !== NodeType$EMPTY_getInstance()) {
             if (!expressionSubstitution.findAllPossibleSubstitutionPlaces_i8kf4x$(currentExpression, expressionComparator).isEmpty()) {
+              expressionSubstitution.setStepIdForRight_za3lpa$(stepId.v);
               appropriateSubstitutions.add_11rb$(expressionSubstitution);
             }}}
-        var tmp$_15;
+        var tmp$_16;
         var sum = 0.0;
-        tmp$_15 = appropriateSubstitutions.iterator();
-        while (tmp$_15.hasNext()) {
-          var element_0 = tmp$_15.next();
+        tmp$_16 = appropriateSubstitutions.iterator();
+        while (tmp$_16.hasNext()) {
+          var element_0 = tmp$_16.next();
           sum += element_0.weightInTaskAutoGeneration;
         }
         var appropriateSubstitutionWeight = sum;
         if (appropriateSubstitutionWeight < BaseOperationsComputation$Companion_getInstance().epsilon) {
           continue;
-        }tmp$_8 = expressionTaskGeneratorSettings.widthOfRulesApplicationsOnIteration;
-        loop_label: for (var j_0 = 1; j_0 <= tmp$_8; j_0++) {
+        }tmp$_9 = expressionTaskGeneratorSettings.widthOfRulesApplicationsOnIteration;
+        loop_label: for (var j_0 = 1; j_0 <= tmp$_9; j_0++) {
           var newTask_0 = currentTask.clone();
           var selector = random_1(0.0, appropriateSubstitutionWeight);
           var currentSubstitutionIndex = 0;
@@ -31943,22 +32780,22 @@ if (typeof kotlin === 'undefined') {
             newTask_0.usedSubstitutions.add_11rb$(selectedSubstitution);
             var waysOfApplyingCount = (1 << places.size) + 1 | 0;
             if (waysOfApplyingCount > 0) {
-              tmp$_9 = randomInt(1, waysOfApplyingCount);
+              tmp$_10 = randomInt(1, waysOfApplyingCount);
             } else {
-              tmp$_9 = randomInt(1, 2147483647);
+              tmp$_10 = randomInt(1, 2147483647);
             }
-            var bitMask = tmp$_9;
+            var bitMask = tmp$_10;
             var changedNodeIds = selectedSubstitution.applySubstitutionByBitMask_uet8du$(places, bitMask);
             var $receiver_0 = newTask_0.previousExpressions;
             var any$result_0;
             any$break: do {
-              var tmp$_16;
+              var tmp$_17;
               if (Kotlin.isType($receiver_0, Collection) && $receiver_0.isEmpty()) {
                 any$result_0 = false;
                 break any$break;
-              }tmp$_16 = $receiver_0.iterator();
-              while (tmp$_16.hasNext()) {
-                var element_1 = tmp$_16.next();
+              }tmp$_17 = $receiver_0.iterator();
+              while (tmp$_17.hasNext()) {
+                var element_1 = tmp$_17.next();
                 if (compareExpressionNodes(element_1, newTask_0.currentExpression)) {
                   any$result_0 = true;
                   break any$break;
@@ -31968,56 +32805,55 @@ if (typeof kotlin === 'undefined') {
              while (false);
             if (any$result_0) {
               continue loop_label;
-            }newTask_0.solutionsStepTree.add_11rb$(new SolutionsStepITR(changedExpression.toString(), selectedSubstitution.code, changedNodeIds, stepId, (tmp$_11 = (tmp$_10 = lastOrNull(newTask_0.solutionsStepTree)) != null ? tmp$_10.stepId : null) != null ? tmp$_11 : -1));
+            }newTask_0.solutionsStepTree.add_11rb$(new SolutionsStepITR(changedExpression.toString(), selectedSubstitution, changedNodeIds, stepId.v, (tmp$_12 = (tmp$_11 = lastOrNull(newTask_0.solutionsStepTree)) != null ? tmp$_11.stepId : null) != null ? tmp$_12 : -1));
             newTask_0.time = newTask_0.time + (Kotlin.imul(numberToInt(selectedSubstitution.weight + 1), changedNodeIds.size) * 2 | 0) | 0;
           }
           newCurrentTasks.add_11rb$(newTask_0);
         }
       }
       var $receiver_1 = newCurrentTasks;
-      var tmp$_17;
+      var tmp$_18;
       var set = HashSet_init();
       var list = ArrayList_init();
-      tmp$_17 = $receiver_1.iterator();
-      while (tmp$_17.hasNext()) {
-        var e = tmp$_17.next();
+      tmp$_18 = $receiver_1.iterator();
+      while (tmp$_18.hasNext()) {
+        var e = tmp$_18.next();
         var key = e.currentExpression.toString();
         if (set.add_11rb$(key))
           list.add_11rb$(e);
       }
       newCurrentTasks = toMutableList(list);
-      if (stepId < expressionTaskGeneratorSettings.goalCompletionStepsCount) {
+      if (stepId.v < expressionTaskGeneratorSettings.goalCompletionStepsCount) {
         var $receiver_2 = newCurrentTasks;
         if ($receiver_2.size > 1) {
           sortWith($receiver_2, new Comparator(compareByDescending$lambda_0(generateExpressionTransformationTasks$lambda)));
         }} else {
-        var $receiver_3 = allTasks;
+        var $receiver_3 = newCurrentTasks;
         if ($receiver_3.size > 1) {
           sortWith($receiver_3, new Comparator(compareBy$lambda_3(generateExpressionTransformationTasks$lambda_0)));
-        }setExpressionSubstitutions(compiledConfiguration, expressionTaskGeneratorSettings.reducingExpressionSubstitutions);
-      }
-      var tmp$_18 = newCurrentTasks;
+        }}
+      var tmp$_19 = newCurrentTasks;
       var a = expressionTaskGeneratorSettings.maxCountSelectedOfTasksOnIteration;
       var b = newCurrentTasks.size;
-      newCurrentTasks = tmp$_18.subList_vux9f0$(0, JsMath.min(a, b));
-      var tmp$_19 = allTasks;
+      newCurrentTasks = tmp$_19.subList_vux9f0$(0, Math_0.min(a, b));
+      var tmp$_20 = allTasks;
       var $receiver_4 = newCurrentTasks;
       var destination = ArrayList_init();
-      var tmp$_20;
-      tmp$_20 = $receiver_4.iterator();
-      while (tmp$_20.hasNext()) {
-        var element_2 = tmp$_20.next();
+      var tmp$_21;
+      tmp$_21 = $receiver_4.iterator();
+      while (tmp$_21.hasNext()) {
+        var element_2 = tmp$_21.next();
         if (element_2.previousExpressions.size >= expressionTaskGeneratorSettings.minStepsCountInAutogeneration)
           destination.add_11rb$(element_2);
       }
-      tmp$_19.addAll_brywnq$(destination);
+      tmp$_20.addAll_brywnq$(destination);
       var $receiver_5 = allTasks;
-      var tmp$_21;
+      var tmp$_22;
       var set_0 = HashSet_init();
       var list_0 = ArrayList_init();
-      tmp$_21 = $receiver_5.iterator();
-      while (tmp$_21.hasNext()) {
-        var e_0 = tmp$_21.next();
+      tmp$_22 = $receiver_5.iterator();
+      while (tmp$_22.hasNext()) {
+        var e_0 = tmp$_22.next();
         var key_0 = e_0.currentExpression.toString();
         if (set_0.add_11rb$(key_0))
           list_0.add_11rb$(e_0);
@@ -32025,32 +32861,31 @@ if (typeof kotlin === 'undefined') {
       allTasks = toMutableList(list_0);
       var $receiver_6 = newCurrentTasks;
       var destination_0 = ArrayList_init();
-      var tmp$_22;
-      tmp$_22 = $receiver_6.iterator();
-      while (tmp$_22.hasNext()) {
-        var element_3 = tmp$_22.next();
+      var tmp$_23;
+      tmp$_23 = $receiver_6.iterator();
+      while (tmp$_23.hasNext()) {
+        var element_3 = tmp$_23.next();
         if (element_3.previousExpressions.size < iterationsCount)
           destination_0.add_11rb$(element_3);
       }
       currentTasks = toMutableList(destination_0);
-      stepId = stepId + 1 | 0;
+      stepId.v = stepId.v + 1 | 0;
     }
-    var baseOperationsDefinitions = compiledConfiguration.factComparator.expressionComparator.baseOperationsDefinitions;
-    var tmp$_23;
-    tmp$_23 = allTasks.iterator();
-    while (tmp$_23.hasNext()) {
-      var element_4 = tmp$_23.next();
+    var tmp$_24;
+    tmp$_24 = allTasks.iterator();
+    while (tmp$_24.hasNext()) {
+      var element_4 = tmp$_24.next();
       applyAllSubstitutions(element_4.currentExpression, expressionTaskGeneratorSettings.mandatoryResultTransformations);
       element_4.currentExpression = simplifyAndNormalizeExpression(element_4.currentExpression, compiledConfiguration);
     }
     var resultAllTasks = ArrayList_init();
-    tmp$_12 = allTasks.iterator();
-    while (tmp$_12.hasNext()) {
-      var task = tmp$_12.next();
+    tmp$_13 = allTasks.iterator();
+    while (tmp$_13.hasNext()) {
+      var task = tmp$_13.next();
       var isNew = true;
-      tmp$_13 = resultAllTasks.iterator();
-      while (tmp$_13.hasNext()) {
-        var resultTask = tmp$_13.next();
+      tmp$_14 = resultAllTasks.iterator();
+      while (tmp$_14.hasNext()) {
+        var resultTask = tmp$_14.next();
         if (compiledConfiguration.factComparator.expressionComparator.compareAsIs_5gxvt3$(task.currentExpression, resultTask.currentExpression)) {
           isNew = false;
           break;
@@ -32058,24 +32893,34 @@ if (typeof kotlin === 'undefined') {
       if (isNew) {
         resultAllTasks.add_11rb$(task);
       }}
-    if (resultAllTasks.size > 1) {
-      sortWith(resultAllTasks, new Comparator(compareBy$lambda_3(generateExpressionTransformationTasks$lambda_1)));
-    }var tmp$_24;
-    tmp$_24 = resultAllTasks.iterator();
-    while (tmp$_24.hasNext()) {
-      var element_5 = tmp$_24.next();
-      var $receiver_7 = element_5.usedSubstitutions;
-      var destination_1 = LinkedHashMap_init_0();
-      var tmp$_25;
-      tmp$_25 = $receiver_7.iterator();
-      while (tmp$_25.hasNext()) {
-        var element_6 = tmp$_25.next();
+    var $receiver_7 = resultAllTasks;
+    var destination_1 = ArrayList_init_0(collectionSizeOrDefault($receiver_7, 10));
+    var tmp$_25;
+    tmp$_25 = $receiver_7.iterator();
+    while (tmp$_25.hasNext()) {
+      var item = tmp$_25.next();
+      destination_1.add_11rb$(postprocessGeneratedTask(item, expressionTaskGeneratorSettings.postprocessExpressionSubstitutions, expressionComparator, stepId.v));
+    }
+    resultAllTasks = toMutableList(destination_1);
+    var $receiver_8 = resultAllTasks;
+    if ($receiver_8.size > 1) {
+      sortWith($receiver_8, new Comparator(compareBy$lambda_3(generateExpressionTransformationTasks$lambda_1)));
+    }var tmp$_26;
+    tmp$_26 = resultAllTasks.iterator();
+    while (tmp$_26.hasNext()) {
+      var element_5 = tmp$_26.next();
+      var $receiver_9 = element_5.usedSubstitutions;
+      var destination_2 = LinkedHashMap_init_0();
+      var tmp$_27;
+      tmp$_27 = $receiver_9.iterator();
+      while (tmp$_27.hasNext()) {
+        var element_6 = tmp$_27.next();
         var key_1 = element_6.code;
         var tmp$_0_0;
-        var value = destination_1.get_11rb$(key_1);
+        var value = destination_2.get_11rb$(key_1);
         if (value == null) {
           var answer = ArrayList_init();
-          destination_1.put_xwzc9p$(key_1, answer);
+          destination_2.put_xwzc9p$(key_1, answer);
           tmp$_0_0 = answer;
         } else {
           tmp$_0_0 = value;
@@ -32083,68 +32928,111 @@ if (typeof kotlin === 'undefined') {
         var list_1 = tmp$_0_0;
         list_1.add_11rb$(element_6);
       }
-      var $receiver_8 = destination_1.values;
-      var destination_2 = ArrayList_init_0(collectionSizeOrDefault($receiver_8, 10));
-      var tmp$_26;
-      tmp$_26 = $receiver_8.iterator();
-      while (tmp$_26.hasNext()) {
-        var item = tmp$_26.next();
-        destination_2.add_11rb$(first_0(item));
+      var $receiver_10 = destination_2.values;
+      var destination_3 = ArrayList_init_0(collectionSizeOrDefault($receiver_10, 10));
+      var tmp$_28;
+      tmp$_28 = $receiver_10.iterator();
+      while (tmp$_28.hasNext()) {
+        var item_0 = tmp$_28.next();
+        destination_3.add_11rb$(first_0(item_0));
       }
-      element_5.requiredSubstitutions = toMutableSet_1(destination_2);
-      var $receiver_9 = element_5.requiredSubstitutions;
-      var destination_3 = ArrayList_init_0(collectionSizeOrDefault($receiver_9, 10));
-      var tmp$_27;
-      tmp$_27 = $receiver_9.iterator();
-      while (tmp$_27.hasNext()) {
-        var item_0 = tmp$_27.next();
-        destination_3.add_11rb$(new HintITR('Use rule ' + '$' + '$' + expressionToTexString(item_0.left) + '=' + expressionToTexString(item_0.right) + '$' + '$', '\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 \u043F\u0440\u0430\u0432\u0438\u043B\u043E ' + '$' + '$' + expressionToTexString(item_0.left) + '=' + expressionToTexString(item_0.right) + '$' + '$'));
+      element_5.requiredSubstitutions = toMutableSet_1(destination_3);
+      var $receiver_11 = element_5.requiredSubstitutions;
+      var destination_4 = ArrayList_init_0(collectionSizeOrDefault($receiver_11, 10));
+      var tmp$_29;
+      tmp$_29 = $receiver_11.iterator();
+      while (tmp$_29.hasNext()) {
+        var item_1 = tmp$_29.next();
+        destination_4.add_11rb$(new HintITR('Use rule ' + '$' + '$' + expressionToTexString(item_1.left) + '=' + expressionToTexString(item_1.right) + '$' + '$', '\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 \u043F\u0440\u0430\u0432\u0438\u043B\u043E ' + '$' + '$' + expressionToTexString(item_1.left) + '=' + expressionToTexString(item_1.right) + '$' + '$'));
       }
-      element_5.hints = toMutableList(destination_3);
-      var $receiver_10 = ArrayList_init();
-      $receiver_10.addAll_brywnq$(element_5.previousExpressions);
-      $receiver_10.add_11rb$(element_5.currentExpression);
-      var expressionsInSolution = $receiver_10;
+      element_5.hints = toMutableList(destination_4);
+      var $receiver_12 = ArrayList_init();
+      $receiver_12.addAll_brywnq$(element_5.previousExpressions);
+      $receiver_12.add_11rb$(element_5.currentExpression);
+      var expressionsInSolution = $receiver_12;
       if (expressionTaskGeneratorSettings.expressionGenerationDirection === ExpressionGenerationDirection$FINAL_TO_ORIGINAL_getInstance()) {
         reverse(expressionsInSolution);
-      }var destination_4 = ArrayList_init_0(collectionSizeOrDefault(expressionsInSolution, 10));
-      var tmp$_28;
-      tmp$_28 = expressionsInSolution.iterator();
-      while (tmp$_28.hasNext()) {
-        var item_1 = tmp$_28.next();
-        destination_4.add_11rb$(expressionToString(item_1));
+      }var destination_5 = ArrayList_init_0(collectionSizeOrDefault(expressionsInSolution, 10));
+      var tmp$_30;
+      tmp$_30 = expressionsInSolution.iterator();
+      while (tmp$_30.hasNext()) {
+        var item_2 = tmp$_30.next();
+        destination_5.add_11rb$(expressionToString(item_2));
       }
-      element_5.solution = joinToString(destination_4, ' = ');
+      element_5.solution = joinToString(destination_5, ' = ');
     }
-    var destination_5 = ArrayList_init_0(collectionSizeOrDefault(resultAllTasks, 10));
-    var tmp$_29;
-    tmp$_29 = resultAllTasks.iterator();
-    while (tmp$_29.hasNext()) {
-      var item_2 = tmp$_29.next();
-      var tmp$_30 = destination_5.add_11rb$;
-      var tmp$_31, tmp$_32, tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41;
-      tmp$_31 = taskStart.code;
-      tmp$_32 = taskStart.nameEn;
-      tmp$_33 = taskStart.nameRu;
-      tmp$_34 = taskStart.descriptionShortEn;
-      tmp$_35 = taskStart.descriptionShortRu;
-      tmp$_36 = taskStart.descriptionEn;
-      tmp$_37 = taskStart.descriptionRu;
-      tmp$_38 = taskStart.subjectType;
-      tmp$_39 = taskStart.tags;
+    var $receiver_13 = resultAllTasks;
+    var destination_6 = ArrayList_init_0(collectionSizeOrDefault($receiver_13, 10));
+    var tmp$_31;
+    tmp$_31 = $receiver_13.iterator();
+    while (tmp$_31.hasNext()) {
+      var item_3 = tmp$_31.next();
+      var tmp$_32 = destination_6.add_11rb$;
+      var tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41, tmp$_42, tmp$_43;
+      tmp$_33 = taskStart.code;
+      tmp$_34 = taskStart.nameEn;
+      tmp$_35 = taskStart.nameRu;
+      tmp$_36 = taskStart.descriptionShortEn;
+      tmp$_37 = taskStart.descriptionShortRu;
+      tmp$_38 = taskStart.descriptionEn;
+      tmp$_39 = taskStart.descriptionRu;
+      tmp$_40 = taskStart.subjectType;
+      tmp$_41 = taskStart.tags;
       if (expressionTaskGeneratorSettings.expressionGenerationDirection === ExpressionGenerationDirection$FINAL_TO_ORIGINAL_getInstance()) {
-        tmp$_40 = item_2.currentExpression.toString();
+        tmp$_42 = item_3.currentExpression.toString();
       } else {
-        tmp$_40 = item_2.startExpression.toString();
+        tmp$_42 = item_3.startExpression.toString();
       }
       if (expressionTaskGeneratorSettings.expressionGenerationDirection === ExpressionGenerationDirection$FINAL_TO_ORIGINAL_getInstance()) {
-        tmp$_41 = item_2.startExpression.toString();
+        tmp$_43 = item_3.startExpression.toString();
       } else {
-        tmp$_41 = item_2.currentExpression.toString();
+        tmp$_43 = item_3.currentExpression.toString();
       }
-      tmp$_30.call(destination_5, new TaskITR(void 0, tmp$_31, void 0, void 0, tmp$_32, tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, void 0, void 0, 'expression', tmp$_41, void 0, void 0, '', void 0, void 0, listOf(new RulePackLinkITR(void 0, 'AdvancedTrigonometry')), emptyList(), item_2.previousExpressions.size, item_2.time, 1.0, item_2.solution, mapOf_0(to('data', item_2.solutionsStepTree)), mapOf_0(to('data', item_2.hints))));
+      tmp$_32.call(destination_6, new TaskITR(void 0, tmp$_33, void 0, void 0, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41, tmp$_42, void 0, void 0, 'expression', tmp$_43, void 0, void 0, '', void 0, void 0, listOf(new RulePackLinkITR(void 0, 'AdvancedTrigonometry')), emptyList(), item_3.previousExpressions.size, item_3.time, 1.0, item_3.solution, mapOf_0(to('data', item_3.solutionsStepTree)), mapOf_0(to('data', item_3.hints)), void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, void 0, item_3.expressionTaskIntermediateData));
     }
-    return destination_5;
+    return destination_6;
+  }
+  function findPossibleSubstitutions(task, allSubstitutions, expressionComparator) {
+    var possibleSubstitutions = ArrayList_init();
+    var tmp$;
+    tmp$ = allSubstitutions.iterator();
+    while (tmp$.hasNext()) {
+      var element = tmp$.next();
+      var places = element.findAllPossibleSubstitutionPlaces_i8kf4x$(task.currentExpression, expressionComparator);
+      if (places.size > 0) {
+        possibleSubstitutions.add_11rb$(element);
+      }}
+    return possibleSubstitutions;
+  }
+  function postprocessGeneratedTask(task, postprocessSubstitutions, expressionComparator, stepId) {
+    var tmp$, tmp$_0, tmp$_1;
+    var currentTask = task.clone();
+    var possibleSubstitutions = findPossibleSubstitutions(currentTask, postprocessSubstitutions, expressionComparator);
+    while (!possibleSubstitutions.isEmpty()) {
+      tmp$ = postprocessSubstitutions.iterator();
+      while (tmp$.hasNext()) {
+        var substitution = tmp$.next();
+        var newTask = currentTask.clone();
+        var places = substitution.findAllPossibleSubstitutionPlaces_i8kf4x$(newTask.currentExpression, expressionComparator);
+        if (places.size === 0) {
+          continue;
+        } else {
+          var changedExpression = newTask.currentExpression.clone();
+          newTask.previousExpressions.add_11rb$(newTask.currentExpression.clone());
+          newTask.usedSubstitutions.add_11rb$(substitution);
+          var bitMask = (1 << places.size) - 1 | 0;
+          var changedNodeIds = substitution.applySubstitutionByBitMask_uet8du$(places, bitMask);
+          var $receiver = newTask.expressionTaskIntermediateData.appliedPostprocessSubstitutions;
+          var key = substitution.code;
+          $receiver.put_xwzc9p$(key, stepId);
+          newTask.solutionsStepTree.add_11rb$(new SolutionsStepITR(changedExpression.toString(), substitution, changedNodeIds, stepId, (tmp$_1 = (tmp$_0 = lastOrNull(newTask.solutionsStepTree)) != null ? tmp$_0.stepId : null) != null ? tmp$_1 : -1));
+        }
+        currentTask = newTask;
+      }
+      possibleSubstitutions = findPossibleSubstitutions(currentTask, postprocessSubstitutions, expressionComparator);
+    }
+    currentTask.expressionTaskIntermediateData.expressionBeforePostprocess = task.currentExpression.clone();
+    return currentTask;
   }
   function simplifyAndNormalizeExpression(expression, compiledConfiguration) {
     var result = {v: compiledConfiguration.factComparator.expressionComparator.baseOperationsDefinitions.computeExpressionTree_em03xr$(expression)};
@@ -32209,6 +33097,23 @@ if (typeof kotlin === 'undefined') {
     }badStructureFine += $receiver.getDepth();
     return badStructureFine;
   }
+  function getMaxFractionLevel($receiver, initialCount) {
+    if (initialCount === void 0)
+      initialCount = 0;
+    var tmp$;
+    if ($receiver.children.isEmpty())
+      return initialCount;
+    var fracCount = equals($receiver.value, '/') ? initialCount + 1 | 0 : 0;
+    var $receiver_0 = $receiver.children;
+    var destination = ArrayList_init_0(collectionSizeOrDefault($receiver_0, 10));
+    var tmp$_0;
+    tmp$_0 = $receiver_0.iterator();
+    while (tmp$_0.hasNext()) {
+      var item = tmp$_0.next();
+      destination.add_11rb$(getMaxFractionLevel(item, fracCount));
+    }
+    return (tmp$ = max(destination)) != null ? tmp$ : 0;
+  }
   function selectRandomNodeIdsToTransform($receiver) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
     var depth = $receiver.getDepth();
@@ -32237,6 +33142,76 @@ if (typeof kotlin === 'undefined') {
     }
     return emptyList();
   }
+  function nodeIdToPriority($receiver, parentStepId) {
+    var tmp$;
+    var resultPriorities = LinkedHashMap_init_0();
+    var a = $receiver.lastModifiedStepId + 2 | 0;
+    var b = parentStepId - 1 | 0;
+    var startPriority = Math_0.max(a, b);
+    var currentPriority = startPriority;
+    tmp$ = $receiver.children.iterator();
+    while (tmp$.hasNext()) {
+      var child = tmp$.next();
+      var childResult = nodeIdToPriority(child, startPriority);
+      plus_1(resultPriorities, childResult.first);
+      var a_0 = currentPriority;
+      var b_0 = childResult.second - 1 | 0;
+      currentPriority = Math_0.max(a_0, b_0);
+    }
+    plus_2(resultPriorities, to($receiver, currentPriority));
+    return to(resultPriorities, currentPriority);
+  }
+  function selectNodeIdsToTransformByLastStepId($receiver) {
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    var priorities = nodeIdToPriority($receiver, $receiver.lastModifiedStepId).first;
+    var prioritiesCount = sum_0(priorities.values);
+    tmp$ = priorities.entries.iterator();
+    while (tmp$.hasNext()) {
+      var tmp$_3 = tmp$.next();
+      var v = tmp$_3.key;
+      var k = tmp$_3.value;
+      if (k >= randomInt(0, prioritiesCount)) {
+        if (((tmp$_1 = (tmp$_0 = v.functionStringDefinition) != null ? tmp$_0.function : null) != null ? tmp$_1.isCommutativeWithNullWeight : null) === true && randomBoolean()) {
+          var result = ArrayList_init();
+          var childrenShuffled = shuffled(v.children);
+          tmp$_2 = childrenShuffled.iterator();
+          while (tmp$_2.hasNext()) {
+            var child = tmp$_2.next();
+            if (randomInt(0, result.size) === 0) {
+              result.add_11rb$(child.nodeId);
+            }}
+          return result;
+        } else if (!equals(v.value, '')) {
+          return listOf(v.nodeId);
+        }}}
+    return emptyList();
+  }
+  function PostprocessorRulePack() {
+    PostprocessorRulePack$Companion_getInstance();
+  }
+  function PostprocessorRulePack$Companion() {
+    PostprocessorRulePack$Companion_instance = this;
+    this.postprocessorRulePack = listOf(new RulePackITR('PostprocessorRules', void 0, void 0, 'Postprocessor Rules', '\u041F\u043E\u0434\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438 \u043F\u043E\u0441\u0442\u043F\u0440\u043E\u0446\u0435\u0441\u0441\u043E\u0440\u0430', 'Postprocessor Rules', '\u041F\u043E\u0434\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438 \u043F\u043E\u0441\u0442\u043F\u0440\u043E\u0446\u0435\u0441\u0441\u043E\u0440\u0430', "This rules are applied to every autogenerated task in order to normalize it's form", '\u0414\u0430\u043D\u043D\u044B\u0435 \u043F\u0440\u0430\u0432\u0438\u043B\u0430 \u043F\u0440\u0438\u043C\u0435\u043D\u044F\u044E\u0442\u0441\u044F \u043A \u043A\u0430\u0436\u0434\u043E\u0439 \u0441\u043E\u0437\u0434\u0430\u043D\u043D\u043E\u0439 \u0430\u0432\u0442\u043E\u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440\u043E\u043C \u0437\u0430\u0434\u0430\u0447\u0435 \u0441 \u0446\u0435\u043B\u044C\u044E \u043F\u0440\u0438\u0432\u0435\u0434\u0435\u043D\u0438\u044F \u0437\u0430\u0434\u0430\u0447\u0438 \u043A \u043D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E\u043C\u0443 \u0432\u0438\u0434\u0443', 'standard_math', void 0, listOf_0([new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(-(+(-(a)))))', '(a)', 4, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(+(-(a))))', '(a)', 4, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(-(-(a)))', '(a)', 4, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;1))', '(a)', 4, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(1;a))', '(a)', 4, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(+(a;a))', '(*(2;a))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*((+(-(A)));C))', '(+(-(*(A;C))))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;(+(-(C)))))', '(+(-(*(A;C))))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(-(A));C))', '(+(-(*(A;C))))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;+(-(C))))', '(+(-(*(A;C))))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(-(A));+(-(B))))', '(*(A;B))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(A;+(-(1))))', '(+(-(*(A;1))))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(a;1))', '(a)', 4, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(a;a))', '(1)', 4, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(/(1;a);a))', '(1)', 4, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;/(1;a)))', '(a)', 4, false, true, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/((+(-(A)));C))', '(+(-(/(A;C))))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;(+(-(C)))))', '(+(-(/(A;C))))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(+(-(A));C))', '(+(-(/(A;C))))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;+(-(C))))', '(+(-(/(A;C))))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;/(B;A)))', '(/(A;B))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(A;/(B;C)))', '(/(*(A;C);B))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(a;+(-(1))))', '(/(1;a))', 40, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^((/(1;a));+(-(1))))', '(a)', 40, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;^(a;+(-(1)))))', '(a)', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;^(a;+(-(b)))))', '(^(a;b))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(A;+(-(C))))', '(/(1;^(A;C)))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(A;1))', '(A)', 5, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;a))', '(^(a;2))', 40, false, false, true, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(+(-(a));a))', '(+(-(^(a;2))))', 40, false, false, true, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*(a;+(-(a))))', '(+(-(^(a;2))))', 40, false, false, true, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(*((+(-(a)));(+(-(a)))))', '(^(a;2))', 40, false, false, true, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(-(A);*(2;n)))', '(^(A;*(2;n)))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(-(A);2))', '(^(A;2))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(+(-(A));*(2;n)))', '(^(A;*(2;n)))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(+(-(A));2))', '(^(A;2))', 35, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(^(a;0.5);2))', '(a)', 5, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(^(^(a;2);0.5))', '(a)', 5, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;(^(a;(+(-(1)))))))', '(a)', 5, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;(^(a;(+(-(b)))))))', '(^(a;b))', 5, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;tg(a)))', '(ctg(a))', 5, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(/(1;ctg(a)))', '(tg(a))', 5, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(not(not(a)))', '(a)', 4, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(or(a;a))', '(a)', 5, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(and(a;a))', '(a)', 5, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(or(a))', '(a)', 4, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(and(a))', '(a)', 4, false, false, false, false, void 0, void 0, 0.0, true), new RuleITR('', void 0, void 0, void 0, void 0, void 0, void 0, '(alleq(a))', '(a)', 4, false, false, false, false, void 0, void 0, 0.0, true)])));
+  }
+  PostprocessorRulePack$Companion.prototype.get = function () {
+    return this.postprocessorRulePack.get_za3lpa$(0);
+  };
+  PostprocessorRulePack$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var PostprocessorRulePack$Companion_instance = null;
+  function PostprocessorRulePack$Companion_getInstance() {
+    if (PostprocessorRulePack$Companion_instance === null) {
+      new PostprocessorRulePack$Companion();
+    }return PostprocessorRulePack$Companion_instance;
+  }
+  PostprocessorRulePack.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'PostprocessorRulePack',
+    interfaces: []
+  };
   function VariableLink(targetVariable, computingExpression, sourceVariables, comparisonType) {
     this.targetVariable = targetVariable;
     this.computingExpression = computingExpression;
@@ -32676,6 +33651,7 @@ if (typeof kotlin === 'undefined') {
   _.stringToExpression = stringToExpression_JS;
   _.structureStringToExpression = structureStringToExpression_JS;
   _.expressionToString = expressionToString_JS;
+  _.expressionToUnicodeString = expressionToUnicodeString_JS;
   _.expressionToTexString = expressionToTexString_JS;
   _.expressionToStructureString = expressionToStructureString_JS;
   _.stringToStructureString = stringToStructureString_JS;
@@ -32709,7 +33685,7 @@ if (typeof kotlin === 'undefined') {
   var package$twf = package$mathhelper.twf || (package$mathhelper.twf = {});
   var package$api = package$twf.api || (package$twf.api = {});
   package$api.createConfigurationFromRulePacksAndParams_79na2b$ = createConfigurationFromRulePacksAndParams;
-  package$api.createConfigurationFromRulePacksAndDetailSolutionCheckingParams_1ov929$ = createConfigurationFromRulePacksAndDetailSolutionCheckingParams;
+  package$api.createConfigurationFromRulePacksAndDetailSolutionCheckingParams_durtbl$ = createConfigurationFromRulePacksAndDetailSolutionCheckingParams;
   package$api.setExpressionSubstitutions_9hdlec$ = setExpressionSubstitutions;
   Object.defineProperty(package$api, 'rulePacksMap', {
     get: function () {
@@ -32754,6 +33730,7 @@ if (typeof kotlin === 'undefined') {
   package$api.compareWithoutSubstitutionsStructureStrings_jl9eag$ = compareWithoutSubstitutionsStructureStrings;
   package$api.stringToExpression_a30txs$ = stringToExpression;
   package$api.expressionToString_gk94xr$ = expressionToString;
+  package$api.expressionToUnicodeString_gk94xr$ = expressionToUnicodeString;
   package$api.expressionToTexString_gk94xr$ = expressionToTexString;
   package$api.structureStringToExpression_halvl3$ = structureStringToExpression;
   package$api.expressionToStructureString_em03xr$ = expressionToStructureString;
@@ -32765,7 +33742,7 @@ if (typeof kotlin === 'undefined') {
   package$api.decodeUrlSymbols_61zpoe$ = decodeUrlSymbols;
   package$api.optGenerateSimpleComputationRule_2yjvs5$ = optGenerateSimpleComputationRule;
   package$api.expressionSubstitutionFromStrings_wbi1s5$ = expressionSubstitutionFromStrings_0;
-  package$api.expressionSubstitutionFromStructureStrings_2ixccc$ = expressionSubstitutionFromStructureStrings;
+  package$api.expressionSubstitutionFromStructureStrings_un0u0l$ = expressionSubstitutionFromStructureStrings;
   package$api.expressionSubstitutionFromRuleITR_bftldu$ = expressionSubstitutionFromRuleITR;
   package$api.expressionSubstitutionsFromRulePackITR_314120$ = expressionSubstitutionsFromRulePackITR;
   package$api.findSubstitutionPlacesInExpression_58u35j$ = findSubstitutionPlacesInExpression_0;
@@ -32773,19 +33750,21 @@ if (typeof kotlin === 'undefined') {
   package$api.createCompiledConfigurationFromExpressionSubstitutionsAndParams_red3nl$ = createCompiledConfigurationFromExpressionSubstitutionsAndParams;
   package$api.findApplicableSubstitutionsInSelectedPlace_8wbcfm$ = findApplicableSubstitutionsInSelectedPlace;
   package$api.applySubstitutionInSelectedPlace_x5zgqy$ = applySubstitutionInSelectedPlace;
+  package$api.checkAndAddNewVariableReplacement_1x0twy$ = checkAndAddNewVariableReplacement;
   package$api.findLowestSubtreeTopOfSelectedNodesInExpression_mtyzax$ = findLowestSubtreeTopOfSelectedNodesInExpression;
   package$api.SubstitutionPlaceOfflineData = SubstitutionPlaceOfflineData;
   package$api.findSubstitutionPlacesCoordinatesInExpressionJSON_jm5u2b$ = findSubstitutionPlacesCoordinatesInExpressionJSON;
   package$api.findStructureStringsSubstitutionPlacesCoordinatesInExpressionJSON_jm5u2b$ = findStructureStringsSubstitutionPlacesCoordinatesInExpressionJSON;
   package$api.applyExpressionBySubstitutionPlaceCoordinates_7elrlf$ = applyExpressionBySubstitutionPlaceCoordinates;
   package$api.applyExpressionByStructureStringsSubstitutionPlaceCoordinates_7elrlf$ = applyExpressionByStructureStringsSubstitutionPlaceCoordinates;
+  package$api.checkAndAddNewVariableReplacement_vvc9pq$ = checkAndAddNewVariableReplacement_0;
   package$api.createExpressionFrontInput_puj7f4$ = createExpressionFrontInput;
   package$api.createRuleITR_ho8e7n$ = createRuleITR;
   package$api.createTaskITR_6c0yxu$ = createTaskITR;
   package$api.checkSolutionInTex_gw7uj5$ = checkSolutionInTex;
-  package$api.checkSolutionInTex_o41bvz$ = checkSolutionInTex_0;
+  package$api.checkSolutionInTex_tlsgcf$ = checkSolutionInTex_0;
   package$api.checkSolutionInTexWithCompiledConfiguration_43fm9k$ = checkSolutionInTexWithCompiledConfiguration;
-  package$api.checkChainCorrectnessInTex_61zpoe$ = checkChainCorrectnessInTex;
+  package$api.checkChainCorrectnessInTex_puj7f4$ = checkChainCorrectnessInTex;
   var package$baseoperations = package$twf.baseoperations || (package$twf.baseoperations = {});
   package$baseoperations.BaseNumber = BaseNumber;
   package$baseoperations.BaseOperationDefinitionWithDomain = BaseOperationDefinitionWithDomain;
@@ -32801,6 +33780,16 @@ if (typeof kotlin === 'undefined') {
   });
   package$baseoperations.BaseOperationsComputation = BaseOperationsComputation;
   package$baseoperations.BaseOperationsDefinition = BaseOperationsDefinition;
+  Object.defineProperty(ComputeExpressionVariableType, 'ALL_TO_NUMBERS', {
+    get: ComputeExpressionVariableType$ALL_TO_NUMBERS_getInstance
+  });
+  Object.defineProperty(ComputeExpressionVariableType, 'ALL_TO_NUMBERS_OR_PI_OR_E', {
+    get: ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_getInstance
+  });
+  Object.defineProperty(ComputeExpressionVariableType, 'ALL_TO_NUMBERS_OR_PI_OR_E_ADDITIVELY_GROUPED', {
+    get: ComputeExpressionVariableType$ALL_TO_NUMBERS_OR_PI_OR_E_ADDITIVELY_GROUPED_getInstance
+  });
+  package$baseoperations.ComputeExpressionVariableType = ComputeExpressionVariableType;
   package$baseoperations.BaseOperationsDefinitions = BaseOperationsDefinitions;
   Object.defineProperty(ComplexBaseOperation, 'Companion', {
     get: ComplexBaseOperation$Companion_getInstance
@@ -32961,9 +33950,24 @@ if (typeof kotlin === 'undefined') {
       return PI_STRING_TEX;
     }
   });
-  Object.defineProperty(package$config, 'PI_STRING_USIAL', {
+  Object.defineProperty(package$config, 'E_STRING', {
     get: function () {
-      return PI_STRING_USIAL;
+      return E_STRING;
+    }
+  });
+  Object.defineProperty(package$config, 'E_STRING_UNICODE', {
+    get: function () {
+      return E_STRING_UNICODE;
+    }
+  });
+  Object.defineProperty(package$config, 'PI_STRING_USUAL', {
+    get: function () {
+      return PI_STRING_USUAL;
+    }
+  });
+  Object.defineProperty(package$config, 'E_STRING_USUAL', {
+    get: function () {
+      return E_STRING_USUAL;
     }
   });
   package$config.VariableConfiguration = VariableConfiguration;
@@ -33181,6 +34185,9 @@ if (typeof kotlin === 'undefined') {
   package$expressiontree.DomainCalculator = DomainCalculator;
   package$expressiontree.ParserError = ParserError;
   package$expressiontree.GeneralError = GeneralError;
+  Object.defineProperty(ExpressionComparator, 'Companion', {
+    get: ExpressionComparator$Companion_getInstance
+  });
   package$expressiontree.ExpressionComparator = ExpressionComparator;
   package$expressiontree.getComparingDirection_pi90oc$ = getComparingDirection;
   Object.defineProperty(NodeType, 'FUNCTION', {
@@ -33255,16 +34262,6 @@ if (typeof kotlin === 'undefined') {
   package$expressiontree.ExpressionStructurePart = ExpressionStructurePart;
   package$expressiontree.FunctionCondition = FunctionCondition;
   package$expressiontree.FunctionsCondition = FunctionsCondition;
-  Object.defineProperty(NumberIntervalType, 'NATURAL', {
-    get: NumberIntervalType$NATURAL_getInstance
-  });
-  Object.defineProperty(NumberIntervalType, 'INTEGER', {
-    get: NumberIntervalType$INTEGER_getInstance
-  });
-  Object.defineProperty(NumberIntervalType, 'REAL', {
-    get: NumberIntervalType$REAL_getInstance
-  });
-  package$expressiontree.NumberIntervalType = NumberIntervalType;
   package$expressiontree.NumberInterval = NumberInterval;
   package$expressiontree.NumberCondition = NumberCondition;
   package$expressiontree.VariableCondition = VariableCondition;
@@ -33317,6 +34314,10 @@ if (typeof kotlin === 'undefined') {
   package$expressiontree.applyAllSubstitutions_f250rj$ = applyAllSubstitutions;
   package$expressiontree.applyAllImmediateSubstitutions_gz4buk$ = applyAllImmediateSubstitutions;
   package$expressiontree.SubstitutionApplication = SubstitutionApplication;
+  package$expressiontree.addSubstitutionToDiff_3yc2op$ = addSubstitutionToDiff;
+  package$expressiontree.addSubstitutionToResultExpression_vlq1sf$ = addSubstitutionToResultExpression;
+  package$expressiontree.addStepIdToDiff_h2wc0x$ = addStepIdToDiff;
+  package$expressiontree.addStepIdToResultExpression_cp6tg3$ = addStepIdToResultExpression;
   Object.defineProperty(MathMlTagTreeNode$Type, 'EXPRESSION_PART_STRING', {
     get: MathMlTagTreeNode$Type$EXPRESSION_PART_STRING_getInstance
   });
@@ -33549,7 +34550,7 @@ if (typeof kotlin === 'undefined') {
   package$mainpoints.TexVerificationResult = TexVerificationResult;
   package$mainpoints.checkFactsInTex_b115wo$ = checkFactsInTex;
   package$mainpoints.deleteUnsupportedTags_61zpoe$ = deleteUnsupportedTags;
-  package$mainpoints.compiledConfigurationBySettings_rusfmr$ = compiledConfigurationBySettings;
+  package$mainpoints.compiledConfigurationBySettings_fybxf9$ = compiledConfigurationBySettings;
   package$mainpoints.combineSolutionRoot_sutxfd$ = combineSolutionRoot;
   package$mainpoints.pairsFromString_61zpoe$ = pairsFromString;
   package$mainpoints.pairsStringIntFromString_61zpoe$ = pairsStringIntFromString;
@@ -33602,6 +34603,19 @@ if (typeof kotlin === 'undefined') {
   });
   package$numbers.Real_init_za3lpa$ = Real_init;
   package$numbers.Real = Real;
+  Object.defineProperty(NumberIntervalType, 'SMALL_NATURAL', {
+    get: NumberIntervalType$SMALL_NATURAL_getInstance
+  });
+  Object.defineProperty(NumberIntervalType, 'NATURAL', {
+    get: NumberIntervalType$NATURAL_getInstance
+  });
+  Object.defineProperty(NumberIntervalType, 'INTEGER', {
+    get: NumberIntervalType$INTEGER_getInstance
+  });
+  Object.defineProperty(NumberIntervalType, 'REAL', {
+    get: NumberIntervalType$REAL_getInstance
+  });
+  package$numbers.NumberIntervalType = NumberIntervalType;
   var package$optimizerutils = package$twf.optimizerutils || (package$twf.optimizerutils = {});
   package$optimizerutils.InequalityApproximateSolver = InequalityApproximateSolver;
   Object.defineProperty(Case, 'ONE_DIMENSIONAL_POLYNOMIAL', {
@@ -33615,6 +34629,9 @@ if (typeof kotlin === 'undefined') {
   package$optimizerutils.CompressedNodeDouble = CompressedNodeDouble;
   package$optimizerutils.OptimizerUtils = OptimizerUtils;
   package$optimizerutils.VariableInfo = VariableInfo;
+  package$optimizerutils.Segment = Segment_0;
+  package$optimizerutils.SegmentsUnion = SegmentsUnion_0;
+  package$optimizerutils.VariableProperties = VariableProperties_0;
   package$optimizerutils.CompressedNode = CompressedNode;
   package$optimizerutils.DomainPointGenerator = DomainPointGenerator;
   var package$platformdependent = package$twf.platformdependent || (package$twf.platformdependent = {});
@@ -33721,6 +34738,26 @@ if (typeof kotlin === 'undefined') {
   });
   var package$taskautogeneration = package$twf.taskautogeneration || (package$twf.taskautogeneration = {});
   package$taskautogeneration.trigonometryShortMultiplicationStartExpressionGeneration_3b06hw$ = trigonometryShortMultiplicationStartExpressionGeneration;
+  package$taskautogeneration.ExpressionSimilarityMetric = ExpressionSimilarityMetric;
+  package$taskautogeneration.CompoundSimilarityMetric = CompoundSimilarityMetric;
+  Object.defineProperty(package$taskautogeneration, 'variableOnlyInLeft', {
+    get: function () {
+      return variableOnlyInLeft;
+    }
+  });
+  Object.defineProperty(package$taskautogeneration, 'variableOnlyInRight', {
+    get: function () {
+      return variableOnlyInRight;
+    }
+  });
+  Object.defineProperty(package$taskautogeneration, 'disparityMatrixMetric', {
+    get: function () {
+      return disparityMatrixMetric;
+    }
+  });
+  package$taskautogeneration.isLeafNode_qrf28w$ = isLeafNode;
+  package$taskautogeneration.getNonLeafSubexpressions_qrf28w$ = getNonLeafSubexpressions;
+  package$taskautogeneration.distanceTo_82oxr1$ = distanceTo;
   Object.defineProperty(ExpressionGenerationDirection, 'ORIGINAL_TO_FINAL', {
     get: ExpressionGenerationDirection$ORIGINAL_TO_FINAL_getInstance
   });
@@ -33730,14 +34767,26 @@ if (typeof kotlin === 'undefined') {
   package$taskautogeneration.ExpressionGenerationDirection = ExpressionGenerationDirection;
   package$taskautogeneration.GeneratedExpression = GeneratedExpression;
   package$taskautogeneration.ExpressionTaskGeneratorSettings = ExpressionTaskGeneratorSettings;
+  package$taskautogeneration.ExpressionTaskIntermediateData = ExpressionTaskIntermediateData;
   package$taskautogeneration.ExpressionTask = ExpressionTask;
+  package$taskautogeneration.reweighNewVariablesRules_3tiwji$ = reweighNewVariablesRules;
   package$taskautogeneration.generateExpressionTransformationTasks_8ndg6e$ = generateExpressionTransformationTasks;
+  package$taskautogeneration.findPossibleSubstitutions_atry2m$ = findPossibleSubstitutions;
+  package$taskautogeneration.postprocessGeneratedTask_u0kcr4$ = postprocessGeneratedTask;
   package$taskautogeneration.simplifyAndNormalizeExpression_37rhgh$ = simplifyAndNormalizeExpression;
   package$taskautogeneration.simplifyExpressionRecursive_37rhgh$ = simplifyExpressionRecursive;
   package$taskautogeneration.swapPartsInExpressionSubstitutions_pvxprz$ = swapPartsInExpressionSubstitutions;
   package$taskautogeneration.compareExpressionNodes_heho5o$ = compareExpressionNodes;
   package$taskautogeneration.badStructureFine_qrf28w$ = badStructureFine;
+  package$taskautogeneration.getMaxFractionLevel_1k7ipq$ = getMaxFractionLevel;
   package$taskautogeneration.selectRandomNodeIdsToTransform_qrf28w$ = selectRandomNodeIdsToTransform;
+  package$taskautogeneration.nodeIdToPriority_1k7ipq$ = nodeIdToPriority;
+  package$taskautogeneration.selectNodeIdsToTransformByLastStepId_qrf28w$ = selectNodeIdsToTransformByLastStepId;
+  Object.defineProperty(PostprocessorRulePack, 'Companion', {
+    get: PostprocessorRulePack$Companion_getInstance
+  });
+  var package$rulepack = package$taskautogeneration.rulepack || (package$taskautogeneration.rulepack = {});
+  package$rulepack.PostprocessorRulePack = PostprocessorRulePack;
   var package$testpointgeneration = package$twf.testpointgeneration || (package$twf.testpointgeneration = {});
   package$testpointgeneration.VariableLink = VariableLink;
   package$testpointgeneration.VariableData = VariableData;
@@ -33786,7 +34835,10 @@ if (typeof kotlin === 'undefined') {
   PI_STRING_ASCII = 'pi';
   PI_STRING_UNICODE = '\u03C0';
   PI_STRING_TEX = '\\pi';
-  PI_STRING_USIAL = PI_STRING_UNICODE;
+  E_STRING = '2.71828183';
+  E_STRING_UNICODE = 'e';
+  PI_STRING_USUAL = PI_STRING_UNICODE;
+  E_STRING_USUAL = E_STRING_UNICODE;
   unlimitedWeight = 10000.0;
   knownOps = listOf_0([new BaseOperationDefinitionWithDomain('+', DomainAll, listOf_0([DomainAll, DomainAll]), knownOps$lambda), new BaseOperationDefinitionWithDomain('-', DomainAll, listOf_0([DomainAll, DomainAll]), knownOps$lambda_0), new BaseOperationDefinitionWithDomain('', DomainAll, listOf(DomainAll), knownOps$lambda_1), new BaseOperationDefinitionWithDomain('*', DomainAll, listOf_0([DomainAll, DomainAll]), knownOps$lambda_2), new BaseOperationDefinitionWithDomain('/', DomainAll, listOf_0([DomainAll, DomainAll.except_yqxtqz$(new Float64Array([0.0]))]), knownOps$lambda_3), new BaseOperationDefinitionWithDomain('sin', DefinitionDomain$Companion_getInstance().inclusive_lu1900$(-1.0, 1.0), listOf(DomainAll), knownOps$lambda_4), new BaseOperationDefinitionWithDomain('cos', DefinitionDomain$Companion_getInstance().inclusive_lu1900$(-1.0, 1.0), listOf(DomainAll), knownOps$lambda_5)]);
   var $receiver = knownOps;
@@ -33838,6 +34890,9 @@ if (typeof kotlin === 'undefined') {
   unicodeToTex = destination_1;
   texOpenBracket = '\\left(';
   texCloseBracket = '\\right)';
+  variableOnlyInLeft = new variableOnlyInLeft$ObjectLiteral();
+  variableOnlyInRight = new variableOnlyInRight$ObjectLiteral();
+  disparityMatrixMetric = new disparityMatrixMetric$ObjectLiteral();
   coloringEnd = '<\/mrow>';
   coloringBoldHeaderStartGeneral = ' mathvariant="bold" mathcolor="#';
   coloringBoldHeaderStart = '<mrow mathvariant="bold" mathcolor="#';

@@ -12,12 +12,17 @@ class LevelFormulaGenerator {
         this.substitutionsMap = new Map();
 
         for (let substitution of this.substitutions) {
-            let exprSubst = twf_js.expressionSubstitutionFromStructureStrings(
-                twf_js.stringToStructureString(substitution.origin, "setTheory"),
-                twf_js.stringToStructureString(substitution.target, "setTheory")
-            );
+            let leftStructureString = twf_js.stringToStructureString(substitution.origin, "setTheory");
+            let rightStructureString = twf_js.stringToStructureString(substitution.target, "setTheory");
+            let exprSubst = twf_js.expressionSubstitutionFromStructureStrings(leftStructureString, rightStructureString);
+            let diff = this.getUnicodeFormulaLength(
+                twf_js.expressionToUnicodeString(twf_js.structureStringToExpression(rightStructureString))
+            ) - this.getUnicodeFormulaLength(
+                twf_js.expressionToUnicodeString(twf_js.structureStringToExpression(leftStructureString))
+            )
             this.substitutionsMap.set(exprSubst.code,
                 {
+                    "diff": diff,
                     "scoreForHit": substitution.scoreForHit,
                     "scoreForSkip": substitution.scoreForSkip
                 });
@@ -40,7 +45,13 @@ class LevelFormulaGenerator {
                 rule.nameEn,
                 rule.nameRu
             )
+            let diff = this.getUnicodeFormulaLength(
+                twf_js.expressionToUnicodeString(twf_js.structureStringToExpression(rule.rightStructureString))
+            ) - this.getUnicodeFormulaLength(
+                twf_js.expressionToUnicodeString(twf_js.structureStringToExpression(rule.leftStructureString))
+            )
             this.substitutionsMap.set(exprSubst.code, {
+                "diff": diff,
                 "scoreForHit": rule.scoreForHit,
                 "scoreForSkip": rule.scoreForSkip
             })
@@ -49,6 +60,7 @@ class LevelFormulaGenerator {
 
         this.numberOfGeneratedFormulas = 0;
         this.shuffler = new Shuffler(this);
+        this.generationVariant = true;
     }
 
     nextFormula() {
@@ -92,64 +104,103 @@ class LevelFormulaGenerator {
     initializeFormula() {
         let randomInitialExpression
             = this.initialExpressions[Math.floor(Math.random() * this.initialExpressions.length)];
+        this.expression = twf_js.stringToExpression(randomInitialExpression, "setTheory");
+        let unicodeFormula = twf_js.expressionToUnicodeString(this.expression);
         this.formula = {
-            'label':        randomInitialExpression,
-            'url':          this.urlForRawFormula(randomInitialExpression),
+            'length':       this.getUnicodeFormulaLength(unicodeFormula),
+            'unicode':      unicodeFormula,
+            // 'label':        randomInitialExpression,
+            // 'url':          this.urlForRawFormula(randomInitialExpression),
             'scoreForHit':  0,
             'scoreForPass': 0
         }
-        this.expression = twf_js.stringToExpression(this.formula.label, "setTheory");
     }
 
     transformFormula() {
         let expression = this.expression;
         let shuffledSubstitutions = this.shuffler.shuffledSubstitutions();
-        console.log('Expression string', this.formula.label);
-        console.log('Expression', expression);
+        // console.log('Expression string', this.formula.label);
+        // console.log('Expression', expression);
+        console.log('Formula unicode:', this.formula.unicode);
+        this.generationVariant = !this.generationVariant;
 
-        if (false) {
+        if (this.generationVariant) {
             for (let substitution of shuffledSubstitutions) {
+                // console.log(substitution)
+                if (substitution.left.nodeType.name$ === "EMPTY") continue;
                 let expressionSubstitution = substitution;
-                console.log('Substitution:', substitution);
+                // console.log('Expression unicode', twf_js.expressionToUnicodeString(expression));
+                // console.log('Substitution:', substitution);
                 let substitutionPlaces = this.getSubstitutionPlaces(expression, expressionSubstitution);
 
                 if (0 < substitutionPlaces.length) {
-                    this.expression = this.applySubstitution(expression, expressionSubstitution, substitutionPlaces);
-                    let rawFormula = twf_js.expressionToString(this.expression);
+                    // console.log('Substitution places', substitutionPlaces);
+                    let shuffledPlaces = this.shuffler.shuffle(substitutionPlaces);
+                    for (let place of shuffledPlaces) {
+                        let newExpression = this.applySubstitution(expression, expressionSubstitution, [place]);
+                        // let rawFormula = twf_js.expressionToString(newExpression);
+                        let unicodeFormula = twf_js.expressionToUnicodeString(newExpression);
+                        let formulalength = this.getUnicodeFormulaLength(unicodeFormula);
+                        if (formulalength <= 100 && formulalength > 10) {
+                            this.expression = newExpression;
+                            // console.log('Substitution', expressionSubstitution.code);
+                            // console.log('Diff', this.substitutionsMap.get(expressionSubstitution.code).diff);
 
-                    this.formula = {
-                        'label': rawFormula,
-                        'url': this.urlForRawFormula(rawFormula),
-                        'scoreForHit': this.substitutionsMap.get(expressionSubstitution.code).scoreForHit,
-                        'scoreForSkip': this.substitutionsMap.get(expressionSubstitution.code).scoreForSkip
-                    };
+                            this.formula = {
+                                'length': this.getUnicodeFormulaLength(unicodeFormula),
+                                'unicode': unicodeFormula,
+                                // 'label': rawFormula,
+                                // 'url': this.urlForRawFormula(rawFormula),
+                                'scoreForHit': this.substitutionsMap.get(expressionSubstitution.code).scoreForHit,
+                                'scoreForSkip': this.substitutionsMap.get(expressionSubstitution.code).scoreForSkip
+                            };
 
-                    break;
+                            return;
+                        }
+                    }
                 }
             }
         } else {
-            let nodeIds = this.getAllNodeIdsInExpression(expression);
-            console.log('Node ids', nodeIds);
-            console.log('Substitutions', shuffledSubstitutions);
-            let substitutionApplications = this.findApplicableSubstitutionsInSelectedPlace(
-                expression, nodeIds, shuffledSubstitutions
-            );
-            console.log('Substitution applications', substitutionApplications);
-            if (0 < substitutionApplications.length) {
-                let application = this.pickRandomElement(substitutionApplications)
-                this.expression = application.resultExpression;
-                let rawFormula = twf_js.expressionToString(
-                    application.resultExpression);
-                console.log('Result expression:', rawFormula);
+            let allNodeIds = this.getAllNodeIdsInExpression(expression);
+            let nodeIdsSubarrays = this.getAllSubarrays(allNodeIds);
+            let shuffledNodeIds = this.shuffler.shuffle(nodeIdsSubarrays);
 
-                this.formula = {
-                    'label': rawFormula,
-                    'url': this.urlForRawFormula(rawFormula),
-                    'scoreForHit': this.substitutionsMap
-                        .get(application.expressionSubstitution.code).scoreForHit,
-                    'scoreForSkip': this.substitutionsMap
-                        .get(application.expressionSubstitution.code).scoreForSkip
-                };
+            // console.log('All node ids:', allNodeIds);
+            // console.log('Node ids subarrays:', nodeIdsSubarrays);
+            for (let nodeIds of shuffledNodeIds) {
+                if (nodeIds.length === 0) continue;
+                // console.log('Node ids', nodeIds);
+                // console.log('Substitutions', shuffledSubstitutions);
+                let substitutionApplications = this.findApplicableSubstitutionsInSelectedPlace(
+                    expression, nodeIds, shuffledSubstitutions
+                );
+                // console.log('Substitution applications', substitutionApplications);
+                if (0 < substitutionApplications.length) {
+                    let shuffledApplications = this.shuffler.shuffle(substitutionApplications);
+                    let application = shuffledApplications[0];
+                    let rawFormula = twf_js.expressionToString(
+                        application.resultExpression);
+                    let unicodeFormula = twf_js.expressionToUnicodeString(application.resultExpression);
+                    let formulaLength = this.getUnicodeFormulaLength(unicodeFormula);
+                    if (formulaLength < 100 && formulaLength > 10) {
+                        this.expression = application.resultExpression;
+                        // console.log('Result expression:', rawFormula);
+                        // console.log('Expression unicode:', unicodeFormula);
+
+                        this.formula = {
+                            'length': this.getUnicodeFormulaLength(unicodeFormula),
+                            'unicode': unicodeFormula,
+                            // 'label': rawFormula,
+                            // 'url': this.urlForRawFormula(rawFormula),
+                            'scoreForHit': this.substitutionsMap
+                                .get(application.expressionSubstitution.code).scoreForHit,
+                            'scoreForSkip': this.substitutionsMap
+                                .get(application.expressionSubstitution.code).scoreForSkip
+                        };
+
+                        return;
+                    }
+                }
             }
         }
     }
@@ -183,4 +234,50 @@ class LevelFormulaGenerator {
         return items[Math.floor(Math.random() * items.length)];
     }
 
+    getUnicodeFormulaLength(unicodeFormula) {
+        let result = 0;
+        for (let symb of unicodeFormula) {
+            switch (symb) {
+                case '(' | ')' | '1':
+                    result += 2;
+                    break;
+                case '¬' | '∧' | '∨' | '≡' | '0':
+                    result += 3;
+                    break;
+                case '→' | '∖':
+                    result += 5;
+                    break;
+                default:
+                    result += 4;
+                    break;
+            }
+        }
+        return result;
+    }
+
+    getAllSubarrays(array) {
+        if (array.length === 0)
+            return [[]];
+        let tailSubarray = this.getAllSubarrays(array.slice(1));
+        return tailSubarray.concat(tailSubarray.map(function (item, index, a) {
+            return [array[0]].concat(item);
+        }));
+    }
+
+    copy_object(obj) {
+        if (typeof obj != "object")
+            return obj
+        if (Array.isArray(obj)) {
+            let new_arr = []
+            for (let item of obj)
+                new_arr.push(this.copy_object(item))
+            return new_arr
+        }
+        let new_obj = {}
+        for (let key in obj) {
+            // console.log(key, obj[key])
+            new_obj[key] = this.copy_object(obj[key])
+        }
+        return new_obj
+    }
 }

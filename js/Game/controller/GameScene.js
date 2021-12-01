@@ -21,6 +21,10 @@ class GameScene extends Phaser.Scene {
     create() {
         this.sizer = new GameSizer(this);
 
+        console.log('Formulas:', this.formulas.map(function (formula) {
+            return formula.unicode;
+        }))
+
         this.placeCannon();
         this.placeScoreLabels();
 
@@ -100,8 +104,15 @@ class GameScene extends Phaser.Scene {
 
         let formulaCenterX = this.sizer.formula_CenterX();
         let formulaCenterY = this.spanFormula_CenterY();
-        let formulaLabel = this.formulas[index].label;
-        let formula = this.add.image(formulaCenterX, formulaCenterY, formulaLabel);
+        // let formulaLabel = this.formulas[index].label;
+        console.log('Formula unicode', this.formulas[index].unicode);
+        let formula = this.add.text(formulaCenterX, formulaCenterY, this.formulas[index].unicode,
+            {
+                fontFamily: 'serif',
+                color: '#000',
+                fontSize: '60px'
+            });
+        // let formula = this.add.image(formulaCenterX, formulaCenterY, formulaLabel);
         formula.setOrigin(0.5);
 
         let scoreForHit = this.formulas[index].scoreForHit;

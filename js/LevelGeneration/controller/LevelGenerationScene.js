@@ -32,9 +32,9 @@ class LevelGenerationScene extends Phaser.Scene {
         this.badRulePacks = this.cache.json.get(this.badRulePacksPath);
         this.rulesFromPacks = [];
         for (let rulePack of this.rulePacks.rulePacks) {
-            if (rulePack.code === 'global_test__LogicNotAnd' ||
-                rulePack.code === 'global_test__LogicNotOr')
-                continue;
+            // if (rulePack.code === 'global_test__LogicNotAnd' ||
+            //     rulePack.code === 'global_test__LogicNotOr')
+            //     continue;
             this.rulesFromPacks = this.rulesFromPacks.concat(rulePack.rules);
         }
         for (let rulePack of this.badRulePacks.rulePacks) {
