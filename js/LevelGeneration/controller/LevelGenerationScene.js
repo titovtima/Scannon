@@ -22,6 +22,7 @@ class LevelGenerationScene extends Phaser.Scene {
     }
 
     preload() {
+        // console.log('autogenerate in generator', this.autogenerate);
         if (this.autogenerate) {
             this.load.json(this.initialExpressionsPath, this.initialExpressionsPath);
             // this.load.json(this.substitutionsPath, this.substitutionsPath);
@@ -29,7 +30,9 @@ class LevelGenerationScene extends Phaser.Scene {
             this.load.json(this.allRulePacksPath, this.allRulePacksPath);
             this.load.json(this.badRulePacksPath, this.badRulePacksPath);
         } else {
+            // console.log('sequences to choose', this.sequences);
             this.sequence = this.pickRandomElement(this.sequences);
+            // console.log('chosen sequence', this.sequence);
             this.load.json(this.sequence, this.sequence);
         }
     }
@@ -68,7 +71,7 @@ class LevelGenerationScene extends Phaser.Scene {
                 'minLength': this.minLength
             });
         } else {
-            this.formulas = this.cache.json.get(this.sequence).sequence;
+            this.formulas = this.copy_object(this.cache.json.get(this.sequence)).sequence;
             this.scene.start(GC.SCENES.LOADING_RESOURCES, {
                 'formulas': this.formulas,
                 'levelGenerationInfo': this.levelGenerationInfo
@@ -91,16 +94,9 @@ class LevelGenerationScene extends Phaser.Scene {
     update() {
         console.log('LevelGenerationScene update started');
         if (this.needRestart) return;
-        if (this.generator === undefined) {
+        if (!this.autogenerate || this.generator === undefined) {
             this.needRestart = true
-            this.scene.restart({
-                'numberOfFormulas': this.numberOfFormulas,
-                'initialExpressionPath': this.initialExpressionsPath,
-                'substitutionsPath': this.substitutionsPath,
-                'rulePacksPath': this.rulePacksPath,
-                'maxLength': this.maxLength,
-                'minLength': this.minLength
-            })
+            this.scene.restart(this.levelGenerationInfo);
         } else {
             if (this.generator.levelComplete()) {
                 this.scene.start(GC.SCENES.LOADING_RESOURCES, {
