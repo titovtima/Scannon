@@ -33,7 +33,7 @@ class GameCompleteSizer {
     }
 
     scoreValue_FontSize() {
-        return 220;
+        return 200;
     }
 
     scoreValue_Color() {
@@ -45,8 +45,8 @@ class GameCompleteSizer {
     }
 
     menuItem_CenterY(label) {
-        let firstItemCenterY = 602;
-        let distanceBetween = 100;
+        let firstItemCenterY = 570;
+        let distanceBetween = 80;
 
         switch (label) {
             case 'Restart':
@@ -55,11 +55,13 @@ class GameCompleteSizer {
                 return firstItemCenterY + distanceBetween;
             case 'Main Menu':
                 return firstItemCenterY + 2 * distanceBetween;
+            case 'Save sequence':
+                return firstItemCenterY + 3 * distanceBetween;
         }
     }
 
     menuItem_FontSize() {
-        return 70;
+        return 50;
     }
 
     menuItem_Color() {

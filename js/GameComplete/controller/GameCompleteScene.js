@@ -6,6 +6,7 @@ class GameCompleteScene extends Phaser.Scene {
 
     init(params) {
         this.score = params.score;
+        this.sequence = params.sequence;
     }
 
     create() {
@@ -64,7 +65,7 @@ class GameCompleteScene extends Phaser.Scene {
                 let menuItemColor = sizer.menuItem_Color();
 
                 let menuItems = {};
-                for (let label of ['Restart', 'Choose Level', 'Main Menu']) {
+                for (let label of ['Restart', 'Choose Level', 'Main Menu', 'Save sequence']) {
                     let menuItemCenterX = sizer.menuItem_CenterX();
                     let menuItemCenterY = sizer.menuItem_CenterY(label);
                     let menuItem = add.text(
@@ -95,6 +96,8 @@ class GameCompleteScene extends Phaser.Scene {
                             case 'Main Menu':
                                 scene.openMainMenu();
                                 break;
+                            case 'Save sequence':
+                                scene.saveSequence();
                         }
                     })
                 }
@@ -116,6 +119,22 @@ class GameCompleteScene extends Phaser.Scene {
 
     openMainMenu() {
         this.scene.start(GC.SCENES.MAIN_MENU);
+    }
+
+    saveSequence() {
+        let dataToSave = {
+            'sequence': this.sequence
+        };
+        let file = new Blob(
+            [JSON.stringify(dataToSave)], {
+                type: 'application/json'
+            }
+        );
+        let link = document.createElement('a');
+        link.setAttribute('href', URL.createObjectURL(file));
+        link.setAttribute('download', 'sequence.json');
+        link.click();
+        URL.revokeObjectURL(file);
     }
 
 }

@@ -51,6 +51,7 @@ class GameScene extends Phaser.Scene {
 
             this.scene.start(GC.SCENES.GAME_COMPETE, {
                 'score': this.score,
+                'sequence': this.formulas,
                 'levelGenerationInfo': this.levelGenerationInfo
             });
         }
