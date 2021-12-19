@@ -56,7 +56,9 @@
       "description": "Big hand-generated",
       "autogenerate": false,
       "sequences": [
-        "/lvl6/seq1.json"
+        "/lvl6/seq1.json",
+        "/lvl6/seq2.json",
+        "/lvl6/seq3.json"
       ]
     },
     {
