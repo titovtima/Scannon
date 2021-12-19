@@ -11,12 +11,12 @@ class Shuffler {
         let group1 = substitutions;
         let group2 = [];
 
-        if (formula.length < 40)  {
+        if (formula.length < this.generator.minLength)  {
             group1 = substitutions.filter( item => 0 < this.generator.substitutionsMap.get(item.code).diff);
             group2 = substitutions.filter( item => this.generator.substitutionsMap.get(item.code).diff <= 0);
         }
 
-        if (90 < formula.length) {
+        if (this.generator.maxLength < formula.length) {
             group1 = substitutions.filter( item => this.generator.substitutionsMap.get(item.code).diff < 0 );
             group2 = substitutions.filter( item => 0 <= this.generator.substitutionsMap.get(item.code).diff );
         }

@@ -1,0 +1,45 @@
+{
+  "sequence": [
+    {
+      "unicode": "a≡(b∨(c≡a))",
+      "scoreForHit": 0,
+      "scoreForSkip": 0
+    },
+    {
+      "unicode": "a≡(b∨((c∧a)∨(¬c∧¬a)))",
+      "scoreForHit": -20,
+      "scoreForSkip": 20
+    },
+    {
+      "unicode": "a≡(b∨(c∧a)∨(¬c∧¬a))",
+      "scoreForHit": -30,
+      "scoreForSkip": 10
+    },
+    {
+      "unicode": "a≡(((c∧a)∨(¬c∧¬a))∨b)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10
+    },
+    {
+      "unicode": "a≡((c∧a)∨(¬c∧¬a)∨b)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10
+    },
+    {
+      "unicode": "a≡((c∧a)∨(¬c∧(¬a∨0))∨b)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10
+    },
+    {
+      "unicode": "a≡((c∧a)∨(¬c∧a)∨b)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "a≡((c∧a)∨¬(c∨a)∨b)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    }
+
+  ]
+}

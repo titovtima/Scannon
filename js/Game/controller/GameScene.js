@@ -99,6 +99,7 @@ class GameScene extends Phaser.Scene {
         let background_TopY = this.spanCardBackground_TopY();
         let background = this.physics.add.image(background_LeftX, background_TopY, 'cardBackground_Regular');
         background.setOrigin(0, 0);
+        background.wanted_y = background.y;
 
         this.addExistingCollisionsToNewFormula(background);
 
@@ -114,6 +115,7 @@ class GameScene extends Phaser.Scene {
             });
         // let formula = this.add.image(formulaCenterX, formulaCenterY, formulaLabel);
         formula.setOrigin(0.5);
+        formula.wanted_y = formula.y;
 
         let scoreForHit = this.formulas[index].scoreForHit;
         let scoreForSkip = this.formulas[index].scoreForSkip;
@@ -149,10 +151,14 @@ class GameScene extends Phaser.Scene {
     moveFormulas() {
         for (let formula of this.displayingFormulas) {
             formula.background.x += this.sizer.card_SpeedX();
-            formula.background.y += this.sizer.card_SpeedY();
+            formula.background.wanted_y += this.sizer.card_SpeedY();
+            formula.background.y = Math.floor(formula.background.wanted_y);
+            // console.log('Wanted y', formula.background.wanted_y);
+            // console.log('y', formula.background.y);
 
             formula.formula.x += this.sizer.card_SpeedX();
-            formula.formula.y += this.sizer.card_SpeedY();
+            formula.formula.wanted_y += this.sizer.card_SpeedY();
+            formula.formula.y = Math.floor(formula.formula.wanted_y);
 
             if (formula.arrow) {
                 formula.arrow.x += this.sizer.card_SpeedX();

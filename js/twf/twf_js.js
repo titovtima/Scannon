@@ -294,6 +294,9 @@ if (typeof kotlin === 'undefined') {
       functionConfiguration = new FunctionConfiguration(toSet(destination));
     }return structureStringToExpression(structureString, scope, functionConfiguration);
   }
+  function cloneExpression_JS(expressionNode) {
+    return expressionNode.clone();
+  }
   function expressionToString_JS(expressionNode, characterEscapingDepth) {
     if (characterEscapingDepth === void 0)
       characterEscapingDepth = 1;
@@ -33650,6 +33653,7 @@ if (typeof kotlin === 'undefined') {
   _.getSubstitutionsByRulePacks = getSubstitutionsByRulePacks_JS;
   _.stringToExpression = stringToExpression_JS;
   _.structureStringToExpression = structureStringToExpression_JS;
+  _.cloneExpression = cloneExpression_JS;
   _.expressionToString = expressionToString_JS;
   _.expressionToUnicodeString = expressionToUnicodeString_JS;
   _.expressionToTexString = expressionToTexString_JS;

@@ -9,7 +9,12 @@ class LevelGenerationScene extends Phaser.Scene {
         this.numberOfFormulas = params.numberOfFormulas;
         this.initialExpressionsPath = params.initialExpressionPath;
         this.substitutionsPath = params.substitutionsPath;
-        this.rulePacksPath = '/js/GameConfiguration/allRulePacks.json';
+        this.rulePacksPath = params.rulePacksPath;
+        this.maxLength = params.maxLength;
+        this.minLength = params.minLength;
+        this.autogenerate = params.autogenerate;
+        this.sequences = params.sequences;
+        this.allRulePacksPath = '/js/GameConfiguration/allRulePacks.json';
         this.badRulePacksPath = '/js/GameConfiguration/badRulePacks.json';
 
         this.generator = undefined;
@@ -17,39 +22,60 @@ class LevelGenerationScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.json(this.initialExpressionsPath, this.initialExpressionsPath);
-        this.load.json(this.substitutionsPath, this.substitutionsPath);
-        this.load.json(this.rulePacksPath, this.rulePacksPath);
-        this.load.json(this.badRulePacksPath, this.badRulePacksPath);
+        if (this.autogenerate) {
+            this.load.json(this.initialExpressionsPath, this.initialExpressionsPath);
+            // this.load.json(this.substitutionsPath, this.substitutionsPath);
+            this.load.json(this.rulePacksPath, this.rulePacksPath);
+            this.load.json(this.allRulePacksPath, this.allRulePacksPath);
+            this.load.json(this.badRulePacksPath, this.badRulePacksPath);
+        } else {
+            this.sequence = this.pickRandomElement(this.sequences);
+            this.load.json(this.sequence, this.sequence);
+        }
     }
 
     create() {
         console.log('LevelGenerationScene create started');
         this.needRestart = false;
-        this.initialExpressions = this.copy_object(this.cache.json.get(this.initialExpressionsPath));
-        this.substitutions = this.copy_object(this.cache.json.get(this.substitutionsPath));
-        this.rulePacks = this.cache.json.get(this.rulePacksPath);
-        this.badRulePacks = this.cache.json.get(this.badRulePacksPath);
-        this.rulesFromPacks = [];
-        for (let rulePack of this.rulePacks.rulePacks) {
-            // if (rulePack.code === 'global_test__LogicNotAnd' ||
-            //     rulePack.code === 'global_test__LogicNotOr')
-            //     continue;
-            this.rulesFromPacks = this.rulesFromPacks.concat(rulePack.rules);
-        }
-        for (let rulePack of this.badRulePacks.rulePacks) {
-            if (rulePack.code !== 'global_test_bad__LogicBase')
-                continue;
-            this.rulesFromPacks = this.rulesFromPacks.concat(rulePack.rules);
+        if (this.autogenerate) {
+            this.initialExpressions = this.copy_object(this.cache.json.get(this.initialExpressionsPath));
+            this.substitutions = this.copy_object(this.cache.json.get(this.substitutionsPath));
+            this.rulePacks = this.copy_object(this.cache.json.get(this.rulePacksPath));
+            this.rulePacks = this.rulePacks.rulePacks;
+            this.allRulePacks = this.cache.json.get(this.allRulePacksPath);
+            this.badRulePacks = this.cache.json.get(this.badRulePacksPath);
+            this.rulesFromPacks = [];
+            for (let rulePack of this.allRulePacks.rulePacks) {
+                // if (rulePack.code === 'global_test__LogicNotAnd' ||
+                //     rulePack.code === 'global_test__LogicNotOr')
+                //     continue;
+                if (this.rulePacks.includes(rulePack.code))
+                    this.rulesFromPacks = this.rulesFromPacks.concat(rulePack.rules);
+            }
+            for (let rulePack of this.badRulePacks.rulePacks) {
+                // if (rulePack.code !== 'global_test_bad__LogicBase')
+                //     continue;
+                if (this.rulePacks.includes(rulePack.code))
+                    this.rulesFromPacks = this.rulesFromPacks.concat(rulePack.rules);
+            }
+
+            this.generator = new LevelFormulaGenerator(this, {
+                'numberOfFormulas': this.numberOfFormulas,
+                'initialExpressions': this.initialExpressions.expressions,
+                // 'substitutions': this.substitutions.substitutions,
+                'rulesFromPacks': this.rulesFromPacks,
+                'maxLength': this.maxLength,
+                'minLength': this.minLength
+            });
+        } else {
+            this.formulas = this.cache.json.get(this.sequence).sequence;
+            this.scene.start(GC.SCENES.LOADING_RESOURCES, {
+                'formulas': this.formulas,
+                'levelGenerationInfo': this.levelGenerationInfo
+            });
         }
 
         this.sizer = new LevelGenerationSizer(this);
-        this.generator = new LevelFormulaGenerator(this, {
-            'numberOfFormulas': this.numberOfFormulas,
-            'initialExpressions': this.initialExpressions.expressions,
-            'substitutions': this.substitutions.substitutions,
-            'rulesFromPacks': this.rulesFromPacks
-        });
 
         this.placeDescription();
         this.placeLoadingBarBackground();
@@ -70,7 +96,10 @@ class LevelGenerationScene extends Phaser.Scene {
             this.scene.restart({
                 'numberOfFormulas': this.numberOfFormulas,
                 'initialExpressionPath': this.initialExpressionsPath,
-                'substitutionsPath': this.substitutionsPath
+                'substitutionsPath': this.substitutionsPath,
+                'rulePacksPath': this.rulePacksPath,
+                'maxLength': this.maxLength,
+                'minLength': this.minLength
             })
         } else {
             if (this.generator.levelComplete()) {
@@ -131,6 +160,10 @@ class LevelGenerationScene extends Phaser.Scene {
         });
 
         loadingBarBackground.fillRoundedRect(leftX, topY, width, height, radius);
+    }
+
+    pickRandomElement(items) {
+        return items[Math.floor(Math.random() * items.length)];
     }
 
     copy_object(obj) {

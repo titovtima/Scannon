@@ -75,15 +75,31 @@ class LevelMenuScene extends Phaser.Scene {
             cardBackground.setTexture('cardBackground');
         });
         cardBackground.on('pointerup', () => {
+            let autogenerate = this.levelsInfo.levels[index - 1].autogenerate;
             let basePath = "/js/GameConfiguration";
             let initialExpressionPath = basePath + this.levelsInfo.levels[index - 1].initialExpressions;
             let substitutionsPath = basePath + this.levelsInfo.levels[index - 1].substitutions;
             let numberOfFormulas = this.levelsInfo.levels[index - 1].numberOfFormulas;
+            let rulePacksPath = basePath + this.levelsInfo.levels[index - 1].rulePacks;
+            let maxLength = this.levelsInfo.levels[index - 1].maxLength;
+            let minLength = this.levelsInfo.levels[index - 1].minLength;
+            let sequences = this.levelsInfo.levels[index - 1].sequences.map(function (seq) {
+                return basePath + seq;
+            });
+            // console.log('sequences from levelInfo', this.levelsInfo.levels[index - 1].sequences);
+            // console.log('sequences from levelInfo after map', sequences);
 
+
+            console.log('RulePacksPath', rulePacksPath);
             this.scene.start(GC.SCENES.LEVEL_GENERATION, {
+                'autogenerate': autogenerate,
                 'numberOfFormulas': numberOfFormulas,
                 'initialExpressionPath': initialExpressionPath,
-                'substitutionsPath': substitutionsPath
+                'substitutionsPath': substitutionsPath,
+                'rulePacksPath': rulePacksPath,
+                'maxLength': maxLength,
+                'minLength': minLength,
+                'sequences': sequences
             });
         });
 

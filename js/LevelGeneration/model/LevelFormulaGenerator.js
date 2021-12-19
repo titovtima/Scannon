@@ -11,28 +11,7 @@ class LevelFormulaGenerator {
         this.substitutionsList = [];
         this.substitutionsMap = new Map();
 
-        for (let substitution of this.substitutions) {
-            let leftStructureString = twf_js.stringToStructureString(substitution.origin, "setTheory");
-            let rightStructureString = twf_js.stringToStructureString(substitution.target, "setTheory");
-            let exprSubst = twf_js.expressionSubstitutionFromStructureStrings(leftStructureString, rightStructureString);
-            let diff = this.getUnicodeFormulaLength(
-                twf_js.expressionToUnicodeString(twf_js.structureStringToExpression(rightStructureString))
-            ) - this.getUnicodeFormulaLength(
-                twf_js.expressionToUnicodeString(twf_js.structureStringToExpression(leftStructureString))
-            )
-            this.substitutionsMap.set(exprSubst.code,
-                {
-                    "diff": diff,
-                    "scoreForHit": substitution.scoreForHit,
-                    "scoreForSkip": substitution.scoreForSkip
-                });
-            this.substitutionsList.push(exprSubst);
-        }
-
-        console.log('Substitutions', this.substitutions);
-
         for (let rule of this.rulesFromPacks) {
-            // if (rule.leftStructureString === "") continue;
             let exprSubst = twf_js.expressionSubstitutionFromStructureStrings(
                 rule.leftStructureString,
                 rule.rightStructureString,
@@ -119,13 +98,21 @@ class LevelFormulaGenerator {
     transformFormula() {
         let expression = this.expression;
         let shuffledSubstitutions = this.shuffler.shuffledSubstitutions();
+        let timeExceeded = false;
+        let timer = setTimeout(function () {
+            console.log('Time exceeded');
+            timeExceeded = true;
+        }, 2000);
         // console.log('Expression string', this.formula.label);
         // console.log('Expression', expression);
-        console.log('Formula unicode:', this.formula.unicode);
+        // console.log('Formula unicode:', this.formula.unicode);
+        console.log('Expression unicode', twf_js.expressionToUnicodeString(expression));
         this.generationVariant = !this.generationVariant;
 
+        // if (this.generationVariant) {
         if (this.generationVariant) {
             for (let substitution of shuffledSubstitutions) {
+                let stopCounter = 7;
                 // console.log(substitution)
                 if (substitution.left.nodeType.name$ === "EMPTY") continue;
                 let expressionSubstitution = substitution;
@@ -137,13 +124,24 @@ class LevelFormulaGenerator {
                     // console.log('Substitution places', substitutionPlaces);
                     let shuffledPlaces = this.shuffler.shuffle(substitutionPlaces);
                     for (let place of shuffledPlaces) {
+                        // let expr = twf_js.cloneExpression(expression);
+                        // console.log('expr', twf_js.expressionToUnicodeString(expr));
                         let newExpression = this.applySubstitution(expression, expressionSubstitution, [place]);
                         // let rawFormula = twf_js.expressionToString(newExpression);
                         let unicodeFormula = twf_js.expressionToUnicodeString(newExpression);
+                        console.log('new formula', unicodeFormula);
                         let formulalength = this.getUnicodeFormulaLength(unicodeFormula);
+                        if (timeExceeded)
+                            return this.transformFormula();
+                        stopCounter =- 1;
+                        if (stopCounter < 0) {
+                            console.log('Stop counter');
+                            clearTimeout(timer);
+                            return this.transformFormula();
+                        }
                         if (formulalength <= 100 && formulalength > 10) {
                             this.expression = newExpression;
-                            // console.log('Substitution', expressionSubstitution.code);
+                            console.log('Substitution', expressionSubstitution.code);
                             // console.log('Diff', this.substitutionsMap.get(expressionSubstitution.code).diff);
 
                             this.formula = {
@@ -182,10 +180,12 @@ class LevelFormulaGenerator {
                         application.resultExpression);
                     let unicodeFormula = twf_js.expressionToUnicodeString(application.resultExpression);
                     let formulaLength = this.getUnicodeFormulaLength(unicodeFormula);
+                    if (timeExceeded)
+                        return this.transformFormula();
                     if (formulaLength < 100 && formulaLength > 10) {
                         this.expression = application.resultExpression;
                         // console.log('Result expression:', rawFormula);
-                        // console.log('Expression unicode:', unicodeFormula);
+                        console.log('Result expression unicode:', unicodeFormula);
 
                         this.formula = {
                             'length': this.getUnicodeFormulaLength(unicodeFormula),
@@ -198,6 +198,7 @@ class LevelFormulaGenerator {
                                 .get(application.expressionSubstitution.code).scoreForSkip
                         };
 
+                        clearTimeout(timer);
                         return;
                     }
                 }
@@ -227,7 +228,8 @@ class LevelFormulaGenerator {
     }
 
     applySubstitution(expression, substitution, places) {
-        return twf_js.applySubstitution(expression, substitution, [this.pickRandomElement(places)], "setTheory")
+        return twf_js.applySubstitution(expression,
+            substitution, [this.pickRandomElement(places)], "setTheory")
     }
 
     pickRandomElement(items) {
@@ -246,6 +248,9 @@ class LevelFormulaGenerator {
                     break;
                 case '→' | '∖':
                     result += 5;
+                    break;
+                case symb >= 'a' && symb <= 'z':
+                    result += 2;
                     break;
                 default:
                     result += 4;

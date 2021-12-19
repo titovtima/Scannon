@@ -1,9 +1,9 @@
 {
   "rulePacks": [
     {
-      "code": "global_test_bad__LogicBase",
+      "code": "bad_all__LogicBase",
       "version": 0,
-      "namespaceCode": "global_test_bad",
+      "namespaceCode": "bad_all",
       "nameEn": "Basic Boolean Logic",
       "nameRu": "Основны булевой логики",
       "descriptionShortEn": "Basic operations, it's definitions and properties",
@@ -12,62 +12,6 @@
       "descriptionRu": "Булева алгебра: конъюнкция, дизъюнкция, отрицание, импликация, исключающее или, эквиваленция",
       "subjectType": "logic",
       "rules": [
-        {
-          "code": "(not(and(A;B)))__to__(and(not(A);not(B)))",
-          "nameEn": "De Morgan Law",
-          "nameRu": "Закон де Моргана",
-          "leftStructureString": "(not(and(A;B)))",
-          "rightStructureString": "(and(not(A);not(B)))",
-          "priority": 15,
-          "isExtending": false,
-          "matchJumbledAndNested": false,
-          "simpleAdditional": false,
-          "basedOnTaskContext": false,
-          "scoreForHit": 10,
-          "scoreForSkip": -30
-        },
-        {
-          "code": "(or(not(A);B))__to__(not(and(A;B)))",
-          "nameEn": "De Morgan Law",
-          "nameRu": "Закон де Моргана",
-          "leftStructureString": "(or(not(A);B))",
-          "rightStructureString": "(not(and(A;B)))",
-          "priority": 10,
-          "isExtending": false,
-          "matchJumbledAndNested": false,
-          "simpleAdditional": false,
-          "basedOnTaskContext": false,
-          "scoreForHit": 10,
-          "scoreForSkip": -30
-        },
-        {
-          "code": "(not(or(A;B)))__to__(or(not(A);not(B)))",
-          "nameEn": "De Morgan Law",
-          "nameRu": "Закон де Моргана",
-          "leftStructureString": "(not(or(A;B)))",
-          "rightStructureString": "(or(not(A);not(B)))",
-          "priority": 15,
-          "isExtending": false,
-          "matchJumbledAndNested": false,
-          "simpleAdditional": false,
-          "basedOnTaskContext": false,
-          "scoreForHit": 10,
-          "scoreForSkip": -30
-        },
-        {
-          "code": "(and(not(A);not(B)))__to__(not(or(A;not(B))))",
-          "nameEn": "De Morgan Law",
-          "nameRu": "Закон де Моргана",
-          "leftStructureString": "(and(not(A);not(B)))",
-          "rightStructureString": "(not(or(A;not(B))))",
-          "priority": 10,
-          "isExtending": false,
-          "matchJumbledAndNested": false,
-          "simpleAdditional": false,
-          "basedOnTaskContext": false,
-          "scoreForHit": 10,
-          "scoreForSkip": -30
-        },
         {
           "code": "(not(not(a)))__to__(not(a))",
           "leftStructureString": "(not(not(a)))",
@@ -319,7 +263,92 @@
           "basedOnTaskContext": false,
           "scoreForHit": 10,
           "scoreForSkip": -30
+        }
+      ]
+    },
+    {
+      "code": "bad_all__DeMorganLaw",
+      "version": 0,
+      "namespaceCode": "bad_all",
+      "nameEn": "De Morgan Law",
+      "nameRu": "Закон де Моргана",
+      "descriptionShortEn": "Definition and basic properties",
+      "descriptionShortRu": "Определение и основные свойства",
+      "descriptionEn": "Boolean Algebra Conjunction, Disjunction, Negation",
+      "descriptionRu": "Булева алгебра: конъюнкция, дизъюнкция, отрицание",
+      "subjectType": "logic",
+      "rules": [
+        {
+          "code": "(not(and(A;B)))__to__(and(not(A);not(B)))",
+          "nameEn": "De Morgan Law",
+          "nameRu": "Закон де Моргана",
+          "leftStructureString": "(not(and(A;B)))",
+          "rightStructureString": "(and(not(A);not(B)))",
+          "priority": 15,
+          "isExtending": false,
+          "matchJumbledAndNested": false,
+          "simpleAdditional": false,
+          "basedOnTaskContext": false,
+          "scoreForHit": 10,
+          "scoreForSkip": -30
         },
+        {
+          "code": "(or(not(A);B))__to__(not(and(A;B)))",
+          "nameEn": "De Morgan Law",
+          "nameRu": "Закон де Моргана",
+          "leftStructureString": "(or(not(A);B))",
+          "rightStructureString": "(not(and(A;B)))",
+          "priority": 10,
+          "isExtending": false,
+          "matchJumbledAndNested": false,
+          "simpleAdditional": false,
+          "basedOnTaskContext": false,
+          "scoreForHit": 10,
+          "scoreForSkip": -30
+        },
+        {
+          "code": "(not(or(A;B)))__to__(or(not(A);not(B)))",
+          "nameEn": "De Morgan Law",
+          "nameRu": "Закон де Моргана",
+          "leftStructureString": "(not(or(A;B)))",
+          "rightStructureString": "(or(not(A);not(B)))",
+          "priority": 15,
+          "isExtending": false,
+          "matchJumbledAndNested": false,
+          "simpleAdditional": false,
+          "basedOnTaskContext": false,
+          "scoreForHit": 10,
+          "scoreForSkip": -30
+        },
+        {
+          "code": "(and(not(A);not(B)))__to__(not(or(A;not(B))))",
+          "nameEn": "De Morgan Law",
+          "nameRu": "Закон де Моргана",
+          "leftStructureString": "(and(not(A);not(B)))",
+          "rightStructureString": "(not(or(A;not(B))))",
+          "priority": 10,
+          "isExtending": false,
+          "matchJumbledAndNested": false,
+          "simpleAdditional": false,
+          "basedOnTaskContext": false,
+          "scoreForHit": 10,
+          "scoreForSkip": -30
+        }
+      ]
+    },
+    {
+      "code": "bad_all__Implication",
+      "version": 0,
+      "namespaceCode": "bad_all",
+      "nameEn": "Implication",
+      "nameRu": "",
+      "descriptionShortEn": "Definition and basic properties",
+      "descriptionShortRu": "Определение и основные свойства",
+      "descriptionEn": "Boolean Algebra Conjunction, Disjunction, Negation, Implication",
+      "descriptionRu": "Булева алгебра: конъюнкция, дизъюнкция, отрицание, импликация",
+      "subjectType": "logic",
+      "rules": [
+
         {
           "code": "(or(A;not(B)))__to__(implic(A;B))",
           "leftStructureString": "(or(A;not(B)))",
@@ -415,7 +444,22 @@
           "basedOnTaskContext": false,
           "scoreForHit": 10,
           "scoreForSkip": -30
-        },
+        }
+      ]
+    },
+    {
+      "code": "bad_all__ExclusiveOr",
+      "version": 0,
+      "namespaceCode": "bad_all",
+      "nameEn": "Exclusive Or",
+      "nameRu": "Исключающее или",
+      "descriptionShortEn": "Definition and basic properties",
+      "descriptionShortRu": "Определение и основные свойства",
+      "descriptionEn": "Boolean Algebra Conjunction, Disjunction, Negation, Exclusive Or",
+      "descriptionRu": "Булева алгебра: конъюнкция, дизъюнкция, отрицание, исключающее или",
+      "subjectType": "logic",
+      "rules": [
+
         {
           "code": "(xor(A;0))__to__(0)",
           "leftStructureString": "(xor(A;0))",
@@ -465,6 +509,44 @@
           "scoreForSkip": -30
         },
         {
+          "code": "(A)__to__(xor(A;1))",
+          "leftStructureString": "(A)",
+          "rightStructureString": "(xor(A;1))",
+          "priority": 91,
+          "isExtending": true,
+          "matchJumbledAndNested": false,
+          "simpleAdditional": false,
+          "basedOnTaskContext": false,
+          "scoreForHit": 10,
+          "scoreForSkip": -30
+        },
+        {
+          "code": "(not(A))__to__(xor(A;0))",
+          "leftStructureString": "(not(A))",
+          "rightStructureString": "(xor(A;0))",
+          "priority": 91,
+          "isExtending": true,
+          "matchJumbledAndNested": false,
+          "simpleAdditional": false,
+          "basedOnTaskContext": false,
+          "scoreForHit": 10,
+          "scoreForSkip": -30
+        }
+      ]
+    },
+    {
+      "code": "bad_all__Equivalence",
+      "version": 0,
+      "namespaceCode": "bad_all",
+      "nameEn": "Equivalence",
+      "nameRu": "Эквиваленция",
+      "descriptionShortEn": "Definition and basic properties",
+      "descriptionShortRu": "Определение и основные свойства",
+      "descriptionEn": "Boolean Algebra Conjunction, Disjunction, Negation, Equivalence",
+      "descriptionRu": "Булева алгебра: конъюнкция, дизъюнкция, отрицание, эквиваленция",
+      "subjectType": "logic",
+      "rules": [
+        {
           "code": "(alleq(0;A))__to__(0)",
           "leftStructureString": "(alleq(0;A))",
           "rightStructureString": "(0)",
@@ -513,33 +595,9 @@
           "scoreForSkip": -30
         },
         {
-          "code": "(A)__to__(xor(A;1))",
-          "leftStructureString": "(A)",
-          "rightStructureString": "(xor(A;1))",
-          "priority": 91,
-          "isExtending": true,
-          "matchJumbledAndNested": false,
-          "simpleAdditional": false,
-          "basedOnTaskContext": false,
-          "scoreForHit": 10,
-          "scoreForSkip": -30
-        },
-        {
           "code": "(A)__to__(alleq(A;A))",
           "leftStructureString": "(A)",
           "rightStructureString": "(alleq(A;A))",
-          "priority": 91,
-          "isExtending": true,
-          "matchJumbledAndNested": false,
-          "simpleAdditional": false,
-          "basedOnTaskContext": false,
-          "scoreForHit": 10,
-          "scoreForSkip": -30
-        },
-        {
-          "code": "(not(A))__to__(xor(A;0))",
-          "leftStructureString": "(not(A))",
-          "rightStructureString": "(xor(A;0))",
           "priority": 91,
           "isExtending": true,
           "matchJumbledAndNested": false,
