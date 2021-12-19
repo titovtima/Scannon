@@ -77,7 +77,6 @@ class GameCompleteScene extends Phaser.Scene {
                     menuItem.setInteractive();
 
                     menuItem.on('pointerover', () => {
-                        console.log("I'm over");
                         menuItem.setFontFamily('Ribeye');
                     });
 

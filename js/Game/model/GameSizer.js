@@ -5,10 +5,8 @@ class GameSizer {
 
         let getUrlParams = new URLSearchParams(window.location.search);
         this.formulasSpeed = parseFloat(getUrlParams.get("speed"));
-        console.log("speed from url", this.formulasSpeed);
         if (isNaN(this.formulasSpeed))
             this.formulasSpeed = 1;
-        console.log('Formulas speed', this.formulasSpeed);
     }
 
     field_Width() {

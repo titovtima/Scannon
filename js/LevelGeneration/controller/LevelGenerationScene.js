@@ -22,23 +22,18 @@ class LevelGenerationScene extends Phaser.Scene {
     }
 
     preload() {
-        // console.log('autogenerate in generator', this.autogenerate);
         if (this.autogenerate) {
             this.load.json(this.initialExpressionsPath, this.initialExpressionsPath);
-            // this.load.json(this.substitutionsPath, this.substitutionsPath);
             this.load.json(this.rulePacksPath, this.rulePacksPath);
             this.load.json(this.allRulePacksPath, this.allRulePacksPath);
             this.load.json(this.badRulePacksPath, this.badRulePacksPath);
         } else {
-            // console.log('sequences to choose', this.sequences);
             this.sequence = this.pickRandomElement(this.sequences);
-            // console.log('chosen sequence', this.sequence);
             this.load.json(this.sequence, this.sequence);
         }
     }
 
     create() {
-        console.log('LevelGenerationScene create started');
         this.needRestart = false;
         if (this.autogenerate) {
             this.initialExpressions = this.copy_object(this.cache.json.get(this.initialExpressionsPath));
@@ -49,15 +44,10 @@ class LevelGenerationScene extends Phaser.Scene {
             this.badRulePacks = this.cache.json.get(this.badRulePacksPath);
             this.rulesFromPacks = [];
             for (let rulePack of this.allRulePacks.rulePacks) {
-                // if (rulePack.code === 'global_test__LogicNotAnd' ||
-                //     rulePack.code === 'global_test__LogicNotOr')
-                //     continue;
                 if (this.rulePacks.includes(rulePack.code))
                     this.rulesFromPacks = this.rulesFromPacks.concat(rulePack.rules);
             }
             for (let rulePack of this.badRulePacks.rulePacks) {
-                // if (rulePack.code !== 'global_test_bad__LogicBase')
-                //     continue;
                 if (this.rulePacks.includes(rulePack.code))
                     this.rulesFromPacks = this.rulesFromPacks.concat(rulePack.rules);
             }
@@ -65,7 +55,6 @@ class LevelGenerationScene extends Phaser.Scene {
             this.generator = new LevelFormulaGenerator(this, {
                 'numberOfFormulas': this.numberOfFormulas,
                 'initialExpressions': this.initialExpressions.expressions,
-                // 'substitutions': this.substitutions.substitutions,
                 'rulesFromPacks': this.rulesFromPacks,
                 'maxLength': this.maxLength,
                 'minLength': this.minLength
@@ -88,11 +77,9 @@ class LevelGenerationScene extends Phaser.Scene {
                 color: 0x6B4800
             }
         })
-        console.log('LevelGenerationScene create ended');
     }
 
     update() {
-        console.log('LevelGenerationScene update started');
         if (this.needRestart) return;
         if (!this.autogenerate || this.generator === undefined) {
             this.needRestart = true

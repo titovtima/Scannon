@@ -21,7 +21,7 @@ class GameScene extends Phaser.Scene {
     create() {
         this.sizer = new GameSizer(this);
 
-        console.log('Formulas:', this.formulas.map(function (formula) {
+        console.log('Level started, formulas:', this.formulas.map(function (formula) {
             return formula.unicode;
         }))
 
@@ -106,15 +106,12 @@ class GameScene extends Phaser.Scene {
 
         let formulaCenterX = this.sizer.formula_CenterX();
         let formulaCenterY = this.spanFormula_CenterY();
-        // let formulaLabel = this.formulas[index].label;
-        console.log('Formula unicode', this.formulas[index].unicode);
         let formula = this.add.text(formulaCenterX, formulaCenterY, this.formulas[index].unicode,
             {
                 fontFamily: 'serif',
                 color: '#000',
                 fontSize: '60px'
             });
-        // let formula = this.add.image(formulaCenterX, formulaCenterY, formulaLabel);
         formula.setOrigin(0.5);
         formula.wanted_y = formula.y;
 
@@ -125,9 +122,6 @@ class GameScene extends Phaser.Scene {
         if (0 < index) {
             let arrowCenterX = this.sizer.arrow_CenterX();
             let arrowCenterY = this.spanArrow_CenterY();
-
-            console.log('arrowCenterX: ' + arrowCenterX);
-            console.log('arrowCenterY: ' + arrowCenterY);
 
             arrow = this.add.image(arrowCenterX, arrowCenterY, 'arrow');
             arrow.setOrigin(0.5);
@@ -154,8 +148,6 @@ class GameScene extends Phaser.Scene {
             formula.background.x += this.sizer.card_SpeedX();
             formula.background.wanted_y += this.sizer.card_SpeedY();
             formula.background.y = Math.floor(formula.background.wanted_y);
-            // console.log('Wanted y', formula.background.wanted_y);
-            // console.log('y', formula.background.y);
 
             formula.formula.x += this.sizer.card_SpeedX();
             formula.formula.wanted_y += this.sizer.card_SpeedY();

@@ -20,10 +20,6 @@ class LoadingResourcesScene extends Phaser.Scene {
 
         this.load.image('pauseMenuBackground', '/js/LoadingResources/assets/pauseMenuBackground.png');
 
-        // for (let formula of this.formulas) {
-        //     this.load.image(formula.label, formula.url);
-        // }
-
         this.sizer = new LoadingResourcesSizer(this);
 
         this.placeDescription();

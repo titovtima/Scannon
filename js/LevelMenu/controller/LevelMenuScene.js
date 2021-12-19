@@ -12,7 +12,6 @@ class LevelMenuScene extends Phaser.Scene {
 
     create() {
         this.levelsInfo = this.cache.json.get('levelsInfo');
-        console.log('Levels info:', this.levelsInfo);
 
         this.sizer = new LevelMenuSizer(this);
 
@@ -88,11 +87,8 @@ class LevelMenuScene extends Phaser.Scene {
                 sequences = sequences.map(function (seq) {
                     return basePath + seq;
                 });
-            // console.log('sequences from levelInfo', this.levelsInfo.levels[index - 1].sequences);
-            // console.log('sequences from levelInfo after map', sequences);
 
 
-            console.log('RulePacksPath', rulePacksPath);
             this.scene.start(GC.SCENES.LEVEL_GENERATION, {
                 'autogenerate': autogenerate,
                 'numberOfFormulas': numberOfFormulas,
