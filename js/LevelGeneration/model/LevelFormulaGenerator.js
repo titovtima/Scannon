@@ -110,7 +110,7 @@ class LevelFormulaGenerator {
         this.generationVariant = !this.generationVariant;
 
         // if (this.generationVariant) {
-        if (this.generationVariant) {
+        if (false) {
             for (let substitution of shuffledSubstitutions) {
                 let stopCounter = 7;
                 // console.log(substitution)
