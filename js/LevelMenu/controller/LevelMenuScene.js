@@ -83,9 +83,11 @@ class LevelMenuScene extends Phaser.Scene {
             let rulePacksPath = basePath + this.levelsInfo.levels[index - 1].rulePacks;
             let maxLength = this.levelsInfo.levels[index - 1].maxLength;
             let minLength = this.levelsInfo.levels[index - 1].minLength;
-            let sequences = this.levelsInfo.levels[index - 1].sequences.map(function (seq) {
-                return basePath + seq;
-            });
+            let sequences = this.levelsInfo.levels[index - 1].sequences;
+            if (sequences !== undefined)
+                sequences = sequences.map(function (seq) {
+                    return basePath + seq;
+                });
             // console.log('sequences from levelInfo', this.levelsInfo.levels[index - 1].sequences);
             // console.log('sequences from levelInfo after map', sequences);
 
