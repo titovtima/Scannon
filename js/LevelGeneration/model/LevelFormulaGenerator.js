@@ -98,26 +98,19 @@ class LevelFormulaGenerator {
         let shuffledSubstitutions = this.shuffler.shuffledSubstitutions();
         this.generationVariant = !this.generationVariant;
 
-        // if (this.generationVariant) {
-        if (false) {
+        if (this.generationVariant) {
             for (let substitution of shuffledSubstitutions) {
-                let stopCounter = 7;
                 if (substitution.left.nodeType.name$ === "EMPTY") continue;
                 let expressionSubstitution = substitution;
+                expression = twf_js.cloneExpression(this.expression);
                 let substitutionPlaces = this.getSubstitutionPlaces(expression, expressionSubstitution);
 
                 if (0 < substitutionPlaces.length) {
                     let shuffledPlaces = this.shuffler.shuffle(substitutionPlaces);
                     for (let place of shuffledPlaces) {
-                        // let expr = twf_js.cloneExpression(expression);
                         let newExpression = this.applySubstitution(expression, expressionSubstitution, [place]);
                         let unicodeFormula = twf_js.expressionToUnicodeString(newExpression);
                         let formulaLength = this.getUnicodeFormulaLength(unicodeFormula);
-                        stopCounter =- 1;
-                        if (stopCounter < 0) {
-                            console.log('Stop counter');
-                            return this.transformFormula();
-                        }
                         if (formulaLength <= 100 && formulaLength > 10) {
                             this.expression = newExpression;
 
