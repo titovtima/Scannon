@@ -140,7 +140,7 @@ class GameSizer {
     }
 
     scoreLabel_RightX() {
-        return 1390;
+        return 1260;
     }
 
     scoreLabel_BottomY() {
@@ -156,7 +156,8 @@ class GameSizer {
     }
 
     scoreValue_RightX() {
-        return 1580;
+        // return 1580;
+        return 1450;
     }
 
     scoreValue_BottomY() {
@@ -197,4 +198,11 @@ class GameSizer {
         return centerX + distanceToCenter;
     }
 
+    pauseButton_RightX() {
+        return 1580;
+    }
+
+    pauseButton_TopY() {
+        return 20;
+    }
 }

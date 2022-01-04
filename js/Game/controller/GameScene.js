@@ -29,6 +29,9 @@ class GameScene extends Phaser.Scene {
         this.placeScoreLabels();
 
         this.input.on('pointerdown', this.shoot(this));
+
+        this.placePauseButton();
+
         this.keyM = this.input.keyboard.addKey('M');
     }
 
@@ -279,6 +282,24 @@ class GameScene extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(this.keyM)) {
             this.showMenu();
         }
+    }
+
+    placePauseButton() {
+        let right = this.sizer.pauseButton_RightX();
+        let top = this.sizer.pauseButton_TopY();
+        let pauseButton = this.physics.add.image(right, top, 'pauseButton');
+        pauseButton.setOrigin(1,0);
+
+        pauseButton.setInteractive();
+
+        pauseButton.on('pointerup', () => {
+            console.log('Pause button clicked');
+            this.showMenu();
+        })
+        pauseButton.on('pointerdown', () => {
+            this.removeCannonBall(this.displayingCannonBalls.last);
+        })
+        return pauseButton;
     }
 
     showMenu() {
