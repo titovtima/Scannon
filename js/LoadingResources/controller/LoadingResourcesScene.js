@@ -14,9 +14,9 @@ class LoadingResourcesScene extends Phaser.Scene {
         this.load.image('cardBackground_Regular', '/js/LoadingResources/assets/cardBackground_Regular.png');
         this.load.image('cardBackground_Hit', '/js/LoadingResources/assets/cardBackground_Hit.png');
 
-        this.load.image('arrow', '/js/LoadingResources/assets/arrow.png');
-        this.load.image('arrow_Green', '/js/LoadingResources/assets/arrow_Green.png');
-        this.load.image('arrow_Red', '/js/LoadingResources/assets/arrow_Red.png');
+        this.load.image('arrow_question', '/js/LoadingResources/assets/arrow_question.png');
+        this.load.image('equals', '/js/LoadingResources/assets/equals.png');
+        this.load.image('not_equals', '/js/LoadingResources/assets/not_equals.png');
 
         this.load.image('pauseButton', '/js/LoadingResources/assets/pauseButton.png');
         this.load.image('pauseMenuBackground', '/js/LoadingResources/assets/pauseMenuBackground.png');

@@ -126,7 +126,7 @@ class GameScene extends Phaser.Scene {
             let arrowCenterX = this.sizer.arrow_CenterX();
             let arrowCenterY = this.spanArrow_CenterY();
 
-            arrow = this.add.image(arrowCenterX, arrowCenterY, 'arrow');
+            arrow = this.add.image(arrowCenterX, arrowCenterY, 'arrow_question');
             arrow.setOrigin(0.5);
         }
 
@@ -406,7 +406,7 @@ class GameScene extends Phaser.Scene {
         formula.formula.y += shadowY;
 
         if (formula.arrow && formula.scoreForHit < 0) {
-            formula.arrow.setTexture('arrow_Green');
+            formula.arrow.setTexture('equals');
 
             let scoreRightX = this.sizer.arrowScoreLeft_RightX();
             let scoreCenterY = formula.arrow.y;
@@ -422,7 +422,7 @@ class GameScene extends Phaser.Scene {
         }
 
         if (formula.arrow && 0 < formula.scoreForHit) {
-            formula.arrow.setTexture('arrow_Red');
+            formula.arrow.setTexture('not_equals');
 
             let scoreLeftX = this.sizer.arrowScoreRight_LeftX();
             let scoreCenterY = formula.arrow.y;
