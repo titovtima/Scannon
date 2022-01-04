@@ -25,6 +25,8 @@ class MainMenuScene extends Phaser.Scene {
 
         let poetsenOneStyles = '@font-face { font-family: "PoetsenOne"; src: url("/fonts/PoetsenOne-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(poetsenOneStyles, 0);
+
+        Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
 
     preload() {

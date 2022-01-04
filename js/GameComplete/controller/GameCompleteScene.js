@@ -7,6 +7,8 @@ class GameCompleteScene extends Phaser.Scene {
     init(params) {
         this.score = params.score;
         this.sequence = params.sequence;
+
+        Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
 
     create() {
