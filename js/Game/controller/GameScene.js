@@ -161,15 +161,11 @@ class GameScene extends Phaser.Scene {
                 formula.arrow.y += this.sizer.card_SpeedY();
             }
 
-            if (formula.leftScore) {
-                formula.leftScore.x += this.sizer.card_SpeedX();
-                formula.leftScore.y += this.sizer.card_SpeedY();
+            if (formula.score && formula.score !== 0) {
+                formula.score.x += this.sizer.card_SpeedX();
+                formula.score.y += this.sizer.card_SpeedY();
             }
 
-            if (formula.rightScore) {
-                formula.rightScore.x += this.sizer.card_SpeedX();
-                formula.rightScore.y += this.sizer.card_SpeedY();
-            }
         }
     }
 
@@ -405,37 +401,33 @@ class GameScene extends Phaser.Scene {
         let shadowY = this.sizer.cardBackground_ShadowY();
         formula.formula.y += shadowY;
 
+        let scoreColor = null;
+        let scoreText = null;
+
         if (formula.arrow && formula.scoreForHit < 0) {
             formula.arrow.setTexture('equals');
 
-            let scoreRightX = this.sizer.arrowScoreLeft_RightX();
-            let scoreCenterY = formula.arrow.y;
-            let scoreFontSize = this.sizer.arrowScore_FontSize();
-            let scoreColor = this.sizer.arrowScore_Color();
-            formula.leftScore = this.add.text(
-                scoreRightX, scoreCenterY,
-                formula.scoreForHit,
-                { fontSize: scoreFontSize, color: scoreColor }
-            ).setOrigin(1, 0.5);
-
-            this.score += formula.scoreForHit;
+            scoreColor = this.sizer.hitNegativeScoreColor();
+            scoreText = formula.scoreForHit;
         }
 
         if (formula.arrow && 0 < formula.scoreForHit) {
             formula.arrow.setTexture('not_equals');
 
-            let scoreLeftX = this.sizer.arrowScoreRight_LeftX();
-            let scoreCenterY = formula.arrow.y;
-            let scoreFontSize = this.sizer.arrowScore_FontSize();
-            let scoreColor = this.sizer.arrowScore_Color();
-            formula.rightScore = this.add.text(
-                scoreLeftX, scoreCenterY,
-                '+' + formula.scoreForHit,
-                { fontSize: scoreFontSize, color: scoreColor }
-            ).setOrigin(0, 0.5);
-
-            this.score += formula.scoreForHit;
+            scoreColor = this.sizer.hitPositiveScoreColor();
+            scoreText = '+' + formula.scoreForHit;
         }
+
+        let scoreRightX = this.sizer.hitScore_RightX();
+        let scoreTopY = this.sizer.hitScoreTopY(formula.formula);
+        let scoreFontSize = this.sizer.hitScoreFontSize();
+
+        formula.score = this.add.text(
+            scoreRightX, scoreTopY, scoreText,
+            { fontSize: scoreFontSize, color: scoreColor }
+        ).setOrigin(0, 0.5);
+
+        this.score += formula.scoreForHit;
 
         let formattedScore = this.formatScore(this.score);
         this.scoreValueText.setText(formattedScore);

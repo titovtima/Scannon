@@ -205,4 +205,24 @@ class GameSizer {
     pauseButton_TopY() {
         return 20;
     }
+
+    hitScore_RightX() {
+        return this.cardBackground_LeftX() + this.cardBackground_Width() + 10;
+    }
+
+    hitScoreTopY(formula) {
+        return formula.y;
+    }
+
+    hitPositiveScoreColor() {
+        return '#460';
+    }
+
+    hitNegativeScoreColor() {
+        return '#F40'
+    }
+
+    hitScoreFontSize() {
+        return 35;
+    }
 }
