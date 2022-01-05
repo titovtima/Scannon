@@ -18,15 +18,23 @@ class GameSizer {
     }
 
     cardBackground_Width() {
-        return 800;
+        return 800 * this.cardBackground_Scale();
     }
 
     cardBackground_Height() {
-        return 110;
+        return 110 * this.cardBackground_Scale();
+    }
+
+    cardBackground_Scale() {
+        return 0.85;
     }
 
     cardBackground_LeftX() {
-        return 25;
+        return 100;
+    }
+
+    hitFormulaMoveLeft() {
+        return 80;
     }
 
     cardBackground_ShadowY() {
@@ -50,6 +58,10 @@ class GameSizer {
         return this.formulasSpeed;
     }
 
+    formula_FontSize() {
+        return 50;
+    }
+
     formula_CenterX() {
         let cardLeftX = this.cardBackground_LeftX();
         let cardWidth = this.cardBackground_Width();
@@ -68,7 +80,7 @@ class GameSizer {
     }
 
     cannon_Scale() {
-        return 0.4;
+        return 0.35;
     }
 
     cannon_OriginX() {
@@ -89,6 +101,10 @@ class GameSizer {
 
     cannonBall_Speed() {
         return 100;
+    }
+
+    cannonBall_Size() {
+        return 190 * this.cannon_Scale();
     }
 
     cannonBall_Scale() {
@@ -224,5 +240,81 @@ class GameSizer {
 
     hitScoreFontSize() {
         return 35;
+    }
+
+    lastFormula_RightX() {
+        return 1580;
+    }
+
+    lastFormula_TopY() {
+        return this.bottomLine()+1;
+    }
+
+    bottomLine() {
+        return 750;
+    }
+
+    slowSpeed() {
+        return 0;
+    }
+
+    isFormulaHitFromRight(background, cannonBall) {
+        return cannonBall.cannonBall.x - cannonBall.speedX > background.x + this.cardBackground_Width() + 5;
+    }
+
+    bottomLineSign_CenterY() {
+        return this.formulasCheckLineY() + this.cardBackground_Height() / 2;
+    }
+
+    bottomLineSign_CenterX() {
+        return 830;
+    }
+
+    addScore_RightX() {
+        return this.scoreValue_RightX();
+    }
+
+    addScore_TopY() {
+        return this.scoreValue_BottomY() + 50;
+    }
+
+    addScore_FontSize() {
+        return this.scoreValue_FontSize();
+    }
+
+    addPositiveScore_Color() {
+        return this.hitPositiveScoreColor();
+    }
+
+    addNegativeScore_Color() {
+        return this.hitNegativeScoreColor();
+    }
+
+    addScore_Speed() {
+        return 0.5;
+    }
+
+    addScore_SpeedAlpha() {
+        return -0.01;
+    }
+
+    blinkingInterval() {
+        return 300;
+    }
+
+    equals_Scale() {
+        return 0.025;
+    }
+
+    equalsLastLine_Scale() {
+        return 0.038;
+    }
+
+    lastLineFormula_SpeedX() {
+        return 5 * this.formulasSpeed;
+    }
+
+    formulasCheckLineY() {
+        return 780;
     }
 }

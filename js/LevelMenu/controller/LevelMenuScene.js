@@ -4,6 +4,10 @@ class LevelMenuScene extends Phaser.Scene {
         super(GC.SCENES.LEVEL_MENU);
     }
 
+    init() {
+        Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
+    }
+
     preload() {
         this.load.json('levelsInfo', '/js/GameConfiguration/levelsInfo.json');
         this.load.image('cardBackground', '/js/LevelMenu/src/cardBackground.png');

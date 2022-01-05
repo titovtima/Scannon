@@ -19,6 +19,8 @@ class LevelGenerationScene extends Phaser.Scene {
 
         this.generator = undefined;
         this.formulas = [];
+
+        Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
 
     preload() {

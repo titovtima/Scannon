@@ -31,9 +31,10 @@ class LevelMenuSizer {
         let width = this.backgroundRectangle_Width();
         let space = this.backgroundRectangle_HorizontalDistanceBetween();
 
-        if (index % 3 === 1) { return 1 * space + 0 * width; }
-        if (index % 3 === 2) { return 2 * space + 1 * width; }
-        if (index % 3 === 0) { return 3 * space + 2 * width; }
+        if (index % 4 === 1) { return 1 * space + 0 * width; }
+        if (index % 4 === 2) { return 2 * space + 1 * width; }
+        if (index % 4 === 3) { return 3 * space + 2 * width; }
+        if (index % 4 === 0) { return 4 * space + 3 * width; }
     }
 
     backgroundRectangle_RightX(index) {
@@ -42,7 +43,7 @@ class LevelMenuSizer {
     }
 
     backgroundRectangle_TopY(index) {
-        let row = Math.floor((index - 1) / 3);
+        let row = Math.floor((index - 1) / 4);
 
         return this.backgroundRectangle_TopOffset()
             + row * this.backgroundRectangle_Height()

@@ -9,11 +9,12 @@ class GameScene extends Phaser.Scene {
 
         this.formulas = params.formulas;
 
-        this.displayingFormulas = [];
+        this.fallingFormulas = [];
         this.indexOfLastDisplayingFormula = -1;
 
         this.displayingCannonBalls = [];
         this.score = 0;
+        this.displayingAddScore = [];
 
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.GAME.width, GC.RESOLUTIONS.MEDIUM.GAME.height);
     }
@@ -27,6 +28,8 @@ class GameScene extends Phaser.Scene {
 
         this.placeCannon();
         this.placeScoreLabels();
+        // this.placeLastFormula();
+        this.placeBottomLine();
 
         this.input.on('pointerdown', this.shoot(this));
 
@@ -44,6 +47,10 @@ class GameScene extends Phaser.Scene {
         this.spanNewFormulaIfNeeded();
         this.moveFormulas();
         this.removeFormulasIfNeeded();
+        this.checkIfFormulaPassed();
+
+        this.moveAddScores();
+        // this.moveLastFormula();
 
         this.finishGameIfNeeded();
     }
@@ -76,7 +83,7 @@ class GameScene extends Phaser.Scene {
     }
 
     hasNoDisplayingFormulas() {
-        return this.displayingFormulas.length === 0;
+        return this.fallingFormulas.length === 0;
     }
 
     hasEnoughSpaceToPlaceNewFormula() {
@@ -92,7 +99,7 @@ class GameScene extends Phaser.Scene {
     spanNewFormula() {
         let formula = this.placeNewFormula();
 
-        this.displayingFormulas.push(formula);
+        this.fallingFormulas.push(formula);
         this.indexOfLastDisplayingFormula += 1;
     }
 
@@ -103,6 +110,8 @@ class GameScene extends Phaser.Scene {
         let background_TopY = this.spanCardBackground_TopY();
         let background = this.physics.add.image(background_LeftX, background_TopY, 'cardBackground_Regular');
         background.setOrigin(0, 0);
+        let scale = this.sizer.cardBackground_Scale();
+        background.setScale(scale);
         background.wanted_y = background.y;
 
         this.addExistingCollisionsToNewFormula(background);
@@ -113,7 +122,7 @@ class GameScene extends Phaser.Scene {
             {
                 fontFamily: 'serif',
                 color: '#000',
-                fontSize: '60px'
+                fontSize: this.sizer.formula_FontSize()
             });
         formula.setOrigin(0.5);
         formula.wanted_y = formula.y;
@@ -147,51 +156,197 @@ class GameScene extends Phaser.Scene {
     }
 
     moveFormulas() {
-        for (let formula of this.displayingFormulas) {
-            formula.background.x += this.sizer.card_SpeedX();
-            formula.background.wanted_y += this.sizer.card_SpeedY();
-            formula.background.y = Math.floor(formula.background.wanted_y);
+        for (let formula of this.fallingFormulas) {
+            if (!formula.passed) {
+                formula.background.x += this.sizer.card_SpeedX();
+                formula.background.wanted_y += this.sizer.card_SpeedY();
+                formula.background.y = Math.floor(formula.background.wanted_y);
 
-            formula.formula.x += this.sizer.card_SpeedX();
-            formula.formula.wanted_y += this.sizer.card_SpeedY();
-            formula.formula.y = Math.floor(formula.formula.wanted_y);
+                formula.formula.x += this.sizer.card_SpeedX();
+                formula.formula.wanted_y += this.sizer.card_SpeedY();
+                formula.formula.y = Math.floor(formula.formula.wanted_y);
 
-            if (formula.arrow) {
-                formula.arrow.x += this.sizer.card_SpeedX();
-                formula.arrow.y += this.sizer.card_SpeedY();
+                if (formula.arrow) {
+                    formula.arrow.x += this.sizer.card_SpeedX();
+                    formula.arrow.y += this.sizer.card_SpeedY();
+                }
+
+                if (formula.score) {
+                    formula.score.x += this.sizer.card_SpeedX();
+                    formula.score.y += this.sizer.card_SpeedY();
+                }
+            } else {
+                formula.background.x += this.sizer.lastLineFormula_SpeedX();
+                formula.formula.x += this.sizer.lastLineFormula_SpeedX();
+
+                if (formula.arrow) {
+                    formula.arrow.x += this.sizer.lastLineFormula_SpeedX();
+                }
             }
-
-            if (formula.score && formula.score !== 0) {
-                formula.score.x += this.sizer.card_SpeedX();
-                formula.score.y += this.sizer.card_SpeedY();
-            }
-
         }
     }
 
     removeFormulasIfNeeded() {
         if (this.needToRemoveFirstFormula()) {
-            this.removeFirstFormula();
+            this.destroyFormulaObjects(this.fallingFormulas[0]);
+            this.removeFirstFormulaFromList();
         }
     }
 
     needToRemoveFirstFormula() {
-        return 0 < this.displayingFormulas.length
-            && this.sizer.field_Height() < this.displayingFormulas[0].background.y;
+        return 0 < this.fallingFormulas.length
+            && this.fallingFormulas[0].background.x > this.sizer.field_Width();
+            // && (this.sizer.lastFormula_TopY() < this.fallingFormulas[0].background.y
+            //         && this.fallingFormulas[0].scoreForSkip < 0
+            //     || this.sizer.field_Height() < this.fallingFormulas[0].background.y);
     }
 
-    removeFirstFormula() {
-        this.formulaHasBeenPassed(this.displayingFormulas[0]);
-        this.destroyFormulaObjects(this.displayingFormulas[0]);
-        this.displayingFormulas.shift();
+    removeFirstFormulaFromList() {
+        this.fallingFormulas.shift();
+    }
+
+    checkIfFormulaPassed() {
+        for (let formula of this.fallingFormulas)
+            if (!formula.passed && this.sizer.formulasCheckLineY() < formula.background.y)
+                this.formulaHasBeenPassed(formula);
+        // if (0 < this.fallingFormulas.length && !this.fallingFormulas[0].passed
+        //     && this.sizer.bottomLine() < this.fallingFormulas[0].background.y) {
+        //     this.formulaHasBeenPassed(this.fallingFormulas[0]);
+        // }
     }
 
     formulaHasBeenPassed(formula) {
+        console.log('Formula passed', formula);
+        formula.passed = true;
+        if (formula.arrow) formula.arrow.destroy();
+        formula.arrow = null;
+        if (formula.score) formula.score.destroy();
+
+        if (formula.scoreForSkip < 0)
+            this.placeBottomLineFormulaSign(formula, 'not_equals');
+        if (formula.scoreForSkip > 0)
+            this.placeBottomLineFormulaSign(formula, 'equals');
+
+        if (formula.isHit && formula.scoreForHit > 0) {
+            formula.background.x += this.sizer.hitFormulaMoveLeft();
+            formula.formula.x += this.sizer.hitFormulaMoveLeft();
+        }
+
+        // this.lastFormula.formula.setText(formula.formula.text);
+        //
+
         if (!formula.isHit) {
             this.score += formula.scoreForSkip;
 
+            if (formula.scoreForSkip < 0)
+                this.wrongFormulaPassed(formula);
+            // else
+                // this.correctFormulaPassed(formula);
+
+            this.placeAddScore(formula.scoreForSkip);
+
             let formattedScore = this.formatScore(this.score);
             this.scoreValueText.setText(formattedScore);
+        }
+    }
+
+    placeBottomLineFormulaSign(formula, imageName) {
+        let centerX = this.sizer.bottomLineSign_CenterX();
+        let centerY = this.sizer.bottomLineSign_CenterY();
+        formula.arrow = this.add.image(centerX, centerY, imageName);
+        formula.arrow.setOrigin(0.5);
+        formula.arrow.setScale(this.sizer.equalsLastLine_Scale());
+    }
+
+    // placeBottomLineSign(imageName) {
+    //     if (this.bottomLineSign)
+    //         this.bottomLineSign.destroy();
+    //     let centerX = this.sizer.bottomLineSign_CenterX();
+    //     let centerY = this.sizer.bottomLineSign_CenterY();
+    //     this.bottomLineSign = this.add.image(centerX, centerY, imageName);
+    //     this.bottomLineSign.setOrigin(0.5);
+    //     this.bottomLineSign.setScale(this.sizer.equalsLastLine_Scale());
+    // }
+
+    wrongFormulaPassed(formula) {
+        let realSpeed = this.sizer.formulasSpeed;
+        this.sizer.formulasSpeed = this.sizer.slowSpeed();
+        let interval = this.sizer.blinkingInterval();
+        this.blinkLastLineFormulaSign(formula, 'not_equals_red', 5000, interval);
+        // this.blinkFormula(formula, 'cardBackground_Regular', 'cardBackground_Red', 5000, interval);
+        setTimeout(() => {
+            this.sizer.formulasSpeed = realSpeed;
+            }, 5000);
+    }
+
+    blinkLastLineFormulaSign(formula, imageName, duration, interval) {
+        let times = 0;
+        let blinking = setInterval(() => {
+            if (formula.arrow) {
+                formula.arrow.destroy();
+                formula.arrow = undefined;
+            } else
+                this.placeBottomLineFormulaSign(formula, imageName);
+            times++;
+        }, interval);
+        setTimeout(() => { clearInterval(blinking); }, duration);
+        if (!formula.arrow)
+            this.placeBottomLineFormulaSign(formula, imageName);
+    }
+
+    blinkFormula(formula, firstBackground, secondBackground, duration, interval) {
+        let times = 0;
+        let blinking = setInterval(() => {
+            if (times % 2 === 0) {
+                formula.background.setTexture(firstBackground);
+            } else {
+                formula.background.setTexture(secondBackground);
+            }
+            times++;
+        }, interval);
+        setTimeout(() => { clearInterval(blinking); }, duration);
+    }
+
+    // correctFormulaPassed(formula) {
+    // }
+
+    placeAddScore(score) {
+        let rightX = this.sizer.addScore_RightX();
+        let topY = this.sizer.addScore_TopY();
+        let fontSize = this.sizer.addScore_FontSize();
+
+        let color = '#FFF';
+        let speed = this.sizer.addScore_Speed();
+        let speedAlpha = this.sizer.addScore_SpeedAlpha();
+        if (score > 0) {
+            color = this.sizer.addPositiveScore_Color();
+            score = '+' + score;
+            speed = -speed;
+        } else {
+            color = this.sizer.addNegativeScore_Color();
+        }
+
+        let drawScore = this.add.text(rightX, topY, score, {
+            fontSize: fontSize,
+            color: color
+        });
+        drawScore.setOrigin(1, 0);
+        let pushScore = {
+            'drawScore': drawScore,
+            'speedY': speed,
+            'speedAlpha': speedAlpha
+        }
+        this.displayingAddScore.push(pushScore);
+    }
+
+    moveAddScores() {
+        for (let addScore of this.displayingAddScore) {
+            addScore.drawScore.y += addScore.speedY;
+            addScore.drawScore.alpha += addScore.speedAlpha;
+            if (addScore.drawScore.alpha <= 0) {
+                this.displayingAddScore.filter(item => item !== addScore);
+                addScore.drawScore.destroy();
+            }
         }
     }
 
@@ -199,14 +354,51 @@ class GameScene extends Phaser.Scene {
         formula.formula.destroy();
         formula.background.destroy();
         if (formula.arrow) formula.arrow.destroy();
-        if (formula.leftScore) formula.leftScore.destroy();
-        if (formula.rightScore) formula.rightScore.destroy();
+        if (formula.score) formula.score.destroy();
     }
+
+    placeBottomLine() {
+        let line = new Phaser.Geom.Line(0, this.sizer.bottomLine(), this.sizer.field_Width(), this.sizer.bottomLine());
+        let graphics = this.add.graphics({ lineStyle: { width: 4, color: '#000' }});
+        graphics.strokeLineShape(line);
+    }
+
+    // placeLastFormula() {
+    //     let right = this.sizer.cardBackground_LeftX() + this.sizer.cardBackground_Width();
+    //     let top = this.sizer.lastFormula_TopY();
+    //     let scale = this.sizer.cardBackground_Scale();
+    //     let lastFormulaBackground = this.add.image(right, top, 'cardBackground_Regular');
+    //     lastFormulaBackground.setOrigin(1, 0);
+    //     lastFormulaBackground.setScale(scale);
+    //     let formulaCenterX = right - this.sizer.cardBackground_Width() * 0.5;
+    //     let formulaCenterY = top + this.sizer.cardBackground_Height() * 0.5;
+    //     let formula = this.add.text(formulaCenterX, formulaCenterY, "text",
+    //     {
+    //         fontFamily: 'serif',
+    //         color: '#000',
+    //         fontSize: this.sizer.formula_FontSize()
+    //     });
+    //     formula.setOrigin(0.5);
+    //     this.lastFormula = {
+    //         formula: formula,
+    //         background: lastFormulaBackground
+    //     }
+    // }
+    //
+    // moveLastFormula() {
+    //     let maxX = this.sizer.lastFormula_RightX();
+    //     if (this.lastFormula.background.x < maxX) {
+    //         let move = Math.min()
+    //         this.lastFormula.background.x =
+    //             Math.min(this.lastFormula.background.x + this.sizer.lastFormula_SpeedX(), maxX);
+    //     }
+    //
+    // }
 
     // MARK: - Sizes based on the current game state
     lastCard_TopY() {
-        let indexOfLastFormula = this.displayingFormulas.length - 1;
-        let lastFormula = this.displayingFormulas[indexOfLastFormula];
+        let indexOfLastFormula = this.fallingFormulas.length - 1;
+        let lastFormula = this.fallingFormulas[indexOfLastFormula];
 
         return lastFormula.background.y;
     }
@@ -346,9 +538,9 @@ class GameScene extends Phaser.Scene {
     }
 
     addNewCollisionToDisplayingFormulas(cannonBallObject) {
-        for (let formula of this.displayingFormulas) {
+        for (let formula of this.fallingFormulas) {
 
-            if (formula.isHit) {
+            if (formula.isHit || formula.passed) {
                 continue;
             }
 
@@ -358,10 +550,25 @@ class GameScene extends Phaser.Scene {
                 formula.background,
                 cannonBallObject,
                 function (_background, _cannonBall) {
-                    scene.removeCannonBall(cannonBallObject);
+                    let hitFormula = scene.fallingFormulas.find(item => item.background === _background);
+                    let cannonBall = scene.displayingCannonBalls.find(item => item.cannonBall === _cannonBall);
+                    if (cannonBall.isHit) return;
 
-                    let hitFormula = scene.displayingFormulas.find(item => item.background === _background);
                     scene.formulaHasBeenHit(hitFormula);
+                    cannonBall.isHit = true;
+                    _cannonBall.alpha = 0.2;
+
+                    console.log('Formula is hit', hitFormula);
+                    console.log('ScoreForHit', hitFormula.scoreForHit);
+                    console.log('cannonBall', cannonBall);
+                    if (hitFormula.scoreForHit > 0)
+                        scene.removeCannonBall(cannonBallObject);
+                    else {
+                        if (scene.sizer.isFormulaHitFromRight(_background, cannonBall))
+                            cannonBall.speedX = -(cannonBall.speedX / 2);
+                        else
+                            cannonBall.speedY = -(cannonBall.speedY / 2);
+                    }
                 }
             )
         }
@@ -406,6 +613,7 @@ class GameScene extends Phaser.Scene {
 
         if (formula.arrow && formula.scoreForHit < 0) {
             formula.arrow.setTexture('equals');
+            formula.arrow.setScale(this.sizer.equals_Scale());
 
             scoreColor = this.sizer.hitNegativeScoreColor();
             scoreText = formula.scoreForHit;
@@ -413,6 +621,10 @@ class GameScene extends Phaser.Scene {
 
         if (formula.arrow && 0 < formula.scoreForHit) {
             formula.arrow.setTexture('not_equals');
+            formula.arrow.setScale(this.sizer.equals_Scale());
+
+            formula.background.x -= this.sizer.hitFormulaMoveLeft();
+            formula.formula.x -= this.sizer.hitFormulaMoveLeft();
 
             scoreColor = this.sizer.hitPositiveScoreColor();
             scoreText = '+' + formula.scoreForHit;
