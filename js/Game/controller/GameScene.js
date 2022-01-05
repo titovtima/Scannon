@@ -485,7 +485,7 @@ class GameScene extends Phaser.Scene {
             this.showMenu();
         })
         pauseButton.on('pointerdown', () => {
-            this.removeCannonBall(this.displayingCannonBalls.last);
+            // this.removeCannonBall(this.displayingCannonBalls.last);
         })
         return pauseButton;
     }
@@ -503,6 +503,16 @@ class GameScene extends Phaser.Scene {
 
     shoot(scene) {
         return () => {
+            let pointer = this.input.activePointer;
+            // let pauseButtonCenterX = scene.sizer.pauseButton_RightX() - 55;
+            // let pauseButtonCenterY = scene.sizer.pauseButton_TopY() + 55;
+            // if ((pointer.x - pauseButtonCenterX) ** 2 + (pointer.y - pauseButtonCenterY) ** 2 <= 55 ** 2)
+            //     return;
+            let pauseButtonLeftX = scene.sizer.pauseButton_RightX() - 110;
+            let pauseButtonBottomY = scene.sizer.pauseButton_TopY() + 110;
+            if (pointer.x > pauseButtonLeftX && pointer.y < pauseButtonBottomY)
+                return;
+
             let shootDirection = scene.calculateShootDirection();
             let speed = scene.sizer.cannonBall_Speed();
 
