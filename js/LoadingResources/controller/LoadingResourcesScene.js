@@ -12,7 +12,7 @@ class LoadingResourcesScene extends Phaser.Scene {
     preload() {
         this.load.image('cannon', '/js/LoadingResources/assets/cannon.png');
         this.load.image('cannonBall', '/js/LoadingResources/assets/cannonBall.png');
-        this.load.image('cardBackground_Regular', '/js/LoadingResources/assets/cardBackground_Regular.png');
+        this.load.image('cardBackground_Regular', '/js/LoadingResources/assets/cardBackground_NoShadow.png');
         this.load.image('cardBackground_Hit', '/js/LoadingResources/assets/cardBackground_Hit.png');
         this.load.image('cardBackground_Red', '/js/LoadingResources/assets/cardBackground_Red.png');
 
