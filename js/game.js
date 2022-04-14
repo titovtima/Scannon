@@ -10,7 +10,8 @@ const config = {
         LoadingResourcesScene,
         GameScene,
         GamePauseScene,
-        GameCompleteScene
+        GameCompleteScene,
+        SettingsScene
     ],
     pixelArt: true,
     physics: {

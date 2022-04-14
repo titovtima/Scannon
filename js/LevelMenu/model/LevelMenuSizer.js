@@ -46,6 +46,7 @@ class LevelMenuSizer {
         let row = Math.floor((index - 1) / 4);
 
         return this.backgroundRectangle_TopOffset()
+
             + row * this.backgroundRectangle_Height()
             + row * this.backgroundRectangle_VerticalDistanceBetween();
     }
