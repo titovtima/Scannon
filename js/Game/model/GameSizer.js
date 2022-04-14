@@ -317,4 +317,8 @@ class GameSizer {
     formulasCheckLineY() {
         return 780;
     }
+
+    wallPosition() {
+        return { left: 0, right: 1600, y: this.bottomLine() }
+    }
 }

@@ -29,7 +29,8 @@ class GameScene extends Phaser.Scene {
         this.placeCannon();
         this.placeScoreLabels();
         // this.placeLastFormula();
-        this.placeBottomLine();
+        // this.placeBottomLine();
+        this.placeWall();
 
         this.input.on('pointerdown', this.shoot(this));
 
@@ -52,6 +53,18 @@ class GameScene extends Phaser.Scene {
         this.moveAddScores();
 
         this.finishGameIfNeeded();
+    }
+
+    placeWall() {
+        let wallPosition = this.sizer.wallPosition();
+        let wall_left = this.physics.add.image(wallPosition.left, wallPosition.y, 'wall_left');
+        wall_left.setOrigin(0, 1);
+        wall_left.setDepth(255);
+        let wall_right = this.physics.add.image(wallPosition.right, wallPosition.y, 'wall_right');
+        wall_right.setOrigin(1, 1);
+        wall_right.setDepth(255);
+
+        this.wallObjects = [wall_left, wall_right];
     }
 
     finishGameIfNeeded() {
@@ -487,6 +500,7 @@ class GameScene extends Phaser.Scene {
             cannonBallObj.setOrigin(0.5);
 
             scene.addNewCollisionToDisplayingFormulas(cannonBallObj);
+            scene.addNewCollisionToWall(cannonBallObj);
 
             scene.displayingCannonBalls.push({
                 cannonBall: cannonBallObj,
@@ -507,6 +521,18 @@ class GameScene extends Phaser.Scene {
         for (let cannonBall of this.displayingCannonBalls) {
             cannonBall.cannonBall.x += cannonBall.speedX;
             cannonBall.cannonBall.y += cannonBall.speedY;
+        }
+    }
+
+    addNewCollisionToWall(cannonBallObject) {
+        for (let wallObject of this.wallObjects) {
+            let scene = this;
+
+            this.physics.add.collider(wallObject, cannonBallObject,
+                function (_wall, _cannonBall) {
+                    let cannonBall = scene.displayingCannonBalls.find(item => item.cannonBall === _cannonBall);
+                    cannonBall.speedY = -cannonBall.speedY;
+                })
         }
     }
 
