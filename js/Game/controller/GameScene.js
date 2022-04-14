@@ -264,6 +264,8 @@ class GameScene extends Phaser.Scene {
             formula.formula.x += this.sizer.hitFormulaMoveLeft();
         }
 
+        formula.background.setTexture('cardBackground_Wall');
+
         if (!formula.isHit) {
             this.score += formula.scoreForSkip;
 
