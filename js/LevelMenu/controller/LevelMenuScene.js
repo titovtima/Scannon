@@ -4,7 +4,9 @@ class LevelMenuScene extends Phaser.Scene {
         super(GC.SCENES.LEVEL_MENU);
     }
 
-    init() {
+    init(params) {
+        this.scene.settings = params.settings;
+
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
 
@@ -57,7 +59,7 @@ class LevelMenuScene extends Phaser.Scene {
                     mainMenuButton.setFontFamily('RibeyeMarrow');
                 });
                 mainMenuButton.on('pointerup', () => {
-                    scene.scene.start(GC.SCENES.MAIN_MENU);
+                    scene.scene.start(GC.SCENES.MAIN_MENU, { settings: scene.settings });
                 });
             }
         })
@@ -101,7 +103,8 @@ class LevelMenuScene extends Phaser.Scene {
                 'rulePacksPath': rulePacksPath,
                 'maxLength': maxLength,
                 'minLength': minLength,
-                'sequences': sequences
+                'sequences': sequences,
+                'settings': this.scene.settings
             });
         });
 

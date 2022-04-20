@@ -20,6 +20,8 @@ class LevelGenerationScene extends Phaser.Scene {
         this.generator = undefined;
         this.formulas = [];
 
+        this.scene.settings = params.settings;
+
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
 
@@ -65,7 +67,8 @@ class LevelGenerationScene extends Phaser.Scene {
             this.formulas = this.copy_object(this.cache.json.get(this.sequence)).sequence;
             this.scene.start(GC.SCENES.LOADING_RESOURCES, {
                 'formulas': this.formulas,
-                'levelGenerationInfo': this.levelGenerationInfo
+                'levelGenerationInfo': this.levelGenerationInfo,
+                'settings': this.scene.settings
             });
         }
 
@@ -90,7 +93,8 @@ class LevelGenerationScene extends Phaser.Scene {
             if (this.generator.levelComplete()) {
                 this.scene.start(GC.SCENES.LOADING_RESOURCES, {
                     'formulas': this.formulas,
-                    'levelGenerationInfo': this.levelGenerationInfo
+                    'levelGenerationInfo': this.levelGenerationInfo,
+                    'settings': this.scene.settings
                 });
             }
 

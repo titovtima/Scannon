@@ -8,6 +8,8 @@ class GameCompleteScene extends Phaser.Scene {
         this.score = params.score;
         this.sequence = params.sequence;
 
+        this.scene.settings = params.settings;
+
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
 
@@ -115,16 +117,22 @@ class GameCompleteScene extends Phaser.Scene {
     }
 
     openLevelMenu() {
-        this.scene.start(GC.SCENES.LEVEL_MENU);
+        this.scene.start(GC.SCENES.LEVEL_MENU, { settings: this.scene.settings });
     }
 
     openMainMenu() {
-        this.scene.start(GC.SCENES.MAIN_MENU);
+        this.scene.start(GC.SCENES.MAIN_MENU, { settings: this.scene.settings });
     }
 
     saveSequence() {
         let dataToSave = {
-            'sequence': this.sequence
+            'sequence': this.sequence.map(function (formula) {
+                return {
+                    unicode: formula.unicode,
+                    scoreForHit: formula.scoreForHit,
+                    scoreForSkip: formula.scoreForSkip
+                }
+            })
         };
         let file = new Blob(
             [JSON.stringify(dataToSave)], {

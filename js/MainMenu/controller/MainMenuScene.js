@@ -3,7 +3,7 @@ class MainMenuScene extends Phaser.Scene {
         super(GC.SCENES.MAIN_MENU)
     }
 
-    init()
+    init(params)
     {
         //  Inject our CSS
         let element = document.createElement('style');
@@ -25,6 +25,9 @@ class MainMenuScene extends Phaser.Scene {
 
         let poetsenOneStyles = '@font-face { font-family: "PoetsenOne"; src: url("/fonts/PoetsenOne-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(poetsenOneStyles, 0);
+
+        this.scene.settings = params.settings;
+        this.setDefaultSettings();
 
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
@@ -62,7 +65,7 @@ class MainMenuScene extends Phaser.Scene {
                     playButton.setFontFamily('RibeyeMarrow');
                 });
                 playButton.on('pointerup', () => {
-                    scene.start(GC.SCENES.LEVEL_MENU);
+                    scene.start(GC.SCENES.LEVEL_MENU, { settings: scene.settings });
                 });
 
                 let howToPlayButtonPosition = sizer.position('How to play');
@@ -91,9 +94,21 @@ class MainMenuScene extends Phaser.Scene {
                     settingsButton.setFontFamily('RibeyeMarrow');
                 });
                 settingsButton.on('pointerup', () => {
-                    scene.start(GC.SCENES.SETTINGS);
+                    scene.start(GC.SCENES.SETTINGS, { settings: scene.settings });
                 });
             }
         })
-    };
+    }
+
+    setDefaultSettings() {
+        if (this.scene.settings === undefined)
+            this.scene.settings = {};
+
+        if (this.scene.settings.speed === undefined) {
+            let getUrlParams = new URLSearchParams(window.location.search);
+            this.scene.settings.speed = parseFloat(getUrlParams.get("speed"));
+            if (isNaN(this.scene.settings.speed))
+                this.scene.settings.speed = 1;
+        }
+    }
 }

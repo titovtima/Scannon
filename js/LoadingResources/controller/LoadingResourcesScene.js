@@ -6,6 +6,9 @@ class LoadingResourcesScene extends Phaser.Scene {
     init(params) {
         this.levelGenerationInfo = params.levelGenerationInfo;
         this.formulas = params.formulas;
+
+        this.scene.settings = params.settings;
+
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
 
@@ -55,7 +58,8 @@ class LoadingResourcesScene extends Phaser.Scene {
     create() {
         this.scene.start(GC.SCENES.GAME, {
             'formulas': this.formulas,
-            'levelGenerationInfo': this.levelGenerationInfo
+            'levelGenerationInfo': this.levelGenerationInfo,
+            'settings': this.scene.settings
         });
     }
 

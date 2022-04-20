@@ -16,6 +16,8 @@ class GameScene extends Phaser.Scene {
         this.score = 0;
         this.displayingAddScore = [];
 
+        this.scene.settings = params.settings;
+
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.GAME.width, GC.RESOLUTIONS.MEDIUM.GAME.height);
     }
 
@@ -72,7 +74,8 @@ class GameScene extends Phaser.Scene {
             this.scene.start(GC.SCENES.GAME_COMPETE, {
                 'score': this.score,
                 'sequence': this.formulas,
-                'levelGenerationInfo': this.levelGenerationInfo
+                'levelGenerationInfo': this.levelGenerationInfo,
+                'settings': this.scene.settings
             });
         }
     }

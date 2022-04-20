@@ -3,10 +3,7 @@ class GameSizer {
     constructor(scene) {
         this.scene = scene;
 
-        let getUrlParams = new URLSearchParams(window.location.search);
-        this.formulasSpeed = parseFloat(getUrlParams.get("speed"));
-        if (isNaN(this.formulasSpeed))
-            this.formulasSpeed = 1;
+        this.formulasSpeed = scene.scene.settings.speed;
     }
 
     field_Width() {

@@ -12,10 +12,26 @@ class SettingsSizer {
     }
 
     speedLabelPosition() {
-        return { x: 100, y: 200 }
+        return { x: 100, y: this.speedLinePosition().y };
     }
 
     backButtonPosition() {
-        return { x: 1500, y: 100 }
+        return { x: 1500, y: 100 };
+    }
+
+    speedLinePosition() {
+        return { x: 500, y: 220 };
+    }
+
+    speedMinusButtonPosition() {
+        return { x: 500, y: this.speedLinePosition().y };
+    }
+
+    speedValuePosition() {
+        return { x: 600, y: this.speedLinePosition().y };
+    }
+
+    speedPlusButtonPosition() {
+        return { x: 700, y: this.speedLinePosition().y };
     }
 }
