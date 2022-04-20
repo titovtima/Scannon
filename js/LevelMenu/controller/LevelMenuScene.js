@@ -36,7 +36,8 @@ class LevelMenuScene extends Phaser.Scene {
 
     placeMainMenuButton() {
         let sizer = this.sizer;
-        let scene = this;
+        let scene = this.scene;
+        let add = this.add;
 
         WebFont.load({
             'custom': {
@@ -49,7 +50,7 @@ class LevelMenuScene extends Phaser.Scene {
                 let fontSize = sizer.mainMenuButton_fontSize();
                 let fontColor = sizer.mainMenuButton_fontColor();
 
-                let mainMenuButton = scene.add.text(leftX, topY,
+                let mainMenuButton = add.text(leftX, topY,
                     '<- main menu', { fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor });
                 mainMenuButton.setInteractive();
                 mainMenuButton.on('pointerover', () => {
@@ -59,7 +60,7 @@ class LevelMenuScene extends Phaser.Scene {
                     mainMenuButton.setFontFamily('RibeyeMarrow');
                 });
                 mainMenuButton.on('pointerup', () => {
-                    scene.scene.start(GC.SCENES.MAIN_MENU, { settings: scene.settings });
+                    scene.start(GC.SCENES.MAIN_MENU, { settings: scene.settings });
                 });
             }
         })
