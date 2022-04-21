@@ -271,8 +271,12 @@ class GameSizer {
         return this.scoreValue_RightX();
     }
 
-    addScore_TopY() {
-        return this.scoreValue_BottomY() + 50;
+    addPositiveScore_TopY() {
+        return this.scoreValue_BottomY() + 40;
+    }
+
+    addNegativeScore_TopY() {
+        return this.scoreValue_BottomY() + 10;
     }
 
     addScore_FontSize() {
@@ -317,5 +321,14 @@ class GameSizer {
 
     wallPosition() {
         return { left: 0, right: 1600, y: this.bottomLine() }
+    }
+
+    correctRuleBackgroundPosition() {
+        return { x: this.pauseButton_RightX(), y: 150 };
+    }
+
+    correctRuleTextPosition() {
+        return { x: this.correctRuleBackgroundPosition().x - this.cardBackground_Width() / 2,
+                 y: this.correctRuleBackgroundPosition().y + this.cardBackground_Height() / 2 };
     }
 }

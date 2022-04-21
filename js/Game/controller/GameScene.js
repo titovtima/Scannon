@@ -166,12 +166,18 @@ class GameScene extends Phaser.Scene {
             arrow.setOrigin(0.5);
         }
 
+        let unicodeSubstitution = undefined;
+        if (this.formulas[index].substitution !== undefined)
+            unicodeSubstitution = this.formulas[index].substitution.left + " \u27F6 "
+                + this.formulas[index].substitution.right;
+
         let newFormula = {
             'formula': formula,
             'background': background,
             'arrow': arrow,
             'scoreForHit': scoreForHit,
             'scoreForSkip': scoreForSkip,
+            'substitution': unicodeSubstitution,
             'isHit': false
         };
 
@@ -188,19 +194,8 @@ class GameScene extends Phaser.Scene {
                 formula.background.x += this.sizer.card_SpeedX();
                 formula.background.y += this.sizer.card_SpeedY();
 
-
-                // formula.background.wanted_y += this.sizer.card_SpeedY();
-                // formula.background.y = formula.background.wanted_y;
-
-                // formula.background.y = Math.floor(formula.background.wanted_y);
-
                 formula.formula.x += this.sizer.card_SpeedX();
                 formula.formula.y += this.sizer.card_SpeedY();
-
-                // formula.formula.wanted_y += this.sizer.card_SpeedY();
-                // formula.formula.y = formula.formula.wanted_y;
-
-                // formula.formula.y = Math.floor(formula.formula.wanted_y);
 
                 if (formula.arrow) {
                     formula.arrow.x += this.sizer.card_SpeedX();
@@ -274,6 +269,8 @@ class GameScene extends Phaser.Scene {
 
             if (formula.scoreForSkip < 0)
                 this.wrongFormulaPassed(formula);
+            if (formula.scoreForSkip > 0)
+                this.correctFormulaPassed(formula);
 
             this.placeAddScore(formula.scoreForSkip);
 
@@ -297,6 +294,42 @@ class GameScene extends Phaser.Scene {
         let interval = this.sizer.blinkingInterval();
         this.blinkLastLineFormulaSign(formula, 'not_equals_red', 5000, interval);
         // this.blinkFormula(formula, 'cardBackground_Regular', 'cardBackground_Red', 5000, interval);
+    }
+
+    correctFormulaPassed(formula) {
+        if (formula.substitution !== undefined)
+            this.addCorrectRule(formula.substitution);
+    }
+
+    addCorrectRule(rule) {
+        clearTimeout(this.correctRuleTimer);
+        this.destroyCorrectRule();
+
+        let scale = this.sizer.cardBackground_Scale();
+        let correctRuleBackgroundPosition = this.sizer.correctRuleBackgroundPosition();
+        this.correctRuleBackground = this.add.image(
+            correctRuleBackgroundPosition.x, correctRuleBackgroundPosition.y,
+            'cardBackground_Green');
+        this.correctRuleBackground.setOrigin(1, 0);
+        this.correctRuleBackground.setScale(scale);
+
+        let fontSize = this.sizer.formula_FontSize();
+        let correctRuleTextPosition = this.sizer.correctRuleTextPosition();
+        this.correctRuleText = this.add.text(
+            correctRuleTextPosition.x, correctRuleTextPosition.y,
+            rule, { fontFamily: 'serif', color: '#000', fontSize: fontSize });
+        this.correctRuleText.setOrigin(0.5, 0.5);
+
+        this.correctRuleTimer = setTimeout(() => { this.destroyCorrectRule(); }, 3000);
+    }
+
+    destroyCorrectRule() {
+        if (this.correctRuleBackground !== undefined)
+            this.correctRuleBackground.destroy();
+        if (this.correctRuleText !== undefined)
+            this.correctRuleText.destroy();
+        this.correctRuleBackground = undefined;
+        this.correctRuleText = undefined;
     }
 
     blinkLastLineFormulaSign(formula, imageName, duration, interval) {
@@ -329,7 +362,7 @@ class GameScene extends Phaser.Scene {
 
     placeAddScore(score) {
         let rightX = this.sizer.addScore_RightX();
-        let topY = this.sizer.addScore_TopY();
+        let topY = 0;
         let fontSize = this.sizer.addScore_FontSize();
 
         let color = '#FFF';
@@ -339,8 +372,10 @@ class GameScene extends Phaser.Scene {
             color = this.sizer.addPositiveScore_Color();
             score = '+' + score;
             speed = -speed;
+            topY = this.sizer.addPositiveScore_TopY();
         } else {
             color = this.sizer.addNegativeScore_Color();
+            topY = this.sizer.addNegativeScore_TopY();
         }
 
         let drawScore = this.add.text(rightX, topY, score, {
@@ -621,6 +656,8 @@ class GameScene extends Phaser.Scene {
 
             scoreColor = this.sizer.hitNegativeScoreColor();
             scoreText = formula.scoreForHit;
+
+            this.addCorrectRule(formula.substitution);
         }
 
         if (formula.arrow && 0 < formula.scoreForHit) {

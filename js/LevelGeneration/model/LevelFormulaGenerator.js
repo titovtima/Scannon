@@ -88,7 +88,7 @@ class LevelFormulaGenerator {
         this.formula = {
             'length':       this.getUnicodeFormulaLength(unicodeFormula),
             'unicode':      unicodeFormula,
-            'expression':   this.expression,
+            'substitution': { left: "", right: "" },
             'scoreForHit':  0,
             'scoreForPass': 0
         }
@@ -115,12 +115,15 @@ class LevelFormulaGenerator {
                         if (formulaLength <= 100 && formulaLength > 10) {
                             this.expression = newExpression;
                             console.log('New formula:', unicodeFormula);
-                            console.log('Substitution place:', place);
+                            let unicodeSub = {
+                                left: twf_js.expressionToUnicodeString(substitution.left),
+                                right: twf_js.expressionToUnicodeString(substitution.right)
+                            }
 
                             this.formula = {
                                 'length': this.getUnicodeFormulaLength(unicodeFormula),
                                 'unicode': unicodeFormula,
-                                'expression': this.expression,
+                                'substitution': unicodeSub,
                                 'scoreForHit': this.substitutionsMap.get(expressionSubstitution.code).scoreForHit,
                                 'scoreForSkip': this.substitutionsMap.get(expressionSubstitution.code).scoreForSkip
                             };
@@ -147,11 +150,16 @@ class LevelFormulaGenerator {
                     let formulaLength = this.getUnicodeFormulaLength(unicodeFormula);
                     if (formulaLength < 100 && formulaLength > 10) {
                         this.expression = application.resultExpression;
+                        let appliedSub = application.expressionSubstitution;
+                        let unicodeSub = {
+                            left: twf_js.expressionToUnicodeString(appliedSub.left),
+                            right: twf_js.expressionToUnicodeString(appliedSub.right)
+                        }
 
                         this.formula = {
                             'length': this.getUnicodeFormulaLength(unicodeFormula),
                             'unicode': unicodeFormula,
-                            'expression': this.expression,
+                            'substitution': unicodeSub,
                             'scoreForHit': this.substitutionsMap
                                 .get(application.expressionSubstitution.code).scoreForHit,
                             'scoreForSkip': this.substitutionsMap
