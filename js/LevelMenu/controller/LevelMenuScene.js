@@ -21,12 +21,12 @@ class LevelMenuScene extends Phaser.Scene {
 
         this.sizer = new LevelMenuSizer(this);
 
+        this.placeMainMenuButton();
+        this.placeSettingsButton();
         this.placeLevelCards();
     }
 
     placeLevelCards() {
-        this.placeMainMenuButton();
-
         for (let level of this.levelsInfo.levels) {
             let cardBackground = this.placeCardBackground(level.index);
             this.placeCardIndex(level.index, cardBackground);
@@ -64,6 +64,31 @@ class LevelMenuScene extends Phaser.Scene {
                 });
             }
         })
+    }
+
+    placeSettingsButton() {
+        let sizer = this.sizer;
+        let scene = this.scene;
+        let add = this.add;
+
+        let settingsButtonPosition = this.sizer.settingsButtonPosition();
+        let fontSize = this.sizer.settingsButton_fontSize();
+        let fontColor = this.sizer.settingsButton_fontColor();
+        let settingsButton = this.add.text(
+            settingsButtonPosition.x, settingsButtonPosition.y,
+            'Settings', { fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor });
+        settingsButton.setOrigin(1, 0);
+        settingsButton.setInteractive();
+        settingsButton.on('pointerover', () => {
+            settingsButton.setFontFamily('Ribeye');
+        });
+        settingsButton.on('pointerout', () => {
+            settingsButton.setFontFamily('RibeyeMarrow');
+        });
+        settingsButton.on('pointerup', () => {
+            this.scene.start(GC.SCENES.SETTINGS, { settings: this.scene.settings });
+        });
+
     }
 
     placeCardBackground(index) {

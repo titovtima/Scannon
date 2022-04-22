@@ -117,4 +117,15 @@ class LevelMenuSizer {
         return '#000';
     }
 
+    settingsButton_fontSize() {
+        return 60;
+    }
+
+    settingsButton_fontColor() {
+        return '#000';
+    }
+
+    settingsButtonPosition() {
+        return { x: 1580, y: 10 };
+    }
 }
