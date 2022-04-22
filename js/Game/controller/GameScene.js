@@ -297,8 +297,8 @@ class GameScene extends Phaser.Scene {
     }
 
     correctFormulaPassed(formula) {
-        if (formula.substitution !== undefined)
-            this.addCorrectRule(formula.substitution);
+        // if (formula.substitution !== undefined)
+            // this.addCorrectRule(formula.substitution);
     }
 
     addCorrectRule(rule) {
@@ -657,7 +657,8 @@ class GameScene extends Phaser.Scene {
             scoreColor = this.sizer.hitNegativeScoreColor();
             scoreText = formula.scoreForHit;
 
-            this.addCorrectRule(formula.substitution);
+            if (formula.substitution !== undefined)
+                this.addCorrectRule(formula.substitution);
         }
 
         if (formula.arrow && 0 < formula.scoreForHit) {
