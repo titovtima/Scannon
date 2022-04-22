@@ -67,10 +67,6 @@ class LevelMenuScene extends Phaser.Scene {
     }
 
     placeSettingsButton() {
-        let sizer = this.sizer;
-        let scene = this.scene;
-        let add = this.add;
-
         let settingsButtonPosition = this.sizer.settingsButtonPosition();
         let fontSize = this.sizer.settingsButton_fontSize();
         let fontColor = this.sizer.settingsButton_fontColor();
