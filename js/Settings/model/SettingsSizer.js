@@ -16,7 +16,11 @@ class SettingsSizer {
     }
 
     backButtonPosition() {
-        return { x: 1500, y: 100 };
+        return { x: 50, y: 10 };
+    }
+
+    backButtonFontSize() {
+        return 60;
     }
 
     speedLinePosition() {
