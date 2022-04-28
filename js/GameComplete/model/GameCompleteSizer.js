@@ -46,22 +46,20 @@ class GameCompleteSizer {
 
     menuItem_CenterY(label) {
         let firstItemCenterY = 570;
-        let distanceBetween = 80;
+        let distanceBetween = 100;
 
         switch (label) {
             case 'Restart':
                 return firstItemCenterY;
-            case 'Choose Level':
-                return firstItemCenterY + distanceBetween;
             case 'Main Menu':
-                return firstItemCenterY + 2 * distanceBetween;
+                return firstItemCenterY + distanceBetween;
             case 'Save sequence':
-                return firstItemCenterY + 3 * distanceBetween;
+                return firstItemCenterY + 2 * distanceBetween;
         }
     }
 
     menuItem_FontSize() {
-        return 50;
+        return 70;
     }
 
     menuItem_Color() {

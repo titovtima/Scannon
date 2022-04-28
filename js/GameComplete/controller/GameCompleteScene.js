@@ -69,7 +69,7 @@ class GameCompleteScene extends Phaser.Scene {
                 let menuItemColor = sizer.menuItem_Color();
 
                 let menuItems = {};
-                for (let label of ['Restart', 'Choose Level', 'Main Menu', 'Save sequence']) {
+                for (let label of ['Restart', 'Main Menu', 'Save sequence']) {
                     let menuItemCenterX = sizer.menuItem_CenterX();
                     let menuItemCenterY = sizer.menuItem_CenterY(label);
                     let menuItem = add.text(
@@ -93,11 +93,8 @@ class GameCompleteScene extends Phaser.Scene {
                             case 'Restart':
                                 scene.restartLevel();
                                 break;
-                            case 'Choose Level':
-                                scene.openLevelMenu();
-                                break;
                             case 'Main Menu':
-                                scene.openMainMenu();
+                                scene.openLevelMenu();
                                 break;
                             case 'Save sequence':
                                 scene.saveSequence();
