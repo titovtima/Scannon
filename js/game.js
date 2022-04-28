@@ -4,7 +4,7 @@ const config = {
     backgroundColor: 0xffcc66,
     type: Phaser.AUTO,
     scene: [
-        MainMenuScene,
+        // MainMenuScene,
         LevelMenuScene,
         LevelGenerationScene,
         LoadingResourcesScene,

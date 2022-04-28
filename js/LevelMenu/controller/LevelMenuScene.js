@@ -5,12 +5,36 @@ class LevelMenuScene extends Phaser.Scene {
     }
 
     init(params) {
+        //  Inject our CSS
+        let element = document.createElement('style');
+        document.head.appendChild(element);
+
+        let sheet = element.sheet;
+
+        let ribeyeMarrowStyles = '@font-face { font-family: "RibeyeMarrow"; src: url("/fonts/RibeyeMarrow-Regular.ttf") format("truetype"); }\n';
+        sheet.insertRule(ribeyeMarrowStyles, 0);
+
+        let ribeyeStyles = '@font-face { font-family: "Ribeye"; src: url("/fonts/Ribeye-Regular.ttf") format("truetype"); }\n';
+        sheet.insertRule(ribeyeStyles, 0);
+
+        let rhodiumLibreStyles = '@font-face { font-family: "RhodiumLibre"; src: url("/fonts/RhodiumLibre-Regular.ttf") format("truetype"); }\n';
+        sheet.insertRule(rhodiumLibreStyles, 0);
+
+        let ptMonoStyles = '@font-face { font-family: "PTMono"; src: url("/fonts/PTMono-Regular.ttf") format("truetype"); }\n';
+        sheet.insertRule(ptMonoStyles, 0);
+
+        let poetsenOneStyles = '@font-face { font-family: "PoetsenOne"; src: url("/fonts/PoetsenOne-Regular.ttf") format("truetype"); }\n';
+        sheet.insertRule(poetsenOneStyles, 0);
+
         this.scene.settings = params.settings;
+        this.setDefaultSettings();
 
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
 
     preload() {
+        this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+
         this.load.json('levelsInfo', '/js/GameConfiguration/levelsInfo.json');
         this.load.image('cardBackground', '/js/LevelMenu/src/cardBackground.png');
         this.load.image('cardBackground_Bordered', '/js/LevelMenu/src/cardBackground_Bordered.png');
@@ -21,7 +45,7 @@ class LevelMenuScene extends Phaser.Scene {
 
         this.sizer = new LevelMenuSizer(this);
 
-        this.placeMainMenuButton();
+        // this.placeMainMenuButton();
         this.placeSettingsButton();
         this.placeLevelCards();
     }
@@ -67,24 +91,34 @@ class LevelMenuScene extends Phaser.Scene {
     }
 
     placeSettingsButton() {
-        let settingsButtonPosition = this.sizer.settingsButtonPosition();
-        let fontSize = this.sizer.settingsButton_fontSize();
-        let fontColor = this.sizer.settingsButton_fontColor();
-        let settingsButton = this.add.text(
-            settingsButtonPosition.x, settingsButtonPosition.y,
-            'Settings', { fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor });
-        settingsButton.setOrigin(1, 0);
-        settingsButton.setInteractive();
-        settingsButton.on('pointerover', () => {
-            settingsButton.setFontFamily('Ribeye');
-        });
-        settingsButton.on('pointerout', () => {
-            settingsButton.setFontFamily('RibeyeMarrow');
-        });
-        settingsButton.on('pointerup', () => {
-            this.scene.start(GC.SCENES.SETTINGS, { settings: this.scene.settings });
-        });
+        let sizer = this.sizer;
+        let add = this.add;
+        let scene = this.scene;
 
+        WebFont.load({
+            'custom': {
+                families: ['Ribeye', 'RibeyeMarrow']
+            },
+            active: function () {
+                let settingsButtonPosition = sizer.settingsButtonPosition();
+                let fontSize = sizer.settingsButton_fontSize();
+                let fontColor = sizer.settingsButton_fontColor();
+                let settingsButton = add.text(
+                    settingsButtonPosition.x, settingsButtonPosition.y,
+                    'Settings', {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+                settingsButton.setOrigin(1, 0);
+                settingsButton.setInteractive();
+                settingsButton.on('pointerover', () => {
+                    settingsButton.setFontFamily('Ribeye');
+                });
+                settingsButton.on('pointerout', () => {
+                    settingsButton.setFontFamily('RibeyeMarrow');
+                });
+                settingsButton.on('pointerup', () => {
+                    scene.start(GC.SCENES.SETTINGS, {settings: scene.settings});
+                });
+            }
+        });
     }
 
     placeCardBackground(index) {
@@ -184,6 +218,18 @@ class LevelMenuScene extends Phaser.Scene {
                 ).setOrigin(0.5);
             }
         })
+    }
+
+    setDefaultSettings() {
+        if (this.scene.settings === undefined)
+            this.scene.settings = {};
+
+        if (this.scene.settings.speed === undefined) {
+            let getUrlParams = new URLSearchParams(window.location.search);
+            this.scene.settings.speed = parseFloat(getUrlParams.get("speed"));
+            if (isNaN(this.scene.settings.speed))
+                this.scene.settings.speed = 1;
+        }
     }
 
 }
