@@ -227,15 +227,18 @@ class LevelMenuScene extends Phaser.Scene {
         if (this.scene.settings === undefined)
             this.scene.settings = {};
 
+        let getUrlParams = new URLSearchParams(window.location.search);
+
         if (this.scene.settings.speed === undefined) {
-            let getUrlParams = new URLSearchParams(window.location.search);
             this.scene.settings.speed = parseFloat(getUrlParams.get("speed"));
             if (isNaN(this.scene.settings.speed))
                 this.scene.settings.speed = 1;
         }
 
         if (this.scene.settings.mistakeTimeout === undefined) {
-            this.scene.settings.mistakeTimeout = 5;
+            this.scene.settings.mistakeTimeout = parseFloat(getUrlParams.get("mistakeTimeout"));
+            if (isNaN(this.scene.settings.mistakeTimeout))
+                this.scene.settings.mistakeTimeout = 5;
         }
     }
 
