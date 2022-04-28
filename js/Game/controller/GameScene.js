@@ -24,6 +24,11 @@ class GameScene extends Phaser.Scene {
     create() {
         this.sizer = new GameSizer(this);
 
+        // this.events.on('resume', (params) => {
+        //     this.scene.settings = params.settings;
+        //     console.log('Awake game. Settings:', this.scene.settings);
+        // });
+
         console.log('Level started, formulas:', this.formulas.map(function (formula) {
             return formula.unicode;
         }))
@@ -39,6 +44,11 @@ class GameScene extends Phaser.Scene {
         this.placePauseButton();
 
         // this.keyM = this.input.keyboard.addKey('M');
+    }
+
+    wake(params) {
+        console.log('Wake Game. Params:', params);
+        this.scene.settings = params.settings;
     }
 
     update() {
@@ -517,7 +527,9 @@ class GameScene extends Phaser.Scene {
 
     showPauseMenu() {
         this.scene.run(GC.SCENES.GAME_PAUSE, {
-            'levelGenerationInfo': this.levelGenerationInfo
+            'levelGenerationInfo': this.levelGenerationInfo,
+            'settings': this.scene.settings,
+            'gameScene': this
         });
     }
 

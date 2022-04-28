@@ -115,7 +115,10 @@ class LevelMenuScene extends Phaser.Scene {
                     settingsButton.setFontFamily('RibeyeMarrow');
                 });
                 settingsButton.on('pointerup', () => {
-                    scene.start(GC.SCENES.SETTINGS, {settings: scene.settings});
+                    scene.start(GC.SCENES.SETTINGS, {
+                        settings: scene.settings,
+                        sceneFrom: GC.SCENES.LEVEL_MENU
+                    });
                 });
             }
         });

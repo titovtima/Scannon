@@ -78,12 +78,13 @@ class GamePauseSizer {
 
     menuItem_CenterY(label) {
         let centerY = this.darkenBackground_Height() / 2;
-        let textHeight = 145;
+        let textHeight = 110;
 
         switch (label) {
-            case 'Resume': return centerY - textHeight;
-            case 'Restart': return centerY;
-            case 'Main Menu': return centerY + textHeight;
+            case 'Resume': return centerY - textHeight * 1.5;
+            case 'Settings': return centerY - textHeight * 0.5;
+            case 'Restart': return centerY + textHeight * 0.5;
+            case 'Main Menu': return centerY + textHeight * 1.5;
         }
     }
 

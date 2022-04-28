@@ -4,7 +4,9 @@ class SettingsScene extends Phaser.Scene {
     }
 
     init(params) {
+        this.gameScene = params.gameScene;
         this.settings = params.settings;
+        this.sceneFrom = params.sceneFrom;
 
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
@@ -12,20 +14,25 @@ class SettingsScene extends Phaser.Scene {
     create() {
         this.sizer = new SettingsSizer(this);
 
-        if (this.settings !== undefined && this.settings.speed !== undefined) {
-            this.scene.speed = this.settings.speed
-        } else {
-            this.scene.speed = 1
-        }
+        // if (this.settings !== undefined && this.settings.speed !== undefined) {
+        //     this.scene.speed = this.settings.speed
+        // } else {
+        //     this.scene.speed = 1
+        // }
 
         let fontSize = this.sizer.fontSize();
         let fontColor = this.sizer.fontColor();
 
+        let backButtonLabel = '<- back';
+        if (this.sceneFrom === GC.SCENES.LEVEL_MENU)
+            backButtonLabel = '<- menu'
+        else if (this.sceneFrom === GC.SCENES.GAME_PAUSE)
+            backButtonLabel = '<- game'
         let backButtonFontSize = this.sizer.backButtonFontSize();
         let backButtonPosition = this.sizer.backButtonPosition();
         let backButton = this.add.text(
             backButtonPosition.x, backButtonPosition.y,
-            '<- menu', {
+            backButtonLabel, {
                 fontFamily: 'RibeyeMarrow',
                 fontSize: backButtonFontSize,
                 color: fontColor});
@@ -39,7 +46,17 @@ class SettingsScene extends Phaser.Scene {
             backButton.setFontFamily('RibeyeMarrow');
         });
         backButton.on('pointerup', () => {
-            this.scene.start(GC.SCENES.LEVEL_MENU, {settings: {speed: this.scene.speed}});
+            switch (this.sceneFrom) {
+                case GC.SCENES.LEVEL_MENU:
+                    this.scene.start(GC.SCENES.LEVEL_MENU, {settings: this.settings});
+                    break;
+                case GC.SCENES.GAME_PAUSE:
+                    this.scene.start(GC.SCENES.GAME_PAUSE, {settings: this.settings, gameScene: this.gameScene});
+                    break;
+                default:
+                    this.scene.start(this.sceneFrom, {settings: this.settings});
+                    break;
+            }
         });
 
         // let speedLinePosition = sizer.speedLinePosition();
@@ -59,7 +76,7 @@ class SettingsScene extends Phaser.Scene {
         let speedValuePosition = this.sizer.speedValuePosition();
         let speedValue = this.add.text(
             speedValuePosition.x, speedValuePosition.y,
-            this.scene.speed, {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            this.settings.speed, {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
         speedValue.setOrigin(0.5, 0.5);
 
         let speedPlusButtonPosition = this.sizer.speedPlusButtonPosition();
@@ -78,9 +95,9 @@ class SettingsScene extends Phaser.Scene {
             speedMinusButton.setFontFamily('RibeyeMarrow');
         });
         speedMinusButton.on('pointerup', () => {
-            if (this.scene.speed > 0.2) {
-                this.scene.speed = (this.scene.speed * 10 - 1) / 10;
-                speedValue.text = this.scene.speed;
+            if (this.settings.speed > 0.2) {
+                this.settings.speed = (this.settings.speed * 10 - 1) / 10;
+                speedValue.text = this.settings.speed;
             }
         });
 
@@ -91,9 +108,9 @@ class SettingsScene extends Phaser.Scene {
             speedPlusButton.setFontFamily('RibeyeMarrow');
         });
         speedPlusButton.on('pointerup', () => {
-            if (this.scene.speed < 5) {
-                this.scene.speed = (this.scene.speed * 10 + 1) / 10;
-                speedValue.text = this.scene.speed;
+            if (this.settings.speed < 5) {
+                this.settings.speed = (this.settings.speed * 10 + 1) / 10;
+                speedValue.text = this.settings.speed;
             }
         });
     }

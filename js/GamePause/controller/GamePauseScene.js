@@ -5,7 +5,13 @@ class GamePauseScene extends Phaser.Scene {
     }
 
     init(params) {
+        this.scene.settings = params.settings;
         this.levelGenerationInfo = params.levelGenerationInfo;
+        this.gameScene = params.gameScene;
+
+        console.log('Init Pause. Settings:', this.scene.settings);
+        this.scene.wake(GC.SCENES.GAME);
+        this.scene.pause(GC.SCENES.GAME);
     }
 
     create() {
@@ -71,7 +77,8 @@ class GamePauseScene extends Phaser.Scene {
                 families: ['Ribeye', 'RibeyeMarrow']
             },
             active: function () {
-                let labels = [ 'Resume', 'Restart', 'Main Menu' ];
+                let labels = [ 'Resume', 'Settings', 'Restart', 'Main Menu' ];
+
 
                 for (let label of labels) {
                     let centerX = sizer.menuItem_CenterX();
@@ -79,7 +86,7 @@ class GamePauseScene extends Phaser.Scene {
 
                     let menuItem = add.text(centerX, centerY, label, {
                         fontFamily: 'RibeyeMarrow',
-                        fontSize: 84,
+                        fontSize: 75,
                         color: '#000'
                     }).setOrigin(0.5);
 
@@ -94,6 +101,9 @@ class GamePauseScene extends Phaser.Scene {
                         switch (label) {
                             case "Resume":
                                 scene.closeMenu();
+                                break;
+                            case "Settings":
+                                scene.openSettings();
                                 break;
                             case "Restart":
                                 scene.restartLevel();
@@ -111,6 +121,9 @@ class GamePauseScene extends Phaser.Scene {
     }
 
     closeMenu() {
+        this.gameScene.scene.settings = this.scene.settings;
+        this.gameScene.sizer.updateSettings();
+
         this.scene.run(GC.SCENES.GAME);
         this.scene.stop(GC.SCENES.GAME_PAUSE);
     }
@@ -127,6 +140,16 @@ class GamePauseScene extends Phaser.Scene {
 
         this.scene.stop(GC.SCENES.GAME);
         this.scene.start(GC.SCENES.LEVEL_MENU);
+    }
+
+    openSettings() {
+        this.scene.sleep(GC.SCENES.GAME_PAUSE);
+        this.scene.sleep(GC.SCENES.GAME);
+        this.scene.start(GC.SCENES.SETTINGS, {
+            settings: this.scene.settings,
+            sceneFrom: GC.SCENES.GAME_PAUSE,
+            gameScene: this.gameScene
+        });
     }
 
 }

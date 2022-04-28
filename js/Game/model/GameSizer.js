@@ -331,4 +331,8 @@ class GameSizer {
         return { x: this.correctRuleBackgroundPosition().x - this.cardBackground_Width() / 2,
                  y: this.correctRuleBackgroundPosition().y + this.cardBackground_Height() / 2 };
     }
+
+    updateSettings() {
+        this.formulasSpeed = this.scene.scene.settings.speed;
+    }
 }
