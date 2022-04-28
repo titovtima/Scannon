@@ -14,15 +14,11 @@ class SettingsScene extends Phaser.Scene {
     create() {
         this.sizer = new SettingsSizer(this);
 
-        // if (this.settings !== undefined && this.settings.speed !== undefined) {
-        //     this.scene.speed = this.settings.speed
-        // } else {
-        //     this.scene.speed = 1
-        // }
+        this.placeBackButton();
+        this.placeSpeedSetting();
+    }
 
-        let fontSize = this.sizer.fontSize();
-        let fontColor = this.sizer.fontColor();
-
+    placeBackButton() {
         let backButtonLabel = '<- back';
         if (this.sceneFrom === GC.SCENES.LEVEL_MENU)
             backButtonLabel = '<- menu'
@@ -30,6 +26,8 @@ class SettingsScene extends Phaser.Scene {
             backButtonLabel = '<- game'
         let backButtonFontSize = this.sizer.backButtonFontSize();
         let backButtonPosition = this.sizer.backButtonPosition();
+        let fontColor = this.sizer.fontColor();
+
         let backButton = this.add.text(
             backButtonPosition.x, backButtonPosition.y,
             backButtonLabel, {
@@ -58,8 +56,11 @@ class SettingsScene extends Phaser.Scene {
                     break;
             }
         });
+    }
 
-        // let speedLinePosition = sizer.speedLinePosition();
+    placeSpeedSetting() {
+        let fontSize = this.sizer.fontSize();
+        let fontColor = this.sizer.fontColor();
 
         let speedLabelPosition = this.sizer.speedLabelPosition();
         let speedLabel = this.add.text(
