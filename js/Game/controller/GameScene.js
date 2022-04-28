@@ -263,7 +263,7 @@ class GameScene extends Phaser.Scene {
         if (formula.score) formula.score.destroy();
 
         if (formula.scoreForSkip < 0)
-            this.placeBottomLineFormulaSign(formula, 'not_equals');
+            this.placeBottomLineFormulaSign(formula, 'not_equals_red');
         if (formula.scoreForSkip > 0)
             this.placeBottomLineFormulaSign(formula, 'equals');
 
@@ -300,9 +300,10 @@ class GameScene extends Phaser.Scene {
     wrongFormulaPassed(formula) {
         let realSpeed = this.sizer.formulasSpeed;
         this.sizer.formulasSpeed = this.sizer.slowSpeed();
-        setTimeout(() => { this.sizer.formulasSpeed = realSpeed; }, 5000);
+        let mistakeTimeout = this.scene.settings.mistakeTimeout * 1000;
+        setTimeout(() => { this.sizer.formulasSpeed = realSpeed; }, mistakeTimeout);
         let interval = this.sizer.blinkingInterval();
-        this.blinkLastLineFormulaSign(formula, 'not_equals_red', 5000, interval);
+        this.blinkLastLineFormulaSign(formula, 'not_equals_red', mistakeTimeout, interval);
         // this.blinkFormula(formula, 'cardBackground_Regular', 'cardBackground_Red', 5000, interval);
     }
 
@@ -352,9 +353,11 @@ class GameScene extends Phaser.Scene {
                 this.placeBottomLineFormulaSign(formula, imageName);
             times++;
         }, interval);
-        setTimeout(() => { clearInterval(blinking); }, duration);
-        if (!formula.arrow)
-            this.placeBottomLineFormulaSign(formula, imageName);
+        setTimeout(() => {
+            clearInterval(blinking);
+            if (!formula.arrow)
+                this.placeBottomLineFormulaSign(formula, imageName);
+            }, duration);
     }
 
     // blinkFormula(formula, firstBackground, secondBackground, duration, interval) {

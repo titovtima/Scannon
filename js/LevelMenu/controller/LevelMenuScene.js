@@ -233,6 +233,10 @@ class LevelMenuScene extends Phaser.Scene {
             if (isNaN(this.scene.settings.speed))
                 this.scene.settings.speed = 1;
         }
+
+        if (this.scene.settings.mistakeTimeout === undefined) {
+            this.scene.settings.mistakeTimeout = 5;
+        }
     }
 
 }

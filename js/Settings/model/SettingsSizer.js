@@ -4,7 +4,7 @@ class SettingsSizer {
     }
 
     fontSize() {
-        return 75;
+        return 70;
     }
 
     fontColor() {
@@ -24,7 +24,7 @@ class SettingsSizer {
     }
 
     speedLinePosition() {
-        return { x: 500, y: 220 };
+        return { x: 500, y: 200 };
     }
 
     speedMinusButtonPosition() {
@@ -37,5 +37,25 @@ class SettingsSizer {
 
     speedPlusButtonPosition() {
         return { x: 700, y: this.speedLinePosition().y };
+    }
+
+    mistakeTimeoutLineY() {
+        return 300;
+    }
+
+    mistakeTimeoutLabelLeftX() {
+        return 100;
+    }
+
+    mistakeTimeoutMinusButtonX() {
+        return 800;
+    }
+
+    mistakeTimeoutValueX() {
+        return 900;
+    }
+
+    mistakeTimeoutPlusButtonX() {
+        return 1000;
     }
 }

@@ -16,6 +16,7 @@ class SettingsScene extends Phaser.Scene {
 
         this.placeBackButton();
         this.placeSpeedSetting();
+        this.placeMistakeTimeoutSetting();
     }
 
     placeBackButton() {
@@ -115,4 +116,61 @@ class SettingsScene extends Phaser.Scene {
             }
         });
     }
+
+    placeMistakeTimeoutSetting() {
+        let positionY = this.sizer.mistakeTimeoutLineY();
+        let labelLeftX = this.sizer.mistakeTimeoutLabelLeftX();
+
+        let fontSize = this.sizer.fontSize();
+        let fontColor = this.sizer.fontColor();
+
+        let label = this.add.text(labelLeftX, positionY, 'Mistake Timeout',
+            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+        label.setOrigin(0, 0.5);
+
+        let minusButtonX = this.sizer.mistakeTimeoutMinusButtonX();
+        let minusButton = this.add.text(minusButtonX, positionY, '-',
+            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+        minusButton.setOrigin(0.5, 0.5);
+        minusButton.setInteractive();
+
+        minusButton.on('pointerover', () => {
+            minusButton.setFontFamily('Ribeye');
+        });
+        minusButton.on('pointerout', () => {
+            minusButton.setFontFamily('RibeyeMarrow');
+        });
+        minusButton.on('pointerup', () => {
+            if (this.settings.mistakeTimeout > 0) {
+                this.settings.mistakeTimeout = (this.settings.mistakeTimeout * 2 - 1) / 2;
+                timeoutValue.text = this.settings.mistakeTimeout + 's';
+            }
+        });
+
+        let timeoutValueX = this.sizer.mistakeTimeoutValueX();
+        let timeoutValue = this.add.text(timeoutValueX, positionY,
+            this.settings.mistakeTimeout + 's',
+            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+        timeoutValue.setOrigin(0.5, 0.5);
+
+        let plusButtonX = this.sizer.mistakeTimeoutPlusButtonX();
+        let plusButton = this.add.text(plusButtonX, positionY, '+',
+            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+        plusButton.setOrigin(0.5, 0.5);
+        plusButton.setInteractive();
+
+        plusButton.on('pointerover', () => {
+            plusButton.setFontFamily('Ribeye');
+        });
+        plusButton.on('pointerout', () => {
+            plusButton.setFontFamily('RibeyeMarrow');
+        });
+        plusButton.on('pointerup', () => {
+            if (this.settings.mistakeTimeout < 10) {
+                this.settings.mistakeTimeout = (this.settings.mistakeTimeout * 2 + 1) / 2;
+                timeoutValue.text = this.settings.mistakeTimeout + 's';
+            }
+        });
+    }
+
 }

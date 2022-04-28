@@ -300,7 +300,7 @@ class GameSizer {
     }
 
     blinkingInterval() {
-        return 300;
+        return 300 / Math.max(1, this.formulasSpeed);
     }
 
     equals_Scale() {
