@@ -24,7 +24,7 @@ class LevelMenuSizer {
     }
 
     backgroundRectangle_TopOffset() {
-        return 111;
+        return 130;
     }
 
     backgroundRectangle_LeftX(index) {
@@ -127,5 +127,17 @@ class LevelMenuSizer {
 
     settingsButtonPosition() {
         return { x: 1580, y: 10 };
+    }
+
+    labelPosition() {
+        return { x: 800, y: 10 };
+    }
+
+    labelFontSize() {
+        return 80;
+    }
+
+    labelFontColor() {
+        return '#000';
     }
 }

@@ -48,6 +48,7 @@ class LevelMenuScene extends Phaser.Scene {
         // this.placeMainMenuButton();
         this.placeSettingsButton();
         this.placeLevelCards();
+        this.placeLabel();
     }
 
     placeLevelCards() {
@@ -242,4 +243,23 @@ class LevelMenuScene extends Phaser.Scene {
         }
     }
 
+    placeLabel() {
+        let sizer = this.sizer;
+        let add = this.add;
+
+        WebFont.load({
+            'custom': {
+                families: ['RibeyeMarrow']
+            },
+            active: function () {
+                let labelPosition = sizer.labelPosition();
+                let labelFontSize = sizer.labelFontSize();
+                let labelFontColor = sizer.labelFontColor();
+
+                let label = add.text(labelPosition.x, labelPosition.y, 'SHOOT THE WRONGS',
+                    { fontFamily: 'RibeyeMarrow', fontSize: labelFontSize, color: labelFontColor });
+                label.setOrigin(0.5, 0);
+            }
+        });
+    }
 }
