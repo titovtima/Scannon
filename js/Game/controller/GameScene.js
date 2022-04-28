@@ -263,7 +263,7 @@ class GameScene extends Phaser.Scene {
         if (formula.score) formula.score.destroy();
 
         if (formula.scoreForSkip < 0)
-            this.placeBottomLineFormulaSign(formula, 'not_equals_red');
+            this.placeBottomLineFormulaSign(formula, 'not_equals');
         if (formula.scoreForSkip > 0)
             this.placeBottomLineFormulaSign(formula, 'equals');
 
@@ -290,6 +290,10 @@ class GameScene extends Phaser.Scene {
     }
 
     placeBottomLineFormulaSign(formula, imageName) {
+        if (formula.arrow) {
+            formula.arrow.destroy();
+            formula.arrow = undefined;
+        }
         let centerX = this.sizer.bottomLineSign_CenterX();
         let centerY = this.sizer.bottomLineSign_CenterY();
         formula.arrow = this.add.image(centerX, centerY, imageName);
@@ -298,6 +302,7 @@ class GameScene extends Phaser.Scene {
     }
 
     wrongFormulaPassed(formula) {
+        this.placeBottomLineFormulaSign(formula, 'not_equals_red');
         let realSpeed = this.sizer.formulasSpeed;
         this.sizer.formulasSpeed = this.sizer.slowSpeed();
         let mistakeTimeout = this.scene.settings.mistakeTimeout * 1000;
