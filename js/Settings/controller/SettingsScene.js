@@ -17,6 +17,7 @@ class SettingsScene extends Phaser.Scene {
         this.placeBackButton();
         this.placeSpeedSetting();
         this.placeMistakeTimeoutSetting();
+        this.placeShowCorrectRuleSetting();
     }
 
     placeBackButton() {
@@ -169,6 +170,61 @@ class SettingsScene extends Phaser.Scene {
             if (this.settings.mistakeTimeout < 10) {
                 this.settings.mistakeTimeout = (this.settings.mistakeTimeout * 2 + 1) / 2;
                 timeoutValue.text = this.settings.mistakeTimeout + 's';
+            }
+        });
+    }
+
+    placeShowCorrectRuleSetting() {
+        let positionY = this.sizer.showCorrectRuleLineY();
+        let fontSize = this.sizer.fontSize();
+        let fontColor = this.sizer.fontColor();
+
+        let labelLeftX = this.sizer.showCorrectRuleLabelLeftX();
+        let label = this.add.text(labelLeftX, positionY, 'Show Correct Rule',
+            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+        label.setOrigin(0, 0.5);
+
+        let minusButtonX = this.sizer.showCorrectRuleMinusButtonX();
+        let minusButton = this.add.text(minusButtonX, positionY, '-',
+            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+        minusButton.setOrigin(0.5, 0.5);
+        minusButton.setInteractive();
+
+        minusButton.on('pointerover', () => {
+            minusButton.setFontFamily('Ribeye');
+        });
+        minusButton.on('pointerout', () => {
+            minusButton.setFontFamily('RibeyeMarrow');
+        });
+        minusButton.on('pointerup', () => {
+            if (this.settings.showCorrectRule > 0) {
+                this.settings.showCorrectRule = (this.settings.showCorrectRule * 2 - 1) / 2;
+                showCorrectRuleValue.text = this.settings.showCorrectRule + 's';
+            }
+        });
+
+        let showCorrectRuleValueX = this.sizer.showCorrectRuleValueX();
+        let showCorrectRuleValue = this.add.text(showCorrectRuleValueX, positionY,
+            this.settings.showCorrectRule + 's',
+            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+        showCorrectRuleValue.setOrigin(0.5, 0.5);
+
+        let plusButtonX = this.sizer.showCorrectRulePlusButtonX();
+        let plusButton = this.add.text(plusButtonX, positionY, '+',
+            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+        plusButton.setOrigin(0.5, 0.5);
+        plusButton.setInteractive();
+
+        plusButton.on('pointerover', () => {
+            plusButton.setFontFamily('Ribeye');
+        });
+        plusButton.on('pointerout', () => {
+            plusButton.setFontFamily('RibeyeMarrow');
+        });
+        plusButton.on('pointerup', () => {
+            if (this.settings.showCorrectRule < 10) {
+                this.settings.showCorrectRule = (this.settings.showCorrectRule * 2 + 1) / 2;
+                showCorrectRuleValue.text = this.settings.showCorrectRule + 's';
             }
         });
     }

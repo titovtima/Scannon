@@ -320,6 +320,7 @@ class GameScene extends Phaser.Scene {
     addCorrectRule(rule) {
         clearTimeout(this.correctRuleTimer);
         this.destroyCorrectRule();
+        if (this.scene.settings.showCorrectRule === 0) return;
 
         let scale = this.sizer.cardBackground_Scale();
         let correctRuleBackgroundPosition = this.sizer.correctRuleBackgroundPosition();
@@ -336,7 +337,8 @@ class GameScene extends Phaser.Scene {
             rule, { fontFamily: 'serif', color: '#000', fontSize: fontSize });
         this.correctRuleText.setOrigin(0.5, 0.5);
 
-        this.correctRuleTimer = setTimeout(() => { this.destroyCorrectRule(); }, 3000);
+        let timeout = this.scene.settings.showCorrectRule * 1000;
+        this.correctRuleTimer = setTimeout(() => { this.destroyCorrectRule(); }, timeout);
     }
 
     destroyCorrectRule() {
