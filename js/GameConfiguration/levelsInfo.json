@@ -3,7 +3,15 @@
     {
       "index": 1,
       "description": "Basic operations",
-      "autogenerate": true,
+      "autogenerate": false,
+      "sequences": [
+        "/lvl1/seq1.json",
+        "/lvl1/seq2.json",
+        "/lvl1/seq3.json",
+        "/lvl1/seq4.json",
+        "/lvl1/seq5.json",
+        "/lvl1/seq6.json"
+      ],
       "numberOfFormulas": 4,
       "initialExpressions": "/lvl1/init.json",
       "substitutions": "/lvl1/subs.json",
