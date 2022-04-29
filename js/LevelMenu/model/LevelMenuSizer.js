@@ -118,7 +118,7 @@ class LevelMenuSizer {
     }
 
     settingsButton_fontSize() {
-        return 60;
+        return 50;
     }
 
     settingsButton_fontColor() {
@@ -130,7 +130,7 @@ class LevelMenuSizer {
     }
 
     labelPosition() {
-        return { x: 800, y: 10 };
+        return { x: this.backgroundRectangle_HorizontalDistanceBetween(), y: 10 };
     }
 
     labelFontSize() {

@@ -258,7 +258,7 @@ class LevelMenuScene extends Phaser.Scene {
 
                 let label = add.text(labelPosition.x, labelPosition.y, 'SHOOT THE WRONGS',
                     { fontFamily: 'RibeyeMarrow', fontSize: labelFontSize, color: labelFontColor });
-                label.setOrigin(0.5, 0);
+                label.setOrigin(0, 0);
             }
         });
     }
