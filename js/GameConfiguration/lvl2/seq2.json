@@ -7,8 +7,8 @@
     },
     {
       "unicode": "((a∧b)∨(a∧c))∧c",
-      "scoreForHit": -20,
-      "scoreForSkip": 20
+      "scoreForHit": -25,
+      "scoreForSkip": 15
     },
     {
       "unicode": "(a∧b)∨(a∧c)∨c",
@@ -27,8 +27,8 @@
     },
     {
       "unicode": "¬(¬a)∨¬(¬b)∨¬c",
-      "scoreForHit": 20,
-      "scoreForSkip": -20
+      "scoreForHit": 15,
+      "scoreForSkip": -25
     },
     {
       "unicode": "a∨b∨¬c",
@@ -37,6 +37,76 @@
     },
     {
       "unicode": "a∨¬(¬b∧c)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15
+    },
+    {
+      "unicode": "¬(¬a∧¬(¬(¬b∧c)))",
+      "scoreForHit": -25,
+      "scoreForSkip": 15
+    },
+    {
+      "unicode": "a∧¬(¬(¬b∧c))",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "a∧(¬b∧c)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10
+    },
+    {
+      "unicode": "0∧a∧¬b∧c",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "(с∨¬с)∧a∧¬b∧c",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
+    },
+    {
+      "unicode": "((с∧a)∨(¬с∧a))∧¬b∧c",
+      "scoreForHit": -25,
+      "scoreForSkip": 15
+    },
+    {
+      "unicode": "((c∧a)∨(¬c∧a))∧¬c∧b",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "((c∧a∧¬c)∨(¬c∧a∧¬c))∧b",
+      "scoreForHit": -25,
+      "scoreForSkip": 15
+    },
+    {
+      "unicode": "(0∨(¬c∧a∧¬c))∧b",
+      "scoreForHit": -25,
+      "scoreForSkip": 15
+    },
+    {
+      "unicode": "(0∨a)∧b",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
+    },
+    {
+      "unicode": "((b∨¬b)∨a)∧b",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "(b∧(¬b∨a))∧b",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "(b∨¬(b∨¬a))∧b",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "b",
       "scoreForHit": -25,
       "scoreForSkip": 15
     }

@@ -39,6 +39,76 @@
       "unicode": "¬(¬a∧(b∨¬c))",
       "scoreForHit": -20,
       "scoreForSkip": 20
+    },
+    {
+      "unicode": "a∧(b∨¬c)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "a∧(¬b∧c)",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
+    },
+    {
+      "unicode": "a∧¬b∧c",
+      "scoreForHit": -30,
+      "scoreForSkip": 10
+    },
+    {
+      "unicode": "(a∧¬b∧c)∨(a∧¬b∧c)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10
+    },
+    {
+      "unicode": "(a∧¬b∧c)∨(a∧¬b∧c)∨0",
+      "scoreForHit": -30,
+      "scoreForSkip": 10
+    },
+    {
+      "unicode": "(a∧¬b∧c)∨¬(¬a∨¬(¬b)∨¬c)∨0",
+      "scoreForHit": -30,
+      "scoreForSkip": 10
+    },
+    {
+      "unicode": "(a∧¬b∧c)∨(a∨¬(¬b)∨¬c)∨0",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
+    },
+    {
+      "unicode": "(a∧¬b∧c)∨(a∨b∨¬c)∨0",
+      "scoreForHit": -30,
+      "scoreForSkip": 10
+    },
+    {
+      "unicode": "(a∧¬b∧c)∨a∨(b∧¬c)∨0",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
+    },
+    {
+      "unicode": "a∨(¬b∧c)∨a∨(b∧¬c)∨0",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
+    },
+    {
+      "unicode": "a∨a∨(¬b∧c)∨(b∧¬c)∨0",
+      "scoreForHit": -30,
+      "scoreForSkip": 10
+    },
+    {
+      "unicode": "a∨¬(b∧¬c)∨(b∧¬c)∨0",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
+    },
+    {
+      "unicode": "a∨1∨0",
+      "scoreForHit": -25,
+      "scoreForSkip": 15
+    },
+    {
+      "unicode": "0",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
     }
   ]
 }
