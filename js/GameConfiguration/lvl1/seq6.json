@@ -13,7 +13,8 @@
     {
       "unicode": "(a∨¬b)∧1",
       "scoreForHit": -30,
-      "scoreForSkip": 10
+      "scoreForSkip": 10,
+      "substitution": { "left": "c∨¬c", "right": "1" }
     },
     {
       "unicode": "(¬a∨b)∧1",
@@ -23,7 +24,8 @@
     {
       "unicode": "¬a∨b",
       "scoreForHit": -30,
-      "scoreForSkip": 10
+      "scoreForSkip": 10,
+      "substitution": { "left": "d∧1", "right": "d" }
     },
     {
       "unicode": "¬a∨(b∧0)",

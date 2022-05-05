@@ -8,12 +8,14 @@
     {
       "unicode": "b∧(a∨b∨0)",
       "scoreForHit": -30,
-      "scoreForSkip": 10
+      "scoreForSkip": 10,
+      "substitution": { "left": "с", "right": "с∨0" }
     },
     {
       "unicode": "b∧(b∨a∨0)",
       "scoreForHit": -30,
-      "scoreForSkip": 10
+      "scoreForSkip": 10,
+      "substitution": { "left": "a∨b", "right": "b∨a" }
     },
     {
       "unicode": "(b∧b)∨(a∨0)",
@@ -28,7 +30,8 @@
     {
       "unicode": "1",
       "scoreForHit": -30,
-      "scoreForSkip": 10
+      "scoreForSkip": 10,
+      "substitution": { "left": "1∨b", "right": "1" }
     }
   ]
 }

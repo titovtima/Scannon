@@ -8,7 +8,8 @@
     {
       "unicode": "((a∧b)∨(a∧c))∧c",
       "scoreForHit": -25,
-      "scoreForSkip": 15
+      "scoreForSkip": 15,
+      "substitution": { "left": "a∧(b∨c)", "right": "(a∧b)∨(a∧c)" }
     },
     {
       "unicode": "(a∧b)∨(a∧c)∨c",
@@ -18,7 +19,8 @@
     {
       "unicode": "(a∧b)∨c",
       "scoreForHit": -15,
-      "scoreForSkip": 25
+      "scoreForSkip": 25,
+      "substitution": { "left": "(a∧c)∨c", "right": "c" }
     },
     {
       "unicode": "¬(¬a∨¬b)∨¬c",
@@ -33,17 +35,20 @@
     {
       "unicode": "a∨b∨¬c",
       "scoreForHit": -30,
-      "scoreForSkip": 10
+      "scoreForSkip": 10,
+      "substitution": { "left": "¬(¬a)", "right": "a" }
     },
     {
       "unicode": "a∨¬(¬b∧c)",
       "scoreForHit": -25,
-      "scoreForSkip": 15
+      "scoreForSkip": 15,
+      "substitution": { "left": "b∨e", "right": "¬(¬b∧¬e)" }
     },
     {
       "unicode": "¬(¬a∧¬(¬(¬b∧c)))",
       "scoreForHit": -25,
-      "scoreForSkip": 15
+      "scoreForSkip": 15,
+      "substitution": { "left": "a∨e", "right": "¬(¬a∧¬e)" }
     },
     {
       "unicode": "a∧¬(¬(¬b∧c))",
@@ -53,7 +58,8 @@
     {
       "unicode": "a∧(¬b∧c)",
       "scoreForHit": -30,
-      "scoreForSkip": 10
+      "scoreForSkip": 10,
+      "substitution": { "left": "¬(¬d)", "right": "d" }
     },
     {
       "unicode": "0∧a∧¬b∧c",
@@ -68,7 +74,8 @@
     {
       "unicode": "((с∧a)∨(¬с∧a))∧¬b∧c",
       "scoreForHit": -25,
-      "scoreForSkip": 15
+      "scoreForSkip": 15,
+      "substitution": { "left": "(с∨d)∧a", "right": "(с∧a)∨(d∧a)" }
     },
     {
       "unicode": "((c∧a)∨(¬c∧a))∧¬c∧b",
@@ -78,12 +85,14 @@
     {
       "unicode": "((c∧a∧¬c)∨(¬c∧a∧¬c))∧b",
       "scoreForHit": -25,
-      "scoreForSkip": 15
+      "scoreForSkip": 15,
+      "substitution": { "left": "(d∨e)∧f", "right": "(d∧f)∨(e∧f)" }
     },
     {
       "unicode": "(0∨(¬c∧a∧¬c))∧b",
       "scoreForHit": -25,
-      "scoreForSkip": 15
+      "scoreForSkip": 15,
+      "substitution": { "left": "c∧a∧¬c", "right": "0" }
     },
     {
       "unicode": "(0∨a)∧b",
@@ -108,7 +117,8 @@
     {
       "unicode": "b",
       "scoreForHit": -25,
-      "scoreForSkip": 15
+      "scoreForSkip": 15,
+      "substitution": { "left": "(b∨d)∧b", "right": "b" }
     }
   ]
 }
