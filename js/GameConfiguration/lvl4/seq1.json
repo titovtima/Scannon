@@ -8,7 +8,8 @@
     {
       "unicode": "(¬a∨b)∧(a→¬c)",
       "scoreForHit": -25,
-      "scoreForSkip": 15
+      "scoreForSkip": 15,
+      "substitution": { "left": "a→b", "right": "¬a∨b" }
     },
     {
       "unicode": "(¬a∨b)∧(a∨¬c)",
@@ -18,7 +19,8 @@
     {
       "unicode": "((¬a∨b)∧a)∨((¬a∨b)∧¬c)",
       "scoreForHit": -25,
-      "scoreForSkip": 15
+      "scoreForSkip": 15,
+      "substitution": { "left": "d∧(a∨e)", "right": "(d∧a)∨(d∧e)" }
     },
     {
       "unicode": "a∨((¬a∧b)∧¬c)",
@@ -38,12 +40,14 @@
     {
       "unicode": "(a∨(¬a→c))∧(a∨(b→c))",
       "scoreForHit": -25,
-      "scoreForSkip": 15
+      "scoreForSkip": 15,
+      "substitution": { "left": "a∨(d∧e)", "right": "(a∨d)∧(a∨e)" }
     },
     {
       "unicode": "(a∨(a∨c))∧(a∨(b→c))",
       "scoreForHit": -30,
-      "scoreForSkip": 10
+      "scoreForSkip": 10,
+      "substitution": { "left": "d→c", "right": "¬d∨c" }
     },
     {
       "unicode": "a∧(a∨(b→c))",
@@ -53,7 +57,8 @@
     {
       "unicode": "a",
       "scoreForHit": -30,
-      "scoreForSkip": 10
+      "scoreForSkip": 10,
+      "substitution": { "left": "a∧(a∨d)", "right": "a" }
     },
     {
       "unicode": "a→1",
@@ -63,27 +68,26 @@
     {
       "unicode": "a→(0→b)",
       "scoreForHit": -30,
-      "scoreForSkip": 10
+      "scoreForSkip": 10,
+      "substitution": { "left": "1", "right": "0→b" }
     },
     {
       "unicode": "a→((c∧¬c)→b)",
       "scoreForHit": -30,
-      "scoreForSkip": 10
+      "scoreForSkip": 10,
+      "substitution": { "left": "0", "right": "c∧¬c" }
     },
     {
       "unicode": "a→((c→b)∨(¬c→b))",
       "scoreForHit": -25,
-      "scoreForSkip": 15
+      "scoreForSkip": 15,
+      "substitution": { "left": "(c∧d)→b", "right": "(c→b)∨(d→b)" }
     },
     {
       "unicode": "¬(a∧¬((c→b)∨(¬c→b)))",
       "scoreForHit": -25,
-      "scoreForSkip": 15
-    },
-    {
-      "unicode": "¬(a∧¬((c→b)∨(¬c→b)))",
-      "scoreForHit": -25,
-      "scoreForSkip": 15
+      "scoreForSkip": 15,
+      "substitution": { "left": "a→d", "right": "¬(a∧¬d)" }
     },
     {
       "unicode": "¬(a∧((c→b)∧¬(¬c→b)))",
@@ -98,7 +102,8 @@
     {
       "unicode": "¬(a∧(c→(b∧¬b)))",
       "scoreForHit": -25,
-      "scoreForSkip": 15
+      "scoreForSkip": 15,
+      "substitution": { "left": "(c→b)∧(c→d)", "right": "c→(b∧d)" }
     },
     {
       "unicode": "¬(a∧(c→1))",
@@ -113,7 +118,8 @@
     {
       "unicode": "¬(a∧(1→c))",
       "scoreForHit": -30,
-      "scoreForSkip": 10
+      "scoreForSkip": 10,
+      "substitution": { "left": "c", "right": "1→c" }
     },
     {
       "unicode": "¬((a∧1)→c)",
@@ -123,7 +129,8 @@
     {
       "unicode": "¬(a→c)",
       "scoreForHit": -30,
-      "scoreForSkip": 10
+      "scoreForSkip": 10,
+      "substitution": { "left": "a∧1", "right": "a" }
     }
   ]
 }
