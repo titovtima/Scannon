@@ -335,4 +335,20 @@ class GameSizer {
     updateSettings() {
         this.formulasSpeed = this.scene.scene.settings.speed;
     }
+
+    textHintRightX() {
+        return this.pauseButton_RightX() - 10;
+    }
+
+    textHintTopY() {
+        return 150;
+    }
+
+    textHintFontSize() {
+        return 42;
+    }
+
+    textHintFontColor() {
+        return '#000';
+    }
 }

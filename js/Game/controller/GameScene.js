@@ -42,6 +42,7 @@ class GameScene extends Phaser.Scene {
         this.input.on('pointerdown', this.shoot(this));
 
         this.placePauseButton();
+        this.placeTextHint();
 
         // this.keyM = this.input.keyboard.addKey('M');
     }
@@ -725,6 +726,18 @@ class GameScene extends Phaser.Scene {
         this.scoreValueText = this.add.text(valueRightX, valueBottomY, '000000',
             { fontSize: valueFontSize, color: valueColor })
             .setOrigin(1);
+    }
+
+    placeTextHint() {
+        let rightX = this.sizer.textHintRightX();
+        let topY = this.sizer.textHintTopY();
+        let fontSize = this.sizer.textHintFontSize();
+        let fontColor = this.sizer.textHintFontColor();
+
+        let textHint = this.add.text(rightX, topY,
+            "shoot the wrong steps by click",
+            { fontFamily: "RhodiumLibre", fontSize: fontSize, color: fontColor});
+        textHint.setOrigin(1, 0);
     }
 
     formatScore(score) {
