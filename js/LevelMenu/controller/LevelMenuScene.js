@@ -247,6 +247,12 @@ class LevelMenuScene extends Phaser.Scene {
             if (isNaN(this.scene.settings.showCorrectRule))
                 this.scene.settings.showCorrectRule = 3;
         }
+
+        if (this.scene.settings.debug === undefined) {
+            this.scene.settings.debug = parseInt(getUrlParams.get("debug"));
+            if (isNaN(this.scene.settings.debug))
+                this.scene.settings.debug = 0;
+        }
     }
 
     placeLabel() {
