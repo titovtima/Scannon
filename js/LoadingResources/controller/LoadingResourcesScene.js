@@ -4,7 +4,7 @@ class LoadingResourcesScene extends Phaser.Scene {
     }
 
     init(params) {
-        this.levelGenerationInfo = params.levelGenerationInfo;
+        this.levelNumber = params.levelNumber;
         this.formulas = params.formulas;
 
         this.scene.settings = params.settings;
@@ -59,7 +59,7 @@ class LoadingResourcesScene extends Phaser.Scene {
     create() {
         this.scene.start(GC.SCENES.GAME, {
             'formulas': this.formulas,
-            'levelGenerationInfo': this.levelGenerationInfo,
+            'levelNumber': this.levelNumber,
             'settings': this.scene.settings
         });
     }

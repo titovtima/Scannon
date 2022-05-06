@@ -6,14 +6,15 @@ class LevelGenerationScene extends Phaser.Scene {
 
     init(params) {
         this.levelGenerationInfo = params;
-        this.numberOfFormulas = params.numberOfFormulas;
-        this.initialExpressionsPath = params.initialExpressionPath;
-        this.substitutionsPath = params.substitutionsPath;
-        this.rulePacksPath = params.rulePacksPath;
-        this.maxLength = params.maxLength;
-        this.minLength = params.minLength;
-        this.autogenerate = params.autogenerate;
-        this.sequences = params.sequences;
+        this.levelNumber = params.levelNumber;
+        // this.numberOfFormulas = params.numberOfFormulas;
+        // this.initialExpressionsPath = params.initialExpressionPath;
+        // this.substitutionsPath = params.substitutionsPath;
+        // this.rulePacksPath = params.rulePacksPath;
+        // this.maxLength = params.maxLength;
+        // this.minLength = params.minLength;
+        // this.autogenerate = params.autogenerate;
+        // this.sequences = params.sequences;
         this.allRulePacksPath = '/js/GameConfiguration/allRulePacks.json';
         this.badRulePacksPath = '/js/GameConfiguration/badRulePacks.json';
 
@@ -26,12 +27,28 @@ class LevelGenerationScene extends Phaser.Scene {
     }
 
     preload() {
+        this.load.json('levelsInfo', '/js/GameConfiguration/levelsInfo.json');
+        this.levelsInfo = this.cache.json.get('levelsInfo');
+
+        this.autogenerate = this.levelsInfo.levels[this.levelNumber].autogenerate;
+        let basePath = "/js/GameConfiguration";
         if (this.autogenerate) {
+            this.initialExpressionPath = basePath + this.levelsInfo.levels[this.levelNumber].initialExpressions;
+            this.substitutionsPath = basePath + this.levelsInfo.levels[this.levelNumber].substitutions;
+            this.numberOfFormulas = this.levelsInfo.levels[this.levelNumber].numberOfFormulas;
+            this.rulePacksPath = basePath + this.levelsInfo.levels[this.levelNumber].rulePacks;
+            this.maxLength = this.levelsInfo.levels[this.levelNumber].maxLength;
+            this.minLength = this.levelsInfo.levels[this.levelNumber].minLength;
+
             this.load.json(this.initialExpressionsPath, this.initialExpressionsPath);
             this.load.json(this.rulePacksPath, this.rulePacksPath);
             this.load.json(this.allRulePacksPath, this.allRulePacksPath);
             this.load.json(this.badRulePacksPath, this.badRulePacksPath);
         } else {
+            this.sequences = this.levelsInfo.levels[this.levelNumber].sequences;
+            this.sequences = this.sequences.map(function (seq) {
+                return basePath + seq;
+            });
             this.sequence = this.pickRandomElement(this.sequences);
             this.load.json(this.sequence, this.sequence);
         }
@@ -93,7 +110,7 @@ class LevelGenerationScene extends Phaser.Scene {
             if (this.generator.levelComplete()) {
                 this.scene.start(GC.SCENES.LOADING_RESOURCES, {
                     'formulas': this.formulas,
-                    'levelGenerationInfo': this.levelGenerationInfo,
+                    'levelNumber': this.levelNumber,
                     'settings': this.scene.settings
                 });
             }

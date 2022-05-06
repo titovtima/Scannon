@@ -5,7 +5,7 @@ class GameScene extends Phaser.Scene {
     }
 
     init(params) {
-        this.levelGenerationInfo = params.levelGenerationInfo;
+        this.levelNumber= params.levelNumber;
 
         this.formulas = params.formulas;
 
@@ -85,7 +85,7 @@ class GameScene extends Phaser.Scene {
             this.scene.start(GC.SCENES.GAME_COMPETE, {
                 'score': this.score,
                 'sequence': this.formulas,
-                'levelGenerationInfo': this.levelGenerationInfo,
+                'levelNumber': this.levelNumber,
                 'settings': this.scene.settings
             });
         }
@@ -538,7 +538,7 @@ class GameScene extends Phaser.Scene {
 
     showPauseMenu() {
         this.scene.run(GC.SCENES.GAME_PAUSE, {
-            'levelGenerationInfo': this.levelGenerationInfo,
+            'levelNumber': this.levelNumber,
             'settings': this.scene.settings,
             'gameScene': this
         });

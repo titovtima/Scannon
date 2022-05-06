@@ -9,6 +9,7 @@ class GameCompleteScene extends Phaser.Scene {
         this.sequence = params.sequence;
 
         this.scene.settings = params.settings;
+        this.levelNumber = params.levelNumber;
 
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
@@ -114,7 +115,7 @@ class GameCompleteScene extends Phaser.Scene {
     }
 
     restartLevel() {
-        this.scene.start(GC.SCENES.LEVEL_GENERATION, this.levelGenerationInfo);
+        this.scene.start(GC.SCENES.LEVEL_GENERATION, this.levelNumber);
     }
 
     openLevelMenu() {
