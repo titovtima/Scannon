@@ -102,4 +102,15 @@ class LoadingResourcesScene extends Phaser.Scene {
         loadingBarBackground.fillRoundedRect(leftX, topY, width, height, radius);
     }
 
+    placeTextHint() {
+        let centerX = this.sizer.textHintCenterX();
+        let topY = this.sizer.textHintTopY();
+        let fontSize = this.sizer.textHintFontSize();
+        let fontColor = this.sizer.textHintFontColor();
+
+        let textHint = this.add.text(centerX, topY,
+            "shoot the wrong steps by click",
+            { fontFamily: "RhodiumLibre", fontSize: fontSize, color: fontColor});
+        textHint.setOrigin(0.5, 0);
+    }
 }

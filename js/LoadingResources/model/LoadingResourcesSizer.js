@@ -64,4 +64,19 @@ class LoadingResourcesSizer {
         return 15;
     }
 
+    textHintCenterX() {
+        return 800;
+    }
+
+    textHintTopY() {
+        return this.loadingBar_TopY() + this.loadingBar_Height() + 20;
+    }
+
+    textHintFontSize() {
+        return 42;
+    }
+
+    textHintFontColor() {
+        return '#000';
+    }
 }
