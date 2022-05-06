@@ -2,7 +2,7 @@
   "levels": [
     {
       "index": 1,
-      "description": "Basic operations - simple",
+      "description": "And, or, not - simple",
       "autogenerate": false,
       "sequences": [
         "/lvl1/seq1.json",
@@ -15,7 +15,7 @@
     },
     {
       "index": 2,
-      "description": "Basic operations - hard",
+      "description": "And, or, not - hard",
       "autogenerate": false,
       "sequences": [
         "/lvl2/seq1.json",
