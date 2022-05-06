@@ -27,7 +27,7 @@ class LevelGenerationScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.json('levelsInfo', '/js/GameConfiguration/levelsInfo.json');
+        // this.load.json('levelsInfo', '/js/GameConfiguration/levelsInfo.json');
         this.levelsInfo = this.cache.json.get('levelsInfo');
 
         this.autogenerate = this.levelsInfo.levels[this.levelNumber].autogenerate;
@@ -84,7 +84,7 @@ class LevelGenerationScene extends Phaser.Scene {
             this.formulas = this.copy_object(this.cache.json.get(this.sequence)).sequence;
             this.scene.start(GC.SCENES.LOADING_RESOURCES, {
                 'formulas': this.formulas,
-                'levelGenerationInfo': this.levelGenerationInfo,
+                'levelNumber': this.levelNumber,
                 'settings': this.scene.settings
             });
         }

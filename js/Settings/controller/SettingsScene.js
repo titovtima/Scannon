@@ -7,6 +7,7 @@ class SettingsScene extends Phaser.Scene {
         this.gameScene = params.gameScene;
         this.settings = params.settings;
         this.sceneFrom = params.sceneFrom;
+        this.levelNumber = params.levelNumber;
 
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
@@ -51,7 +52,11 @@ class SettingsScene extends Phaser.Scene {
                     this.scene.start(GC.SCENES.LEVEL_MENU, {settings: this.settings});
                     break;
                 case GC.SCENES.GAME_PAUSE:
-                    this.scene.start(GC.SCENES.GAME_PAUSE, {settings: this.settings, gameScene: this.gameScene});
+                    this.scene.start(GC.SCENES.GAME_PAUSE, {
+                        settings: this.settings,
+                        gameScene: this.gameScene,
+                        levelNumber: this.levelNumber
+                    });
                     break;
                 default:
                     this.scene.start(this.sceneFrom, {settings: this.settings});

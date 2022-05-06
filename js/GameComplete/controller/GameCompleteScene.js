@@ -15,6 +15,7 @@ class GameCompleteScene extends Phaser.Scene {
     }
 
     create() {
+        this.levelsInfo = this.cache.json.get('levelsInfo');
         this.sizer = new GameCompleteSizer(this);
 
         this.placeScore();
@@ -60,6 +61,8 @@ class GameCompleteScene extends Phaser.Scene {
         let sizer = this.sizer;
         let scene = this;
         let add = this.add;
+        let score = this.score;
+        let levelsInfo = this.levelsInfo;
 
         WebFont.load({
             'custom': {
@@ -71,40 +74,62 @@ class GameCompleteScene extends Phaser.Scene {
 
                 let menuItems = {};
                 let labels = ['Restart', 'Main Menu'];
+
+                let congratsLabel = "Congratulations! You won the game!";
+
+                if (score > 0) {
+                    if (scene.levelNumber === levelsInfo.levelsNumber - 1) {
+                        labels.unshift(congratsLabel);
+                    } else {
+                        labels.unshift("Next level");
+                    }
+                }
+
                 if (scene.scene.settings.debug !== 0)
                     labels.push('Save sequence')
 
+                let labelIndex = 0;
                 for (let label of labels) {
                     let menuItemCenterX = sizer.menuItem_CenterX();
-                    let menuItemCenterY = sizer.menuItem_CenterY(label);
+                    let menuItemCenterY = sizer.menuItem_CenterY(labelIndex);
+                    let fontFamily = 'RibeyeMarrow'
+                    if (label === congratsLabel)
+                        fontFamily = 'Ribeye'
+
                     let menuItem = add.text(
                         menuItemCenterX, menuItemCenterY,
                         label,
-                        { fontFamily: 'RibeyeMarrow', fontSize: menuItemFontSize, color: menuItemColor }
+                        { fontFamily: fontFamily, fontSize: menuItemFontSize, color: menuItemColor }
                     ).setOrigin(0.5);
 
-                    menuItem.setInteractive();
+                    if (label !== congratsLabel) {
+                        menuItem.setInteractive();
 
-                    menuItem.on('pointerover', () => {
-                        menuItem.setFontFamily('Ribeye');
-                    });
+                        menuItem.on('pointerover', () => {
+                            menuItem.setFontFamily('Ribeye');
+                        });
 
-                    menuItem.on('pointerout', () => {
-                        menuItem.setFontFamily('RibeyeMarrow');
-                    });
+                        menuItem.on('pointerout', () => {
+                            menuItem.setFontFamily('RibeyeMarrow');
+                        });
 
-                    menuItem.on('pointerup', () => {
-                        switch (label) {
-                            case 'Restart':
-                                scene.restartLevel();
-                                break;
-                            case 'Main Menu':
-                                scene.openLevelMenu();
-                                break;
-                            case 'Save sequence':
-                                scene.saveSequence();
-                        }
-                    })
+                        menuItem.on('pointerup', () => {
+                            switch (label) {
+                                case 'Restart':
+                                    scene.restartLevel();
+                                    break;
+                                case 'Main Menu':
+                                    scene.openLevelMenu();
+                                    break;
+                                case 'Next level':
+                                    scene.startNextLevel();
+                                    break;
+                                case 'Save sequence':
+                                    scene.saveSequence();
+                            }
+                        })
+                    }
+                    labelIndex++;
                 }
 
 
@@ -115,7 +140,17 @@ class GameCompleteScene extends Phaser.Scene {
     }
 
     restartLevel() {
-        this.scene.start(GC.SCENES.LEVEL_GENERATION, this.levelNumber);
+        this.scene.start(GC.SCENES.LEVEL_GENERATION, {
+            levelNumber: this.levelNumber,
+            settings: this.scene.settings
+        });
+    }
+
+    startNextLevel() {
+        this.scene.start(GC.SCENES.LEVEL_GENERATION, {
+            levelNumber: this.levelNumber + 1,
+            settings: this.scene.settings
+        });
     }
 
     openLevelMenu() {

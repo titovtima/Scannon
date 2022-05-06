@@ -44,22 +44,23 @@ class GameCompleteSizer {
         return this.screen_CenterX();
     }
 
-    menuItem_CenterY(label) {
+    menuItem_CenterY(index) {
         let firstItemCenterY = 570;
-        let distanceBetween = 100;
+        let distanceBetween = 80;
+        return firstItemCenterY + index * distanceBetween;
 
-        switch (label) {
-            case 'Restart':
-                return firstItemCenterY;
-            case 'Main Menu':
-                return firstItemCenterY + distanceBetween;
-            case 'Save sequence':
-                return firstItemCenterY + 2 * distanceBetween;
-        }
+        // switch (label) {
+        //     case 'Restart':
+        //         return firstItemCenterY;
+        //     case 'Main Menu':
+        //         return firstItemCenterY + distanceBetween;
+        //     case 'Save sequence':
+        //         return firstItemCenterY + 2 * distanceBetween;
+        // }
     }
 
     menuItem_FontSize() {
-        return 70;
+        return 65;
     }
 
     menuItem_Color() {

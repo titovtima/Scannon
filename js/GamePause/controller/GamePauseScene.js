@@ -132,7 +132,10 @@ class GamePauseScene extends Phaser.Scene {
         // Scaler.setResolution(this, 1200, 900);
 
         this.scene.stop(GC.SCENES.GAME);
-        this.scene.start(GC.SCENES.LEVEL_GENERATION, this.levelNumber);
+        this.scene.start(GC.SCENES.LEVEL_GENERATION, {
+            "levelNumber": this.levelNumber,
+            "settings": this.scene.settings
+        });
     }
 
     openMainMenu() {
@@ -148,7 +151,8 @@ class GamePauseScene extends Phaser.Scene {
         this.scene.start(GC.SCENES.SETTINGS, {
             settings: this.scene.settings,
             sceneFrom: GC.SCENES.GAME_PAUSE,
-            gameScene: this.gameScene
+            gameScene: this.gameScene,
+            levelNumber: this.levelNumber
         });
     }
 
