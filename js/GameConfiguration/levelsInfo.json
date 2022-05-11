@@ -39,6 +39,14 @@
       "sequences": [
         "/lvl4/seq1.json"
       ]
+    },
+    {
+      "index": 5,
+      "description": "Xor - simple",
+      "autogenerate": false,
+      "sequences": [
+        "/lvl5/seq1.json"
+      ]
     }
   ]
 }
