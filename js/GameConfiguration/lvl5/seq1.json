@@ -50,6 +50,31 @@
       "unicode": "a∨(¬a∧b)",
       "scoreForHit": -25,
       "scoreForSkip": 15
+    },
+    {
+      "unicode": "a",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "a⊕0",
+      "scoreForHit": -30,
+      "scoreForSkip": 10
+    },
+    {
+      "unicode": "a⊕(b⊕¬b)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "(a⊕b)⊕b",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "a",
+      "scoreForHit": -25,
+      "scoreForSkip": 15
     }
   ]
 }
