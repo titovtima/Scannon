@@ -2,6 +2,14 @@
   "levelsNumber": 4,
   "levels": [
     {
+      "index": 0,
+      "description": "Tutorial",
+      "autogenerate": false,
+      "sequences": [
+        "/lvl0/seq.json"
+      ]
+    },
+    {
       "index": 1,
       "description": "And, or, not - simple",
       "autogenerate": false,

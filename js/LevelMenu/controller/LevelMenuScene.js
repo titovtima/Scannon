@@ -141,7 +141,7 @@ class LevelMenuScene extends Phaser.Scene {
         });
         cardBackground.on('pointerup', () => {
             this.scene.start(GC.SCENES.LEVEL_GENERATION, {
-                "levelNumber": index - 1,
+                "levelNumber": index,
                 "settings": this.scene.settings
             })
             // let autogenerate = this.levelsInfo.levels[index - 1].autogenerate;
@@ -207,7 +207,7 @@ class LevelMenuScene extends Phaser.Scene {
     placeCardDescription(index) {
         let sizer = this.sizer;
         let add = this.add;
-        let description = this.levelsInfo.levels[index - 1].description;
+        let description = this.levelsInfo.levels[index].description;
 
         WebFont.load({
             'custom': {

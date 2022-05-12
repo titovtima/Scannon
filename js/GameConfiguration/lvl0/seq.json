@@ -1,0 +1,41 @@
+{
+  "sequence": [
+    {
+      "unicode": "a∧b",
+      "scoreForHit": 0,
+      "scoreForSkip": 0
+    },
+    {
+      "unicode": "b∧a",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "a∧b", "right": "b∧a" }
+    },
+    {
+      "unicode": "b∨a",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "b∨¬a",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "¬b∨¬a",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "¬(a∧b)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "¬b∨¬a", "right": "¬(a∧b)" }
+    },
+    {
+      "unicode": "a∧b",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    }
+  ]
+}
