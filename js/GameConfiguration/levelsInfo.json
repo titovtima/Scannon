@@ -55,6 +55,10 @@
       "sequences": [
         "/lvl5/seq1.json"
       ]
+    },
+    {
+      "index": 6,
+      "description": "Coming soon!"
     }
   ]
 }
