@@ -237,7 +237,7 @@ class LevelMenuScene extends Phaser.Scene {
         if (this.scene.settings.speed === undefined) {
             this.scene.settings.speed = parseFloat(getUrlParams.get("speed"));
             if (isNaN(this.scene.settings.speed))
-                this.scene.settings.speed = 1;
+                this.scene.settings.speed = 0.7;
         }
 
         if (this.scene.settings.mistakeTimeout === undefined) {
