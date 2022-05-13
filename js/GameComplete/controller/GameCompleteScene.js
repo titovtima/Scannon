@@ -78,7 +78,7 @@ class GameCompleteScene extends Phaser.Scene {
                 let congratsLabel = "Congratulations! You won the game!";
 
                 if (score > 0) {
-                    if (scene.levelNumber === levelsInfo.levelsNumber - 1) {
+                    if (scene.levelNumber === levelsInfo.levelsNumber) {
                         labels.unshift(congratsLabel);
                     } else {
                         labels.unshift("Next level");

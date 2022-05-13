@@ -57,6 +57,7 @@ class LevelMenuScene extends Phaser.Scene {
             this.placeCardIndex(level.index, cardBackground);
             this.placeCardDescription(level.index);
         }
+        this.placeLastCard(this.levelsInfo.levelsNumber + 1);
     }
 
     placeMainMenuButton() {
@@ -132,47 +133,47 @@ class LevelMenuScene extends Phaser.Scene {
         let cardBackground = this.add.image(leftX, topY, 'cardBackground');
         cardBackground.setOrigin(0);
 
-        if (index !== this.levelsInfo.levels.length - 1) {
-            cardBackground.setInteractive();
-            cardBackground.on('pointerover', () => {
-                cardBackground.setTexture('cardBackground_Bordered');
+        // if (index !== this.levelsInfo.levels.length - 1) {
+        cardBackground.setInteractive();
+        cardBackground.on('pointerover', () => {
+            cardBackground.setTexture('cardBackground_Bordered');
+        });
+        cardBackground.on('pointerout', () => {
+            cardBackground.setTexture('cardBackground');
+        });
+        cardBackground.on('pointerup', () => {
+            this.scene.start(GC.SCENES.LEVEL_GENERATION, {
+                "levelNumber": index,
+                "settings": this.scene.settings
             });
-            cardBackground.on('pointerout', () => {
-                cardBackground.setTexture('cardBackground');
-            });
-            cardBackground.on('pointerup', () => {
-                this.scene.start(GC.SCENES.LEVEL_GENERATION, {
-                    "levelNumber": index,
-                    "settings": this.scene.settings
-                });
-                // let autogenerate = this.levelsInfo.levels[index - 1].autogenerate;
-                // let basePath = "/js/GameConfiguration";
-                // let initialExpressionPath = basePath + this.levelsInfo.levels[index - 1].initialExpressions;
-                // let substitutionsPath = basePath + this.levelsInfo.levels[index - 1].substitutions;
-                // let numberOfFormulas = this.levelsInfo.levels[index - 1].numberOfFormulas;
-                // let rulePacksPath = basePath + this.levelsInfo.levels[index - 1].rulePacks;
-                // let maxLength = this.levelsInfo.levels[index - 1].maxLength;
-                // let minLength = this.levelsInfo.levels[index - 1].minLength;
-                // let sequences = this.levelsInfo.levels[index - 1].sequences;
-                // if (sequences !== undefined)
-                //     sequences = sequences.map(function (seq) {
-                //         return basePath + seq;
-                //     });
-                //
-                //
-                // this.scene.start(GC.SCENES.LEVEL_GENERATION, {
-                //     'autogenerate': autogenerate,
-                //     'numberOfFormulas': numberOfFormulas,
-                //     'initialExpressionPath': initialExpressionPath,
-                //     'substitutionsPath': substitutionsPath,
-                //     'rulePacksPath': rulePacksPath,
-                //     'maxLength': maxLength,
-                //     'minLength': minLength,
-                //     'sequences': sequences,
-                //     'settings': this.scene.settings
-                // });
-            });
-        }
+            // let autogenerate = this.levelsInfo.levels[index - 1].autogenerate;
+            // let basePath = "/js/GameConfiguration";
+            // let initialExpressionPath = basePath + this.levelsInfo.levels[index - 1].initialExpressions;
+            // let substitutionsPath = basePath + this.levelsInfo.levels[index - 1].substitutions;
+            // let numberOfFormulas = this.levelsInfo.levels[index - 1].numberOfFormulas;
+            // let rulePacksPath = basePath + this.levelsInfo.levels[index - 1].rulePacks;
+            // let maxLength = this.levelsInfo.levels[index - 1].maxLength;
+            // let minLength = this.levelsInfo.levels[index - 1].minLength;
+            // let sequences = this.levelsInfo.levels[index - 1].sequences;
+            // if (sequences !== undefined)
+            //     sequences = sequences.map(function (seq) {
+            //         return basePath + seq;
+            //     });
+            //
+            //
+            // this.scene.start(GC.SCENES.LEVEL_GENERATION, {
+            //     'autogenerate': autogenerate,
+            //     'numberOfFormulas': numberOfFormulas,
+            //     'initialExpressionPath': initialExpressionPath,
+            //     'substitutionsPath': substitutionsPath,
+            //     'rulePacksPath': rulePacksPath,
+            //     'maxLength': maxLength,
+            //     'minLength': minLength,
+            //     'sequences': sequences,
+            //     'settings': this.scene.settings
+            // });
+        });
+        // }
 
         return cardBackground;
     }
@@ -228,6 +229,33 @@ class LevelMenuScene extends Phaser.Scene {
                 ).setOrigin(0.5);
             }
         })
+    }
+
+    placeLastCard(index) {
+        let leftX = this.sizer.backgroundRectangle_LeftX(index);
+        let topY = this.sizer.backgroundRectangle_TopY(index);
+
+        let cardBackground = this.add.image(leftX, topY, 'cardBackground');
+        cardBackground.setOrigin(0);
+
+        let sizer = this.sizer;
+        let add = this.add;
+
+        WebFont.load({
+            'custom': {
+                families: ['RhodiumLibre']
+            },
+            active: function () {
+                let centerX = leftX + sizer.lastCardTextCenterX();
+                let centerY = topY + sizer.lastCardTextCenterY();
+                let fontSize = sizer.lastCardFontSize();
+                let color = sizer.lastCardFontColor();
+
+                let lastCardDescription = add.text(centerX, centerY, 'Coming soon...',
+                    { fontFamily: 'RhodiumLibre', fontSize: fontSize, color: color });
+                lastCardDescription.setOrigin(0.5);
+            }
+        });
     }
 
     setDefaultSettings() {

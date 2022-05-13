@@ -140,4 +140,20 @@ class LevelMenuSizer {
     labelFontColor() {
         return '#000';
     }
+
+    lastCardTextCenterX() {
+        return this.backgroundRectangle_Width() / 2;
+    }
+
+    lastCardTextCenterY() {
+        return this.backgroundRectangle_Height() / 2;
+    }
+
+    lastCardFontColor() {
+        return '#000';
+    }
+
+    lastCardFontSize() {
+        return 40;
+    }
 }

@@ -1,5 +1,5 @@
 {
-  "levelsNumber": 4,
+  "levelsNumber": 5,
   "levels": [
     {
       "index": 0,
@@ -55,10 +55,6 @@
       "sequences": [
         "/lvl5/seq1.json"
       ]
-    },
-    {
-      "index": 6,
-      "description": "Coming soon!"
     }
   ]
 }
