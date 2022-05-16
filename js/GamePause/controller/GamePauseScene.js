@@ -131,6 +131,7 @@ class GamePauseScene extends Phaser.Scene {
     restartLevel() {
         // Scaler.setResolution(this, 1200, 900);
 
+        this.gameScene.stopBlinking();
         this.scene.stop(GC.SCENES.GAME);
         this.scene.start(GC.SCENES.LEVEL_GENERATION, {
             "levelNumber": this.levelNumber,
@@ -141,6 +142,7 @@ class GamePauseScene extends Phaser.Scene {
     openMainMenu() {
         // Scaler.setResolution(this, 1200, 900);
 
+        this.gameScene.stopBlinking();
         this.scene.stop(GC.SCENES.GAME);
         this.scene.start(GC.SCENES.LEVEL_MENU);
     }

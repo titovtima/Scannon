@@ -353,7 +353,7 @@ class GameScene extends Phaser.Scene {
 
     blinkLastLineFormulaSign(formula, imageName, duration, interval) {
         let times = 0;
-        let blinking = setInterval(() => {
+        this.blinkingInterval = setInterval(() => {
             if (formula.arrow) {
                 formula.arrow.destroy();
                 formula.arrow = undefined;
@@ -361,11 +361,16 @@ class GameScene extends Phaser.Scene {
                 this.placeBottomLineFormulaSign(formula, imageName);
             times++;
         }, interval);
-        setTimeout(() => {
-            clearInterval(blinking);
+        this.blinkingTimeout = setTimeout(() => {
+            clearInterval(this.blinkingInterval);
             if (!formula.arrow)
                 this.placeBottomLineFormulaSign(formula, imageName);
             }, duration);
+    }
+
+    stopBlinking() {
+        clearInterval(this.blinkingInterval);
+        clearTimeout(this.blinkingTimeout);
     }
 
     // blinkFormula(formula, firstBackground, secondBackground, duration, interval) {
