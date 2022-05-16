@@ -8,35 +8,67 @@ class GameCompleteSizer {
         return this.scene.game.renderer.width / 2;
     }
 
-    scoreLabel_CenterX() {
-        return this.screen_CenterX();
+    levelScoreLabel_CenterX() {
+        return 300;
     }
 
-    scoreLabel_CenterY() {
+    levelScoreLabel_CenterY() {
         return 187;
     }
 
-    scoreLabel_FontSize() {
+    levelScoreLabel_FontSize() {
         return 44;
     }
 
-    scoreLabel_Color() {
+    levelScoreLabel_Color() {
         return '#000';
     }
 
-    scoreValue_CenterX() {
-        return this.screen_CenterX();
+    levelScoreValue_CenterX() {
+        return this.levelScoreLabel_CenterX();
     }
 
-    scoreValue_CenterY() {
+    levelScoreValue_CenterY() {
         return 362;
     }
 
-    scoreValue_FontSize() {
+    levelScoreValue_FontSize() {
         return 200;
     }
 
-    scoreValue_Color() {
+    levelScoreValue_Color() {
+        return '#000';
+    }
+
+    totalScoreLabel_CenterX() {
+        return this.screen_CenterX();
+    }
+
+    totalScoreLabel_CenterY() {
+        return 150;
+    }
+
+    totalScoreLabel_FontSize() {
+        return 60;
+    }
+
+    totalScoreLabel_Color() {
+        return '#000';
+    }
+
+    totalScoreValue_CenterX() {
+        return this.totalScoreLabel_CenterX();
+    }
+
+    totalScoreValue_CenterY() {
+        return 400;
+    }
+
+    totalScoreValue_FontSize() {
+        return 250;
+    }
+
+    totalScoreValue_Color() {
         return '#000';
     }
 
@@ -45,7 +77,7 @@ class GameCompleteSizer {
     }
 
     menuItem_CenterY(index) {
-        let firstItemCenterY = 570;
+        let firstItemCenterY = 700;
         let distanceBetween = 80;
         return firstItemCenterY + index * distanceBetween;
 
@@ -59,12 +91,30 @@ class GameCompleteSizer {
         // }
     }
 
+    levelMenuItem_CenterX(label) {
+        return this.levelScoreLabel_CenterX();
+    }
+
+    levelMenuItem_CenterY(index) {
+        let firstItemCenterY = 570;
+        let distanceBetween = 60;
+        return firstItemCenterY + index * distanceBetween;
+    }
+
     menuItem_FontSize() {
         return 65;
     }
 
     menuItem_Color() {
         return '#000';
+    }
+
+    levelMenuItem_FontSize() {
+        return 50;
+    }
+
+    levelMenuItem_Color() {
+        return this.menuItem_Color();
     }
 
 }
