@@ -26,6 +26,8 @@ class GameCompleteScene extends Phaser.Scene {
         this.placeLevelScore();
         this.placeMenu();
         // this.placeLevelMenu();
+
+        this.showScientist();
     }
 
     placeLevelScore() {
@@ -250,6 +252,65 @@ class GameCompleteScene extends Phaser.Scene {
             }
         })
 
+    }
+
+    showScientist() {
+        this.load.json('showScientists', '/res/scientists/showScientists.json');
+
+        this.load.once('complete', () => {
+            let showScientists = this.cache.json.get('showScientists');
+            console.log('showScientists', showScientists);
+
+            for (let rule of showScientists.scoreToScientist) {
+                console.log('total score:', this.totalScore);
+                console.log('rule', rule);
+                if (this.totalScore >= rule.score) {
+                    this.showScientistPortrait(rule.scientist.portrait);
+                    this.placeScientistDescription(rule.scientist.description);
+                    this.placeScientistName(rule.scientist.name);
+                }
+            }
+        }, this);
+        this.load.start();
+    }
+
+    showScientistPortrait(path) {
+        this.load.image(path, path);
+
+        let centerX = this.sizer.scientistPortrait_CenterX();
+        let centerY = this.sizer.scientistPortrait_CenterY();
+        let scale = this.sizer.scientistPortrait_Scale();
+
+        this.load.once('complete', () => {
+            let portrait = this.add.image(centerX, centerY, path).setOrigin(0.5).setScale(scale);
+        }, this);
+        this.load.start();
+    }
+
+    placeScientistDescription(text) {
+        let centerX = this.sizer.scientistDescription_CenterX();
+        let topY = this.sizer.scientistDescription_TopY();
+        let fontColor = this.sizer.scientistDescription_FontColor();
+        let fontSize = this.sizer.scientistDescription_FontSize();
+        let fixedWidth = this.sizer.scientistDescription_FixedWidth();
+
+        let description = this.add.text(centerX, topY, text,
+            {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: fontColor});
+        description.setOrigin(0.5, 0);
+        description.setWordWrapWidth(fixedWidth, 0);
+        description.setAlign('center');
+    }
+
+    placeScientistName(name) {
+        let centerX = this.sizer.scientistName_СenterX();
+        let topY = this.sizer.scientistName_TopY();
+        let fontSize = this.sizer.scientistName_FontSize();
+        let fontColor = this.sizer.scientistName_FontColor();
+
+        let text = "You're like " + name;
+        let scientistName = this.add.text(centerX, topY, text,
+            {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: fontColor});
+        scientistName.setOrigin(0.5, 0);
     }
 
     restartLevel() {

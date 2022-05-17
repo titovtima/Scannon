@@ -45,7 +45,7 @@ class GameCompleteSizer {
     }
 
     totalScoreLabel_CenterY() {
-        return 150;
+        return 220;
     }
 
     totalScoreLabel_FontSize() {
@@ -102,7 +102,7 @@ class GameCompleteSizer {
     }
 
     menuItem_FontSize() {
-        return 60;
+        return 55;
     }
 
     menuItem_Color() {
@@ -115,6 +115,54 @@ class GameCompleteSizer {
 
     levelMenuItem_Color() {
         return this.menuItem_Color();
+    }
+
+    scientistPortrait_CenterX() {
+        return 300;
+    }
+
+    scientistPortrait_CenterY() {
+        return 350;
+    }
+
+    scientistPortrait_Scale() {
+        return 0.3;
+    }
+
+    scientistDescription_CenterX() {
+        return this.scientistPortrait_CenterX();
+    }
+
+    scientistDescription_TopY() {
+        return 600;
+    }
+
+    scientistDescription_FontSize() {
+        return 30;
+    }
+
+    scientistDescription_FontColor() {
+        return '#000';
+    }
+
+    scientistDescription_FixedWidth() {
+        return 450;
+    }
+
+    scientistName_СenterX() {
+        return this.totalScoreValue_CenterX();
+    }
+
+    scientistName_TopY() {
+        return 550;
+    }
+
+    scientistName_FontSize() {
+        return 40;
+    }
+
+    scientistName_FontColor() {
+        return '#000';
     }
 
 }
