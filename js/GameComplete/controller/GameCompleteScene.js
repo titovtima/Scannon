@@ -256,7 +256,7 @@ class GameCompleteScene extends Phaser.Scene {
         this.scene.start(GC.SCENES.LEVEL_GENERATION, {
             levelNumber: this.levelNumber,
             settings: this.scene.settings,
-            totalScore: 0
+            totalScore: this.totalScore - this.score
         });
     }
 
