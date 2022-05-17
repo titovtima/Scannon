@@ -286,7 +286,7 @@ class GameCompleteScene extends Phaser.Scene {
     }
 
     showScientist() {
-        this.load.json('showScientists', '/res/scientists/showScientists.json');
+        this.load.json('showScientists', '/resources/scientists/showScientists.json');
 
         this.load.once('complete', () => {
             let showScientists = this.cache.json.get('showScientists');

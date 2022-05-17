@@ -4,7 +4,7 @@
       "score": 100,
       "scientist": {
         "name": "Aristotle",
-        "portrait": "/res/scientists/portraits/Aristotle.png",
+        "portrait": "/resources/scientists/portraits/Aristotle.png",
         "description": "Aristotle was the first formal logician. He demonstrated the principles of reasoning and employed variables."
       }
     }
