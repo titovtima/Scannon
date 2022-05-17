@@ -21,7 +21,7 @@ class GameCompleteScene extends Phaser.Scene {
         this.placeTotalScore();
         this.placeLevelScore();
         this.placeMenu();
-        this.placeLevelMenu();
+        // this.placeLevelMenu();
     }
 
     placeLevelScore() {
@@ -110,15 +110,20 @@ class GameCompleteScene extends Phaser.Scene {
                 let menuItemColor = sizer.menuItem_Color();
 
                 let menuItems = {};
-                let labels = ['Main Menu'];
+                let labels = ['Restart level', 'Main Menu'];
 
-                let congratsLabel = "Congratulations! You won the game!";
+                let congratsLabel = "You won!";
 
                 if (score > 0) {
                     if (scene.levelNumber === levelsInfo.levelsNumber) {
                         labels.unshift(congratsLabel);
+                    } else {
+                        labels.unshift("Next level");
                     }
                 }
+
+                if (scene.scene.settings.debug !== 0)
+                    labels.push('Save sequence')
 
                 let labelIndex = 0;
                 for (let label of labels) {
@@ -150,6 +155,14 @@ class GameCompleteScene extends Phaser.Scene {
                                 case 'Main Menu':
                                     scene.openLevelMenu();
                                     break;
+                                case 'Restart':
+                                    scene.restartLevel();
+                                    break;
+                                case 'Next level':
+                                    scene.startNextLevel();
+                                    break;
+                                case 'Save sequence':
+                                    scene.saveSequence();
                             }
                         })
                     }
@@ -179,7 +192,7 @@ class GameCompleteScene extends Phaser.Scene {
                 let menuItemColor = sizer.levelMenuItem_Color();
 
                 let menuItems = {};
-                let labels = ['Restart'];
+                let labels = [];
 
                 if (score > 0) {
                     if (scene.levelNumber !== levelsInfo.levelsNumber) {

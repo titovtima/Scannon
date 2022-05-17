@@ -9,7 +9,7 @@ class GameCompleteSizer {
     }
 
     levelScoreLabel_CenterX() {
-        return 300;
+        return this.screen_CenterX();
     }
 
     levelScoreLabel_CenterY() {
@@ -41,7 +41,7 @@ class GameCompleteSizer {
     }
 
     totalScoreLabel_CenterX() {
-        return this.screen_CenterX();
+        return 1300;
     }
 
     totalScoreLabel_CenterY() {
@@ -77,7 +77,7 @@ class GameCompleteSizer {
     }
 
     menuItem_CenterY(index) {
-        let firstItemCenterY = 700;
+        let firstItemCenterY = 550;
         let distanceBetween = 80;
         return firstItemCenterY + index * distanceBetween;
 
@@ -102,7 +102,7 @@ class GameCompleteSizer {
     }
 
     menuItem_FontSize() {
-        return 65;
+        return 60;
     }
 
     menuItem_Color() {
