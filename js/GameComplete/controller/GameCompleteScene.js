@@ -14,6 +14,9 @@ class GameCompleteScene extends Phaser.Scene {
 
         this.scene.settings = params.settings;
         this.levelNumber = params.levelNumber;
+        this.startLevel = params.startLevel;
+        if (this.startLevel === undefined)
+            this.startLevel = this.levelNumber;
 
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
@@ -22,12 +25,40 @@ class GameCompleteScene extends Phaser.Scene {
         this.levelsInfo = this.cache.json.get('levelsInfo');
         this.sizer = new GameCompleteSizer(this);
 
+        this.placeLevelDescription();
+        if (this.startLevel !== this.levelNumber)
+            this.placeTotalLevels();
         this.placeTotalScore();
         this.placeLevelScore();
         this.placeMenu();
         // this.placeLevelMenu();
 
         this.showScientist();
+    }
+
+    placeLevelDescription() {
+        let centerX = this.sizer.levelDescription_CenterX();
+        let topY = this.sizer.levelDescription_TopY();
+        let fontSize = this.sizer.levelDescription_FontSize();
+        let fontColor = this.sizer.levelDescription_FontColor();
+
+        let text = this.levelsInfo.levels[this.levelNumber].index + " - "
+            + this.levelsInfo.levels[this.levelNumber].description;
+        let levelDescription = this.add.text(centerX, topY, text,
+            {fontFamily: 'Ribeye', fontSize: fontSize, color: fontColor});
+        levelDescription.setOrigin(0.5, 0);
+    }
+
+    placeTotalLevels() {
+        let centerX = this.sizer.totalLevels_CenterX();
+        let centerY = this.sizer.totalLevels_CenterY();
+        let fontSize = this.sizer.totalLevels_FontSize();
+        let fontColor = this.sizer.totalLevels_FontColor();
+
+        let text = this.startLevel + " - " + this.levelNumber + " levels";
+        let totalLevels = this.add.text(centerX, centerY, text,
+            {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: fontColor});
+        totalLevels.setOrigin(0.5);
     }
 
     placeLevelScore() {
@@ -302,7 +333,7 @@ class GameCompleteScene extends Phaser.Scene {
     }
 
     placeScientistName(name) {
-        let centerX = this.sizer.scientistName_СenterX();
+        let centerX = this.sizer.scientistName_CenterX();
         let topY = this.sizer.scientistName_TopY();
         let fontSize = this.sizer.scientistName_FontSize();
         let fontColor = this.sizer.scientistName_FontColor();
@@ -317,7 +348,8 @@ class GameCompleteScene extends Phaser.Scene {
         this.scene.start(GC.SCENES.LEVEL_GENERATION, {
             levelNumber: this.levelNumber,
             settings: this.scene.settings,
-            totalScore: this.totalScore - this.score
+            totalScore: this.totalScore - this.score,
+            startLevel: this.startLevel
         });
     }
 
@@ -325,7 +357,8 @@ class GameCompleteScene extends Phaser.Scene {
         this.scene.start(GC.SCENES.LEVEL_GENERATION, {
             levelNumber: this.levelNumber + 1,
             settings: this.scene.settings,
-            totalScore: this.totalScore
+            totalScore: this.totalScore,
+            startLevel: this.startLevel
         });
     }
 

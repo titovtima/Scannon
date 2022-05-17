@@ -7,6 +7,7 @@ class LoadingResourcesScene extends Phaser.Scene {
         this.levelNumber = params.levelNumber;
         this.formulas = params.formulas;
         this.totalScore = params.totalScore;
+        this.startLevel = params.startLevel;
 
         this.scene.settings = params.settings;
 
@@ -62,7 +63,8 @@ class LoadingResourcesScene extends Phaser.Scene {
             'formulas': this.formulas,
             'levelNumber': this.levelNumber,
             'settings': this.scene.settings,
-            'totalScore': this.totalScore
+            'totalScore': this.totalScore,
+            'startLevel': this.startLevel
         });
     }
 

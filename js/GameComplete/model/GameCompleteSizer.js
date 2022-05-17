@@ -8,6 +8,22 @@ class GameCompleteSizer {
         return this.scene.game.renderer.width / 2;
     }
 
+    levelDescription_CenterX() {
+        return 800;
+    }
+
+    levelDescription_TopY() {
+        return 20;
+    }
+
+    levelDescription_FontSize() {
+        return 80;
+    }
+
+    levelDescription_FontColor() {
+        return '#000';
+    }
+
     levelScoreLabel_CenterX() {
         return this.screen_CenterX();
     }
@@ -45,7 +61,7 @@ class GameCompleteSizer {
     }
 
     totalScoreLabel_CenterY() {
-        return 220;
+        return 200;
     }
 
     totalScoreLabel_FontSize() {
@@ -69,6 +85,22 @@ class GameCompleteSizer {
     }
 
     totalScoreValue_Color() {
+        return '#000';
+    }
+
+    totalLevels_CenterX() {
+        return this.totalScoreLabel_CenterX();
+    }
+
+    totalLevels_CenterY() {
+        return 260;
+    }
+
+    totalLevels_FontSize() {
+        return 35;
+    }
+
+    totalLevels_FontColor() {
         return '#000';
     }
 
@@ -122,7 +154,7 @@ class GameCompleteSizer {
     }
 
     scientistPortrait_CenterY() {
-        return 350;
+        return 400;
     }
 
     scientistPortrait_Scale() {
@@ -134,7 +166,7 @@ class GameCompleteSizer {
     }
 
     scientistDescription_TopY() {
-        return 600;
+        return 650;
     }
 
     scientistDescription_FontSize() {
@@ -149,7 +181,7 @@ class GameCompleteSizer {
         return 450;
     }
 
-    scientistName_СenterX() {
+    scientistName_CenterX() {
         return this.totalScoreValue_CenterX();
     }
 

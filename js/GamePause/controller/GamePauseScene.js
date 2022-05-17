@@ -9,6 +9,7 @@ class GamePauseScene extends Phaser.Scene {
         this.levelNumber = params.levelNumber;
         this.gameScene = params.gameScene;
         this.totalScore = this.gameScene.totalScore;
+        this.startLevel = this.gameScene.startLevel;
 
         console.log('Init Pause. Settings:', this.scene.settings);
         this.scene.wake(GC.SCENES.GAME);
@@ -137,7 +138,8 @@ class GamePauseScene extends Phaser.Scene {
         this.scene.start(GC.SCENES.LEVEL_GENERATION, {
             "levelNumber": this.levelNumber,
             "settings": this.scene.settings,
-            "totalScore": this.totalScore
+            "totalScore": this.totalScore,
+            "startLevel": this.startLevel
         });
     }
 
