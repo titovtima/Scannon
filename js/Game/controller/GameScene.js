@@ -5,7 +5,8 @@ class GameScene extends Phaser.Scene {
     }
 
     init(params) {
-        this.levelNumber= params.levelNumber;
+        this.levelNumber = params.levelNumber;
+        this.totalScore = params.totalScore;
 
         this.formulas = params.formulas;
 
@@ -86,7 +87,8 @@ class GameScene extends Phaser.Scene {
                 'score': this.score,
                 'sequence': this.formulas,
                 'levelNumber': this.levelNumber,
-                'settings': this.scene.settings
+                'settings': this.scene.settings,
+                'totalScore': this.totalScore
             });
         }
     }

@@ -7,6 +7,10 @@ class GameCompleteScene extends Phaser.Scene {
     init(params) {
         this.score = params.score;
         this.sequence = params.sequence;
+        this.totalScore = params.totalScore;
+        if (this.totalScore === undefined)
+            this.totalScore = 0;
+        this.totalScore += this.score;
 
         this.scene.settings = params.settings;
         this.levelNumber = params.levelNumber;
@@ -62,7 +66,7 @@ class GameCompleteScene extends Phaser.Scene {
     placeTotalScore() {
         let sizer = this.sizer;
         let add = this.add;
-        let score = this.score;
+        let score = this.totalScore;
 
         WebFont.load({
             'custom': {
@@ -155,7 +159,7 @@ class GameCompleteScene extends Phaser.Scene {
                                 case 'Main Menu':
                                     scene.openLevelMenu();
                                     break;
-                                case 'Restart':
+                                case 'Restart level':
                                     scene.restartLevel();
                                     break;
                                 case 'Next level':
@@ -251,14 +255,16 @@ class GameCompleteScene extends Phaser.Scene {
     restartLevel() {
         this.scene.start(GC.SCENES.LEVEL_GENERATION, {
             levelNumber: this.levelNumber,
-            settings: this.scene.settings
+            settings: this.scene.settings,
+            totalScore: 0
         });
     }
 
     startNextLevel() {
         this.scene.start(GC.SCENES.LEVEL_GENERATION, {
             levelNumber: this.levelNumber + 1,
-            settings: this.scene.settings
+            settings: this.scene.settings,
+            totalScore: this.totalScore
         });
     }
 
