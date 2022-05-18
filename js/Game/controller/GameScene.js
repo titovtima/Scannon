@@ -625,6 +625,7 @@ class GameScene extends Phaser.Scene {
                     let cannonBall = scene.displayingCannonBalls.find(item => item.cannonBall === _cannonBall);
                     if (cannonBall.isHit) return;
 
+                    if (hitFormula.isHit || hitFormula.passed) return;
                     scene.formulaHasBeenHit(hitFormula);
                     cannonBall.isHit = true;
                     _cannonBall.alpha = 0.2;
