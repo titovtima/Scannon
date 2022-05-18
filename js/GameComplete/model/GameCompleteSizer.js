@@ -48,8 +48,10 @@ class GameCompleteSizer {
         return 362;
     }
 
-    levelScoreValue_FontSize() {
-        return 200;
+    levelScoreValue_FontSize(score) {
+        if (score < 100 && score > -10) return 200;
+        if (score < 1000 && score > -100) return 180;
+        return 160;
     }
 
     levelScoreValue_Color() {
@@ -80,8 +82,10 @@ class GameCompleteSizer {
         return 400;
     }
 
-    totalScoreValue_FontSize() {
-        return 250;
+    totalScoreValue_FontSize(score) {
+        if (score < 100 && score > -10) return 250;
+        if (score < 1000 && score > -100) return 230;
+        return 210;
     }
 
     totalScoreValue_Color() {

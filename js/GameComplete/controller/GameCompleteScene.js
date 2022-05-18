@@ -84,7 +84,7 @@ class GameCompleteScene extends Phaser.Scene {
 
                 let scoreValueCenterX = sizer.levelScoreValue_CenterX();
                 let scoreValueCenterY = sizer.levelScoreValue_CenterY();
-                let scoreValueFontSize = sizer.levelScoreValue_FontSize();
+                let scoreValueFontSize = sizer.levelScoreValue_FontSize(score);
                 let scoreValueColor = sizer.levelScoreValue_Color();
                 add.text(
                     scoreValueCenterX,
@@ -119,7 +119,7 @@ class GameCompleteScene extends Phaser.Scene {
 
                 let scoreValueCenterX = sizer.totalScoreValue_CenterX();
                 let scoreValueCenterY = sizer.totalScoreValue_CenterY();
-                let scoreValueFontSize = sizer.totalScoreValue_FontSize();
+                let scoreValueFontSize = sizer.totalScoreValue_FontSize(score);
                 let scoreValueColor = sizer.totalScoreValue_Color();
                 add.text(
                     scoreValueCenterX,
