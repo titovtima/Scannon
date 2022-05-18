@@ -190,7 +190,7 @@ class GameCompleteSizer {
     }
 
     scientistName_FontSize() {
-        return 40;
+        return 60;
     }
 
     scientistName_FontColor() {

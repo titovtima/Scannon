@@ -338,10 +338,11 @@ class GameCompleteScene extends Phaser.Scene {
         let fontSize = this.sizer.scientistName_FontSize();
         let fontColor = this.sizer.scientistName_FontColor();
 
-        let text = "You're like " + name;
+        let text = "You're like\n" + name;
         let scientistName = this.add.text(centerX, topY, text,
             {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: fontColor});
         scientistName.setOrigin(0.5, 0);
+        scientistName.setAlign('center');
     }
 
     restartLevel() {
