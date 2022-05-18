@@ -299,6 +299,7 @@ class GameCompleteScene extends Phaser.Scene {
                     this.showScientistPortrait(rule.scientist.portrait);
                     this.placeScientistDescription(rule.scientist.description);
                     this.placeScientistName(rule.scientist.name);
+                    break;
                 }
             }
         }, this);

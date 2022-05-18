@@ -1,6 +1,14 @@
 {
   "scoreToScientist" : [
     {
+      "score": 200,
+      "scientist": {
+        "name": "Leibniz",
+        "portrait": "/resources/scientists/portraits/Leibniz.png",
+        "description": "Leibniz developed the notion of a logical calculus and formulated the principal properties of logical operators."
+      }
+    },
+    {
       "score": 100,
       "scientist": {
         "name": "Aristotle",
