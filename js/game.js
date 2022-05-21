@@ -25,7 +25,8 @@ const config = {
         autoCenter: Phaser.Scale.CENTER_BOTH,
         width: 1600,
         height: 900
-    }
+    },
+    rootPath: "/scannon/boolean"
 };
 
 let game = new Phaser.Game(config);
