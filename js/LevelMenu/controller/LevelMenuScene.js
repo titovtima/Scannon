@@ -302,7 +302,7 @@ class LevelMenuScene extends Phaser.Scene {
                 let labelFontSize = sizer.labelFontSize();
                 let labelFontColor = sizer.labelFontColor();
 
-                let label = add.text(labelPosition.x, labelPosition.y, 'SHOOT THE WRONGS',
+                let label = add.text(labelPosition.x, labelPosition.y, 'SCANNON - LOGIC',
                     { fontFamily: 'RibeyeMarrow', fontSize: labelFontSize, color: labelFontColor });
                 label.setOrigin(0, 0);
             }
