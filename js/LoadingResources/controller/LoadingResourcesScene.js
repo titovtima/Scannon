@@ -10,8 +10,6 @@ class LoadingResourcesScene extends Phaser.Scene {
         this.startLevel = params.startLevel;
 
         this.scene.settings = params.settings;
-        this.rootPath = params.rootPath;
-        console.log("params.rootPath", params.rootPath);
 
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
