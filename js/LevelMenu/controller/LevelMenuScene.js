@@ -142,6 +142,7 @@ class LevelMenuScene extends Phaser.Scene {
             cardBackground.setTexture('cardBackground');
         });
         cardBackground.on('pointerup', () => {
+            ym(88802966,'reachGoal','openLevel');
             this.scene.start(GC.SCENES.LEVEL_GENERATION, {
                 "levelNumber": index,
                 "settings": this.scene.settings

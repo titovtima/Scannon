@@ -34,6 +34,31 @@ class GameCompleteScene extends Phaser.Scene {
         // this.placeLevelMenu();
 
         this.showScientist();
+
+        switch (this.levelNumber) {
+            case 0:
+                ym(88802966, 'params', { level0Score: this.score });
+                break;
+            case 1:
+                ym(88802966, 'params', { level1Score: this.score });
+                break;
+            case 2:
+                ym(88802966, 'params', { level2Score: this.score });
+                break;
+            case 3:
+                ym(88802966, 'params', { level3Score: this.score });
+                break;
+            case 4:
+                ym(88802966, 'params', { level4Score: this.score });
+                break;
+            case 5:
+                ym(88802966, 'params', { level5Score: this.score });
+                break;
+            case 6:
+                ym(88802966, 'params', { level6Score: this.score });
+                break;
+        }
+
     }
 
     placeLevelDescription() {
