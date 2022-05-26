@@ -311,7 +311,7 @@ class GameCompleteScene extends Phaser.Scene {
     }
 
     showScientist() {
-        this.load.json('showScientists', '/resources/scientists/showScientists.json');
+        this.load.json('showScientists', GC.BASE_PATH + '/resources/scientists/showScientists.json');
 
         this.load.once('complete', () => {
             let showScientists = this.cache.json.get('showScientists');
@@ -332,7 +332,7 @@ class GameCompleteScene extends Phaser.Scene {
     }
 
     showScientistPortrait(path) {
-        this.load.image(path, path);
+        this.load.image(path, GC.BASE_PATH + path);
 
         let centerX = this.sizer.scientistPortrait_CenterX();
         let centerY = this.sizer.scientistPortrait_CenterY();
