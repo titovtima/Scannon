@@ -41,6 +41,7 @@ class LevelMenuScene extends Phaser.Scene {
     }
 
     create() {
+        console.log('base path', GC.BASE_PATH);
         this.levelsInfo = this.cache.json.get('levelsInfo');
 
         this.sizer = new LevelMenuSizer(this);
