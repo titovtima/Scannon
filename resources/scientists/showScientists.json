@@ -15,6 +15,15 @@
         "portrait": "/resources/scientists/portraits/Aristotle.png",
         "description": "Aristotle was the first formal logician. He demonstrated the principles of reasoning and employed variables."
       }
+    },
+    {
+      "score": -1000,
+      "scientist": {
+        "name": "StartLogicIdea",
+        "portrait": "/resources/scientists/portraits/StartLogicIdea.png",
+        "description": "The object of science is the knowledge of laws and relations - George Boole, An Investigation of the Laws of Thought",
+        "descriptionRu": "Объектом науки, правильно так называемой, является знание законов и отношений - Джордж Буль, An Investigation of the Laws of Thought"
+      }
     }
   ]
 }
