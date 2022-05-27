@@ -64,6 +64,48 @@ class GameCompleteScene extends Phaser.Scene {
             case 6:
                 ym(88802966, 'params', { level6Score: this.score });
                 break;
+            case 7:
+                ym(88802966, 'params', { level7Score: this.score });
+                break;
+            case 8:
+                ym(88802966, 'params', { level8Score: this.score });
+                break;
+            case 9:
+                ym(88802966, 'params', { level9Score: this.score });
+                break;
+            case 10:
+                ym(88802966, 'params', { level10Score: this.score });
+                break;
+            case 11:
+                ym(88802966, 'params', { level11Score: this.score });
+                break;
+            case 12:
+                ym(88802966, 'params', { level12Score: this.score });
+                break;
+            case 13:
+                ym(88802966, 'params', { level13Score: this.score });
+                break;
+            case 14:
+                ym(88802966, 'params', { level14Score: this.score });
+                break;
+            case 15:
+                ym(88802966, 'params', { level15Score: this.score });
+                break;
+            case 16:
+                ym(88802966, 'params', { level16Score: this.score });
+                break;
+            case 17:
+                ym(88802966, 'params', { level17Score: this.score });
+                break;
+            case 18:
+                ym(88802966, 'params', { level18Score: this.score });
+                break;
+            case 19:
+                ym(88802966, 'params', { level19Score: this.score });
+                break;
+            case 20:
+                ym(88802966, 'params', { level20Score: this.score });
+                break;
         }
 
     }
