@@ -24,5 +24,5 @@ const GC = {
     COLORS: {
         BACKGROUND: 0xffcc66
     },
-    BASE_PATH: ""
+    BASE_PATH: "/scannon/boolean"
 };
