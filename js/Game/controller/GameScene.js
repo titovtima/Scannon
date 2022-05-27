@@ -20,6 +20,8 @@ class GameScene extends Phaser.Scene {
 
         this.scene.settings = params.settings;
 
+        this.hitFormulasNumber = 0;
+
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.GAME.width, GC.RESOLUTIONS.MEDIUM.GAME.height);
     }
 
@@ -554,6 +556,7 @@ class GameScene extends Phaser.Scene {
     }
 
     shoot(scene) {
+        ym(88802966,'reachGoal','firstShoot');
         return () => {
             let pointer = this.input.activePointer;
             let pauseButtonLeftX = scene.sizer.pauseButton_RightX() - 110;
@@ -670,6 +673,10 @@ class GameScene extends Phaser.Scene {
     }
 
     formulaHasBeenHit(formula) {
+        this.hitFormulasNumber++;
+        if (this.hitFormulasNumber >= 3)
+            ym(88802966,'reachGoal','threeFormulasHit');
+
         formula.isHit = true;
 
         formula.background.setTexture('cardBackground_Hit');

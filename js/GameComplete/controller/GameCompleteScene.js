@@ -22,6 +22,13 @@ class GameCompleteScene extends Phaser.Scene {
     }
 
     create() {
+        ym(88802966,'reachGoal','finishLevel');
+        if (this.score > 0) {
+            ym(88802966,'reachGoal','getPositiveScore');
+        }
+        if (this.totalScore >= 200)
+            ym(88802966,'reachGoal','totalScore200');
+
         this.levelsInfo = this.cache.json.get('levelsInfo');
         this.sizer = new GameCompleteSizer(this);
 
@@ -381,6 +388,7 @@ class GameCompleteScene extends Phaser.Scene {
     }
 
     startNextLevel() {
+        ym(88802966,'reachGoal','pushNextLevelButton');
         this.scene.start(GC.SCENES.LEVEL_GENERATION, {
             levelNumber: this.levelNumber + 1,
             settings: this.scene.settings,
