@@ -17,8 +17,8 @@ class LevelGenerationScene extends Phaser.Scene {
         // this.minLength = params.minLength;
         // this.autogenerate = params.autogenerate;
         // this.sequences = params.sequences;
-        this.allRulePacksPath = '/js/GameConfiguration/allRulePacks.json';
-        this.badRulePacksPath = '/js/GameConfiguration/badRulePacks.json';
+        this.allRulePacksPath = GC.BASE_PATH + '/js/GameConfiguration/allRulePacks.json';
+        this.badRulePacksPath = GC.BASE_PATH + '/js/GameConfiguration/badRulePacks.json';
 
         this.generator = undefined;
         this.formulas = [];
@@ -29,11 +29,10 @@ class LevelGenerationScene extends Phaser.Scene {
     }
 
     preload() {
-        // this.load.json('levelsInfo', '/js/GameConfiguration/levelsInfo.json');
         this.levelsInfo = this.cache.json.get('levelsInfo');
 
         this.autogenerate = this.levelsInfo.levels[this.levelNumber].autogenerate;
-        let basePath = "/js/GameConfiguration";
+        let basePath = GC.BASE_PATH + "/js/GameConfiguration";
         if (this.autogenerate) {
             this.initialExpressionPath = basePath + this.levelsInfo.levels[this.levelNumber].initialExpressions;
             this.substitutionsPath = basePath + this.levelsInfo.levels[this.levelNumber].substitutions;
