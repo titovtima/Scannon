@@ -3,6 +3,7 @@ var app = express()
 var server = require('http').Server(app)
 
 app.use("/js", express.static('./js/'))
+app.use("/resources", express.static('./resources/'))
 app.use("/fonts", express.static('./fonts/'))
 app.use(express.static(__dirname + '/public'));
 
