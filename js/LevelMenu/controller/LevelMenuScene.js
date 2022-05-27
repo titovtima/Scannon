@@ -11,19 +11,19 @@ class LevelMenuScene extends Phaser.Scene {
 
         let sheet = element.sheet;
 
-        let ribeyeMarrowStyles = '@font-face { font-family: "RibeyeMarrow"; src: url("/fonts/RibeyeMarrow-Regular.ttf") format("truetype"); }\n';
+        let ribeyeMarrowStyles = '@font-face { font-family: "RibeyeMarrow"; src: url("' + GC.BASE_PATH + '/fonts/RibeyeMarrow-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(ribeyeMarrowStyles, 0);
 
-        let ribeyeStyles = '@font-face { font-family: "Ribeye"; src: url("/fonts/Ribeye-Regular.ttf") format("truetype"); }\n';
+        let ribeyeStyles = '@font-face { font-family: "Ribeye"; src: url("' + GC.BASE_PATH + '/fonts/Ribeye-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(ribeyeStyles, 0);
 
-        let rhodiumLibreStyles = '@font-face { font-family: "RhodiumLibre"; src: url("/fonts/RhodiumLibre-Regular.ttf") format("truetype"); }\n';
+        let rhodiumLibreStyles = '@font-face { font-family: "RhodiumLibre"; src: url("' + GC.BASE_PATH + '/fonts/RhodiumLibre-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(rhodiumLibreStyles, 0);
 
-        let ptMonoStyles = '@font-face { font-family: "PTMono"; src: url("/fonts/PTMono-Regular.ttf") format("truetype"); }\n';
+        let ptMonoStyles = '@font-face { font-family: "PTMono"; src: url("' + GC.BASE_PATH + '/fonts/PTMono-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(ptMonoStyles, 0);
 
-        let poetsenOneStyles = '@font-face { font-family: "PoetsenOne"; src: url("/fonts/PoetsenOne-Regular.ttf") format("truetype"); }\n';
+        let poetsenOneStyles = '@font-face { font-family: "PoetsenOne"; src: url("' + GC.BASE_PATH + '/fonts/PoetsenOne-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(poetsenOneStyles, 0);
 
         this.scene.settings = params.settings;
