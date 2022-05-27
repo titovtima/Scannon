@@ -372,7 +372,9 @@ class GameCompleteScene extends Phaser.Scene {
                 if (this.totalScore >= rule.score) {
                     this.showScientistPortrait(rule.scientist.portrait);
                     this.placeScientistDescription(rule.scientist.description);
-                    this.placeScientistName(rule.scientist.name);
+                    if (!rule.scientist.name.startsWith("Start")) {
+                        this.placeScientistName(rule.scientist.name);
+                    }
                     break;
                 }
             }
