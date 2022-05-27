@@ -556,7 +556,6 @@ class GameScene extends Phaser.Scene {
     }
 
     shoot(scene) {
-        ym(88802966,'reachGoal','firstShoot');
         return () => {
             let pointer = this.input.activePointer;
             let pauseButtonLeftX = scene.sizer.pauseButton_RightX() - 110;
@@ -564,6 +563,7 @@ class GameScene extends Phaser.Scene {
             if (pointer.x > pauseButtonLeftX && pointer.y < pauseButtonBottomY)
                 return;
 
+            ym(88802966,'reachGoal','firstShoot');
             let shootDirection = scene.calculateShootDirection();
             let speed = scene.sizer.cannonBall_Speed();
 
