@@ -572,6 +572,7 @@ class GameScene extends Phaser.Scene {
 
     shoot(scene) {
         return () => {
+            scene.focusCannonOnPointer();
             let pointer = this.input.activePointer;
             let pauseButtonLeftX = scene.sizer.pauseButton_RightX() - 110;
             let pauseButtonBottomY = scene.sizer.pauseButton_TopY() + 110;
