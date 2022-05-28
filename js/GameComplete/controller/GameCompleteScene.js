@@ -42,6 +42,10 @@ class GameCompleteScene extends Phaser.Scene {
 
         let jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_score": ${this.score}}`;
         ym(88802966, 'params', JSON.parse(jsonString));
+        if (this.score > 0) {
+            jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_success": ${this.score}}`;
+            ym(88802966, 'params', JSON.parse(jsonString));
+        }
     }
 
     placeLevelDescription() {
