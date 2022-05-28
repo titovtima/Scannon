@@ -206,7 +206,8 @@ class GameScene extends Phaser.Scene {
             'scoreForHit': scoreForHit,
             'scoreForSkip': scoreForSkip,
             'substitution': unicodeSubstitution,
-            'isHit': false
+            'isHit': false,
+            'unicode': this.formulas[index].unicode
         };
 
         if (0 === index) {
@@ -328,6 +329,9 @@ class GameScene extends Phaser.Scene {
         let interval = this.sizer.blinkingInterval();
         this.blinkLastLineFormulaSign(formula, 'not_equals_red', mistakeTimeout, interval);
         // this.blinkFormula(formula, 'cardBackground_Regular', 'cardBackground_Red', 5000, interval);
+
+        let jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_wrongPass": "${formula.unicode}"}`;
+        ym(88802966, 'params', JSON.parse(jsonString));
     }
 
     correctFormulaPassed(formula) {
@@ -710,6 +714,9 @@ class GameScene extends Phaser.Scene {
 
             if (formula.substitution !== undefined)
                 this.addCorrectRule(formula.substitution);
+
+            let jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_wrongHit": "${formula.unicode}"}`;
+            ym(88802966, 'params', JSON.parse(jsonString));
         }
 
         if (formula.arrow && 0 < formula.scoreForHit) {
