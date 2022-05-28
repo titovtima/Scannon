@@ -1,5 +1,5 @@
 const gameCode = "boolean";
-const basePath = "/scannon/" + gameCode;
+const basePath = "";//"/scannon/" + gameCode;
 
 const GC = {
     SCENES: {
