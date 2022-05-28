@@ -304,6 +304,10 @@ class LevelMenuScene extends Phaser.Scene {
                 let labelFontSize = sizer.labelFontSize();
                 let labelFontColor = sizer.labelFontColor();
 
+                if (GC.GAME_NAME.length > GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) {
+                    labelFontSize = (labelFontSize * GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) / GC.GAME_NAME.length;
+                }
+
                 let label = add.text(labelPosition.x, labelPosition.y, GC.GAME_NAME,
                     { fontFamily: 'RibeyeMarrow', fontSize: labelFontSize, color: labelFontColor });
                 label.setOrigin(0, 0);

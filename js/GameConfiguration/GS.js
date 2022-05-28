@@ -29,6 +29,7 @@ const GC = {
     },
     GAME_CODE: gameCode,
     GAME_NAME: gameName,
+    GAME_NAME_MAX_NON_SCALABLE_LENGTH: 24,
     BASE_PATH: basePath,
     RESOURCES_PATH: basePath + "/resources/" + gameCode
 };
