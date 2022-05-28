@@ -40,7 +40,7 @@ class GameCompleteScene extends Phaser.Scene {
 
         this.showScientist();
 
-        let jsonString = `{"level${this.levelNumber}Score": ${this.score}}`;
+        let jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_score": ${this.score}}`;
         ym(88802966, 'params', JSON.parse(jsonString));
     }
 
@@ -174,9 +174,9 @@ class GameCompleteScene extends Phaser.Scene {
                 for (let label of labels) {
                     let menuItemCenterX = sizer.menuItem_CenterX();
                     let menuItemCenterY = sizer.menuItem_CenterY(labelIndex);
-                    let fontFamily = 'RibeyeMarrow'
+                    let fontFamily = 'RibeyeMarrow';
                     if (label === congratsLabel)
-                        fontFamily = 'Ribeye'
+                        fontFamily = 'Ribeye';
 
                     let menuItem = add.text(
                         menuItemCenterX, menuItemCenterY,
@@ -245,14 +245,15 @@ class GameCompleteScene extends Phaser.Scene {
                     }
                 }
 
-                if (scene.scene.settings.debug !== 0)
-                    labels.push('Save sequence')
+                if (scene.scene.settings.debug !== 0) {
+                    labels.push('Save sequence');
+                }
 
                 let labelIndex = 0;
                 for (let label of labels) {
                     let menuItemCenterX = sizer.levelMenuItem_CenterX();
                     let menuItemCenterY = sizer.levelMenuItem_CenterY(labelIndex);
-                    let fontFamily = 'RibeyeMarrow'
+                    let fontFamily = 'RibeyeMarrow';
 
                     let menuItem = add.text(
                         menuItemCenterX, menuItemCenterY,
@@ -281,7 +282,7 @@ class GameCompleteScene extends Phaser.Scene {
                             case 'Save sequence':
                                 scene.saveSequence();
                         }
-                    })
+                    });
 
                     labelIndex++;
                 }
@@ -294,7 +295,7 @@ class GameCompleteScene extends Phaser.Scene {
     }
 
     showScientist() {
-        this.load.json('showScientists', GC.BASE_PATH + '/resources/scientists/showScientists.json');
+        this.load.json('showScientists', GC.RESOURCES_PATH + '/scientists/showScientists.json');
 
         this.load.once('complete', () => {
             let showScientists = this.cache.json.get('showScientists');
@@ -317,7 +318,7 @@ class GameCompleteScene extends Phaser.Scene {
     }
 
     showScientistPortrait(path) {
-        this.load.image(path, GC.BASE_PATH + path);
+        this.load.image(path, GC.RESOURCES_PATH + path);
 
         let centerX = this.sizer.scientistPortrait_CenterX();
         let centerY = this.sizer.scientistPortrait_CenterY();

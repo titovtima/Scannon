@@ -35,13 +35,13 @@ class LevelMenuScene extends Phaser.Scene {
     preload() {
         this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
 
-        this.load.json('levelsInfo', GC.BASE_PATH + '/js/GameConfiguration/levelsInfo.json');
-        this.load.image('cardBackground', GC.BASE_PATH + '/js/LevelMenu/src/cardBackground.png');
-        this.load.image('cardBackground_Bordered', GC.BASE_PATH + '/js/LevelMenu/src/cardBackground_Bordered.png');
+        this.load.json('levelsInfo', GC.RESOURCES_PATH + '/levelsInfo.json');
+        this.load.image('cardBackground', GC.RESOURCES_PATH + '/assets/cardBackground.png');
+        this.load.image('cardBackground_Bordered', GC.RESOURCES_PATH + '/assets/cardBackground_Bordered.png');
     }
 
     create() {
-        console.log('base path', GC.BASE_PATH);
+        console.log('resources path', GC.RESOURCES_PATH);
         this.levelsInfo = this.cache.json.get('levelsInfo');
 
         this.sizer = new LevelMenuSizer(this);

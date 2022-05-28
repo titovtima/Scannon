@@ -4,7 +4,7 @@
       "score": 200,
       "scientist": {
         "name": "Leibniz",
-        "portrait": "/resources/scientists/portraits/Leibniz.png",
+        "portrait": "/scientists/portraits/Leibniz.png",
         "description": "Leibniz developed the notion of a logical calculus and formulated the principal properties of logical operators."
       }
     },
@@ -12,7 +12,7 @@
       "score": 100,
       "scientist": {
         "name": "Aristotle",
-        "portrait": "/resources/scientists/portraits/Aristotle.png",
+        "portrait": "/scientists/portraits/Aristotle.png",
         "description": "Aristotle was the first formal logician. He demonstrated the principles of reasoning and employed variables."
       }
     },
@@ -20,7 +20,7 @@
       "score": -1000,
       "scientist": {
         "name": "StartLogicIdea",
-        "portrait": "/resources/scientists/portraits/StartLogicIdea.png",
+        "portrait": "/scientists/portraits/StartLogicIdea.png",
         "description": "The object of science is the knowledge of laws and relations - George Boole, An Investigation of the Laws of Thought",
         "descriptionRu": "Объектом науки, правильно так называемой, является знание законов и отношений - Джордж Буль, An Investigation of the Laws of Thought"
       }

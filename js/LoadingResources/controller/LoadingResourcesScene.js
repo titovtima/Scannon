@@ -16,24 +16,24 @@ class LoadingResourcesScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('cannon', GC.BASE_PATH + '/js/LoadingResources/assets/cannon.png');
-        this.load.image('cannonBall', GC.BASE_PATH + '/js/LoadingResources/assets/cannonBall.png');
-        this.load.image('cardBackground_Regular', GC.BASE_PATH + '/js/LoadingResources/assets/cardBackground_NoShadow.png');
-        this.load.image('cardBackground_Hit', GC.BASE_PATH + '/js/LoadingResources/assets/cardBackground_Hit.png');
-        this.load.image('cardBackground_Red', GC.BASE_PATH + '/js/LoadingResources/assets/cardBackground_Red.png');
-        this.load.image('cardBackground_Wall', GC.BASE_PATH + '/js/LoadingResources/assets/cardBackground_Wall.png');
-        this.load.image('cardBackground_Green', GC.BASE_PATH + '/js/LoadingResources/assets/cardBackground_Green.png');
+        this.load.image('cannon', GC.RESOURCES_PATH + '/assets/cannon.png');
+        this.load.image('cannonBall', GC.RESOURCES_PATH + '/assets/cannonBall.png');
+        this.load.image('cardBackground_Regular', GC.RESOURCES_PATH + '/assets/cardBackground_NoShadow.png');
+        this.load.image('cardBackground_Hit', GC.RESOURCES_PATH + '/assets/cardBackground_Hit.png');
+        this.load.image('cardBackground_Red', GC.RESOURCES_PATH + '/assets/cardBackground_Red.png');
+        this.load.image('cardBackground_Wall', GC.RESOURCES_PATH + '/assets/cardBackground_Wall.png');
+        this.load.image('cardBackground_Green', GC.RESOURCES_PATH + '/assets/cardBackground_Green.png');
 
-        this.load.image('arrow_question', GC.BASE_PATH + '/js/LoadingResources/assets/arrow_question.png');
-        this.load.image('equals', GC.BASE_PATH + '/js/LoadingResources/assets/equals.png');
-        this.load.image('not_equals', GC.BASE_PATH + '/js/LoadingResources/assets/not_equals.png');
-        this.load.image('not_equals_red', GC.BASE_PATH + '/js/LoadingResources/assets/not_equals_red.png');
+        this.load.image('arrow_question', GC.RESOURCES_PATH + '/assets/arrow_question.png');
+        this.load.image('equals', GC.RESOURCES_PATH + '/assets/equals.png');
+        this.load.image('not_equals', GC.RESOURCES_PATH + '/assets/not_equals.png');
+        this.load.image('not_equals_red', GC.RESOURCES_PATH + '/assets/not_equals_red.png');
 
-        this.load.image('pauseButton', GC.BASE_PATH + '/js/LoadingResources/assets/pauseButton.png');
-        this.load.image('pauseMenuBackground', GC.BASE_PATH + '/js/LoadingResources/assets/pauseMenuBackground.png');
+        this.load.image('pauseButton', GC.RESOURCES_PATH + '/assets/pauseButton.png');
+        this.load.image('pauseMenuBackground', GC.RESOURCES_PATH + '/assets/pauseMenuBackground.png');
 
-        this.load.image('wall_right', GC.BASE_PATH + '/js/LoadingResources/assets/wall_right.png');
-        this.load.image('wall_left', GC.BASE_PATH + '/js/LoadingResources/assets/wall_left.png');
+        this.load.image('wall_right', GC.RESOURCES_PATH + '/assets/wall_right.png');
+        this.load.image('wall_left', GC.RESOURCES_PATH + '/assets/wall_left.png');
 
         this.sizer = new LoadingResourcesSizer(this);
 

@@ -1,6 +1,8 @@
+const gameCode = "boolean";
+const basePath = "/scannon/" + gameCode;
+
 const GC = {
     SCENES: {
-        // MAIN_MENU: 'MAIN_MENU_SCENE',
         LEVEL_MENU: 'LEVEL_MENU_SCENE',
         LEVEL_GENERATION: 'LEVEL_GENERATION_SCENE',
         LOADING_RESOURCES: 'LOADING_RESOURCES_SCENE',
@@ -24,5 +26,7 @@ const GC = {
     COLORS: {
         BACKGROUND: 0xffcc66
     },
-    BASE_PATH: ""
+    GAME_CODE: gameCode,
+    BASE_PATH: basePath,
+    RESOURCES_PATH: basePath + "/resources/" + gameCode
 };

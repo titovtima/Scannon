@@ -18,8 +18,8 @@ class LevelGenerationScene extends Phaser.Scene {
         // this.minLength = params.minLength;
         // this.autogenerate = params.autogenerate;
         // this.sequences = params.sequences;
-        this.allRulePacksPath = GC.BASE_PATH + '/js/GameConfiguration/allRulePacks.json';
-        this.badRulePacksPath = GC.BASE_PATH + '/js/GameConfiguration/badRulePacks.json';
+        this.allRulePacksPath = GC.RESOURCES_PATH + '/allRulePacks.json';
+        this.badRulePacksPath = GC.RESOURCES_PATH + '/badRulePacks.json';
 
         this.generator = undefined;
         this.formulas = [];
@@ -33,7 +33,7 @@ class LevelGenerationScene extends Phaser.Scene {
         this.levelsInfo = this.cache.json.get('levelsInfo');
 
         this.autogenerate = this.levelsInfo.levels[this.levelNumber].autogenerate;
-        let basePath = GC.BASE_PATH + "/js/GameConfiguration";
+        let basePath = GC.RESOURCES_PATH;
         if (this.autogenerate) {
             this.initialExpressionPath = basePath + this.levelsInfo.levels[this.levelNumber].initialExpressions;
             this.substitutionsPath = basePath + this.levelsInfo.levels[this.levelNumber].substitutions;
@@ -109,7 +109,7 @@ class LevelGenerationScene extends Phaser.Scene {
     update() {
         if (this.needRestart) return;
         if (!this.autogenerate || this.generator === undefined) {
-            this.needRestart = true
+            this.needRestart = true;
             this.scene.restart();
         } else {
             if (this.generator.levelComplete()) {
@@ -182,14 +182,14 @@ class LevelGenerationScene extends Phaser.Scene {
 
     copy_object(obj) {
         if (typeof obj != "object")
-            return obj
+            return obj;
         if (Array.isArray(obj)) {
-            let new_arr = []
+            let new_arr = [];
             for (let item of obj)
-                new_arr.push(this.copy_object(item))
+                new_arr.push(this.copy_object(item));
             return new_arr
         }
-        let new_obj = {}
+        let new_obj = {};
         for (let key in obj) {
             // console.log(key, obj[key])
             new_obj[key] = this.copy_object(obj[key])
