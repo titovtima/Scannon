@@ -139,7 +139,8 @@ class GamePauseScene extends Phaser.Scene {
             "levelNumber": this.levelNumber,
             "settings": this.scene.settings,
             "totalScore": this.totalScore,
-            "startLevel": this.startLevel
+            "startLevel": this.startLevel,
+            "isRestarted": true
         });
     }
 

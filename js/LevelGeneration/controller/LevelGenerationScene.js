@@ -9,6 +9,7 @@ class LevelGenerationScene extends Phaser.Scene {
         this.levelNumber = params.levelNumber;
         this.totalScore = params.totalScore;
         this.startLevel = params.startLevel;
+        this.isRestarted = params.isRestarted;
         // this.numberOfFormulas = params.numberOfFormulas;
         // this.initialExpressionsPath = params.initialExpressionPath;
         // this.substitutionsPath = params.substitutionsPath;
@@ -88,7 +89,8 @@ class LevelGenerationScene extends Phaser.Scene {
                 'levelNumber': this.levelNumber,
                 'settings': this.scene.settings,
                 'totalScore': this.totalScore,
-                'startLevel': this.startLevel
+                'startLevel': this.startLevel,
+                'isRestarted': this.isRestarted
             });
         }
 
@@ -116,7 +118,8 @@ class LevelGenerationScene extends Phaser.Scene {
                     'levelNumber': this.levelNumber,
                     'settings': this.scene.settings,
                     'totalScore': this.totalScore,
-                    'startLevel': this.startLevel
+                    'startLevel': this.startLevel,
+                    'isRestarted': this.isRestarted
                 });
             }
 

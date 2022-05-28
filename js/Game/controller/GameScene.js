@@ -8,6 +8,11 @@ class GameScene extends Phaser.Scene {
         this.levelNumber = params.levelNumber;
         this.totalScore = params.totalScore;
         this.startLevel = params.startLevel;
+        if (this.startLevel === undefined)
+            this.startLevel = this.levelNumber;
+
+        this.isRestarted = params.isRestarted;
+        console.log('isRestarted', this.isRestarted);
 
         this.formulas = params.formulas;
 
@@ -27,6 +32,12 @@ class GameScene extends Phaser.Scene {
 
     create() {
         this.sizer = new GameSizer(this);
+
+        if (!this.isRestarted) {
+            console.log('not restarted');
+            let jsonString = `{"level${this.levelNumber}Start": ${this.startLevel}}`;
+            ym(88802966, 'params', JSON.parse(jsonString));
+        }
 
         // this.events.on('resume', (params) => {
         //     this.scene.settings = params.settings;
