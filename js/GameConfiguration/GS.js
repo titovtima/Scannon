@@ -1,4 +1,5 @@
-const gameCode = "boolean"; //"short_multiplication"
+const gameCode = "short_multiplication"; //"boolean"; //"short_multiplication"
+const gameName = "SCANNON - Short Multiplication"; //'SCANNON - LOGIC'
 const basePath = "/scannon/" + gameCode;
 
 const GC = {
@@ -27,6 +28,7 @@ const GC = {
         BACKGROUND: 0xffcc66
     },
     GAME_CODE: gameCode,
+    GAME_NAME: gameName,
     BASE_PATH: basePath,
     RESOURCES_PATH: basePath + "/resources/" + gameCode
 };
