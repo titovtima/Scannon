@@ -1,5 +1,5 @@
-const gameCode = "boolean";
-const basePath = "";//"/scannon/" + gameCode;
+const gameCode = "boolean"; //"short_multiplication"
+const basePath = "/scannon/" + gameCode;
 
 const GC = {
     SCENES: {
