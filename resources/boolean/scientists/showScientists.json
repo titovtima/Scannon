@@ -1,6 +1,14 @@
 {
   "scoreToScientist" : [
     {
+      "score": 350,
+      "scientist": {
+        "name": "George Boole",
+        "portrait": "/scientists/portraits/Boole.png",
+        "description" : "Modern logic begins with Boole's seminal work \"Mathematical Analysis of Logic\". Boole's fundamental idea is using algebraic formulas to express logical relations."
+      }
+    },
+    {
       "score": 200,
       "scientist": {
         "name": "Leibniz",
