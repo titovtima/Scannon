@@ -1,85 +1,150 @@
 {
   "sequence": [
     {
-      "unicode": "a⊕b",
+      "unicode": "(79²+73²-49²-55²)a³-b⁸",
       "scoreForHit": 0,
       "scoreForSkip": 0
     },
     {
-      "unicode": "(a∧¬b)∨(¬a∧b)",
+      "unicode": "24(79+73+49+55)a³-b⁸",
       "scoreForHit": -25,
       "scoreForSkip": 15,
-      "substitution": { "left": "a⊕b", "right": "(a∧¬b)∨(¬a∧b)" }
+      "substitution": { "left": "a²-b²", "right": "(a-b)(a+b)" }
     },
     {
-      "unicode": "(a∧¬b∧¬a)∨(a∧¬b∧b)",
+      "unicode": "24⋅215a³-b⁸",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "4⋅6(6³-1)a³-b⁸",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "215", "right": "6³-1" }
+    },
+    {
+      "unicode": "4⋅6⁴a³-8⋅3a³-b⁸",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "6⋅6³", "right": "6⁴" }
+    },
+    {
+      "unicode": "6⁸a³-2³⋅a³-b⁸",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "6⁸a³-(2a-b²)(4a²+2ab²+b⁴)",
       "scoreForHit": 15,
       "scoreForSkip": -25
     },
     {
-      "unicode": "0∨(a∧¬b∧b)",
-      "scoreForHit": -30,
-      "scoreForSkip": 10,
-      "substitution": { "left": "a∧¬b∧¬a", "right": "0" }
-    },
-    {
-      "unicode": "0∨(a∧(b⊕1)∧b)",
-      "scoreForHit": -30,
-      "scoreForSkip": 10,
-      "substitution": { "left": "¬b", "right": "b⊕1" }
-    },
-    {
-      "unicode": "0∨(a∧b)",
+      "unicode": "6⁸a³+(b²-2a)(2a-b²)²",
       "scoreForHit": 15,
       "scoreForSkip": -25
     },
     {
-      "unicode": "(a⊕¬a)∨(a∧b)",
+      "unicode": "6⁸a³+36a²b²+36ab⁴+b⁸",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "a∨(a∧b)",
+      "unicode": "(36a+b²)³",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
+    },
+    {
+      "unicode": "((6a-b)(6a+b))³",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "a∨((a⊕1)∧b)",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "a∨(¬a∧b)",
+      "unicode": "36³a⁶-108⋅36a⁴b²+108a²b⁴-b⁶",
       "scoreForHit": -25,
       "scoreForSkip": 15,
-      "substitution": { "left": "a⊕1", "right": "¬a" }
+      "substitution": { "left": "(a-b)³", "right": "a³-3a²b+3ab²-b³" }
     },
     {
-      "unicode": "a",
+      "unicode": "(6a)⁶-b⁶-108a²b²(36a²-b²)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "36³", "right": "6⁶" }
+    },
+    {
+      "unicode": "(6a)⁶-b⁶-3637a⁴b²+108a²b⁴",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "a⊕0",
+      "unicode": "((6a)⁶-b⁶)ab",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "(6³a³-b³)(6³a³+b³)ab",
       "scoreForHit": -30,
       "scoreForSkip": 10,
-      "substitution": { "left": "a", "right": "a⊕0" }
+      "substitution": { "left": "a²-b²", "right": "(a-b)(a+b)" }
     },
     {
-      "unicode": "a⊕(b⊕¬b)",
+      "unicode": "(36³a⁶-b⁶)ab",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "a²-b²", "right": "(a-b)(a+b)" }
+    },
+    {
+      "unicode": "(6a-b)(6a+b)(6⁴a⁴+(6ab)²+b⁴)ab",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "a³-b³", "right": "(a-b)(a²+ab+b²)" }
+    },
+    {
+      "unicode": "8(a-b)(a+b)(a⁴+b⁴+(ab)²)",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "(a⊕b)⊕b",
+      "unicode": "2(a-b)(a+b)(2a²+b²)²",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "a",
+      "unicode": "(2a²-b²)(2a²+b²)²",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "(2a²-b²)(4a⁴+b⁴+4a²b²)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "(a+b)²", "right": "a²+2ab+b²" }
+    },
+    {
+      "unicode": "(2a²-b²)³",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "8a⁶-12a⁴b²+6a²b⁴-b⁶",
       "scoreForHit": -25,
       "scoreForSkip": 15,
-      "substitution": { "left": "(a⊕b)⊕b", "right": "a" }
+      "substitution": { "left": "(a-b)³", "right": "a³-3a²b+3ab²-b³" }
+    },
+    {
+      "unicode": "6a⁶+b²(b⁶-4a²b³-12a⁴)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "6a⁶+b²(b³-6a²)(b³+2a²)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "x²-4x-12", "right": "(x-6)(x+2)" }
+    },
+    {
+      "unicode": "3(a+b)²(b⁶-4a²b³-12a⁴)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
     }
   ]
 }
