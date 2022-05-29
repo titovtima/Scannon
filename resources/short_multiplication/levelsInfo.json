@@ -1,5 +1,5 @@
 {
-  "levelsNumber": 7,
+  "levelsNumber": 5,
   "levels": [
     {
       "index": 0,
@@ -48,22 +48,6 @@
       "autogenerate": false,
       "sequences": [
         "/lvl5/seq1.json"
-      ]
-    },
-    {
-      "index": 6,
-      "description": "Higher pows - simple",
-      "autogenerate": false,
-      "sequences": [
-        "/lvl6/seq1.json"
-      ]
-    },
-    {
-      "index": 7,
-      "description": "Higher pows - hard",
-      "autogenerate": false,
-      "sequences": [
-        "/lvl6/seq1.json"
       ]
     }
   ]

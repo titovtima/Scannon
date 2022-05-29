@@ -1,6 +1,6 @@
 const gameCode = "short_multiplication"; //"boolean"; //"short_multiplication"
 const gameName = "SCANNON - Short Multiplication"; //'SCANNON - LOGIC'
-const basePath = "";
+const basePath = ""; //"/scannon/" + gameCode
 
 const GC = {
     SCENES: {
