@@ -1,6 +1,14 @@
 {
   "scoreToScientist" : [
     {
+      "score": 350,
+      "scientist": {
+        "name": "Brahmagupta",
+        "portrait": "/scientists/portraits/Brahmagupta.png",
+        "description": "Brahmagupta solved the general quadratic equation for both positive and negative roots. Also he was the first to give a general solution to the linear Diophantine equation ax+by=c."
+      }
+    },
+    {
       "score": 200,
       "scientist": {
         "name": "Diophantus",
