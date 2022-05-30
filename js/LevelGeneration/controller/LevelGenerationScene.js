@@ -139,25 +139,15 @@ class LevelGenerationScene extends Phaser.Scene {
     }
 
     placeDescription() {
-        let sizer = this.sizer;
-        let add = this.add;
+        let centerX = this.sizer.description_CenterX();
+        let centerY = this.sizer.description_CenterY();
 
-        WebFont.load({
-            'custom': {
-                families: ['RhodiumLibre']
-            },
-            active: function () {
-                let centerX = sizer.description_CenterX();
-                let centerY = sizer.description_CenterY();
+        let fontSize = this.sizer.description_FontSize();
+        let fontColor = this.sizer.description_FontColor();
 
-                let fontSize = sizer.description_FontSize();
-                let fontColor = sizer.description_FontColor();
-
-                let description = add.text(centerX, centerY,
-                    'Generating the level', { fontFamily: 'RhodiumLibre', fontSize: fontSize, color: fontColor });
-                description.setOrigin(0.5);
-            }
-        });
+        let description = this.add.text(centerX, centerY,
+            'Generating the level', {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: fontColor});
+        description.setOrigin(0.5);
     }
 
     placeLoadingBarBackground() {

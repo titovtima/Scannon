@@ -26,6 +26,12 @@ class LevelMenuScene extends Phaser.Scene {
         let poetsenOneStyles = '@font-face { font-family: "PoetsenOne"; src: url("' + GC.BASE_PATH + '/fonts/PoetsenOne-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(poetsenOneStyles, 0);
 
+        let corporateAPro = '@font-face { font-family: "CorporateAPro"; src: url("' + GC.BASE_PATH + '/fonts/CorporateAPro-Regular.ttf") format("truetype"); }\n';
+        sheet.insertRule(corporateAPro, 0);
+
+        let roboto = '@font-face { font-family: "Roboto"; src: url("' + GC.BASE_PATH + '/fonts/Roboto-Regular.ttf") format("truetype"); }\n';
+        sheet.insertRule(roboto, 0);
+
         this.scene.settings = params.settings;
         this.setDefaultSettings();
 
@@ -46,10 +52,17 @@ class LevelMenuScene extends Phaser.Scene {
 
         this.sizer = new LevelMenuSizer(this);
 
-        // this.placeMainMenuButton();
-        this.placeSettingsButton();
-        this.placeLevelCards();
-        this.placeLabel();
+        let scene = this;
+        WebFont.load({
+            'custom': {
+                families: ['Ribeye', 'RibeyeMarrow', 'Roboto', 'RhodiumLibre', 'PoetsenOne', 'PTMono']
+            },
+            active: function () {
+                scene.placeSettingsButton();
+                scene.placeLevelCards();
+                scene.placeLabel();
+            }
+        });
     }
 
     placeLevelCards() {
@@ -61,69 +74,26 @@ class LevelMenuScene extends Phaser.Scene {
         this.placeLastCard(this.levelsInfo.levelsNumber + 1);
     }
 
-    placeMainMenuButton() {
-        let sizer = this.sizer;
-        let scene = this.scene;
-        let add = this.add;
-
-        WebFont.load({
-            'custom': {
-                families: ['Ribeye', 'RibeyeMarrow']
-            },
-            active: function () {
-                let leftX = sizer.mainMenuButton_LeftX();
-                let topY = sizer.mainMenuButton_TopY();
-
-                let fontSize = sizer.mainMenuButton_fontSize();
-                let fontColor = sizer.mainMenuButton_fontColor();
-
-                let mainMenuButton = add.text(leftX, topY,
-                    '<- main menu', { fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor });
-                mainMenuButton.setInteractive();
-                mainMenuButton.on('pointerover', () => {
-                    mainMenuButton.setFontFamily('Ribeye');
-                });
-                mainMenuButton.on('pointerout', () => {
-                    mainMenuButton.setFontFamily('RibeyeMarrow');
-                });
-                mainMenuButton.on('pointerup', () => {
-                    scene.start(GC.SCENES.MAIN_MENU, { settings: scene.settings });
-                });
-            }
-        })
-    }
-
     placeSettingsButton() {
-        let sizer = this.sizer;
-        let add = this.add;
-        let scene = this.scene;
-
-        WebFont.load({
-            'custom': {
-                families: ['Ribeye', 'RibeyeMarrow']
-            },
-            active: function () {
-                let settingsButtonPosition = sizer.settingsButtonPosition();
-                let fontSize = sizer.settingsButton_fontSize();
-                let fontColor = sizer.settingsButton_fontColor();
-                let settingsButton = add.text(
-                    settingsButtonPosition.x, settingsButtonPosition.y,
-                    'Settings', {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
-                settingsButton.setOrigin(1, 0);
-                settingsButton.setInteractive();
-                settingsButton.on('pointerover', () => {
-                    settingsButton.setFontFamily('Ribeye');
-                });
-                settingsButton.on('pointerout', () => {
-                    settingsButton.setFontFamily('RibeyeMarrow');
-                });
-                settingsButton.on('pointerup', () => {
-                    scene.start(GC.SCENES.SETTINGS, {
-                        settings: scene.settings,
-                        sceneFrom: GC.SCENES.LEVEL_MENU
-                    });
-                });
-            }
+        let settingsButtonPosition = this.sizer.settingsButtonPosition();
+        let fontSize = this.sizer.settingsButton_fontSize();
+        let fontColor = this.sizer.settingsButton_fontColor();
+        let settingsButton = this.add.text(
+            settingsButtonPosition.x, settingsButtonPosition.y,
+            'Settings', {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+        settingsButton.setOrigin(1, 0);
+        settingsButton.setInteractive();
+        settingsButton.on('pointerover', () => {
+            settingsButton.setFontFamily('Ribeye');
+        });
+        settingsButton.on('pointerout', () => {
+            settingsButton.setFontFamily('RibeyeMarrow');
+        });
+        settingsButton.on('pointerup', () => {
+            this.scene.start(GC.SCENES.SETTINGS, {
+                settings: scene.settings,
+                sceneFrom: GC.SCENES.LEVEL_MENU
+            });
         });
     }
 
@@ -148,89 +118,43 @@ class LevelMenuScene extends Phaser.Scene {
                 "levelNumber": index,
                 "settings": this.scene.settings
             });
-            // let autogenerate = this.levelsInfo.levels[index - 1].autogenerate;
-            // let basePath = "/js/GameConfiguration";
-            // let initialExpressionPath = basePath + this.levelsInfo.levels[index - 1].initialExpressions;
-            // let substitutionsPath = basePath + this.levelsInfo.levels[index - 1].substitutions;
-            // let numberOfFormulas = this.levelsInfo.levels[index - 1].numberOfFormulas;
-            // let rulePacksPath = basePath + this.levelsInfo.levels[index - 1].rulePacks;
-            // let maxLength = this.levelsInfo.levels[index - 1].maxLength;
-            // let minLength = this.levelsInfo.levels[index - 1].minLength;
-            // let sequences = this.levelsInfo.levels[index - 1].sequences;
-            // if (sequences !== undefined)
-            //     sequences = sequences.map(function (seq) {
-            //         return basePath + seq;
-            //     });
-            //
-            //
-            // this.scene.start(GC.SCENES.LEVEL_GENERATION, {
-            //     'autogenerate': autogenerate,
-            //     'numberOfFormulas': numberOfFormulas,
-            //     'initialExpressionPath': initialExpressionPath,
-            //     'substitutionsPath': substitutionsPath,
-            //     'rulePacksPath': rulePacksPath,
-            //     'maxLength': maxLength,
-            //     'minLength': minLength,
-            //     'sequences': sequences,
-            //     'settings': this.scene.settings
-            // });
         });
-        // }
 
         return cardBackground;
     }
 
     placeCardIndex(index, cardBackground) {
-        let sizer = this.sizer;
-        let add = this.add;
+        let centerX = this.sizer.cardIndex_CenterX(index);
+        let topY = this.sizer.cardIndex_TopY(index);
 
-        WebFont.load({
-            'custom': {
-                families: ['Ribeye', 'RibeyeMarrow']
-            },
-            active: function () {
-                let centerX = sizer.cardIndex_CenterX(index);
-                let topY = sizer.cardIndex_TopY(index);
+        let fontSize = this.sizer.cardIndex_fontSize();
+        let fontColor = this.sizer.cardIndex_fontColor();
 
-                let fontSize = sizer.cardIndex_fontSize();
-                let fontColor = sizer.cardIndex_fontColor();
+        let cardIndex = this.add.text(centerX, topY,
+            index, {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+        cardIndex.setOrigin(0.5, 0);
 
-                let cardIndex = add.text(centerX, topY,
-                    index, { fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor });
-                cardIndex.setOrigin(0.5, 0);
-
-                cardBackground.on('pointerover', () => {
-                    cardIndex.setFontFamily('Ribeye');
-                });
-                cardBackground.on('pointerout', () => {
-                    cardIndex.setFontFamily('RibeyeMarrow');
-                })
-            }
+        cardBackground.on('pointerover', () => {
+            cardIndex.setFontFamily('Ribeye');
         });
+        cardBackground.on('pointerout', () => {
+            cardIndex.setFontFamily('RibeyeMarrow');
+        })
     }
 
     placeCardDescription(index) {
-        let sizer = this.sizer;
-        let add = this.add;
         let description = this.levelsInfo.levels[index].description;
 
-        WebFont.load({
-            'custom': {
-                families: ['RhodiumLibre']
-            },
-            active: function () {
-                let centerX = sizer.cardDescription_CenterX(index);
-                let centerY = sizer.cardDescription_CenterY(index);
-                let fontSize = sizer.cardDescription_FontSize(index);
-                let color = sizer.cardDescription_Color(index);
+        let centerX = this.sizer.cardDescription_CenterX(index);
+        let centerY = this.sizer.cardDescription_CenterY(index);
+        let fontSize = this.sizer.cardDescription_FontSize(index);
+        let color = this.sizer.cardDescription_Color(index);
 
-                add.text(
-                    centerX, centerY,
-                    description,
-                    { fontFamily: 'RhodiumLibre', fontSize: fontSize, color: color }
-                ).setOrigin(0.5);
-            }
-        })
+        this.add.text(
+            centerX, centerY,
+            description,
+            {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: color}
+        ).setOrigin(0.5);
     }
 
     placeLastCard(index) {
@@ -240,24 +164,14 @@ class LevelMenuScene extends Phaser.Scene {
         let cardBackground = this.add.image(leftX, topY, 'cardBackground');
         cardBackground.setOrigin(0);
 
-        let sizer = this.sizer;
-        let add = this.add;
+        let centerX = leftX + this.sizer.lastCardTextCenterX();
+        let centerY = topY + this.sizer.lastCardTextCenterY();
+        let fontSize = this.sizer.lastCardFontSize();
+        let color = this.sizer.lastCardFontColor();
 
-        WebFont.load({
-            'custom': {
-                families: ['RhodiumLibre']
-            },
-            active: function () {
-                let centerX = leftX + sizer.lastCardTextCenterX();
-                let centerY = topY + sizer.lastCardTextCenterY();
-                let fontSize = sizer.lastCardFontSize();
-                let color = sizer.lastCardFontColor();
-
-                let lastCardDescription = add.text(centerX, centerY, 'Coming soon...',
-                    { fontFamily: 'RhodiumLibre', fontSize: fontSize, color: color });
-                lastCardDescription.setOrigin(0.5);
-            }
-        });
+        let lastCardDescription = this.add.text(centerX, centerY, 'Coming soon...',
+            {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: color});
+        lastCardDescription.setOrigin(0.5);
     }
 
     setDefaultSettings() {
@@ -292,26 +206,16 @@ class LevelMenuScene extends Phaser.Scene {
     }
 
     placeLabel() {
-        let sizer = this.sizer;
-        let add = this.add;
+        let labelPosition = this.sizer.labelPosition();
+        let labelFontSize = this.sizer.labelFontSize();
+        let labelFontColor = this.sizer.labelFontColor();
 
-        WebFont.load({
-            'custom': {
-                families: ['RibeyeMarrow']
-            },
-            active: function () {
-                let labelPosition = sizer.labelPosition();
-                let labelFontSize = sizer.labelFontSize();
-                let labelFontColor = sizer.labelFontColor();
+        if (GC.GAME_NAME.length > GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) {
+            labelFontSize = (labelFontSize * GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) / GC.GAME_NAME.length;
+        }
 
-                if (GC.GAME_NAME.length > GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) {
-                    labelFontSize = (labelFontSize * GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) / GC.GAME_NAME.length;
-                }
-
-                let label = add.text(labelPosition.x, labelPosition.y, GC.GAME_NAME,
-                    { fontFamily: 'RibeyeMarrow', fontSize: labelFontSize, color: labelFontColor });
-                label.setOrigin(0, 0);
-            }
-        });
+        let label = this.add.text(labelPosition.x, labelPosition.y, GC.GAME_NAME,
+            {fontFamily: 'RibeyeMarrow', fontSize: labelFontSize, color: labelFontColor});
+        label.setOrigin(0, 0);
     }
 }

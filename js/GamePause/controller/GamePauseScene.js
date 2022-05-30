@@ -70,56 +70,42 @@ class GamePauseScene extends Phaser.Scene {
     }
 
     drawMenuItems() {
-        let sizer = this.sizer;
-        let scene = this;
-        let add = this.add;
+        let labels = ['Resume', 'Settings', 'Restart', 'Main Menu'];
 
-        WebFont.load({
-            'custom': {
-                families: ['Ribeye', 'RibeyeMarrow']
-            },
-            active: function () {
-                let labels = [ 'Resume', 'Settings', 'Restart', 'Main Menu' ];
+        for (let label of labels) {
+            let centerX = this.sizer.menuItem_CenterX();
+            let centerY = this.sizer.menuItem_CenterY(label);
 
+            let menuItem = this.add.text(centerX, centerY, label, {
+                fontFamily: 'RibeyeMarrow',
+                fontSize: 75,
+                color: '#000'
+            }).setOrigin(0.5);
 
-                for (let label of labels) {
-                    let centerX = sizer.menuItem_CenterX();
-                    let centerY = sizer.menuItem_CenterY(label);
-
-                    let menuItem = add.text(centerX, centerY, label, {
-                        fontFamily: 'RibeyeMarrow',
-                        fontSize: 75,
-                        color: '#000'
-                    }).setOrigin(0.5);
-
-                    menuItem.setInteractive();
-                    menuItem.on('pointerover', () => {
-                        menuItem.setFontFamily('Ribeye');
-                    });
-                    menuItem.on('pointerout', () => {
-                        menuItem.setFontFamily('RibeyeMarrow');
-                    });
-                    menuItem.on('pointerup', () => {
-                        switch (label) {
-                            case "Resume":
-                                scene.closeMenu();
-                                break;
-                            case "Settings":
-                                scene.openSettings();
-                                break;
-                            case "Restart":
-                                scene.restartLevel();
-                                break;
-                            case "Main Menu":
-                                scene.openMainMenu();
-                                break;
-                        }
-                    })
+            menuItem.setInteractive();
+            menuItem.on('pointerover', () => {
+                menuItem.setFontFamily('Ribeye');
+            });
+            menuItem.on('pointerout', () => {
+                menuItem.setFontFamily('RibeyeMarrow');
+            });
+            menuItem.on('pointerup', () => {
+                switch (label) {
+                    case "Resume":
+                        this.closeMenu();
+                        break;
+                    case "Settings":
+                        this.openSettings();
+                        break;
+                    case "Restart":
+                        this.restartLevel();
+                        break;
+                    case "Main Menu":
+                        this.openMainMenu();
+                        break;
                 }
-            }
-        })
-
-
+            })
+        }
     }
 
     closeMenu() {

@@ -59,6 +59,10 @@ class GameSizer {
         return 50;
     }
 
+    formula_FontFamily() {
+        return 'Roboto';
+    }
+
     formula_CenterX() {
         let cardLeftX = this.cardBackground_LeftX();
         let cardWidth = this.cardBackground_Width();

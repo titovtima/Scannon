@@ -165,19 +165,13 @@ class GameScene extends Phaser.Scene {
         let formulaCenterX = this.sizer.formula_CenterX();
         let formulaCenterY = this.spanFormula_CenterY();
         let fontSize = this.sizer.formula_FontSize();
-        let formula = this.addText(formulaCenterX, formulaCenterY, this.formulas[index].unicode,
-        // let formula = this.addText(formulaCenterX, formulaCenterY, "",
+        let fontFamily = this.sizer.formula_FontFamily();
+        let formula = this.add.text(formulaCenterX, formulaCenterY, this.formulas[index].unicode,
             {
-                fontFamily: 'serif',
+                fontFamily: fontFamily,
                 color: '#000',
                 fontSize: fontSize
             });
-        // let formula = this.add.text(formulaCenterX, formulaCenterY, this.formulas[index].unicode,
-        //     {
-        //         fontFamily: 'serif',
-        //         color: '#000',
-        //         fontSize: fontSize
-        //     });
         formula.setOrigin(0.5);
         formula.setDepth(index * 2 + 1);
         formula.wanted_y = formula.y;
@@ -354,9 +348,10 @@ class GameScene extends Phaser.Scene {
 
         let fontSize = this.sizer.formula_FontSize();
         let correctRuleTextPosition = this.sizer.correctRuleTextPosition();
+        let fontFamily = this.sizer.formula_FontFamily();
         this.correctRuleText = this.add.text(
             correctRuleTextPosition.x, correctRuleTextPosition.y,
-            rule, { fontFamily: 'serif', color: '#000', fontSize: fontSize });
+            rule, { fontFamily: fontFamily, color: '#000', fontSize: fontSize });
         this.correctRuleText.setOrigin(0.5, 0.5);
 
         let timeout = this.scene.settings.showCorrectRule * 1000;

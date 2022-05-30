@@ -74,228 +74,115 @@ class GameCompleteScene extends Phaser.Scene {
     }
 
     placeLevelScore() {
-        let sizer = this.sizer;
-        let add = this.add;
-        let score = this.score;
+        let scoreLabelCenterX = this.sizer.levelScoreLabel_CenterX();
+        let scoreLabelCenterY = this.sizer.levelScoreLabel_CenterY();
+        let scoreLabelFontSize = this.sizer.levelScoreLabel_FontSize();
+        let scoreLabelColor = this.sizer.levelScoreLabel_Color();
+        this.add.text(
+            scoreLabelCenterX,
+            scoreLabelCenterY,
+            'Level Score',
+            {fontFamily: 'PTMono', fontSize: scoreLabelFontSize, color: scoreLabelColor}
+        ).setOrigin(0.5);
 
-        WebFont.load({
-            'custom': {
-                families: ['PTMono', 'PoetsenOne']
-            },
-            active: function () {
-                let scoreLabelCenterX = sizer.levelScoreLabel_CenterX();
-                let scoreLabelCenterY = sizer.levelScoreLabel_CenterY();
-                let scoreLabelFontSize = sizer.levelScoreLabel_FontSize();
-                let scoreLabelColor = sizer.levelScoreLabel_Color();
-                add.text(
-                    scoreLabelCenterX,
-                    scoreLabelCenterY,
-                    'Level Score',
-                    { fontFamily: 'PTMono', fontSize: scoreLabelFontSize, color: scoreLabelColor }
-                ).setOrigin(0.5);
-
-                let scoreValueCenterX = sizer.levelScoreValue_CenterX();
-                let scoreValueCenterY = sizer.levelScoreValue_CenterY();
-                let scoreValueFontSize = sizer.levelScoreValue_FontSize(score);
-                let scoreValueColor = sizer.levelScoreValue_Color();
-                add.text(
-                    scoreValueCenterX,
-                    scoreValueCenterY,
-                    score,
-                    { fontFamily: 'PoetsenOne', fontSize: scoreValueFontSize, color: scoreValueColor }
-                ).setOrigin(0.5);
-            }
-        })
+        let scoreValueCenterX = this.sizer.levelScoreValue_CenterX();
+        let scoreValueCenterY = this.sizer.levelScoreValue_CenterY();
+        let scoreValueFontSize = this.sizer.levelScoreValue_FontSize(this.score);
+        let scoreValueColor = this.sizer.levelScoreValue_Color();
+        this.add.text(
+            scoreValueCenterX,
+            scoreValueCenterY,
+            this.score,
+            {fontFamily: 'PoetsenOne', fontSize: scoreValueFontSize, color: scoreValueColor}
+        ).setOrigin(0.5);
     }
 
     placeTotalScore() {
-        let sizer = this.sizer;
-        let add = this.add;
-        let score = this.totalScore;
+        let scoreLabelCenterX = this.sizer.totalScoreLabel_CenterX();
+        let scoreLabelCenterY = this.sizer.totalScoreLabel_CenterY();
+        let scoreLabelFontSize = this.sizer.totalScoreLabel_FontSize();
+        let scoreLabelColor = this.sizer.totalScoreLabel_Color();
+        this.add.text(
+            scoreLabelCenterX,
+            scoreLabelCenterY,
+            'Total Score',
+            {fontFamily: 'PTMono', fontSize: scoreLabelFontSize, color: scoreLabelColor}
+        ).setOrigin(0.5);
 
-        WebFont.load({
-            'custom': {
-                families: ['PTMono', 'PoetsenOne']
-            },
-            active: function () {
-                let scoreLabelCenterX = sizer.totalScoreLabel_CenterX();
-                let scoreLabelCenterY = sizer.totalScoreLabel_CenterY();
-                let scoreLabelFontSize = sizer.totalScoreLabel_FontSize();
-                let scoreLabelColor = sizer.totalScoreLabel_Color();
-                add.text(
-                    scoreLabelCenterX,
-                    scoreLabelCenterY,
-                    'Total Score',
-                    { fontFamily: 'PTMono', fontSize: scoreLabelFontSize, color: scoreLabelColor }
-                ).setOrigin(0.5);
-
-                let scoreValueCenterX = sizer.totalScoreValue_CenterX();
-                let scoreValueCenterY = sizer.totalScoreValue_CenterY();
-                let scoreValueFontSize = sizer.totalScoreValue_FontSize(score);
-                let scoreValueColor = sizer.totalScoreValue_Color();
-                add.text(
-                    scoreValueCenterX,
-                    scoreValueCenterY,
-                    score,
-                    { fontFamily: 'PoetsenOne', fontSize: scoreValueFontSize, color: scoreValueColor }
-                ).setOrigin(0.5);
-            }
-        })
+        let scoreValueCenterX = this.sizer.totalScoreValue_CenterX();
+        let scoreValueCenterY = this.sizer.totalScoreValue_CenterY();
+        let scoreValueFontSize = this.sizer.totalScoreValue_FontSize(this.totalScore);
+        let scoreValueColor = this.sizer.totalScoreValue_Color();
+        this.add.text(
+            scoreValueCenterX,
+            scoreValueCenterY,
+            this.totalScore,
+            {fontFamily: 'PoetsenOne', fontSize: scoreValueFontSize, color: scoreValueColor}
+        ).setOrigin(0.5);
     }
 
     placeMenu() {
-        let sizer = this.sizer;
-        let scene = this;
-        let add = this.add;
-        let score = this.score;
-        let levelsInfo = this.levelsInfo;
+        let menuItemFontSize = this.sizer.menuItem_FontSize();
+        let menuItemColor = this.sizer.menuItem_Color();
 
-        WebFont.load({
-            'custom': {
-                families: ['RibeyeMarrow', 'Ribeye']
-            },
-            active: function () {
-                let menuItemFontSize = sizer.menuItem_FontSize();
-                let menuItemColor = sizer.menuItem_Color();
+        let labels = ['Restart level', 'Main Menu'];
 
-                let menuItems = {};
-                let labels = ['Restart level', 'Main Menu'];
+        let congratsLabel = "You won!";
 
-                let congratsLabel = "You won!";
-
-                if (score > 0) {
-                    if (scene.levelNumber === levelsInfo.levelsNumber) {
-                        labels.unshift(congratsLabel);
-                    } else {
-                        labels.unshift("Next level");
-                    }
-                }
-
-                if (scene.scene.settings.debug !== 0)
-                    labels.push('Save sequence')
-
-                let labelIndex = 0;
-                for (let label of labels) {
-                    let menuItemCenterX = sizer.menuItem_CenterX();
-                    let menuItemCenterY = sizer.menuItem_CenterY(labelIndex);
-                    let fontFamily = 'RibeyeMarrow';
-                    if (label === congratsLabel)
-                        fontFamily = 'Ribeye';
-
-                    let menuItem = add.text(
-                        menuItemCenterX, menuItemCenterY,
-                        label,
-                        { fontFamily: fontFamily, fontSize: menuItemFontSize, color: menuItemColor }
-                    ).setOrigin(0.5);
-
-                    if (label !== congratsLabel) {
-                        menuItem.setInteractive();
-
-                        menuItem.on('pointerover', () => {
-                            menuItem.setFontFamily('Ribeye');
-                        });
-
-                        menuItem.on('pointerout', () => {
-                            menuItem.setFontFamily('RibeyeMarrow');
-                        });
-
-                        menuItem.on('pointerup', () => {
-                            switch (label) {
-                                case 'Main Menu':
-                                    scene.openLevelMenu();
-                                    break;
-                                case 'Restart level':
-                                    scene.restartLevel();
-                                    break;
-                                case 'Next level':
-                                    scene.startNextLevel();
-                                    break;
-                                case 'Save sequence':
-                                    scene.saveSequence();
-                            }
-                        })
-                    }
-                    labelIndex++;
-                }
-
-
-
+        if (this.score > 0) {
+            if (this.levelNumber === this.levelsInfo.levelsNumber) {
+                labels.unshift(congratsLabel);
+            } else {
+                labels.unshift("Next level");
             }
-        })
+        }
 
-    }
+        if (this.scene.settings.debug !== 0)
+            labels.push('Save sequence')
 
-    placeLevelMenu() {
-        let sizer = this.sizer;
-        let scene = this;
-        let add = this.add;
-        let score = this.score;
-        let levelsInfo = this.levelsInfo;
+        let labelIndex = 0;
+        for (let label of labels) {
+            let menuItemCenterX = this.sizer.menuItem_CenterX();
+            let menuItemCenterY = this.sizer.menuItem_CenterY(labelIndex);
+            let fontFamily = 'RibeyeMarrow';
+            if (label === congratsLabel)
+                fontFamily = 'Ribeye';
 
-        WebFont.load({
-            'custom': {
-                families: ['RibeyeMarrow', 'Ribeye']
-            },
-            active: function () {
-                let menuItemFontSize = sizer.levelMenuItem_FontSize();
-                let menuItemColor = sizer.levelMenuItem_Color();
+            let menuItem = this.add.text(
+                menuItemCenterX, menuItemCenterY,
+                label,
+                {fontFamily: fontFamily, fontSize: menuItemFontSize, color: menuItemColor}
+            ).setOrigin(0.5);
 
-                let menuItems = {};
-                let labels = [];
+            if (label !== congratsLabel) {
+                menuItem.setInteractive();
 
-                if (score > 0) {
-                    if (scene.levelNumber !== levelsInfo.levelsNumber) {
-                        labels.unshift("Next level");
+                menuItem.on('pointerover', () => {
+                    menuItem.setFontFamily('Ribeye');
+                });
+
+                menuItem.on('pointerout', () => {
+                    menuItem.setFontFamily('RibeyeMarrow');
+                });
+
+                menuItem.on('pointerup', () => {
+                    switch (label) {
+                        case 'Main Menu':
+                            this.openLevelMenu();
+                            break;
+                        case 'Restart level':
+                            this.restartLevel();
+                            break;
+                        case 'Next level':
+                            this.startNextLevel();
+                            break;
+                        case 'Save sequence':
+                            this.saveSequence();
                     }
-                }
-
-                if (scene.scene.settings.debug !== 0) {
-                    labels.push('Save sequence');
-                }
-
-                let labelIndex = 0;
-                for (let label of labels) {
-                    let menuItemCenterX = sizer.levelMenuItem_CenterX();
-                    let menuItemCenterY = sizer.levelMenuItem_CenterY(labelIndex);
-                    let fontFamily = 'RibeyeMarrow';
-
-                    let menuItem = add.text(
-                        menuItemCenterX, menuItemCenterY,
-                        label,
-                        {fontFamily: fontFamily, fontSize: menuItemFontSize, color: menuItemColor}
-                    ).setOrigin(0.5);
-
-                    menuItem.setInteractive();
-
-                    menuItem.on('pointerover', () => {
-                        menuItem.setFontFamily('Ribeye');
-                    });
-
-                    menuItem.on('pointerout', () => {
-                        menuItem.setFontFamily('RibeyeMarrow');
-                    });
-
-                    menuItem.on('pointerup', () => {
-                        switch (label) {
-                            case 'Restart':
-                                scene.restartLevel();
-                                break;
-                            case 'Next level':
-                                scene.startNextLevel();
-                                break;
-                            case 'Save sequence':
-                                scene.saveSequence();
-                        }
-                    });
-
-                    labelIndex++;
-                }
-
-
-
+                })
             }
-        })
-
+            labelIndex++;
+        }
     }
 
     showScientist() {
