@@ -18,12 +18,6 @@
       "substitution": { "left": "sin(π-x)", "right": "sin(x)" }
     },
     {
-      "unicode": "2sin(π-2x)sin(π-5x)",
-      "scoreForHit": -30,
-      "scoreForSkip": 10,
-      "substitution": { "left": "sin(π-x)", "right": "sin(x)" }
-    },
-    {
       "unicode": "2cos(2x-π/2)sin(π-5x)",
       "scoreForHit": 15,
       "scoreForSkip": -25
