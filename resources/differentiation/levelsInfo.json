@@ -1,0 +1,54 @@
+{
+  "levelsNumber": 5,
+  "levels": [
+    {
+      "index": 0,
+      "description": "Tutorial",
+      "descriptionRu": "Туториал",
+      "autogenerate": false,
+      "sequences": [
+        "/lvl0/seq.json"
+      ]
+    },
+    {
+      "index": 1,
+      "description": "Exponentiation",
+      "autogenerate": false,
+      "sequences": [
+        "/lvl1/seq1.json"
+      ]
+    },
+    {
+      "index": 2,
+      "description": "Trigonometry",
+      "autogenerate": false,
+      "sequences": [
+        "/lvl2/seq1.json"
+      ]
+    },
+    {
+      "index": 3,
+      "description": "Logarithm",
+      "autogenerate": false,
+      "sequences": [
+        "/lvl3/seq1.json"
+      ]
+    },
+    {
+      "index": 4,
+      "description": "Mix - simple",
+      "autogenerate": false,
+      "sequences": [
+        "/lvl4/seq1.json"
+      ]
+    },
+    {
+      "index": 5,
+      "description": "Mix - hard",
+      "autogenerate": false,
+      "sequences": [
+        "/lvl5/seq1.json"
+      ]
+    }
+  ]
+}

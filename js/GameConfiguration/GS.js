@@ -1,5 +1,5 @@
-const gameCode = "short_multiplication"; //"boolean"; //"short_multiplication"
-const gameName = "SCANNON - Short Multiplication"; //'SCANNON - LOGIC'
+const gameCode = "differentiation"; //"boolean"; //"short_multiplication";
+const gameName = "SCANNON - Differentiation"; //"SCANNON - Short Multiplication"; //'SCANNON - LOGIC'
 const basePath = ""; //"/scannon/" + gameCode
 
 const GC = {

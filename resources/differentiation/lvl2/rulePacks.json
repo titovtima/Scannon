@@ -1,0 +1,8 @@
+{
+  "rulePacks": [
+    "all__LogicBase",
+    "all__DeMorganLaw",
+    "bad_all__LogicBase",
+    "bad_all__DeMorganLaw"
+  ]
+}

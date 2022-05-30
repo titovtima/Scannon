@@ -1,0 +1,101 @@
+{
+  "sequence": [
+    {
+      "unicode": "(5b+a)³",
+      "scoreForHit": 0,
+      "scoreForSkip": 0
+    },
+    {
+      "unicode": "125b³+a³",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "(5b+a)(25b²+5ab+a²)",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
+    },
+    {
+      "unicode": "(5b+a)(25b²-5ab+a²)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "125b³+a³",
+      "scoreForHit": -30,
+      "scoreForSkip": 15,
+      "substitution": { "left": "a³+b³", "right": "(a+b)(a²-ab+b²)" }
+    },
+    {
+      "unicode": "125b³-8a³+9a³",
+      "scoreForHit": -30,
+      "scoreForSkip": 15,
+      "substitution": { "left": "1", "right": "-8+9" }
+    },
+    {
+      "unicode": "(5b-2a)(25b²+10ab+4a²)+9a³",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "a³-b³", "right": "(a-b)(a²+ab+b²)" }
+    },
+    {
+      "unicode": "(5b-2a)(5b+2a)²+9a³",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "(25b²-4a²)(5b+2a)+9a³",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "a²-b²", "right": "(a-b)(a+b)" }
+    },
+    {
+      "unicode": "(25b²+100ab-4a²)(5b+2a)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "125b³+8a³",
+      "scoreForHit": 10,
+      "scoreForSkip": -25
+    },
+    {
+      "unicode": "(25b²-10ab+4a²)(5b+2a)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "a³+b³", "right": "(a+b)(a²-ab+b²)" }
+    },
+    {
+      "unicode": "8(25b²-5ab+a²)(5b+a)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "8((5b-a)(5b+a)-5ab)(5b+a)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "(9-1)(5b+a)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "(3³-1³)(5b+a)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "2(3²+1²+3)(5b+a)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "a³-b³", "right": "(a-b)(a²+b²+ab)" }
+    },
+    {
+      "unicode": "13(10b+2a)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "3²+1²+3", "right": "13" }
+    }
+  ]
+}
