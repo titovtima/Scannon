@@ -1,0 +1,12 @@
+{
+  "rulePacks": [
+    "all__LogicBase",
+    "all__DeMorganLaw",
+    "all__Implication",
+    "all__ExclusiveOr",
+    "bad_all__LogicBase",
+    "bad_all__DeMorganLaw",
+    "bad_all__Implication",
+    "bad_all__ExclusiveOr"
+  ]
+}

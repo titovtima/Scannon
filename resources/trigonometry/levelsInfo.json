@@ -1,0 +1,46 @@
+{
+  "levelsNumber": 4,
+  "levels": [
+    {
+      "index": 0,
+      "description": "Tutorial",
+      "descriptionRu": "Туториал",
+      "autogenerate": false,
+      "sequences": [
+        "/lvl0/seq.json"
+      ]
+    },
+    {
+      "index": 1,
+      "description": "Pythagorean Identity",
+      "autogenerate": false,
+      "sequences": [
+        "/lvl1/seq1.json"
+      ]
+    },
+    {
+      "index": 2,
+      "description": "Reflections",
+      "autogenerate": false,
+      "sequences": [
+        "/lvl2/seq1.json"
+      ]
+    },
+    {
+      "index": 3,
+      "description": "Angle Sum Diff",
+      "autogenerate": false,
+      "sequences": [
+        "/lvl3/seq1.json"
+      ]
+    },
+    {
+      "index": 4,
+      "description": "Sum Product sin cos",
+      "autogenerate": false,
+      "sequences": [
+        "/lvl4/seq1.json"
+      ]
+    }
+  ]
+}

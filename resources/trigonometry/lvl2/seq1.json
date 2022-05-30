@@ -1,0 +1,131 @@
+{
+  "sequence": [
+    {
+      "unicode": "(sin(x))''+(arcsin(x))'",
+      "scoreForHit": 0,
+      "scoreForSkip": 0
+    },
+    {
+      "unicode": "(cos(x))'+(arcsin(x))'",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "(sin(x))'", "right": "cos(x)" }
+    },
+    {
+      "unicode": "(cos(x))'-(2arccos(x))'",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "(arcsin(x))'", "right": "-(arccos(x))'" }
+    },
+    {
+      "unicode": "(cos(x))'-(2arcctg²(x))'",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "(cos(x))'+2(arctg²(x))'",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
+    },
+    {
+      "unicode": "sin(x)+2(arctg²(x))'",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "sin(x)+4arctg(x)(arctg(x))'",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "(f(g(x)))'", "right": "f'(g)⋅g'(x)" }
+    },
+    {
+      "unicode": "sin(x)+4arctg(x)/(1+x²)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "(arctg(x))'", "right": "1/(1+x²)" }
+    },
+    {
+      "unicode": "sin(x)+4arctg(x)sin²(x)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "sin(2x)+4sin²(x)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "sin(2x)+sin(2x)cos(2x)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "sin(2x)(x'+cos(2x))",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "x'", "right": "1" }
+    },
+    {
+      "unicode": "sin(2x)cos(2x)+(xsin(2x))'",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "sin(4x)/2+(xsin(2x))'",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "2sin(x)cos(x)", "right": "sin(2x)" }
+    },
+    {
+      "unicode": "sin(4x)/2+sin(2x)+2xcos(2x)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "(f(x)g(x))'", "right": "f'(x)g(x)+f(x)g'(x)" }
+    },
+    {
+      "unicode": "sin(2x)+(tg(2x))'",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "sin(π-2x)+(tg(2x))'",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "sin(x)", "right": "sin(π-x)" }
+    },
+    {
+      "unicode": "sin(2x-π)+(tg(2x))'",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "cos(π-2x)+(tg(2x))'",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "cos(2x-π)+(tg(2x))'",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "cos(x)", "right": "cos(-x)" }
+    },
+    {
+      "unicode": "-cos(2x)+(tg(2x))'",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "cos(π-x)", "right": "-cos(x)" }
+    },
+    {
+      "unicode": "-cos(2x)+2/(cos²(2x))",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "(tg(x))'", "right": "1/(cos²(x))" }
+    },
+    {
+      "unicode": "sin²(x)-cos²(x)+2/(cos²(2x))",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "cos(2x)", "right": "cos²(x)-sin²(x)" }
+    }
+  ]
+}
