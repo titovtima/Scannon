@@ -26,9 +26,6 @@ class LevelMenuScene extends Phaser.Scene {
         let poetsenOneStyles = '@font-face { font-family: "PoetsenOne"; src: url("' + GC.BASE_PATH + '/fonts/PoetsenOne-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(poetsenOneStyles, 0);
 
-        let corporateAPro = '@font-face { font-family: "CorporateAPro"; src: url("' + GC.BASE_PATH + '/fonts/CorporateAPro-Regular.ttf") format("truetype"); }\n';
-        sheet.insertRule(corporateAPro, 0);
-
         let roboto = '@font-face { font-family: "Roboto"; src: url("' + GC.BASE_PATH + '/fonts/Roboto-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(roboto, 0);
 
