@@ -23,15 +23,15 @@
       "scoreForSkip": -30
     },
     {
-      "unicode": "arcsin(x)",
+      "unicode": "sin(x)",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "-arcsin(-x)",
+      "unicode": "-sin(-x)",
       "scoreForHit": -30,
       "scoreForSkip": 10,
-      "substitution": { "left": "arcsin(-x)", "right": "-arcsin(x)" }
+      "substitution": { "left": "sin(-x)", "right": "-sin(x)" }
     },
     {
       "unicode": "1",

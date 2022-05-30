@@ -1,131 +1,120 @@
 {
   "sequence": [
     {
-      "unicode": "(sin(x))''+(arcsin(x))'",
+      "unicode": "cos(π/9)-sin(7π/18)",
       "scoreForHit": 0,
       "scoreForSkip": 0
     },
     {
-      "unicode": "(cos(x))'+(arcsin(x))'",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "(sin(x))'", "right": "cos(x)" }
-    },
-    {
-      "unicode": "(cos(x))'-(2arccos(x))'",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "(arcsin(x))'", "right": "-(arccos(x))'" }
-    },
-    {
-      "unicode": "(cos(x))'-(2arcctg²(x))'",
+      "unicode": "cos(2π/18)-sin(2π-7π/18)",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "(cos(x))'+2(arctg²(x))'",
+      "unicode": "cos(2π/18)+sin(7π/18-2π)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "-sin(-x)", "right": "sin(x)" }
+    },
+    {
+      "unicode": "cos(2π/18)+sin(7π/18)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "sin(x+2π)", "right": "sin(x)" }
+    },
+    {
+      "unicode": "cos(2π/18)+sin(9π/18-2π/18)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "9π/18-2π/18", "right": "7π/18" }
+    },
+    {
+      "unicode": "cos(2π/18)+cos(2π/18)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "sin(π/2-x)", "right": "cos(x)" }
+    },
+    {
+      "unicode": "cos(20π/18)+cos(2π/18)",
       "scoreForHit": 15,
       "scoreForSkip": -25
     },
     {
-      "unicode": "sin(x)+2(arctg²(x))'",
+      "unicode": "cos(π-20π/18)+cos(2π/18)",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
+    },
+    {
+      "unicode": "cos(2π/18)+cos(20π/18-π)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "cos(-x)", "right": "cos(x)" }
+    },
+    {
+      "unicode": "cos(2π/18)+sin(2π/18)",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "sin(x)+4arctg(x)(arctg(x))'",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "(f(g(x)))'", "right": "f'(g)⋅g'(x)" }
+      "unicode": "cos(π/9)+sin(π/9)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "2/18", "right": "1/9" }
     },
     {
-      "unicode": "sin(x)+4arctg(x)/(1+x²)",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "(arctg(x))'", "right": "1/(1+x²)" }
-    },
-    {
-      "unicode": "sin(x)+4arctg(x)sin²(x)",
+      "unicode": "ctg(π/9)",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "sin(2x)+4sin²(x)",
+      "unicode": "ctg(10π/9)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "ctg(x+π)", "right": "ctg(x)" }
+    },
+    {
+      "unicode": "tg(11π/18)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "tg(x-π/2)", "right": "ctg(x)" }
+    },
+    {
+      "unicode": "tg(11π/18)*tg(π/4)/ctg(π/4)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "tg(π/4)", "right": "ctg(π/4)" }
+    },
+    {
+      "unicode": "tg(11π/18)*tg(π/4)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "1", "right": "ctg(π/4)" }
+    },
+    {
+      "unicode": "tg(11π/18)*sin(π/3)/cos(π/3)",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "sin(2x)+sin(2x)cos(2x)",
+      "unicode": "tg(11π/18)/2cos(π/3)",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "sin(2x)(x'+cos(2x))",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "x'", "right": "1" }
+      "unicode": "tg(11π/18)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "cos(π/3)", "right": "1/2" }
     },
     {
-      "unicode": "sin(2x)cos(2x)+(xsin(2x))'",
+      "unicode": "ctg(37π/18)",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "sin(4x)/2+(xsin(2x))'",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "2sin(x)cos(x)", "right": "sin(2x)" }
-    },
-    {
-      "unicode": "sin(4x)/2+sin(2x)+2xcos(2x)",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "(f(x)g(x))'", "right": "f'(x)g(x)+f(x)g'(x)" }
-    },
-    {
-      "unicode": "sin(2x)+(tg(2x))'",
+      "unicode": "tg(π/18)",
       "scoreForHit": 10,
       "scoreForSkip": -30
-    },
-    {
-      "unicode": "sin(π-2x)+(tg(2x))'",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "sin(x)", "right": "sin(π-x)" }
-    },
-    {
-      "unicode": "sin(2x-π)+(tg(2x))'",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "cos(π-2x)+(tg(2x))'",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "cos(2x-π)+(tg(2x))'",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "cos(x)", "right": "cos(-x)" }
-    },
-    {
-      "unicode": "-cos(2x)+(tg(2x))'",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "cos(π-x)", "right": "-cos(x)" }
-    },
-    {
-      "unicode": "-cos(2x)+2/(cos²(2x))",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "(tg(x))'", "right": "1/(cos²(x))" }
-    },
-    {
-      "unicode": "sin²(x)-cos²(x)+2/(cos²(2x))",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "cos(2x)", "right": "cos²(x)-sin²(x)" }
     }
   ]
 }

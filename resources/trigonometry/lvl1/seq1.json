@@ -1,123 +1,117 @@
 {
   "sequence": [
     {
-      "unicode": "(3z⁵(z²-5z+7)-eᶻ4ᶻ4²)'",
+      "unicode": "sin²(2x)+cos(π/2)",
       "scoreForHit": 0,
       "scoreForSkip": 0
     },
     {
-      "unicode": "(3z⁵)'(z²-5z+7)'-(eᶻ4ᶻ4²)'",
+      "unicode": "sin²(2x)+1",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "2sin²(2x)+cos²(2x)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "1", "right": "sin²(x)+cos²(x)" }
+    },
+    {
+      "unicode": "sin²(8x)+cos²(2x)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "cos²(-2x)-sin²(-8x)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "1-sin²(-6x)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "cos²(-6x)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "1", "right": "sin²(x)+cos²(x)" }
+    },
+    {
+      "unicode": "1/(tg²(-6x)+1)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "tg²(x)+1", "right": "1/cos²(x)" }
+    },
+    {
+      "unicode": "ctg²(6x)-1",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "ctg²(6x)(1-tg²(6x))",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "tg(x)ctg(x)", "right": "1" }
+    },
+    {
+      "unicode": "sin²(6x)(1-tg²(6x))/cos²(6x)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "ctg(x)", "right": "sin(x)/cos(x)" }
+    },
+    {
+      "unicode": "sin²(6x)-sin⁴(6x)/cos⁴(6x)",
       "scoreForHit": 15,
       "scoreForSkip": -25
     },
     {
-      "unicode": "(3z⁵)'(2z-5)-(eᶻ4ᶻ4²)'",
+      "unicode": "sin²(6x)-tg⁴(6x)",
       "scoreForHit": -30,
       "scoreForSkip": 10,
-      "substitution": { "left": "(z²-5z+7)'", "right": "2z-5" }
+      "substitution": { "left": "tg(x)", "right": "sin(x)/cos(x)" }
     },
     {
-      "unicode": "2z(3z⁵)'-5(3z⁵)'-(eᶻ4ᶻ4²)'",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "a(2z-5)", "right": "2za-5a" }
-    },
-    {
-      "unicode": "2z⋅15z-5⋅15z-(eᶻ4ᶻ4²)'",
+      "unicode": "sin²(6x)-1/cos⁴(6x)+1",
       "scoreForHit": 15,
       "scoreForSkip": -25
     },
     {
-      "unicode": "30z²-5⋅15z-4²(eᶻ4ᶻ)'",
-      "scoreForHit": -30,
-      "scoreForSkip": 10,
-      "substitution": { "left": "(4²f(z))'", "right": "4²(f(z))'" }
+      "unicode": "sin²(6x)-(tg²(6x)+1)²+1",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "tg²(x)+1", "right": "1/cos²(x)" }
     },
     {
-      "unicode": "30z²-5⋅15z-4²eᶻ(4ᶻ)'",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "30z²-75z-4²(eᶻ4ᶻ)'",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "30z²-75z-4²((eᶻ)'4ᶻ+eᶻ(4ᶻ)')",
-      "scoreForHit": -30,
-      "scoreForSkip": 10,
-      "substitution": { "left": "(f(x)g(x))'", "right": "f'(x)g(x)+f(x)g'(x)" }
-    },
-    {
-      "unicode": "30z²-75z-4²(ze4ᶻ+eᶻ(4ᶻ)')",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "30z²-75z-4²(ze4ᶻ+zeᶻ4ᶻ⁻¹)",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "10(z³)'-75z-4²(ze4ᶻ+zeᶻ4ᶻ⁻¹)",
-      "scoreForHit": -30,
-      "scoreForSkip": 10,
-      "substitution": { "left": "(z³)'", "right": "3z²" }
-    },
-    {
-      "unicode": "10(z³)'-75z-4²ze4ᶻ(1+4¹)",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "10(z³)'-75z-90ze4ᶻ",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "10(z³)'-75z-(45z²e4ᶻ)'",
+      "unicode": "sin²(6x)-tg⁴(6x)-tg²(6x)",
       "scoreForHit": 15,
       "scoreForSkip": -25
     },
     {
-      "unicode": "10(z³)'-75z-(45z²)'e4ᶻ",
+      "unicode": "sin²(x)-tg⁶(x)-tg²(x)",
       "scoreForHit": 15,
       "scoreForSkip": -25
     },
     {
-      "unicode": "10(z³)'-75z-(15z³)''e4ᶻ",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "(zⁿ)'", "right": "nzⁿ⁻¹" }
+      "unicode": "(sin(x)-tg(x))cos²(x)-tg⁶(x)",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
     },
     {
-      "unicode": "5((2z³)'-15z-(3z³)''e4ᶻ)",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "10-75-15", "right": "5(2-15-3)" }
+      "unicode": "tg(x)(1-cos(x))cos(x)-tg⁶(x)",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
     },
     {
-      "unicode": "5((2z³)'-15z+(-3z³)''e4ᶻ)",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "-(f(x))'", "right": "(-f(x))'" }
+      "unicode": "(1-cos(x))sin(x)-tg⁶(x)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "tg(x)", "right": "sin(x)/cos(x)" }
     },
     {
-      "unicode": "5((2z³)'-15z+(9z²)'e4ᶻ)",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "5((2z³)'-3(z-(3z²)'e4ᶻ))",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "5(6z²-3(z-6ze4ᶻ))",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "(zⁿ)'", "right": "nzⁿ⁻¹" }
+      "unicode": "sin(x)/tg²(x)-tg⁶(x)",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
     }
   ]
 }
