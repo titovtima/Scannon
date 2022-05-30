@@ -174,7 +174,7 @@ class GameCompleteSizer {
     }
 
     scientistDescription_FontSize() {
-        return 30;
+        return 27;
     }
 
     scientistDescription_FontColor() {

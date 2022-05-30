@@ -88,7 +88,7 @@ class LevelMenuScene extends Phaser.Scene {
         });
         settingsButton.on('pointerup', () => {
             this.scene.start(GC.SCENES.SETTINGS, {
-                settings: scene.settings,
+                settings: this.scene.settings,
                 sceneFrom: GC.SCENES.LEVEL_MENU
             });
         });

@@ -1,6 +1,14 @@
 {
   "scoreToScientist" : [
     {
+      "score": 200,
+      "scientist": {
+        "name": "Diophantus",
+        "portrait": "/scientists/portraits/Diophantus.png",
+        "description": "Diophantus is the first to use symbols for unknown numbers and abbreviations for powers of numbers, relationships, and operations. His Arithmetica is a collection of 150 solved problems."
+      }
+    },
+    {
       "score": 100,
       "scientist": {
         "name": "Archimedes",
