@@ -1,28 +1,20 @@
 {
   "scoreToScientist" : [
     {
-      "score": 200,
-      "scientist": {
-        "name": "Leibniz",
-        "portrait": "/scientists/portraits/Leibniz.png",
-        "description": "Leibniz developed the notion of a logical calculus and formulated the principal properties of logical operators."
-      }
-    },
-    {
       "score": 100,
       "scientist": {
-        "name": "Aristotle",
-        "portrait": "/scientists/portraits/Aristotle.png",
-        "description": "Aristotle was the first formal logician. He demonstrated the principles of reasoning and employed variables."
+        "name": "Archimedes",
+        "portrait": "/scientists/portraits/Archimedes.png",
+        "description": "Archimedes anticipated modern calculus and analysis by applying the concept of the infinitely small, derived an approximation of pi and and devised a system using exponentiation."
       }
     },
     {
       "score": -1000,
       "scientist": {
-        "name": "StartLogicIdea",
-        "portrait": "/scientists/portraits/StartLogicIdea.png",
-        "description": "The object of science is the knowledge of laws and relations - George Boole, An Investigation of the Laws of Thought",
-        "descriptionRu": "Объектом науки, правильно так называемой, является знание законов и отношений - Джордж Буль, An Investigation of the Laws of Thought"
+        "name": "StartMathIdea",
+        "portrait": "/scientists/portraits/AlJabrPage.jpeg",
+        "description": "A Page from The Compendious Book on Calculation by Completion and Balancing, also known as Al-Jabr",
+        "descriptionRu": "Страница из Краткой книги о восполнении и противопоставлении, названия которой произошёл термин алгебра"
       }
     }
   ]
