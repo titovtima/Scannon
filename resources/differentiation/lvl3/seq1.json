@@ -1,101 +1,127 @@
 {
   "sequence": [
     {
-      "unicode": "(5b+a)³",
+      "unicode": "(log₄z)'+(eᶻ4ᶻ)'",
       "scoreForHit": 0,
       "scoreForSkip": 0
     },
     {
-      "unicode": "125b³+a³",
+      "unicode": "zln(4)+(eᶻ4ᶻ)'",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "(5b+a)(25b²+5ab+a²)",
+      "unicode": "zln(4)+eᶻln(e)4ᶻ+eᶻ(4ᶻ)'",
+      "scoreForHit": -30,
+      "scoreForSkip": 15,
+      "substitution": { "left": "(eᶻ)'", "right": "eᶻln(e)" }
+    },
+    {
+      "unicode": "zln(4)+eᶻ4ᶻ+eᶻ(4ᶻ)'",
+      "scoreForHit": -30,
+      "scoreForSkip": 15,
+      "substitution": { "left": "ln(e)", "right": "1" }
+    },
+    {
+      "unicode": "eᶻ4ᶻ+ln(4)(z+eᶻ4ᶻ)",
+      "scoreForHit": -30,
+      "scoreForSkip": 15,
+      "substitution": { "left": "aᶻ", "right": "aᶻln(a)" }
+    },
+    {
+      "unicode": "eᶻ4ᶻ+ln(4)(eᶻ4ᶻ)'",
       "scoreForHit": 15,
       "scoreForSkip": -25
     },
     {
-      "unicode": "(5b+a)(25b²-5ab+a²)",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "125b³+a³",
-      "scoreForHit": -30,
-      "scoreForSkip": 15,
-      "substitution": { "left": "a³+b³", "right": "(a+b)(a²-ab+b²)" }
-    },
-    {
-      "unicode": "125b³-8a³+9a³",
-      "scoreForHit": -30,
-      "scoreForSkip": 15,
-      "substitution": { "left": "1", "right": "-8+9" }
-    },
-    {
-      "unicode": "(5b-2a)(25b²+10ab+4a²)+9a³",
-      "scoreForHit": -30,
-      "scoreForSkip": 10,
-      "substitution": { "left": "a³-b³", "right": "(a-b)(a²+ab+b²)" }
-    },
-    {
-      "unicode": "(5b-2a)(5b+2a)²+9a³",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "(25b²-4a²)(5b+2a)+9a³",
-      "scoreForHit": -30,
-      "scoreForSkip": 10,
-      "substitution": { "left": "a²-b²", "right": "(a-b)(a+b)" }
-    },
-    {
-      "unicode": "(25b²+100ab-4a²)(5b+2a)",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "125b³+8a³",
-      "scoreForHit": 10,
+      "unicode": "eᶻ4ᶻ+ln(4)(eᶻ4ᶻ/ln(4))''",
+      "scoreForHit": 15,
       "scoreForSkip": -25
     },
     {
-      "unicode": "(25b²-10ab+4a²)(5b+2a)",
+      "unicode": "eᶻ4ᶻ+(eᶻ4ᶻ)''",
       "scoreForHit": -30,
       "scoreForSkip": 10,
-      "substitution": { "left": "a³+b³", "right": "(a+b)(a²-ab+b²)" }
+      "substitution": { "left": "(c⋅f(x))'", "right": "c⋅(f(x))'" }
     },
     {
-      "unicode": "8(25b²-5ab+a²)(5b+a)",
+      "unicode": "eᶻ4ᶻ+(eᶻ4ᶻ+eᶻ(4ᶻ)')'",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "(eᶻ)'", "right": "eᶻ" }
+    },
+    {
+      "unicode": "2eᶻ4ᶻ+eᶻ(4ᶻ)'+(eᶻ(4ᶻ)')'",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "(f+g)'", "right": "f'+g'" }
+    },
+    {
+      "unicode": "2eᶻ4ᶻ+eᶻ(4ᶻ)'+(eᶻ4ᶻln(4))'",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "(f+g)'", "right": "f'+g'" }
+    },
+    {
+      "unicode": "2eᶻ4ᶻ+eᶻ(4ᶻ)'+eᶻ(log₄4z)'",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "8((5b-a)(5b+a)-5ab)(5b+a)",
+      "unicode": "eᶻ(2⋅4ᶻ+(4ᶻ)'+(log₄4z)')",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "eᶻ(a+b+c)", "right": "eᶻa+eᶻb+eᶻc" }
+    },
+    {
+      "unicode": "eᶻ(3⋅4ᶻ+(log₄4z)')",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "(9-1)(5b+a)",
+      "unicode": "eᶻ(3⋅4ᶻ+(ln(4z)/ln(4))')",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "logₐb", "right": "ln(b)/ln(a)" }
+    },
+    {
+      "unicode": "eᶻ(3⋅4ᶻ+(ln(4z))'/ln(4))",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "(c⋅f(x))'", "right": "c⋅(f(x))'" }
+    },
+    {
+      "unicode": "eᶻ(3⋅4ᶻ+1/z/ln(4))",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "(ln(x))'", "right": "1/x" }
+    },
+    {
+      "unicode": "3⋅(4ᶻ)'eᶻ+eᶻ/z",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "(3³-1³)(5b+a)",
+      "unicode": "3⋅(4ᶻeᶻ)'+eᶻ/z",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "2(3²+1²+3)(5b+a)",
+      "unicode": "3⋅(4ᶻeᶻ)'+eᶻ(ln(z))'",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "(ln(x))'", "right": "1/x" }
+    },
+    {
+      "unicode": "3⋅(4ᶻeᶻ)'+eᶻ(ln(7z))'",
       "scoreForHit": -25,
       "scoreForSkip": 15,
-      "substitution": { "left": "a³-b³", "right": "(a-b)(a²+b²+ab)" }
+      "substitution": { "left": "(ln(ax))'", "right": "(ln(bx))'" }
     },
     {
-      "unicode": "13(10b+2a)",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "3²+1²+3", "right": "13" }
+      "unicode": "3⋅(4ᶻeᶻ)'+eᶻ(ln(7z))ln(7)",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
     }
   ]
 }
