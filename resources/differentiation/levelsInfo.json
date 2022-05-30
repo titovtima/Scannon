@@ -1,5 +1,5 @@
 {
-  "levelsNumber": 5,
+  "levelsNumber": 4,
   "levels": [
     {
       "index": 0,
@@ -40,14 +40,6 @@
       "autogenerate": false,
       "sequences": [
         "/lvl4/seq1.json"
-      ]
-    },
-    {
-      "index": 5,
-      "description": "Mix - hard",
-      "autogenerate": false,
-      "sequences": [
-        "/lvl5/seq1.json"
       ]
     }
   ]

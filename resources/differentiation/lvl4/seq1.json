@@ -1,129 +1,113 @@
 {
   "sequence": [
     {
-      "unicode": "zᶻ",
+      "unicode": "(zᶻ+log₂(64-8))''",
       "scoreForHit": 0,
       "scoreForSkip": 0
     },
     {
-      "unicode": "2(8a³+27b³)",
+      "unicode": "(zᶻ)''",
       "scoreForHit": -30,
       "scoreForSkip": 10,
-      "substitution": { "left": "16+54", "right": "2(8+27)" }
+      "substitution": { "left": "(C)'", "right": "0" }
     },
     {
-      "unicode": "2(2a-3b)(4a²+6ab+9b²)",
+      "unicode": "(zᶻln(z))'",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "2(2a-3b)(2a+3b)²",
+      "unicode": "(zᶻ)'/z",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "2(2a-3b)(4a²+6ab+9b²)",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "2(8a³-27b³)",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "a³-b³", "right": "(a-b)(a²+ab+b²)" }
-    },
-    {
-      "unicode": "2(27b³-8a³)",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "2(9b²-4a²)(3b-2a)",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "2(3b+2a)(3b-2a)²",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "a²-b²", "right": "(a-b)(a+b)" }
-    },
-    {
-      "unicode": "2(3b+2a)(9b²-12ab+4a²)",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "(a-b)²", "right": "a²-2ab+b²" }
-    },
-    {
-      "unicode": "-2(3b+2a)(9b²+12ab+4a²)",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "-2(3b+2a)³",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "(a+b)²", "right": "a²+2ab+b²" }
-    },
-    {
-      "unicode": "-2(27b³+36a²b+54ab²+8a³)",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "(a+b)³", "right": "a³+3a²b+3ab²+b³" }
-    },
-    {
-      "unicode": "2(27b³-36a²b+54ab²-8a³)",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "2(2a-3b)³",
-      "scoreForHit": 15,
-      "scoreForSkip": -25
-    },
-    {
-      "unicode": "(4a-6b)³",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "8(2a-3b)³",
-      "scoreForHit": -30,
-      "scoreForSkip": 10
-    },
-    {
-      "unicode": "2b³+8(2a-3b)³-2b³",
+      "unicode": "(eᶻᶩⁿ⁽ᶻ⁾)'/z",
       "scoreForHit": -30,
       "scoreForSkip": 10,
-      "substitution": { "left": "0", "right": "2-2" }
+      "substitution": { "left": "z", "right": "eᶩⁿ⁽ᶻ⁾" }
     },
     {
-      "unicode": "8(2a-3b)³-b³",
+      "unicode": "eᶻᶩⁿ⁽ᶻ⁾(zln(z))'/z",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "(eᶻ)'", "right": "eᶻz'" }
+    },
+    {
+      "unicode": "zᶻ(zln(z))'/z",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "z", "right": "eᶩⁿ⁽ᶻ⁾" }
+    },
+    {
+      "unicode": "zᶻ(ln(z)+z(ln(z))')/z",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "z'", "right": "1" }
+    },
+    {
+      "unicode": "zᶻ(ln(z)+1)/z",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "(ln(z))'", "right": "1/z" }
+    },
+    {
+      "unicode": "zᶻ(ln(z)+1)(ln(z))'",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "(ln(z))'", "right": "1/z" }
+    },
+    {
+      "unicode": "zᶻ(sin(-z)+ln(z))'(ln(z))'",
       "scoreForHit": 10,
       "scoreForSkip": -30
     },
     {
-      "unicode": "(4a-7b)(4(2a-3b)²+4ab-5b²)",
-      "scoreForHit": -20,
-      "scoreForSkip": 20,
-      "substitution": { "left": "a³-b³", "right": "(a-b)(a²+ab+b²)" }
+      "unicode": "zᶻ(ln(z)-sin(z))'(ln(z))'",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "sin(-z)'", "right": "-sin(z)" }
     },
     {
-      "unicode": "(4a-7b)(16a²-44ab+31b²)",
-      "scoreForHit": -20,
-      "scoreForSkip": 20,
-      "substitution": { "left": "(a-b)²", "right": "a²-2ab+b²" }
+      "unicode": "zᶻ(cos(z)/z)(ln(z))'",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
     },
     {
-      "unicode": "64a³-218b³+76a²b-2ab+6ab²",
-      "scoreForHit": 15,
-      "scoreForSkip": -25
+      "unicode": "eᶻ⁻²cos(z)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
     },
     {
-      "unicode": "64a³-218b³+2ab(38a-1+3b)",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "2a²b-2ab+2ab²", "right": "2ab(a-1+b)" }
+      "unicode": "(eᶻ)''cos(z)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "-(eᶻcos(z))''",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "(eᶻsin(z)+eᶻsin(z))'",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "2(eᶻsin(z))'",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "(c⋅f(x))'", "right": "c⋅(f(x))'" }
+    },
+    {
+      "unicode": "2(eᶻsin(z)-eᶻcos(z))",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "2eᶻtg(z)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
     }
   ]
 }
