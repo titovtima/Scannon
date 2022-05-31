@@ -81,10 +81,10 @@ class GamePauseSizer {
         let textHeight = 110;
 
         switch (label) {
-            case 'Resume': return centerY - textHeight * 1.5;
-            case 'Settings': return centerY - textHeight * 0.5;
-            case 'Restart': return centerY + textHeight * 0.5;
-            case 'Main Menu': return centerY + textHeight * 1.5;
+            case this.scene.strings.resume: return centerY - textHeight * 1.5;
+            case this.scene.strings.settings: return centerY - textHeight * 0.5;
+            case this.scene.strings.restart: return centerY + textHeight * 0.5;
+            case this.scene.strings.menu: return centerY + textHeight * 1.5;
         }
     }
 
