@@ -76,9 +76,10 @@ class LoadingResourcesScene extends Phaser.Scene {
 
         let fontSize = this.sizer.description_FontSize();
         let fontColor = this.sizer.description_FontColor();
+        let text = this.scene.settings.strings.loading_resources;
 
         let description = this.add.text(centerX, centerY,
-            'Loading resources', {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: fontColor});
+            text, {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: fontColor});
         description.setOrigin(0.5);
     }
 

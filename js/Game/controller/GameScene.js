@@ -746,7 +746,9 @@ class GameScene extends Phaser.Scene {
         let labelBottomY = this.sizer.scoreLabel_BottomY();
         let labelFontSize = this.sizer.scoreLabel_FontSize();
         let labelColor = this.sizer.scoreLabel_Color();
-        this.add.text(labelRightX, labelBottomY, 'score:',
+        let text = this.scene.settings.strings.game_scene.score + ":";
+
+        this.add.text(labelRightX, labelBottomY, text,
             { fontSize: labelFontSize, color: labelColor })
             .setOrigin(1);
 
@@ -764,9 +766,9 @@ class GameScene extends Phaser.Scene {
         let topY = this.sizer.textHintTopY();
         let fontSize = this.sizer.textHintFontSize();
         let fontColor = this.sizer.textHintFontColor();
+        let text = this.scene.settings.strings.game_scene.hint;
 
-        let textHint = this.add.text(rightX, topY,
-            "shoot the wrong steps by click",
+        let textHint = this.add.text(rightX, topY, text,
             { fontFamily: "RhodiumLibre", fontSize: fontSize, color: fontColor});
         textHint.setOrigin(1, 0);
     }

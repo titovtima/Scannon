@@ -30,7 +30,6 @@ class LevelMenuScene extends Phaser.Scene {
         sheet.insertRule(roboto, 0);
 
         this.scene.settings = params.settings;
-        this.setDefaultSettings();
 
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
@@ -39,13 +38,15 @@ class LevelMenuScene extends Phaser.Scene {
         this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
 
         this.load.json('levelsInfo', GC.RESOURCES_PATH + '/levelsInfo.json');
+        this.load.json('languages', GC.BASE_PATH + '/resources/languages.json');
         this.load.image('cardBackground', GC.RESOURCES_PATH + '/assets/cardBackground.png');
         this.load.image('cardBackground_Bordered', GC.RESOURCES_PATH + '/assets/cardBackground_Bordered.png');
     }
 
     create() {
-        console.log('resources path', GC.RESOURCES_PATH);
+        this.setDefaultSettings();
         this.levelsInfo = this.cache.json.get('levelsInfo');
+        this.strings = this.scene.settings.strings.menu;
 
         this.sizer = new LevelMenuSizer(this);
 
@@ -75,9 +76,10 @@ class LevelMenuScene extends Phaser.Scene {
         let settingsButtonPosition = this.sizer.settingsButtonPosition();
         let fontSize = this.sizer.settingsButton_fontSize();
         let fontColor = this.sizer.settingsButton_fontColor();
+        let text = this.strings.settings;
         let settingsButton = this.add.text(
             settingsButtonPosition.x, settingsButtonPosition.y,
-            'Settings', {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            text, {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
         settingsButton.setOrigin(1, 0);
         settingsButton.setInteractive();
         settingsButton.on('pointerover', () => {
@@ -165,8 +167,9 @@ class LevelMenuScene extends Phaser.Scene {
         let centerY = topY + this.sizer.lastCardTextCenterY();
         let fontSize = this.sizer.lastCardFontSize();
         let color = this.sizer.lastCardFontColor();
+        let text = this.strings.last_level;
 
-        let lastCardDescription = this.add.text(centerX, centerY, 'Coming soon...',
+        let lastCardDescription = this.add.text(centerX, centerY, text,
             {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: color});
         lastCardDescription.setOrigin(0.5);
     }
@@ -200,6 +203,16 @@ class LevelMenuScene extends Phaser.Scene {
             if (isNaN(this.scene.settings.debug))
                 this.scene.settings.debug = 0;
         }
+
+        if (this.scene.settings.language === undefined) {
+            let possibleLanguages = ['en', 'ru'];
+            this.scene.settings.language = getUrlParams.get("lang")?.toLowerCase();
+            if (!possibleLanguages.includes(this.scene.settings.language))
+                this.scene.settings.language = 'en';
+
+            let languages = this.cache.json.get('languages');
+            this.scene.settings.strings = languages[this.scene.settings.language];
+        }
     }
 
     placeLabel() {
@@ -207,11 +220,13 @@ class LevelMenuScene extends Phaser.Scene {
         let labelFontSize = this.sizer.labelFontSize();
         let labelFontColor = this.sizer.labelFontColor();
 
-        if (GC.GAME_NAME.length > GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) {
-            labelFontSize = (labelFontSize * GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) / GC.GAME_NAME.length;
+        let text = "SCANNON - " + this.strings.game_name[GC.GAME_CODE];
+
+        if (text.length > GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) {
+            labelFontSize = (labelFontSize * GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) / text.length;
         }
 
-        let label = this.add.text(labelPosition.x, labelPosition.y, GC.GAME_NAME,
+        let label = this.add.text(labelPosition.x, labelPosition.y, text,
             {fontFamily: 'RibeyeMarrow', fontSize: labelFontSize, color: labelFontColor});
         label.setOrigin(0, 0);
     }

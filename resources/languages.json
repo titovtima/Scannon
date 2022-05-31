@@ -1,0 +1,94 @@
+{
+  "en": {
+    "menu": {
+      "game_name": {
+        "boolean": "Logic",
+        "short_multiplication": "Short Multiplication",
+        "differentiation": "Differentiation",
+        "trigonometry": "Trigonometry"
+      },
+      "settings": "Settings",
+      "last_level": "Coming soon..."
+    },
+    "settings_scene": {
+      "back": "back",
+      "back_to_menu": "menu",
+      "back_to_game": "game",
+      "settings_names": {
+        "speed": "Speed",
+        "mistake_timeout": "Mistake Timeout",
+        "show_correct_rule": "Show Correct Rule",
+        "language": "Language"
+      }
+    },
+    "level_generation": "Generating the level",
+    "loading_resources": "Loading resources",
+    "pause_menu": {
+      "resume": "Resume",
+      "settings": "Settings",
+      "restart": "Restart",
+      "menu": "Menu"
+    },
+    "game_scene": {
+      "score": "score",
+      "hint": "shoot the wrong steps by click"
+    },
+    "game_complete": {
+      "level_score": "Level score",
+      "total_score": "Total score",
+      "next_level": "Next level",
+      "restart_level": "Restart level",
+      "menu": "Main menu",
+      "save_sequence": "Save sequence",
+      "congrats": "You won!",
+      "before_scientist_name": "You're like",
+      "levels": "levels"
+    }
+  },
+  "ru": {
+    "menu": {
+      "game_name": {
+        "boolean": "Логика",
+        "short_multiplication": "Сокращённое умножение",
+        "differentiation": "Производные",
+        "trigonometry": "Тригонометрия"
+      },
+      "settings": "Настройки",
+      "last_level": "Coming soon..."
+    },
+    "settings_scene": {
+      "back": "назад",
+      "back_to_menu": "меню",
+      "back_to_game": "к игре",
+      "settings_names": {
+        "speed": "Скорость",
+        "mistake_timeout": "Остановка при ошибке",
+        "show_correct_rule": "Правило преобразования",
+        "language": "Язык"
+      }
+    },
+    "level_generation": "Генерация уровня",
+    "loading_resources": "Загрузка ресурсов",
+    "pause_menu": {
+      "resume": "Продолжить",
+      "settings": "Настройки",
+      "restart": "Рестарт уровня",
+      "menu": "Меню"
+    },
+    "game_scene": {
+      "score": "счёт",
+      "hint": "сбей выражения не равные предыдущим"
+    },
+    "game_complete": {
+      "level_score": "Счёт уровеня",
+      "total_score": "Общий счёт",
+      "next_level": "Следующий уровень",
+      "restart_level": "Рестарт уровня",
+      "menu": "Меню",
+      "save_sequence": "Сохранить цепочку",
+      "congrats": "Ты выиграл!",
+      "before_scientist_name": "Ты прямо как",
+      "levels": "уровни"
+    }
+  }
+}

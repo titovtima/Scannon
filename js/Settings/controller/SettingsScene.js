@@ -9,6 +9,8 @@ class SettingsScene extends Phaser.Scene {
         this.sceneFrom = params.sceneFrom;
         this.levelNumber = params.levelNumber;
 
+        this.strings = this.settings.strings.settings_scene;
+
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
 
@@ -22,11 +24,11 @@ class SettingsScene extends Phaser.Scene {
     }
 
     placeBackButton() {
-        let backButtonLabel = '<- back';
+        let backButtonLabel = '<- ' + this.strings.back;
         if (this.sceneFrom === GC.SCENES.LEVEL_MENU)
-            backButtonLabel = '<- menu'
+            backButtonLabel = '<- ' + this.strings.back_to_menu;
         else if (this.sceneFrom === GC.SCENES.GAME_PAUSE)
-            backButtonLabel = '<- game'
+            backButtonLabel = '<- ' + this.strings.back_to_game;
         let backButtonFontSize = this.sizer.backButtonFontSize();
         let backButtonPosition = this.sizer.backButtonPosition();
         let fontColor = this.sizer.fontColor();
@@ -68,11 +70,12 @@ class SettingsScene extends Phaser.Scene {
     placeSpeedSetting() {
         let fontSize = this.sizer.fontSize();
         let fontColor = this.sizer.fontColor();
+        let text = this.strings.settings_names.speed;
 
         let speedLabelPosition = this.sizer.speedLabelPosition();
         let speedLabel = this.add.text(
             speedLabelPosition.x, speedLabelPosition.y,
-            'Speed', {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            text, {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
         speedLabel.setOrigin(0, 0.5);
 
         let speedMinusButtonPosition = this.sizer.speedMinusButtonPosition();
@@ -129,8 +132,9 @@ class SettingsScene extends Phaser.Scene {
 
         let fontSize = this.sizer.fontSize();
         let fontColor = this.sizer.fontColor();
+        let text = this.strings.settings_names.mistake_timeout;
 
-        let label = this.add.text(labelLeftX, positionY, 'Mistake Timeout',
+        let label = this.add.text(labelLeftX, positionY, text,
             {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
         label.setOrigin(0, 0.5);
 
@@ -183,9 +187,10 @@ class SettingsScene extends Phaser.Scene {
         let positionY = this.sizer.showCorrectRuleLineY();
         let fontSize = this.sizer.fontSize();
         let fontColor = this.sizer.fontColor();
+        let text = this.strings.settings_names.show_correct_rule;
 
         let labelLeftX = this.sizer.showCorrectRuleLabelLeftX();
-        let label = this.add.text(labelLeftX, positionY, 'Show Correct Rule',
+        let label = this.add.text(labelLeftX, positionY, text,
             {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
         label.setOrigin(0, 0.5);
 

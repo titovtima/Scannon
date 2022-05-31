@@ -16,6 +16,8 @@ class GameCompleteScene extends Phaser.Scene {
         this.levelNumber = params.levelNumber;
         this.startLevel = params.startLevel;
 
+        this.strings = this.scene.settings.strings.game_complete;
+
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
 
@@ -26,6 +28,13 @@ class GameCompleteScene extends Phaser.Scene {
         }
         if (this.totalScore >= 200)
             ym(88802966,'reachGoal','totalScore200');
+
+        let jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_score": ${this.score}}`;
+        ym(88802966, 'params', JSON.parse(jsonString));
+        if (this.score > 0) {
+            jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_success": ${this.score}}`;
+            ym(88802966, 'params', JSON.parse(jsonString));
+        }
 
         this.levelsInfo = this.cache.json.get('levelsInfo');
         this.sizer = new GameCompleteSizer(this);
@@ -39,13 +48,6 @@ class GameCompleteScene extends Phaser.Scene {
         // this.placeLevelMenu();
 
         this.showScientist();
-
-        let jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_score": ${this.score}}`;
-        ym(88802966, 'params', JSON.parse(jsonString));
-        if (this.score > 0) {
-            jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_success": ${this.score}}`;
-            ym(88802966, 'params', JSON.parse(jsonString));
-        }
     }
 
     placeLevelDescription() {
@@ -67,7 +69,7 @@ class GameCompleteScene extends Phaser.Scene {
         let fontSize = this.sizer.totalLevels_FontSize();
         let fontColor = this.sizer.totalLevels_FontColor();
 
-        let text = this.startLevel + " - " + this.levelNumber + " levels";
+        let text = this.startLevel + " - " + this.levelNumber + " " + this.strings.levels;
         let totalLevels = this.add.text(centerX, centerY, text,
             {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: fontColor});
         totalLevels.setOrigin(0.5);
@@ -78,10 +80,11 @@ class GameCompleteScene extends Phaser.Scene {
         let scoreLabelCenterY = this.sizer.levelScoreLabel_CenterY();
         let scoreLabelFontSize = this.sizer.levelScoreLabel_FontSize();
         let scoreLabelColor = this.sizer.levelScoreLabel_Color();
+        let text = this.strings.level_score;
         this.add.text(
             scoreLabelCenterX,
             scoreLabelCenterY,
-            'Level Score',
+            text,
             {fontFamily: 'PTMono', fontSize: scoreLabelFontSize, color: scoreLabelColor}
         ).setOrigin(0.5);
 
@@ -102,10 +105,11 @@ class GameCompleteScene extends Phaser.Scene {
         let scoreLabelCenterY = this.sizer.totalScoreLabel_CenterY();
         let scoreLabelFontSize = this.sizer.totalScoreLabel_FontSize();
         let scoreLabelColor = this.sizer.totalScoreLabel_Color();
+        let text = this.strings.total_score;
         this.add.text(
             scoreLabelCenterX,
             scoreLabelCenterY,
-            'Total Score',
+            text,
             {fontFamily: 'PTMono', fontSize: scoreLabelFontSize, color: scoreLabelColor}
         ).setOrigin(0.5);
 
@@ -125,20 +129,20 @@ class GameCompleteScene extends Phaser.Scene {
         let menuItemFontSize = this.sizer.menuItem_FontSize();
         let menuItemColor = this.sizer.menuItem_Color();
 
-        let labels = ['Restart level', 'Main Menu'];
+        let labels = [this.strings.restart_level, this.strings.menu];
 
-        let congratsLabel = "You won!";
+        let congratsLabel = this.strings.congrats;
 
         if (this.score > 0) {
             if (this.levelNumber === this.levelsInfo.levelsNumber) {
                 labels.unshift(congratsLabel);
             } else {
-                labels.unshift("Next level");
+                labels.unshift(this.strings.next_level);
             }
         }
 
         if (this.scene.settings.debug !== 0)
-            labels.push('Save sequence')
+            labels.push(this.strings.save_sequence)
 
         let labelIndex = 0;
         for (let label of labels) {
@@ -167,16 +171,16 @@ class GameCompleteScene extends Phaser.Scene {
 
                 menuItem.on('pointerup', () => {
                     switch (label) {
-                        case 'Main Menu':
+                        case this.strings.menu:
                             this.openLevelMenu();
                             break;
-                        case 'Restart level':
+                        case this.strings.restart_level:
                             this.restartLevel();
                             break;
-                        case 'Next level':
+                        case this.strings.next_level:
                             this.startNextLevel();
                             break;
-                        case 'Save sequence':
+                        case this.strings.save_sequence:
                             this.saveSequence();
                     }
                 })
@@ -241,7 +245,7 @@ class GameCompleteScene extends Phaser.Scene {
         let fontSize = this.sizer.scientistName_FontSize();
         let fontColor = this.sizer.scientistName_FontColor();
 
-        let text = "You're like\n" + name;
+        let text = this.strings.before_scientist_name + "\n" + name;
         let scientistName = this.add.text(centerX, topY, text,
             {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: fontColor});
         scientistName.setOrigin(0.5, 0);

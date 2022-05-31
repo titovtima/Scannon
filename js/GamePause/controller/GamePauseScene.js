@@ -11,6 +11,8 @@ class GamePauseScene extends Phaser.Scene {
         this.totalScore = this.gameScene.totalScore;
         this.startLevel = this.gameScene.startLevel;
 
+        this.strings = this.scene.settings.strings.pause_menu;
+
         console.log('Init Pause. Settings:', this.scene.settings);
         this.scene.wake(GC.SCENES.GAME);
         this.scene.pause(GC.SCENES.GAME);
@@ -70,7 +72,7 @@ class GamePauseScene extends Phaser.Scene {
     }
 
     drawMenuItems() {
-        let labels = ['Resume', 'Settings', 'Restart', 'Main Menu'];
+        let labels = [this.strings.resume, this.strings.settings, this.strings.restart, this.strings.menu];
 
         for (let label of labels) {
             let centerX = this.sizer.menuItem_CenterX();
@@ -91,16 +93,16 @@ class GamePauseScene extends Phaser.Scene {
             });
             menuItem.on('pointerup', () => {
                 switch (label) {
-                    case "Resume":
+                    case this.strings.resume:
                         this.closeMenu();
                         break;
-                    case "Settings":
+                    case this.strings.settings:
                         this.openSettings();
                         break;
-                    case "Restart":
+                    case this.strings.restart:
                         this.restartLevel();
                         break;
-                    case "Main Menu":
+                    case this.strings.menu:
                         this.openMainMenu();
                         break;
                 }
