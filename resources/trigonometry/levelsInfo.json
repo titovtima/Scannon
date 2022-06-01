@@ -3,8 +3,8 @@
   "levels": [
     {
       "index": 0,
-      "description": "Tutorial",
-      "descriptionRu": "Туториал",
+      "description_en": "Tutorial",
+      "description_ru": "Туториал",
       "autogenerate": false,
       "sequences": [
         "/lvl0/seq.json"
@@ -12,7 +12,8 @@
     },
     {
       "index": 1,
-      "description": "Pythagorean Identity",
+      "description_en": "Pythagorean Identity",
+      "description_ru": "Основное тождество",
       "autogenerate": false,
       "sequences": [
         "/lvl1/seq1.json"
@@ -20,7 +21,8 @@
     },
     {
       "index": 2,
-      "description": "Reflections",
+      "description_en": "Reflections",
+      "description_ru": "Отражения",
       "autogenerate": false,
       "sequences": [
         "/lvl2/seq1.json"
@@ -28,7 +30,8 @@
     },
     {
       "index": 3,
-      "description": "Angle Sum Diff",
+      "description_en": "Angle Sum Diff",
+      "description_ru": "Сумма и разность углов",
       "autogenerate": false,
       "sequences": [
         "/lvl3/seq1.json"
@@ -36,7 +39,8 @@
     },
     {
       "index": 4,
-      "description": "Sum Product sin cos",
+      "description_en": "Sum Product sin cos",
+      "description_ru": "Сумма синусов, косинусов",
       "autogenerate": false,
       "sequences": [
         "/lvl4/seq1.json"

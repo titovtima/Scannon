@@ -3,34 +3,41 @@
     {
       "score": 350,
       "scientist": {
-        "name": "Brahmagupta",
+        "name_en": "Brahmagupta",
+        "name_ru": "Брахмагупта",
         "portrait": "/scientists/portraits/Brahmagupta.png",
-        "description": "Brahmagupta solved the general quadratic equation for both positive and negative roots. Also he was the first to give a general solution to the linear Diophantine equation ax+by=c."
+        "description_en": "Brahmagupta solved the general quadratic equation for both positive and negative roots. Also he was the first to give a general solution to the linear Diophantine equation ax+by=c.",
+        "description_ru": "Брахмагупта решил квадратное уравнение в общем случае, получив оба корня. Также он первымдал общее решение линейному Диофантову уравнению ax+by=c."
       }
     },
     {
       "score": 200,
       "scientist": {
-        "name": "Diophantus",
+        "name_en": "Diophantus",
+        "name_ru": "Диофант",
         "portrait": "/scientists/portraits/Diophantus.png",
-        "description": "Diophantus is the first to use symbols for unknown numbers and abbreviations for powers of numbers, relationships, and operations. His Arithmetica is a collection of 150 solved problems."
+        "description_en": "Diophantus is the first to use symbols for unknown numbers and abbreviations for powers of numbers, relationships, and operations. His Arithmetica is a collection of 150 solved problems.",
+        "description_ru": "Диофант первым использовал символы для обозначения неизвестных и сокращения для степений и других операций. Его \"Арифметика\" - сборник 150 решённых задач об уравнениях."
       }
     },
     {
       "score": 100,
       "scientist": {
-        "name": "Archimedes",
+        "name_en": "Archimedes",
+        "name_ru": "Архимед",
         "portrait": "/scientists/portraits/Archimedes.png",
-        "description": "Archimedes anticipated modern calculus and analysis by applying the concept of the infinitely small, derived an approximation of pi and and devised a system using exponentiation."
+        "description_en": "Archimedes anticipated modern calculus and analysis by applying the concept of the infinitely small, derived an approximation of pi and and devised a system using exponentiation.",
+        "description_ru": "Архимед работал с бесконечно малыми величинами для подсчёта площадей, предложил приближение числа пи, разработал систему названия больших чисел, использующую экспоненту."
       }
     },
     {
       "score": -1000,
       "scientist": {
-        "name": "StartMathIdea",
+        "name_en": "StartMathIdea",
+        "name_ru": "StartMathIdea",
         "portrait": "/scientists/portraits/AlJabrPage.jpeg",
-        "description": "A Page from The Compendious Book on Calculation by Completion and Balancing, also known as Al-Jabr",
-        "descriptionRu": "Страница из Краткой книги о восполнении и противопоставлении, названия которой произошёл термин алгебра"
+        "description_en": "A Page from The Compendious Book on Calculation by Completion and Balancing, also known as Al-Jabr",
+        "description_ru": "Страница из Краткой книги о восполнении и противопоставлении, от названия которой произошёл термин алгебра"
       }
     }
   ]

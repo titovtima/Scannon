@@ -57,7 +57,7 @@ class GameCompleteScene extends Phaser.Scene {
         let fontColor = this.sizer.levelDescription_FontColor();
 
         let text = this.levelsInfo.levels[this.levelNumber].index + " - "
-            + this.levelsInfo.levels[this.levelNumber].description;
+            + this.levelsInfo.levels[this.levelNumber]["description_" + this.scene.settings.language];
         let levelDescription = this.add.text(centerX, topY, text,
             {fontFamily: 'Ribeye', fontSize: fontSize, color: fontColor});
         levelDescription.setOrigin(0.5, 0);
@@ -197,13 +197,11 @@ class GameCompleteScene extends Phaser.Scene {
             console.log('showScientists', showScientists);
 
             for (let rule of showScientists.scoreToScientist) {
-                console.log('total score:', this.totalScore);
-                console.log('rule', rule);
                 if (this.totalScore >= rule.score) {
                     this.showScientistPortrait(rule.scientist.portrait);
-                    this.placeScientistDescription(rule.scientist.description);
-                    if (!rule.scientist.name.startsWith("Start")) {
-                        this.placeScientistName(rule.scientist.name);
+                    this.placeScientistDescription(rule.scientist["description_" + this.scene.settings.language]);
+                    if (!rule.scientist.name_en.startsWith("Start")) {
+                        this.placeScientistName(rule.scientist["name_" + this.scene.settings.language]);
                     }
                     break;
                 }

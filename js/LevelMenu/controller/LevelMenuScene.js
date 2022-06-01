@@ -142,7 +142,7 @@ class LevelMenuScene extends Phaser.Scene {
     }
 
     placeCardDescription(index) {
-        let description = this.levelsInfo.levels[index].description;
+        let description = this.levelsInfo.levels[index]["description_" + this.scene.settings.language];
 
         let centerX = this.sizer.cardDescription_CenterX(index);
         let centerY = this.sizer.cardDescription_CenterY(index);

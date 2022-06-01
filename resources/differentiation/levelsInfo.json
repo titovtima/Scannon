@@ -3,8 +3,8 @@
   "levels": [
     {
       "index": 0,
-      "description": "Tutorial",
-      "descriptionRu": "Туториал",
+      "description_en": "Tutorial",
+      "description_ru": "Туториал",
       "autogenerate": false,
       "sequences": [
         "/lvl0/seq.json"
@@ -12,7 +12,8 @@
     },
     {
       "index": 1,
-      "description": "Exponentiation",
+      "description_en": "Exponentiation",
+      "description_ru": "Экспонента",
       "autogenerate": false,
       "sequences": [
         "/lvl1/seq1.json"
@@ -20,7 +21,8 @@
     },
     {
       "index": 2,
-      "description": "Trigonometry",
+      "description_en": "Trigonometry",
+      "description_ru": "Тригонометрия",
       "autogenerate": false,
       "sequences": [
         "/lvl2/seq1.json"
@@ -28,7 +30,8 @@
     },
     {
       "index": 3,
-      "description": "Logarithm",
+      "description_en": "Logarithm",
+      "description_ru": "Логарифм",
       "autogenerate": false,
       "sequences": [
         "/lvl3/seq1.json"
@@ -36,7 +39,8 @@
     },
     {
       "index": 4,
-      "description": "Mix - simple",
+      "description_en": "Mix - simple",
+      "description_ru": "Микс",
       "autogenerate": false,
       "sequences": [
         "/lvl4/seq1.json"

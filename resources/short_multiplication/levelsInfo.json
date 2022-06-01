@@ -3,8 +3,8 @@
   "levels": [
     {
       "index": 0,
-      "description": "Tutorial",
-      "descriptionRu": "Туториал",
+      "description_en": "Tutorial",
+      "description_ru": "Туториал",
       "autogenerate": false,
       "sequences": [
         "/lvl0/seq.json"
@@ -12,7 +12,8 @@
     },
     {
       "index": 1,
-      "description": "Sum, diff, square",
+      "description_en": "Sum, diff, square",
+      "description_ru": "Сумма, разность, квадрат",
       "autogenerate": false,
       "sequences": [
         "/lvl1/seq1.json"
@@ -20,7 +21,8 @@
     },
     {
       "index": 2,
-      "description": "Cube of sum & diff",
+      "description_en": "Cube of sum & diff",
+      "description_ru": "Куб суммы, разности",
       "autogenerate": false,
       "sequences": [
         "/lvl2/seq1.json"
@@ -28,7 +30,8 @@
     },
     {
       "index": 3,
-      "description": "Sum & diff of cubes",
+      "description_en": "Sum & diff of cubes",
+      "description_ru": "Сумма, разность кубов",
       "autogenerate": false,
       "sequences": [
         "/lvl3/seq1.json"
@@ -36,7 +39,8 @@
     },
     {
       "index": 4,
-      "description": "Squares & cubes - simple",
+      "description_en": "Squares & cubes - simple",
+      "description_ru": "Квадраты и кубы - лёгкий",
       "autogenerate": false,
       "sequences": [
         "/lvl4/seq1.json"
@@ -44,7 +48,8 @@
     },
     {
       "index": 5,
-      "description": "Squares & cubes - hard",
+      "description_en": "Squares & cubes - hard",
+      "description_ru": "Квадраты и кубы - сложный",
       "autogenerate": false,
       "sequences": [
         "/lvl5/seq1.json"
