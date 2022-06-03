@@ -79,17 +79,17 @@ class GamePauseScene extends Phaser.Scene {
             let centerY = this.sizer.menuItem_CenterY(label);
 
             let menuItem = this.add.text(centerX, centerY, label, {
-                fontFamily: 'RibeyeMarrow',
+                fontFamily: GC.FONTS.BUTTON_OUT,
                 fontSize: 75,
                 color: '#000'
             }).setOrigin(0.5);
 
             menuItem.setInteractive();
             menuItem.on('pointerover', () => {
-                menuItem.setFontFamily('Ribeye');
+                menuItem.setFontFamily(GC.FONTS.BUTTON_OVER);
             });
             menuItem.on('pointerout', () => {
-                menuItem.setFontFamily('RibeyeMarrow');
+                menuItem.setFontFamily(GC.FONTS.BUTTON_OUT);
             });
             menuItem.on('pointerup', () => {
                 switch (label) {

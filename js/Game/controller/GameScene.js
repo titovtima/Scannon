@@ -165,10 +165,9 @@ class GameScene extends Phaser.Scene {
         let formulaCenterX = this.sizer.formula_CenterX();
         let formulaCenterY = this.spanFormula_CenterY();
         let fontSize = this.sizer.formula_FontSize();
-        let fontFamily = this.sizer.formula_FontFamily();
         let formula = this.add.text(formulaCenterX, formulaCenterY, this.formulas[index].unicode,
             {
-                fontFamily: fontFamily,
+                fontFamily: GC.FONTS.FORMULAS,
                 color: '#000',
                 fontSize: fontSize
             });
@@ -348,10 +347,9 @@ class GameScene extends Phaser.Scene {
 
         let fontSize = this.sizer.formula_FontSize();
         let correctRuleTextPosition = this.sizer.correctRuleTextPosition();
-        let fontFamily = this.sizer.formula_FontFamily();
         this.correctRuleText = this.add.text(
             correctRuleTextPosition.x, correctRuleTextPosition.y,
-            rule, { fontFamily: fontFamily, color: '#000', fontSize: fontSize });
+            rule, { fontFamily: GC.FONTS.FORMULAS, color: '#000', fontSize: fontSize });
         this.correctRuleText.setOrigin(0.5, 0.5);
 
         let timeout = this.scene.settings.showCorrectRule * 1000;
@@ -421,6 +419,7 @@ class GameScene extends Phaser.Scene {
         }
 
         let drawScore = this.add.text(rightX, topY, score, {
+            fontFamily: GC.FONTS.SCORE_COUNTER,
             fontSize: fontSize,
             color: color
         });
@@ -749,7 +748,7 @@ class GameScene extends Phaser.Scene {
         let text = this.scene.settings.strings.game_scene.score + ":";
 
         this.add.text(labelRightX, labelBottomY, text,
-            { fontSize: labelFontSize, color: labelColor })
+            { fontFamily: GC.FONTS.SCORE_LABELS, fontSize: labelFontSize, color: labelColor })
             .setOrigin(1);
 
         let valueRightX = this.sizer.scoreValue_RightX();
@@ -757,7 +756,7 @@ class GameScene extends Phaser.Scene {
         let valueFontSize = this.sizer.scoreValue_FontSize();
         let valueColor = this.sizer.scoreValue_Color();
         this.scoreValueText = this.add.text(valueRightX, valueBottomY, '000000',
-            { fontSize: valueFontSize, color: valueColor })
+            { fontFamily: GC.FONTS.SCORE_COUNTER, fontSize: valueFontSize, color: valueColor })
             .setOrigin(1);
     }
 
@@ -769,7 +768,7 @@ class GameScene extends Phaser.Scene {
         let text = this.scene.settings.strings.game_scene.hint;
 
         let textHint = this.add.text(rightX, topY, text,
-            { fontFamily: "RhodiumLibre", fontSize: fontSize, color: fontColor});
+            { fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor});
         textHint.setOrigin(1, 0);
     }
 

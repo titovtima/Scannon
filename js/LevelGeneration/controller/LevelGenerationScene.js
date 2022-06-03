@@ -147,7 +147,7 @@ class LevelGenerationScene extends Phaser.Scene {
         let text = this.scene.settings.strings.level_generation;
 
         let description = this.add.text(centerX, centerY,
-            text, {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: fontColor});
+            text, {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor});
         description.setOrigin(0.5);
     }
 

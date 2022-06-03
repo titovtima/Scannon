@@ -29,6 +29,15 @@ class LevelMenuScene extends Phaser.Scene {
         let roboto = '@font-face { font-family: "Roboto"; src: url("' + GC.BASE_PATH + '/fonts/Roboto-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(roboto, 0);
 
+        let alice = '@font-face { font-family: "Alice"; src: url("' + GC.BASE_PATH + '/fonts/Alice-Regular.ttf") format("truetype"); }\n';
+        sheet.insertRule(alice, 0);
+
+        let cheque = '@font-face { font-family: "Cheque"; src: url("' + GC.BASE_PATH + '/fonts/Cheque-Regular.otf") format("truetype"); }\n';
+        sheet.insertRule(cheque, 0);
+
+        let chequeBlack = '@font-face { font-family: "ChequeBlack"; src: url("' + GC.BASE_PATH + '/fonts/Cheque-Black.otf") format("truetype"); }\n';
+        sheet.insertRule(chequeBlack, 0);
+
         this.scene.settings = params.settings;
 
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
@@ -53,7 +62,8 @@ class LevelMenuScene extends Phaser.Scene {
         let scene = this;
         WebFont.load({
             'custom': {
-                families: ['Ribeye', 'RibeyeMarrow', 'Roboto', 'RhodiumLibre', 'PoetsenOne', 'PTMono']
+                families: ['Ribeye', 'RibeyeMarrow', 'Roboto', 'RhodiumLibre', 'PoetsenOne', 'PTMono', 'Alice',
+                'Cheque', 'ChequeBlack']
             },
             active: function () {
                 scene.placeSettingsButton();
@@ -79,14 +89,14 @@ class LevelMenuScene extends Phaser.Scene {
         let text = this.strings.settings;
         let settingsButton = this.add.text(
             settingsButtonPosition.x, settingsButtonPosition.y,
-            text, {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            text, {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         settingsButton.setOrigin(1, 0);
         settingsButton.setInteractive();
         settingsButton.on('pointerover', () => {
-            settingsButton.setFontFamily('Ribeye');
+            settingsButton.setFontFamily(GC.FONTS.BUTTON_OVER);
         });
         settingsButton.on('pointerout', () => {
-            settingsButton.setFontFamily('RibeyeMarrow');
+            settingsButton.setFontFamily(GC.FONTS.BUTTON_OUT);
         });
         settingsButton.on('pointerup', () => {
             this.scene.start(GC.SCENES.SETTINGS, {
@@ -130,14 +140,14 @@ class LevelMenuScene extends Phaser.Scene {
         let fontColor = this.sizer.cardIndex_fontColor();
 
         let cardIndex = this.add.text(centerX, topY,
-            index, {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            index, {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         cardIndex.setOrigin(0.5, 0);
 
         cardBackground.on('pointerover', () => {
-            cardIndex.setFontFamily('Ribeye');
+            cardIndex.setFontFamily(GC.FONTS.BUTTON_OVER);
         });
         cardBackground.on('pointerout', () => {
-            cardIndex.setFontFamily('RibeyeMarrow');
+            cardIndex.setFontFamily(GC.FONTS.BUTTON_OUT);
         })
     }
 
@@ -152,7 +162,7 @@ class LevelMenuScene extends Phaser.Scene {
         this.add.text(
             centerX, centerY,
             description,
-            {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: color}
+            {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: color}
         ).setOrigin(0.5);
     }
 
@@ -170,7 +180,7 @@ class LevelMenuScene extends Phaser.Scene {
         let text = this.strings.last_level;
 
         let lastCardDescription = this.add.text(centerX, centerY, text,
-            {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: color});
+            {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: color});
         lastCardDescription.setOrigin(0.5);
     }
 
@@ -227,7 +237,7 @@ class LevelMenuScene extends Phaser.Scene {
         }
 
         let label = this.add.text(labelPosition.x, labelPosition.y, text,
-            {fontFamily: 'RibeyeMarrow', fontSize: labelFontSize, color: labelFontColor});
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: labelFontSize, color: labelFontColor});
         label.setOrigin(0, 0);
     }
 }

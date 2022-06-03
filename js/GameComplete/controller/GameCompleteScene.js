@@ -59,7 +59,7 @@ class GameCompleteScene extends Phaser.Scene {
         let text = this.levelsInfo.levels[this.levelNumber].index + " - "
             + this.levelsInfo.levels[this.levelNumber]["description_" + this.scene.settings.language];
         let levelDescription = this.add.text(centerX, topY, text,
-            {fontFamily: 'Ribeye', fontSize: fontSize, color: fontColor});
+            {fontFamily: GC.FONTS.BUTTON_OVER, fontSize: fontSize, color: fontColor});
         levelDescription.setOrigin(0.5, 0);
     }
 
@@ -71,7 +71,7 @@ class GameCompleteScene extends Phaser.Scene {
 
         let text = this.startLevel + " - " + this.levelNumber + " " + this.strings.levels;
         let totalLevels = this.add.text(centerX, centerY, text,
-            {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: fontColor});
+            {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor});
         totalLevels.setOrigin(0.5);
     }
 
@@ -85,7 +85,7 @@ class GameCompleteScene extends Phaser.Scene {
             scoreLabelCenterX,
             scoreLabelCenterY,
             text,
-            {fontFamily: 'PTMono', fontSize: scoreLabelFontSize, color: scoreLabelColor}
+            {fontFamily: GC.FONTS.SCORE_LABELS, fontSize: scoreLabelFontSize, color: scoreLabelColor}
         ).setOrigin(0.5);
 
         let scoreValueCenterX = this.sizer.levelScoreValue_CenterX();
@@ -96,7 +96,7 @@ class GameCompleteScene extends Phaser.Scene {
             scoreValueCenterX,
             scoreValueCenterY,
             this.score,
-            {fontFamily: 'PoetsenOne', fontSize: scoreValueFontSize, color: scoreValueColor}
+            {fontFamily: GC.FONTS.SCORE_VALUE, fontSize: scoreValueFontSize, color: scoreValueColor}
         ).setOrigin(0.5);
     }
 
@@ -110,7 +110,7 @@ class GameCompleteScene extends Phaser.Scene {
             scoreLabelCenterX,
             scoreLabelCenterY,
             text,
-            {fontFamily: 'PTMono', fontSize: scoreLabelFontSize, color: scoreLabelColor}
+            {fontFamily: GC.FONTS.SCORE_LABELS, fontSize: scoreLabelFontSize, color: scoreLabelColor}
         ).setOrigin(0.5);
 
         let scoreValueCenterX = this.sizer.totalScoreValue_CenterX();
@@ -121,7 +121,7 @@ class GameCompleteScene extends Phaser.Scene {
             scoreValueCenterX,
             scoreValueCenterY,
             this.totalScore,
-            {fontFamily: 'PoetsenOne', fontSize: scoreValueFontSize, color: scoreValueColor}
+            {fontFamily: GC.FONTS.SCORE_VALUE, fontSize: scoreValueFontSize, color: scoreValueColor}
         ).setOrigin(0.5);
     }
 
@@ -148,9 +148,9 @@ class GameCompleteScene extends Phaser.Scene {
         for (let label of labels) {
             let menuItemCenterX = this.sizer.menuItem_CenterX();
             let menuItemCenterY = this.sizer.menuItem_CenterY(labelIndex);
-            let fontFamily = 'RibeyeMarrow';
+            let fontFamily = GC.FONTS.BUTTON_OUT;
             if (label === congratsLabel)
-                fontFamily = 'Ribeye';
+                fontFamily = GC.FONTS.BUTTON_OVER;
 
             let menuItem = this.add.text(
                 menuItemCenterX, menuItemCenterY,
@@ -162,11 +162,11 @@ class GameCompleteScene extends Phaser.Scene {
                 menuItem.setInteractive();
 
                 menuItem.on('pointerover', () => {
-                    menuItem.setFontFamily('Ribeye');
+                    menuItem.setFontFamily(GC.FONTS.BUTTON_OVER);
                 });
 
                 menuItem.on('pointerout', () => {
-                    menuItem.setFontFamily('RibeyeMarrow');
+                    menuItem.setFontFamily(GC.FONTS.BUTTON_OUT);
                 });
 
                 menuItem.on('pointerup', () => {
@@ -231,7 +231,7 @@ class GameCompleteScene extends Phaser.Scene {
         let fixedWidth = this.sizer.scientistDescription_FixedWidth();
 
         let description = this.add.text(centerX, topY, text,
-            {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: fontColor});
+            {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor});
         description.setOrigin(0.5, 0);
         description.setWordWrapWidth(fixedWidth, 0);
         description.setAlign('center');
@@ -245,7 +245,7 @@ class GameCompleteScene extends Phaser.Scene {
 
         let text = this.strings.before_scientist_name + "\n" + name;
         let scientistName = this.add.text(centerX, topY, text,
-            {fontFamily: 'RhodiumLibre', fontSize: fontSize, color: fontColor});
+            {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor});
         scientistName.setOrigin(0.5, 0);
         scientistName.setAlign('center');
     }

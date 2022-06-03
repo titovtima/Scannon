@@ -36,17 +36,17 @@ class SettingsScene extends Phaser.Scene {
         let backButton = this.add.text(
             backButtonPosition.x, backButtonPosition.y,
             backButtonLabel, {
-                fontFamily: 'RibeyeMarrow',
+                fontFamily: GC.FONTS.BUTTON_OUT,
                 fontSize: backButtonFontSize,
                 color: fontColor});
         backButton.setOrigin(0, 0);
         backButton.setInteractive();
 
         backButton.on('pointerover', () => {
-            backButton.setFontFamily('Ribeye');
+            backButton.setFontFamily(GC.FONTS.BUTTON_OVER);
         });
         backButton.on('pointerout', () => {
-            backButton.setFontFamily('RibeyeMarrow');
+            backButton.setFontFamily(GC.FONTS.BUTTON_OUT);
         });
         backButton.on('pointerup', () => {
             switch (this.sceneFrom) {
@@ -75,35 +75,35 @@ class SettingsScene extends Phaser.Scene {
         let speedLabelPosition = this.sizer.speedLabelPosition();
         let speedLabel = this.add.text(
             speedLabelPosition.x, speedLabelPosition.y,
-            text, {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            text, {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         speedLabel.setOrigin(0, 0.5);
 
         let speedMinusButtonPosition = this.sizer.speedMinusButtonPosition();
         let speedMinusButton = this.add.text(
             speedMinusButtonPosition.x, speedMinusButtonPosition.y,
-            '-', {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            '-', {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         speedMinusButton.setOrigin(0.5, 0.5);
 
         let speedValuePosition = this.sizer.speedValuePosition();
         let speedValue = this.add.text(
             speedValuePosition.x, speedValuePosition.y,
-            this.settings.speed, {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            this.settings.speed, {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         speedValue.setOrigin(0.5, 0.5);
 
         let speedPlusButtonPosition = this.sizer.speedPlusButtonPosition();
         let speedPlusButton = this.add.text(
             speedPlusButtonPosition.x, speedPlusButtonPosition.y,
-            '+', {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            '+', {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         speedPlusButton.setOrigin(0.5, 0.5);
 
         speedMinusButton.setInteractive();
         speedPlusButton.setInteractive();
 
         speedMinusButton.on('pointerover', () => {
-            speedMinusButton.setFontFamily('Ribeye');
+            speedMinusButton.setFontFamily(GC.FONTS.BUTTON_OVER);
         });
         speedMinusButton.on('pointerout', () => {
-            speedMinusButton.setFontFamily('RibeyeMarrow');
+            speedMinusButton.setFontFamily(GC.FONTS.BUTTON_OUT);
         });
         speedMinusButton.on('pointerup', () => {
             if (this.settings.speed > 0.2) {
@@ -113,10 +113,10 @@ class SettingsScene extends Phaser.Scene {
         });
 
         speedPlusButton.on('pointerover', () => {
-            speedPlusButton.setFontFamily('Ribeye');
+            speedPlusButton.setFontFamily(GC.FONTS.BUTTON_OVER);
         });
         speedPlusButton.on('pointerout', () => {
-            speedPlusButton.setFontFamily('RibeyeMarrow');
+            speedPlusButton.setFontFamily(GC.FONTS.BUTTON_OUT);
         });
         speedPlusButton.on('pointerup', () => {
             if (this.settings.speed < 5) {
@@ -135,20 +135,20 @@ class SettingsScene extends Phaser.Scene {
         let text = this.strings.settings_names.mistake_timeout;
 
         let label = this.add.text(labelLeftX, positionY, text,
-            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         label.setOrigin(0, 0.5);
 
         let minusButtonX = this.sizer.mistakeTimeoutMinusButtonX();
         let minusButton = this.add.text(minusButtonX, positionY, '-',
-            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         minusButton.setOrigin(0.5, 0.5);
         minusButton.setInteractive();
 
         minusButton.on('pointerover', () => {
-            minusButton.setFontFamily('Ribeye');
+            minusButton.setFontFamily(GC.FONTS.BUTTON_OVER);
         });
         minusButton.on('pointerout', () => {
-            minusButton.setFontFamily('RibeyeMarrow');
+            minusButton.setFontFamily(GC.FONTS.BUTTON_OUT);
         });
         minusButton.on('pointerup', () => {
             if (this.settings.mistakeTimeout > 0) {
@@ -160,20 +160,20 @@ class SettingsScene extends Phaser.Scene {
         let timeoutValueX = this.sizer.mistakeTimeoutValueX();
         let timeoutValue = this.add.text(timeoutValueX, positionY,
             this.settings.mistakeTimeout + 's',
-            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         timeoutValue.setOrigin(0.5, 0.5);
 
         let plusButtonX = this.sizer.mistakeTimeoutPlusButtonX();
         let plusButton = this.add.text(plusButtonX, positionY, '+',
-            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         plusButton.setOrigin(0.5, 0.5);
         plusButton.setInteractive();
 
         plusButton.on('pointerover', () => {
-            plusButton.setFontFamily('Ribeye');
+            plusButton.setFontFamily(GC.FONTS.BUTTON_OVER);
         });
         plusButton.on('pointerout', () => {
-            plusButton.setFontFamily('RibeyeMarrow');
+            plusButton.setFontFamily(GC.FONTS.BUTTON_OUT);
         });
         plusButton.on('pointerup', () => {
             if (this.settings.mistakeTimeout < 10) {
@@ -191,20 +191,20 @@ class SettingsScene extends Phaser.Scene {
 
         let labelLeftX = this.sizer.showCorrectRuleLabelLeftX();
         let label = this.add.text(labelLeftX, positionY, text,
-            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         label.setOrigin(0, 0.5);
 
         let minusButtonX = this.sizer.showCorrectRuleMinusButtonX();
         let minusButton = this.add.text(minusButtonX, positionY, '-',
-            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         minusButton.setOrigin(0.5, 0.5);
         minusButton.setInteractive();
 
         minusButton.on('pointerover', () => {
-            minusButton.setFontFamily('Ribeye');
+            minusButton.setFontFamily(GC.FONTS.BUTTON_OVER);
         });
         minusButton.on('pointerout', () => {
-            minusButton.setFontFamily('RibeyeMarrow');
+            minusButton.setFontFamily(GC.FONTS.BUTTON_OUT);
         });
         minusButton.on('pointerup', () => {
             if (this.settings.showCorrectRule > 0) {
@@ -216,20 +216,20 @@ class SettingsScene extends Phaser.Scene {
         let showCorrectRuleValueX = this.sizer.showCorrectRuleValueX();
         let showCorrectRuleValue = this.add.text(showCorrectRuleValueX, positionY,
             this.settings.showCorrectRule + 's',
-            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         showCorrectRuleValue.setOrigin(0.5, 0.5);
 
         let plusButtonX = this.sizer.showCorrectRulePlusButtonX();
         let plusButton = this.add.text(plusButtonX, positionY, '+',
-            {fontFamily: 'RibeyeMarrow', fontSize: fontSize, color: fontColor});
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         plusButton.setOrigin(0.5, 0.5);
         plusButton.setInteractive();
 
         plusButton.on('pointerover', () => {
-            plusButton.setFontFamily('Ribeye');
+            plusButton.setFontFamily(GC.FONTS.BUTTON_OVER);
         });
         plusButton.on('pointerout', () => {
-            plusButton.setFontFamily('RibeyeMarrow');
+            plusButton.setFontFamily(GC.FONTS.BUTTON_OUT);
         });
         plusButton.on('pointerup', () => {
             if (this.settings.showCorrectRule < 10) {
