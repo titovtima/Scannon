@@ -4,9 +4,12 @@ class SettingsSizer {
     }
 
     fontSize() {
-        console.log('settings', this.scene.settings);
+        return 60;
+    }
+
+    labelsFontSize() {
         if (this.scene.settings.language === 'ru')
-            return 54;
+            return 53;
         return 70;
     }
 
@@ -31,7 +34,7 @@ class SettingsSizer {
     }
 
     speedMinusButtonX() {
-        return this.speedValueX() - this.fontSize()*1.5;
+        return this.speedValueX() - this.fontSize()*1.3;
     }
 
     speedValueX() {
@@ -39,7 +42,7 @@ class SettingsSizer {
     }
 
     speedPlusButtonX() {
-        return this.speedValueX() + this.fontSize()*1.5;
+        return this.speedValueX() + this.fontSize()*1.3;
     }
 
     mistakeTimeoutLineY() {
@@ -51,7 +54,7 @@ class SettingsSizer {
     }
 
     mistakeTimeoutMinusButtonX() {
-        return this.mistakeTimeoutValueX() - this.fontSize()*1.5;
+        return this.mistakeTimeoutValueX() - this.fontSize()*1.3;
     }
 
     mistakeTimeoutValueX() {
@@ -59,7 +62,7 @@ class SettingsSizer {
     }
 
     mistakeTimeoutPlusButtonX() {
-        return this.mistakeTimeoutValueX() + this.fontSize()*1.5;
+        return this.mistakeTimeoutValueX() + this.fontSize()*1.3;
     }
 
     showCorrectRuleLineY() {
@@ -71,7 +74,7 @@ class SettingsSizer {
     }
 
     showCorrectRuleMinusButtonX() {
-        return this.showCorrectRuleValueX() - this.fontSize()*1.5;
+        return this.showCorrectRuleValueX() - this.fontSize()*1.3;
     }
 
     showCorrectRuleValueX() {
@@ -79,6 +82,22 @@ class SettingsSizer {
     }
 
     showCorrectRulePlusButtonX() {
-        return this.showCorrectRuleValueX() + this.fontSize()*1.5;
+        return this.showCorrectRuleValueX() + this.fontSize()*1.3;
+    }
+
+    languageLineY() {
+        return 500;
+    }
+
+    languageLabelX() {
+        return 100;
+    }
+
+    languageTileX(index) {
+        return 600 + index * 100;
+    }
+
+    languageTile_FontSize() {
+        return 40;
     }
 }

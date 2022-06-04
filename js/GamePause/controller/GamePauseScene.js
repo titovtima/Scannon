@@ -21,6 +21,9 @@ class GamePauseScene extends Phaser.Scene {
     create() {
         this.sizer = new GamePauseSizer(this);
 
+        this.gameScene.setScoreLabelText();
+        this.gameScene.setTextHintText();
+
         this.prepareBackground();
         this.drawMenuItems();
 

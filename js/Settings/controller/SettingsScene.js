@@ -14,32 +14,34 @@ class SettingsScene extends Phaser.Scene {
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
 
+    preload() {
+        this.load.image('languageTile', GC.RESOURCES_PATH + '/assets/languageTile.png');
+        this.load.image('languageTile_Over', GC.RESOURCES_PATH + '/assets/languageTile_Over.png');
+        this.load.image('languageTile_Select', GC.RESOURCES_PATH + '/assets/languageTile_Select.png');
+    }
+
     create() {
         this.sizer = new SettingsSizer(this);
 
+        this.allText = {};
         this.placeBackButton();
         this.placeSpeedSetting();
         this.placeMistakeTimeoutSetting();
         this.placeShowCorrectRuleSetting();
+        this.placeLanguageSetting();
     }
 
     placeBackButton() {
-        let backButtonLabel = '<- ' + this.strings.back;
-        if (this.sceneFrom === GC.SCENES.LEVEL_MENU)
-            backButtonLabel = '<- ' + this.strings.back_to_menu;
-        else if (this.sceneFrom === GC.SCENES.GAME_PAUSE)
-            backButtonLabel = '<- ' + this.strings.back_to_game;
         let backButtonFontSize = this.sizer.backButtonFontSize();
         let backButtonPosition = this.sizer.backButtonPosition();
         let fontColor = this.sizer.fontColor();
 
         let backButton = this.add.text(
-            backButtonPosition.x, backButtonPosition.y,
-            backButtonLabel, {
-                fontFamily: GC.FONTS.BUTTON_OUT,
-                fontSize: backButtonFontSize,
-                color: fontColor});
+            backButtonPosition.x, backButtonPosition.y, "",
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: backButtonFontSize, color: fontColor});
+        this.allText.backButton = backButton;
         backButton.setOrigin(0, 0);
+        this.setBackButtonText();
         backButton.setInteractive();
 
         backButton.on('pointerover', () => {
@@ -67,17 +69,20 @@ class SettingsScene extends Phaser.Scene {
         });
     }
 
+    setBackButtonText() {
+        let backButtonLabel = '<- ' + this.strings.back;
+        if (this.sceneFrom === GC.SCENES.LEVEL_MENU)
+            backButtonLabel = '<- ' + this.strings.back_to_menu;
+        else if (this.sceneFrom === GC.SCENES.GAME_PAUSE)
+            backButtonLabel = '<- ' + this.strings.back_to_game;
+        this.allText.backButton.setText(backButtonLabel);
+    }
+
     placeSpeedSetting() {
+        this.placeSpeedLabel();
         let fontSize = this.sizer.fontSize();
         let fontColor = this.sizer.fontColor();
-        let text = this.strings.settings_names.speed;
-
         let speedLineY = this.sizer.speedLineY();
-        let speedLabelX = this.sizer.speedLabelX();
-        let speedLabel = this.add.text(
-            speedLabelX, speedLineY,
-            text, {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
-        speedLabel.setOrigin(0, 0.5);
 
         let speedMinusButtonX = this.sizer.speedMinusButtonX();
         let speedMinusButton = this.add.text(
@@ -127,17 +132,29 @@ class SettingsScene extends Phaser.Scene {
         });
     }
 
-    placeMistakeTimeoutSetting() {
-        let positionY = this.sizer.mistakeTimeoutLineY();
-        let labelLeftX = this.sizer.mistakeTimeoutLabelLeftX();
+    placeSpeedLabel() {
+        let fontSize = this.sizer.labelsFontSize();
+        let fontColor = this.sizer.fontColor();
 
+        let speedLineY = this.sizer.speedLineY();
+        let speedLabelX = this.sizer.speedLabelX();
+        let speedLabel = this.add.text(speedLabelX, speedLineY, "",
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
+        speedLabel.setOrigin(0, 0.5);
+        this.allText.speedLabel = speedLabel;
+        this.setSpeedLabelText();
+    }
+
+    setSpeedLabelText() {
+        this.allText.speedLabel.setText(this.strings.settings_names.speed);
+        this.allText.speedLabel.setFontSize(this.sizer.labelsFontSize());
+    }
+
+    placeMistakeTimeoutSetting() {
+        this.placeMistakeTimeoutLabel();
+        let positionY = this.sizer.mistakeTimeoutLineY();
         let fontSize = this.sizer.fontSize();
         let fontColor = this.sizer.fontColor();
-        let text = this.strings.settings_names.mistake_timeout;
-
-        let label = this.add.text(labelLeftX, positionY, text,
-            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
-        label.setOrigin(0, 0.5);
 
         let minusButtonX = this.sizer.mistakeTimeoutMinusButtonX();
         let minusButton = this.add.text(minusButtonX, positionY, '-',
@@ -184,16 +201,30 @@ class SettingsScene extends Phaser.Scene {
         });
     }
 
+    placeMistakeTimeoutLabel() {
+        let positionY = this.sizer.mistakeTimeoutLineY();
+        let labelLeftX = this.sizer.mistakeTimeoutLabelLeftX();
+
+        let fontSize = this.sizer.labelsFontSize();
+        let fontColor = this.sizer.fontColor();
+
+        let label = this.add.text(labelLeftX, positionY, "",
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
+        label.setOrigin(0, 0.5);
+        this.allText.mistakeTimeoutLabel = label;
+        this.setMistakeTimeoutLabelText();
+    }
+
+    setMistakeTimeoutLabelText() {
+        this.allText.mistakeTimeoutLabel.setText(this.strings.settings_names.mistake_timeout);
+        this.allText.mistakeTimeoutLabel.setFontSize(this.sizer.labelsFontSize());
+    }
+
     placeShowCorrectRuleSetting() {
+        this.placeShowCorrectRuleLabel();
         let positionY = this.sizer.showCorrectRuleLineY();
         let fontSize = this.sizer.fontSize();
         let fontColor = this.sizer.fontColor();
-        let text = this.strings.settings_names.show_correct_rule;
-
-        let labelLeftX = this.sizer.showCorrectRuleLabelLeftX();
-        let label = this.add.text(labelLeftX, positionY, text,
-            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
-        label.setOrigin(0, 0.5);
 
         let minusButtonX = this.sizer.showCorrectRuleMinusButtonX();
         let minusButton = this.add.text(minusButtonX, positionY, '-',
@@ -238,6 +269,96 @@ class SettingsScene extends Phaser.Scene {
                 showCorrectRuleValue.text = this.settings.showCorrectRule + 's';
             }
         });
+    }
+
+    placeShowCorrectRuleLabel() {
+        let positionY = this.sizer.showCorrectRuleLineY();
+        let fontSize = this.sizer.labelsFontSize();
+        let fontColor = this.sizer.fontColor();
+
+        let labelLeftX = this.sizer.showCorrectRuleLabelLeftX();
+        let label = this.add.text(labelLeftX, positionY, "",
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
+        label.setOrigin(0, 0.5);
+        this.allText.showCorrectRuleLabel = label;
+        this.setShowCorrectRuleLabelText();
+    }
+
+    setShowCorrectRuleLabelText() {
+        this.allText.showCorrectRuleLabel.setText(this.strings.settings_names.show_correct_rule);
+        this.allText.showCorrectRuleLabel.setFontSize(this.sizer.labelsFontSize());
+    }
+
+    placeLanguageSetting() {
+        this.placeLanguageLabel();
+
+        let positionY = this.sizer.languageLineY();
+        let fontSize = this.sizer.languageTile_FontSize();
+        let fontColor = this.sizer.fontColor();
+
+        this.langTiles = {};
+
+        let index = 0;
+        for (let lang of GC.LANGUAGES) {
+            let positionX = this.sizer.languageTileX(index);
+            let tileBackground = this.add.image(positionX, positionY, 'languageTile').setOrigin(0.5, 0.5);
+            this.add.text(positionX, positionY, lang,
+                {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor}).setOrigin(0.5, 0.5);
+
+            this.langTiles[lang] = tileBackground;
+
+            if (lang === this.settings.language) {
+                tileBackground.setTexture('languageTile_Select');
+            } else {
+                tileBackground.setInteractive();
+            }
+
+            tileBackground.on('pointerover', () => {
+                tileBackground.setTexture('languageTile_Over');
+            });
+            tileBackground.on('pointerout', () => {
+                tileBackground.setTexture('languageTile');
+            });
+            tileBackground.on('pointerup', () => {
+                tileBackground.removeInteractive();
+                tileBackground.setTexture('languageTile_Select');
+                this.langTiles[this.settings.language].setTexture('languageTile');
+                this.langTiles[this.settings.language].setInteractive();
+                this.switchLanguage(lang);
+            });
+            index++;
+        }
+    }
+
+    placeLanguageLabel() {
+        let positionY = this.sizer.languageLineY();
+        let fontSize = this.sizer.labelsFontSize();
+        let fontColor = this.sizer.fontColor();
+
+        let labelLeftX = this.sizer.languageLabelX();
+        let label = this.add.text(labelLeftX, positionY, "",
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
+        label.setOrigin(0, 0.5);
+        this.allText.languageLabel = label;
+        this.setLanguageLabelText();
+    }
+
+    setLanguageLabelText() {
+        this.allText.languageLabel.setText(this.strings.settings_names.language);
+        this.allText.languageLabel.setFontSize(this.sizer.labelsFontSize());
+    }
+
+    switchLanguage(lang) {
+        console.log('Switch language to ', lang);
+        let languages = this.cache.json.get('languages');
+        this.settings.strings = languages[lang];
+        this.settings.language = lang;
+        this.strings = this.settings.strings.settings_scene;
+        this.setBackButtonText();
+        this.setSpeedLabelText();
+        this.setMistakeTimeoutLabelText();
+        this.setShowCorrectRuleLabelText();
+        this.setLanguageLabelText();
     }
 
 }

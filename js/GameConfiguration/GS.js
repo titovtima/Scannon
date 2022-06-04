@@ -36,6 +36,7 @@ const GC = {
         SCORE_LABELS: 'PTMono',
         SCORE_COUNTER: 'Courier'
     },
+    LANGUAGES: ['en', 'ru'],
     GAME_CODE: gameCode,
     GAME_NAME: gameName,
     GAME_NAME_MAX_NON_SCALABLE_LENGTH: 24,

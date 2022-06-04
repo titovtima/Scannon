@@ -747,7 +747,7 @@ class GameScene extends Phaser.Scene {
         let labelColor = this.sizer.scoreLabel_Color();
         let text = this.scene.settings.strings.game_scene.score + ":";
 
-        this.add.text(labelRightX, labelBottomY, text,
+        this.scoreLabel = this.add.text(labelRightX, labelBottomY, text,
             { fontFamily: GC.FONTS.SCORE_LABELS, fontSize: labelFontSize, color: labelColor })
             .setOrigin(1);
 
@@ -760,6 +760,10 @@ class GameScene extends Phaser.Scene {
             .setOrigin(1);
     }
 
+    setScoreLabelText() {
+        this.scoreLabel.setText(this.scene.settings.strings.game_scene.score + ":");
+    }
+
     placeTextHint() {
         let rightX = this.sizer.textHintRightX();
         let topY = this.sizer.textHintTopY();
@@ -767,9 +771,13 @@ class GameScene extends Phaser.Scene {
         let fontColor = this.sizer.textHintFontColor();
         let text = this.scene.settings.strings.game_scene.hint;
 
-        let textHint = this.add.text(rightX, topY, text,
+        this.textHint = this.add.text(rightX, topY, text,
             { fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor});
-        textHint.setOrigin(1, 0);
+        this.textHint.setOrigin(1, 0);
+    }
+
+    setTextHintText() {
+        this.textHint.setText(this.scene.settings.strings.game_scene.hint);
     }
 
     formatScore(score) {
