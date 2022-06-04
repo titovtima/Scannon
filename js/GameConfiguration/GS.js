@@ -28,9 +28,9 @@ const GC = {
         BACKGROUND: 0xffcc66
     },
     FONTS: {
-        BUTTON_OUT: 'RibeyeMarrow',
-        BUTTON_OVER: 'Ribeye',
-        TEXT: 'RhodiumLibre',
+        BUTTON_OUT: 'Cheque',
+        BUTTON_OVER: 'ChequeBlack',
+        TEXT: 'sans-serif',
         FORMULAS: 'Roboto',
         SCORE_VALUE: 'PoetsenOne',
         SCORE_LABELS: 'PTMono',

@@ -4,6 +4,9 @@ class SettingsSizer {
     }
 
     fontSize() {
+        console.log('settings', this.scene.settings);
+        if (this.scene.settings.language === 'ru')
+            return 54;
         return 70;
     }
 
@@ -11,8 +14,8 @@ class SettingsSizer {
         return '#000';
     }
 
-    speedLabelPosition() {
-        return { x: 100, y: this.speedLinePosition().y };
+    speedLabelX() {
+        return 100;
     }
 
     backButtonPosition() {
@@ -23,20 +26,20 @@ class SettingsSizer {
         return 60;
     }
 
-    speedLinePosition() {
-        return { x: 500, y: 200 };
+    speedLineY() {
+        return 200;
     }
 
-    speedMinusButtonPosition() {
-        return { x: 500, y: this.speedLinePosition().y };
+    speedMinusButtonX() {
+        return this.speedValueX() - this.fontSize()*1.5;
     }
 
-    speedValuePosition() {
-        return { x: 600, y: this.speedLinePosition().y };
+    speedValueX() {
+        return 600;
     }
 
-    speedPlusButtonPosition() {
-        return { x: 700, y: this.speedLinePosition().y };
+    speedPlusButtonX() {
+        return this.speedValueX() + this.fontSize()*1.5;
     }
 
     mistakeTimeoutLineY() {
@@ -48,7 +51,7 @@ class SettingsSizer {
     }
 
     mistakeTimeoutMinusButtonX() {
-        return 900;
+        return this.mistakeTimeoutValueX() - this.fontSize()*1.5;
     }
 
     mistakeTimeoutValueX() {
@@ -56,7 +59,7 @@ class SettingsSizer {
     }
 
     mistakeTimeoutPlusButtonX() {
-        return 1100;
+        return this.mistakeTimeoutValueX() + this.fontSize()*1.5;
     }
 
     showCorrectRuleLineY() {
@@ -68,7 +71,7 @@ class SettingsSizer {
     }
 
     showCorrectRuleMinusButtonX() {
-        return 900;
+        return this.showCorrectRuleValueX() - this.fontSize()*1.5;
     }
 
     showCorrectRuleValueX() {
@@ -76,6 +79,6 @@ class SettingsSizer {
     }
 
     showCorrectRulePlusButtonX() {
-        return 1100;
+        return this.showCorrectRuleValueX() + this.fontSize()*1.5;
     }
 }

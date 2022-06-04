@@ -72,27 +72,28 @@ class SettingsScene extends Phaser.Scene {
         let fontColor = this.sizer.fontColor();
         let text = this.strings.settings_names.speed;
 
-        let speedLabelPosition = this.sizer.speedLabelPosition();
+        let speedLineY = this.sizer.speedLineY();
+        let speedLabelX = this.sizer.speedLabelX();
         let speedLabel = this.add.text(
-            speedLabelPosition.x, speedLabelPosition.y,
+            speedLabelX, speedLineY,
             text, {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         speedLabel.setOrigin(0, 0.5);
 
-        let speedMinusButtonPosition = this.sizer.speedMinusButtonPosition();
+        let speedMinusButtonX = this.sizer.speedMinusButtonX();
         let speedMinusButton = this.add.text(
-            speedMinusButtonPosition.x, speedMinusButtonPosition.y,
+            speedMinusButtonX, speedLineY,
             '-', {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         speedMinusButton.setOrigin(0.5, 0.5);
 
-        let speedValuePosition = this.sizer.speedValuePosition();
+        let speedValueX = this.sizer.speedValueX();
         let speedValue = this.add.text(
-            speedValuePosition.x, speedValuePosition.y,
+            speedValueX, speedLineY,
             this.settings.speed, {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         speedValue.setOrigin(0.5, 0.5);
 
-        let speedPlusButtonPosition = this.sizer.speedPlusButtonPosition();
+        let speedPlusButtonX = this.sizer.speedPlusButtonX();
         let speedPlusButton = this.add.text(
-            speedPlusButtonPosition.x, speedPlusButtonPosition.y,
+            speedPlusButtonX, speedLineY,
             '+', {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         speedPlusButton.setOrigin(0.5, 0.5);
 

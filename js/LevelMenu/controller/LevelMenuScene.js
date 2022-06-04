@@ -11,14 +11,14 @@ class LevelMenuScene extends Phaser.Scene {
 
         let sheet = element.sheet;
 
-        let ribeyeMarrowStyles = '@font-face { font-family: "RibeyeMarrow"; src: url("' + GC.BASE_PATH + '/fonts/RibeyeMarrow-Regular.ttf") format("truetype"); }\n';
-        sheet.insertRule(ribeyeMarrowStyles, 0);
-
-        let ribeyeStyles = '@font-face { font-family: "Ribeye"; src: url("' + GC.BASE_PATH + '/fonts/Ribeye-Regular.ttf") format("truetype"); }\n';
-        sheet.insertRule(ribeyeStyles, 0);
-
-        let rhodiumLibreStyles = '@font-face { font-family: "RhodiumLibre"; src: url("' + GC.BASE_PATH + '/fonts/RhodiumLibre-Regular.ttf") format("truetype"); }\n';
-        sheet.insertRule(rhodiumLibreStyles, 0);
+        // let ribeyeMarrowStyles = '@font-face { font-family: "RibeyeMarrow"; src: url("' + GC.BASE_PATH + '/fonts/RibeyeMarrow-Regular.ttf") format("truetype"); }\n';
+        // sheet.insertRule(ribeyeMarrowStyles, 0);
+        //
+        // let ribeyeStyles = '@font-face { font-family: "Ribeye"; src: url("' + GC.BASE_PATH + '/fonts/Ribeye-Regular.ttf") format("truetype"); }\n';
+        // sheet.insertRule(ribeyeStyles, 0);
+        //
+        // let rhodiumLibreStyles = '@font-face { font-family: "RhodiumLibre"; src: url("' + GC.BASE_PATH + '/fonts/RhodiumLibre-Regular.ttf") format("truetype"); }\n';
+        // sheet.insertRule(rhodiumLibreStyles, 0);
 
         let ptMonoStyles = '@font-face { font-family: "PTMono"; src: url("' + GC.BASE_PATH + '/fonts/PTMono-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(ptMonoStyles, 0);
@@ -62,8 +62,7 @@ class LevelMenuScene extends Phaser.Scene {
         let scene = this;
         WebFont.load({
             'custom': {
-                families: ['Ribeye', 'RibeyeMarrow', 'Roboto', 'RhodiumLibre', 'PoetsenOne', 'PTMono', 'Alice',
-                'Cheque', 'ChequeBlack']
+                families: ['Roboto', 'PoetsenOne', 'PTMono', 'Alice', 'Cheque', 'ChequeBlack']
             },
             active: function () {
                 scene.placeSettingsButton();
