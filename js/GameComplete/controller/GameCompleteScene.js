@@ -245,7 +245,7 @@ class GameCompleteScene extends Phaser.Scene {
 
         let text = this.strings.before_scientist_name + "\n" + name;
         let scientistName = this.add.text(centerX, topY, text,
-            {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor});
+            {fontFamily: GC.FONTS.SCORE_LABELS, fontSize: fontSize, color: fontColor});
         scientistName.setOrigin(0.5, 0);
         scientistName.setAlign('center');
     }

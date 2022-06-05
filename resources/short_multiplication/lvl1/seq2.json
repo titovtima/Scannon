@@ -1,0 +1,48 @@
+{
+  "sequence": [
+    {
+      "unicode": "(2a-3b)²",
+      "scoreForHit": 0,
+      "scoreForSkip": 0
+    },
+    {
+      "unicode": "(2a-3b)(2a+3b)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "4a²-12ab+9b²",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "(2a-3b)²",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "c²-2cd+d²", "right": "(c-d)²" }
+    },
+    {
+      "unicode": "(3b-2a)²",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "(c-d)²", "right": "(d-c)²" }
+    },
+    {
+      "unicode": "3b(3b-2a)-2a(3b-2a)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "(c-d)²", "right": "c(c-d)-d(c-d)" }
+    },
+    {
+      "unicode": "9b²-6ab+6ab-4a²",
+      "scoreForHit": 15,
+      "scoreForSkip": -25
+    },
+    {
+      "unicode": "(3b-2a)(3b+2a)",
+      "scoreForHit": -25,
+      "scoreForSkip": 15,
+      "substitution": { "left": "c²-d²", "right": "(c-d)(c+d)" }
+    }
+  ]
+}
