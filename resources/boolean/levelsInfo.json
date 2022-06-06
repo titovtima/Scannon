@@ -37,7 +37,9 @@
       "description": "Implication - simple",
       "autogenerate": false,
       "sequences": [
-        "/lvl3/seq1.json"
+        "/lvl3/seq1.json",
+        "/lvl3/seq2.json",
+        "/lvl3/seq3.json"
       ]
     },
     {

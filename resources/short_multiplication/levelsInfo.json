@@ -16,7 +16,9 @@
       "description_ru": "Сумма, разность, квадрат",
       "autogenerate": false,
       "sequences": [
-        "/lvl1/seq1.json"
+        "/lvl1/seq1.json",
+        "/lvl1/seq2.json",
+        "/lvl1/seq3.json"
       ]
     },
     {
