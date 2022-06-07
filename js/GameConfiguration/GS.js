@@ -1,5 +1,4 @@
-const gameCode = "differentiation"; //"boolean"; //"short_multiplication"; //"trigonometry"
-const gameName = "SCANNON - Differentiation"; //"SCANNON - Short Multiplication"; //'SCANNON - LOGIC'; //"Scannon - Trigonometry"
+const gameCode = "boolean"; //"differentiation"; //"short_multiplication"; //"trigonometry"
 const basePath = ""; //"/scannon/" + gameCode
 
 const GC = {
@@ -38,7 +37,6 @@ const GC = {
     },
     LANGUAGES: ['en', 'ru'],
     GAME_CODE: gameCode,
-    GAME_NAME: gameName,
     GAME_NAME_MAX_NON_SCALABLE_LENGTH: 24,
     BASE_PATH: basePath,
     RESOURCES_PATH: basePath + "/resources/" + gameCode

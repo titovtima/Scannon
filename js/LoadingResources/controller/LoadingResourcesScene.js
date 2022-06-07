@@ -37,37 +37,40 @@ class LoadingResourcesScene extends Phaser.Scene {
 
         this.sizer = new LoadingResourcesSizer(this);
 
-        this.placeDescription();
-        this.placeLoadingBarBackground();
+        this.formulasList = this.cache.json.get('levelsInfo').levels[this.levelNumber].formulas_list;
+        if (this.formulasList !== undefined) {
+            this.sizer.rowsNumber = this.formulasList.rows.length;
+            this.placeFormulasList();
+        } else {
+            this.sizer.rowsNumber = 0;
+        }
 
-        let loadingBar = this.add.graphics({
-            fillStyle: {
-                color: 0x6B4800
-            }
-        });
+        this.placeTextHint();
 
-        this.load.on('progress', (progress) => {
-            let leftX = this.sizer.loadingBar_LeftX();
-            let topY = this.sizer.loadingBar_TopY();
-            let width = progress * this.sizer.loadingBar_Width();
-            let height = this.sizer.loadingBar_Height();
-            let radius = this.sizer.loadingBar_Radius();
-
-            if (30 <= width) {
-                loadingBar.fillRoundedRect(leftX, topY, width, height, radius);
-            }
-        });
+        // this.placeDescription();
+        // this.placeLoadingBarBackground();
+        //
+        // let loadingBar = this.add.graphics({
+        //     fillStyle: {
+        //         color: 0x6B4800
+        //     }
+        // });
+        //
+        // this.load.on('progress', (progress) => {
+        //     let leftX = this.sizer.loadingBar_LeftX();
+        //     let topY = this.sizer.loadingBar_TopY();
+        //     let width = progress * this.sizer.loadingBar_Width();
+        //     let height = this.sizer.loadingBar_Height();
+        //     let radius = this.sizer.loadingBar_Radius();
+        //
+        //     if (30 <= width) {
+        //         loadingBar.fillRoundedRect(leftX, topY, width, height, radius);
+        //     }
+        // });
     }
 
     create() {
-        this.scene.start(GC.SCENES.GAME, {
-            'formulas': this.formulas,
-            'levelNumber': this.levelNumber,
-            'settings': this.scene.settings,
-            'totalScore': this.totalScore,
-            'startLevel': this.startLevel,
-            'isRestarted': this.isRestarted
-        });
+        this.placeStartButton();
     }
 
     placeDescription() {
@@ -105,9 +108,73 @@ class LoadingResourcesScene extends Phaser.Scene {
         let fontSize = this.sizer.textHintFontSize();
         let fontColor = this.sizer.textHintFontColor();
 
-        let textHint = this.add.text(centerX, topY,
-            "shoot the wrong steps by click",
-            { fontFamily: "RhodiumLibre", fontSize: fontSize, color: fontColor});
+        let textHint = this.add.text(centerX, topY, this.scene.settings.strings.loading_resources_scene.hint,
+            { fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor});
         textHint.setOrigin(0.5, 0);
+        textHint.setAlign('center');
+    }
+
+    placeStartButton() {
+        let centerX = this.sizer.startButton_X();
+        let topY = this.sizer.startButton_Y();
+        let fontSize = this.sizer.startButton_FontSize();
+        let fontColor = this.sizer.startButton_FontColor();
+
+        let startButton = this.add.text(centerX, topY, this.scene.settings.strings.loading_resources_scene.start,
+            { fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor });
+        startButton.setOrigin(0.5, 0);
+
+        startButton.setInteractive();
+        startButton.on('pointerover', () => {
+            startButton.setFontFamily(GC.FONTS.BUTTON_OVER);
+        });
+        startButton.on('pointerout', () => {
+            startButton.setFontFamily(GC.FONTS.BUTTON_OUT);
+        });
+        startButton.on('pointerup', () => {
+            this.scene.start(GC.SCENES.GAME, {
+                'formulas': this.formulas,
+                'levelNumber': this.levelNumber,
+                'settings': this.scene.settings,
+                'totalScore': this.totalScore,
+                'startLevel': this.startLevel,
+                'isRestarted': this.isRestarted
+            });
+        });
+    }
+
+    placeFormulasList() {
+        this.placeFormulasHeader();
+
+        let fontSize = this.sizer.formulasList_FontSize();
+        let fontColor = this.sizer.formulasList_FontColor();
+        let indexRow = 0;
+
+        for (let row of this.formulasList.rows) {
+            let indexColumn = 0;
+            let columnsNumber = row.length;
+            let topY = this.sizer.formulasList_Y(indexRow);
+
+            for (let formula of row) {
+                let text = formula.left + " = " + formula.right;
+                let centerX = this.sizer.formulasList_X(indexColumn, columnsNumber);
+                this.add.text(centerX, topY, text,
+                    {fontFamily: GC.FONTS.FORMULAS, fontSize: fontSize, color: fontColor})
+                    .setOrigin(0.5, 0);
+                indexColumn++;
+            }
+            indexRow++;
+        }
+    }
+
+    placeFormulasHeader() {
+        let centerX = this.sizer.formulasHeader_X();
+        let topY = this.sizer.formulasHeader_Y();
+        let fontSize = this.sizer.formulasHeader_FontSize();
+        let fontColor = this.sizer.formulasHeader_FontColor();
+
+        let header = this.add.text(centerX, topY, this.scene.settings.strings.loading_resources_scene.formulas_header,
+            { fontFamily: GC.FONTS.SCORE_LABELS, fontSize: fontSize, color: fontColor });
+        header.setOrigin(0.5, 0);
     }
 }

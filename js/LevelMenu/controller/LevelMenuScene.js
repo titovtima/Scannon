@@ -162,7 +162,7 @@ class LevelMenuScene extends Phaser.Scene {
             centerX, centerY,
             description,
             {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: color}
-        ).setOrigin(0.5);
+        ).setOrigin(0.5).setAlign('center');
     }
 
     placeLastCard(index) {

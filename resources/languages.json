@@ -23,6 +23,11 @@
     },
     "level_generation": "Generating the level",
     "loading_resources": "Loading resources",
+    "loading_resources_scene": {
+      "start": "Start",
+      "hint": "click to shoot expressions\nthat are not equal to previous one",
+      "formulas_header": "You'll practice these formulas at this level"
+    },
     "pause_menu": {
       "resume": "Resume",
       "settings": "Settings",
@@ -69,6 +74,11 @@
     },
     "level_generation": "Генерация уровня",
     "loading_resources": "Загрузка ресурсов",
+    "loading_resources_scene": {
+      "start": "Старт",
+      "hint": "сбей все выражения\nкоторые не равны предыдущему",
+      "formulas_header": "На этом уровне ты попрактикуешь эти формулы"
+    },
     "pause_menu": {
       "resume": "Продолжить",
       "settings": "Настройки",

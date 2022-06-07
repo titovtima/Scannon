@@ -19,7 +19,19 @@
         "/lvl1/seq1.json",
         "/lvl1/seq2.json",
         "/lvl1/seq3.json"
-      ]
+      ],
+      "formulas_list": { "rows": [
+        [
+          { "left": "(a-b)²", "right": "a²-2ab+b²"},
+          { "left": "a²-b²", "right": "(a+b)(a-b)"},
+          { "left": "(a+b)²", "right": "a²+2ab+b²"}
+        ],
+        [],
+        [
+          { "left": "(a-b)²", "right": "(b-a)²"},
+          { "left": "(ca+cb)²", "right": "c²(a+b)²"}
+        ]
+      ]}
     },
     {
       "index": 2,
@@ -28,7 +40,13 @@
       "autogenerate": false,
       "sequences": [
         "/lvl2/seq1.json"
-      ]
+      ],
+      "formulas_list": { "rows": [
+        [
+          { "left": "(a-b)³", "right": "a³-3a²b+3ab²-b³" },
+          { "left": "(a+b)³", "right": "a³+3a²b+3ab²+b³" }
+        ]
+      ]}
     },
     {
       "index": 3,
@@ -37,7 +55,13 @@
       "autogenerate": false,
       "sequences": [
         "/lvl3/seq1.json"
-      ]
+      ],
+      "formulas_list": { "rows": [
+        [
+          { "left": "a³-b³", "right": "(a-b)(a²+ab+b²)" },
+          { "left": "a³+b³", "right": "(a+b)(a²-ab+b²)" }
+        ]
+      ]}
     },
     {
       "index": 4,
