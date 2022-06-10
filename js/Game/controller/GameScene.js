@@ -57,14 +57,9 @@ class GameScene extends Phaser.Scene {
         this.input.on('pointerdown', this.shoot(this));
 
         this.placePauseButton();
-        this.placeTextHint();
+        // this.placeTextHint();
 
         // this.keyM = this.input.keyboard.addKey('M');
-    }
-
-    wake(params) {
-        console.log('Wake Game. Params:', params);
-        this.scene.settings = params.settings;
     }
 
     update() {
@@ -210,7 +205,35 @@ class GameScene extends Phaser.Scene {
         return newFormula;
     }
 
+    placeFormulaHint(formulaIndex) {
+        if (formulaIndex < 1) return;
+        let formula = this.displayingFormulas[formulaIndex];
+        if (formula.hint || formula.score) return;
+        let prevFormula = this.displayingFormulas[formulaIndex - 1];
+
+        let rightX = this.sizer.hitScore_RightX();
+        let topY = this.sizer.hitScoreTopY(formula.formula);
+        let fontSize = this.sizer.hitScoreFontSize();
+        let fontColor = '#000';
+        let text = "";
+
+        if (formula.scoreForHit < 0) {
+            text = this.scene.settings.strings.game_scene.correct_formula_tutorial_hint + prevFormula.unicode;
+        }
+        if (formula.scoreForHit > 0) {
+            text = this.scene.settings.strings.game_scene.wrong_formula_tutorial_hint + prevFormula.unicode;
+        }
+
+        formula.hint = this.add.text(
+            rightX, topY, text,
+            { fontFamily: GC.FONTS.FORMULAS, fontSize: fontSize, color: fontColor }
+        ).setOrigin(0, 0.5);
+
+        formula.hint.setDepth(-1);
+    }
+
     moveFormulas() {
+        let index = 0;
         for (let formula of this.displayingFormulas) {
             if (!formula.passed) {
                 formula.background.x += this.sizer.card_SpeedX();
@@ -228,6 +251,21 @@ class GameScene extends Phaser.Scene {
                     formula.score.x += this.sizer.card_SpeedX();
                     formula.score.y += this.sizer.card_SpeedY();
                 }
+
+                if (formula.hint) {
+                    formula.hint.x += this.sizer.card_SpeedX();
+                    formula.hint.y += this.sizer.card_SpeedY();
+                }
+
+                if (this.levelNumber === 0 && !formula.score &&
+                    formula.background.y >= 100 && formula.formula.y < this.sizer.wallPosition().y)
+                    this.placeFormulaHint(index);
+
+                if (formula.formula.y >= this.sizer.wallPosition().y && formula.hint)
+                    formula.hint.destroy();
+
+                if (formula.formula.y >= this.sizer.wallPosition().y && formula.score)
+                    formula.score.destroy();
             } else {
                 formula.background.x += this.sizer.lastLineFormula_SpeedX();
                 formula.formula.x += this.sizer.lastLineFormula_SpeedX();
@@ -236,6 +274,7 @@ class GameScene extends Phaser.Scene {
                     formula.arrow.x += this.sizer.lastLineFormula_SpeedX();
                 }
             }
+            index++;
         }
     }
 
@@ -688,6 +727,8 @@ class GameScene extends Phaser.Scene {
             ym(88802966,'reachGoal','threeFormulasHit');
 
         formula.isHit = true;
+        if (formula.hint)
+            formula.hint.destroy();
 
         formula.background.setTexture('cardBackground_Hit');
 
@@ -732,7 +773,7 @@ class GameScene extends Phaser.Scene {
         formula.score = this.add.text(
             scoreRightX, scoreTopY, scoreText,
             { fontSize: scoreFontSize, color: scoreColor }
-        ).setOrigin(0, 0.5);
+        ).setOrigin(0, 0.5).setDepth(-1);
 
         this.score += formula.scoreForHit;
 
@@ -777,6 +818,7 @@ class GameScene extends Phaser.Scene {
     }
 
     setTextHintText() {
+        if (!this.textHint) return;
         this.textHint.setText(this.scene.settings.strings.game_scene.hint);
     }
 
