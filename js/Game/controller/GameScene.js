@@ -26,6 +26,7 @@ class GameScene extends Phaser.Scene {
         this.scene.settings = params.settings;
 
         this.hitFormulasNumber = 0;
+        this.speedUp = false;
 
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.GAME.width, GC.RESOLUTIONS.MEDIUM.GAME.height);
     }
@@ -60,11 +61,12 @@ class GameScene extends Phaser.Scene {
         // this.placeTextHint();
 
         // this.keyM = this.input.keyboard.addKey('M');
+        this.keyEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
     }
 
     update() {
         this.focusCannonOnPointer();
-        // this.handleKeyboardInput();
+        this.handleKeyboardInput();
 
         this.moveCannonBalls();
 
@@ -354,16 +356,18 @@ class GameScene extends Phaser.Scene {
 
     wrongFormulaPassed(formula) {
         this.placeBottomLineFormulaSign(formula, 'not_equals_red');
-        let realSpeed = this.sizer.formulasSpeed;
-        this.sizer.formulasSpeed = this.sizer.slowSpeed();
-        let mistakeTimeout = this.scene.settings.mistakeTimeout * 1000;
-        setTimeout(() => { this.sizer.formulasSpeed = realSpeed; }, mistakeTimeout);
-        let interval = this.sizer.blinkingInterval();
-        this.blinkLastLineFormulaSign(formula, 'not_equals_red', mistakeTimeout, interval);
-        // this.blinkFormula(formula, 'cardBackground_Regular', 'cardBackground_Red', 5000, interval);
 
         let jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_wrongPass": "${formula.unicode}"}`;
         ym(88802966, 'params', JSON.parse(jsonString));
+
+        if (this.speedUp) return;
+        let realSpeed = this.sizer.formulasSpeed;
+        this.sizer.formulasSpeed = this.sizer.slowSpeed();
+        let mistakeTimeout = this.scene.settings.mistakeTimeout * 1000;
+        setTimeout(() => { if (!this.speedUp) this.sizer.formulasSpeed = realSpeed; }, mistakeTimeout);
+        let interval = this.sizer.blinkingInterval();
+        this.blinkLastLineFormulaSign(formula, 'not_equals_red', mistakeTimeout, interval);
+        // this.blinkFormula(formula, 'cardBackground_Regular', 'cardBackground_Red', 5000, interval);
     }
 
     correctFormulaPassed(formula) {
@@ -567,9 +571,25 @@ class GameScene extends Phaser.Scene {
 
     handleKeyboardInput() {
 
-        if (Phaser.Input.Keyboard.JustDown(this.keyM)) {
-            this.showMenu();
+        // if (Phaser.Input.Keyboard.JustDown(this.keyM)) {
+        //     this.showMenu();
+        // }
+
+        if (this.keyEnter.isDown) {
+            this.speedUpToTheEnd();
         }
+    }
+
+    speedUpToTheEnd() {
+        if (this.speedUp) return;
+        this.speedUp = true;
+        this.sizer.mistakeTimeout = 0;
+        this.stopBlinking();
+        let interval = setInterval(() => {
+            if (this.sizer.formulasSpeed >= 10)
+                clearInterval(interval);
+            this.sizer.formulasSpeed += 0.1;
+        }, 100);
     }
 
     placePauseButton() {

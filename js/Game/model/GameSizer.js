@@ -4,6 +4,7 @@ class GameSizer {
         this.scene = scene;
 
         this.formulasSpeed = scene.scene.settings.speed;
+        this.mistakeTimeout = scene.scene.settings.mistakeTimeout;
     }
 
     field_Width() {
