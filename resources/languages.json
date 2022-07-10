@@ -25,7 +25,7 @@
     "loading_resources": "Loading resources",
     "loading_resources_scene": {
       "start": "Start",
-      "hint": "click to shoot expressions\nthat are not equal to previous one",
+      "hint": "click to shoot expressions\nthat are not equal to the previous one",
       "formulas_header": "You'll practice these formulas at this level"
     },
     "pause_menu": {
@@ -36,7 +36,7 @@
     },
     "game_scene": {
       "correct_formula_tutorial_hint": "don't hit this formula\nit's equal to previous ",
-      "wrong_formula_tutorial_hint": "hit this formula\nit's not equal to previous ",
+      "wrong_formula_tutorial_hint": "hit this formula\nit's not equal the previous ",
       "score": "score",
       "hint": "shoot the wrong steps by click"
     },
@@ -78,7 +78,7 @@
     "loading_resources": "Загрузка ресурсов",
     "loading_resources_scene": {
       "start": "Старт",
-      "hint": "сбей все выражения\nкоторые не равны предыдущему",
+      "hint": "сбей все выражения\nкоторые не равны предыдущим",
       "formulas_header": "На этом уровне ты попрактикуешь эти формулы"
     },
     "pause_menu": {
@@ -88,8 +88,8 @@
       "menu": "Меню"
     },
     "game_scene": {
-      "correct_formula_tutorial_hint": "не сбивай это выражение\nоно равно предыдущему",
-      "wrong_formula_tutorial_hint": "сбей это выражение\nоно не равно предыдущему",
+      "correct_formula_tutorial_hint": "не сбивай это выражение\nоно равно предыдущему ",
+      "wrong_formula_tutorial_hint": "сбей это выражение\nоно не равно предыдущему ",
       "score": "счёт",
       "hint": "сбей выражения не равные предыдущим"
     },
