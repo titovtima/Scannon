@@ -354,7 +354,7 @@ class GameSizer {
     }
 
     formulaHintFontSize() {
-        return 25;
+        return 24;
     }
 
     correctFormulaHintColor() {
