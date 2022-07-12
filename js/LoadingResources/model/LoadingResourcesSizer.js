@@ -176,8 +176,9 @@ class LoadingResourcesSizer {
         this.startButtonY = 850 - move * 2;
         if (this.scene.startButton)
             this.scene.startButton.y -= move * 2;
-        for (let formula of this.scene.instuctionFormulas) {
-            formula.y -= move * 2;
-        }
+        if (this.rowsNumber)
+            for (let formula of this.scene.instuctionFormulas) {
+                formula.y -= move * 2;
+            }
     }
 }

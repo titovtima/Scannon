@@ -181,6 +181,7 @@ class LoadingResourcesScene extends Phaser.Scene {
     }
 
     placeFormulasList() {
+        if (!this.sizer.rowsNumber) return;
         // this.placeFormulasHeader();
 
         let fontSize = this.sizer.formulasList_FontSize();
