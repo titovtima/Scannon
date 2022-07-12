@@ -28,6 +28,13 @@ class GameScene extends Phaser.Scene {
         this.hitFormulasNumber = 0;
         this.speedUp = false;
 
+        this.levelsInfo = this.cache.json.get('levelsInfo');
+        this.tutorialStatus = this.levelsInfo.levels[this.levelNumber].tutorial;
+        if (params.isTutorial !== undefined)
+            this.isTutorial = params.isTutorial
+        else
+            this.isTutorial = this.tutorialStatus === "always";
+
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.GAME.width, GC.RESOLUTIONS.MEDIUM.GAME.height);
     }
 
@@ -58,6 +65,8 @@ class GameScene extends Phaser.Scene {
         this.input.on('pointerdown', this.shoot(this));
 
         this.placePauseButton();
+        if (this.tutorialStatus === "by button")
+            this.placeTutorialButton(); //TODO
         // this.placeTextHint();
 
         // this.keyM = this.input.keyboard.addKey('M');
@@ -289,7 +298,7 @@ class GameScene extends Phaser.Scene {
                     this.moveFormulaHint(formula, this.sizer.card_SpeedX(), this.sizer.card_SpeedY());
                 }
 
-                if (this.levelNumber === 0 && !formula.score &&
+                if (this.isTutorial && !formula.score &&
                     formula.background.y >= 100 && formula.formula.y < this.sizer.wallPosition().y - 200)
                     this.placeFormulaHint(index);
 
@@ -638,6 +647,10 @@ class GameScene extends Phaser.Scene {
             // this.removeCannonBall(this.displayingCannonBalls.last);
         })
         return pauseButton;
+    }
+
+    placeTutorialButton() {
+        //TODO
     }
 
     showMenu() {

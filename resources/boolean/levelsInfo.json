@@ -6,6 +6,7 @@
       "description_en": "Tutorial",
       "description_ru": "Туториал",
       "autogenerate": false,
+      "tutorial": "always",
       "sequences": [
         "/lvl0/seq.json"
       ]
@@ -15,6 +16,7 @@
       "description_en": "And, or, not - simple",
       "description_ru": "И, или, не - простой",
       "autogenerate": false,
+      "tutorial": "never",
       "sequences": [
         "/lvl1/seq1.json",
         "/lvl1/seq2.json",
@@ -58,6 +60,7 @@
       "description_en": "And, or, not - hard",
       "description_ru": "И, или, не - сложный",
       "autogenerate": false,
+      "tutorial": "never",
       "sequences": [
         "/lvl2/seq1.json",
         "/lvl2/seq2.json",
@@ -79,6 +82,7 @@
       "description_en": "Implication - simple",
       "description_ru": "Импликация - простой",
       "autogenerate": false,
+      "tutorial": "never",
       "sequences": [
         "/lvl3/seq1.json",
         "/lvl3/seq2.json",
@@ -108,6 +112,7 @@
       "description_en": "Implication - hard",
       "description_ru": "Импликация - сложный",
       "autogenerate": false,
+      "tutorial": "never",
       "sequences": [
         "/lvl4/seq1.json"
       ],
@@ -131,6 +136,7 @@
       "description_en": "Xor - simple",
       "description_ru": "Исключающее \"или\"\nпростой",
       "autogenerate": false,
+      "tutorial": "never",
       "sequences": [
         "/lvl5/seq1.json",
         "/lvl5/seq2.json"
@@ -163,6 +169,7 @@
       "description_en": "Xor - hard",
       "description_ru": "Исключающее \"или\"\nсложный",
       "autogenerate": false,
+      "tutorial": "never",
       "sequences": [
         "/lvl6/seq1.json"
       ],
