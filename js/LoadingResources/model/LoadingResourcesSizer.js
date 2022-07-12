@@ -80,6 +80,22 @@ class LoadingResourcesSizer {
         return '#000';
     }
 
+    levelInstructionsCenterX() {
+        return 800;
+    }
+
+    levelInstructionsTopY() {
+        return 440 - this.formulaListRow()/2 * this.rowsNumber;
+    }
+
+    levelInstructionsFontSize() {
+        return 42;
+    }
+
+    levelInstructionsFontColor() {
+        return '#000';
+    }
+
     startButton_X() {
         return 800;
     }
@@ -130,6 +146,23 @@ class LoadingResourcesSizer {
     }
 
     formulasList_FontColor() {
+        return '#000';
+    }
+
+
+    levelName_CenterX() {
+        return 800;
+    }
+
+    levelName_TopY() {
+        return 20;
+    }
+
+    levelName_FontSize() {
+        return 80;
+    }
+
+    levelName_FontColor() {
         return '#000';
     }
 }

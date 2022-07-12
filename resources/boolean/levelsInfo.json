@@ -5,6 +5,8 @@
       "index": 0,
       "description_en": "Tutorial",
       "description_ru": "Туториал",
+      "instructions_en": "click to shoot expressions\nthat are not equal to the previous one",
+      "instructions_ru": "сбей все выражения\nкоторые не равны предыдущим",
       "autogenerate": false,
       "tutorial": "always",
       "sequences": [
@@ -15,6 +17,8 @@
       "index": 1,
       "description_en": "And, or, not - simple",
       "description_ru": "И, или, не - простой",
+      "instructions_en": "You'll practice these formulas at this level",
+      "instructions_ru": "На этом уровне ты попрактикуешь эти формулы",
       "autogenerate": false,
       "tutorial": "never",
       "sequences": [
@@ -59,6 +63,8 @@
       "index": 2,
       "description_en": "And, or, not - hard",
       "description_ru": "И, или, не - сложный",
+      "instructions_en": "You'll practice these formulas at this level",
+      "instructions_ru": "На этом уровне ты попрактикуешь эти формулы",
       "autogenerate": false,
       "tutorial": "never",
       "sequences": [
@@ -81,6 +87,8 @@
       "index": 3,
       "description_en": "Implication - simple",
       "description_ru": "Импликация - простой",
+      "instructions_en": "Implication is a binary operator which returns \"true\"\nunless its first argument is true and its second argument is false.\nYou'll practice these formulas at this level",
+      "instructions_ru": "На этом уровне ты попрактикуешь эти формулы",
       "autogenerate": false,
       "tutorial": "never",
       "sequences": [
@@ -111,6 +119,8 @@
       "index": 4,
       "description_en": "Implication - hard",
       "description_ru": "Импликация - сложный",
+      "instructions_en": "You'll practice these formulas at this level",
+      "instructions_ru": "На этом уровне ты попрактикуешь эти формулы",
       "autogenerate": false,
       "tutorial": "never",
       "sequences": [
@@ -135,6 +145,8 @@
       "index": 5,
       "description_en": "Xor - simple",
       "description_ru": "Исключающее \"или\"\nпростой",
+      "instructions_en": "You'll practice these formulas at this level",
+      "instructions_ru": "На этом уровне ты попрактикуешь эти формулы",
       "autogenerate": false,
       "tutorial": "never",
       "sequences": [
@@ -168,6 +180,8 @@
       "index": 6,
       "description_en": "Xor - hard",
       "description_ru": "Исключающее \"или\"\nсложный",
+      "instructions_en": "You'll practice these formulas at this level",
+      "instructions_ru": "На этом уровне ты попрактикуешь эти формулы",
       "autogenerate": false,
       "tutorial": "never",
       "sequences": [
