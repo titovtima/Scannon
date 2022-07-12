@@ -213,25 +213,56 @@ class GameScene extends Phaser.Scene {
         if (formula.hint || formula.score) return;
         let prevFormula = this.displayingFormulas[formulaIndex - 1];
 
-        let rightX = this.sizer.hitScore_RightX();
-        let topY = this.sizer.hitScoreTopY(formula.formula);
-        let fontSize = this.sizer.hitScoreFontSize();
+        let leftX = this.sizer.hitScore_LeftX();
+        let centerY = this.sizer.hitScoreCenterY(formula.formula);
+
+        formula.hintBackground = this.add.image(leftX, centerY, 'hintBackground')
+            .setOrigin(0, 0.5).setDepth(-2);
+
+        let fontSize = this.sizer.formulaHintFontSize();
         let fontColor = '#000';
         let text = "";
 
         if (formula.scoreForHit < 0) {
+            fontColor = this.sizer.correctFormulaHintColor();
             text = this.scene.settings.strings.game_scene.correct_formula_tutorial_hint + prevFormula.unicode;
+            // text = this.scene.settings.strings.game_scene.correct_formula_tutorial_hint;
         }
         if (formula.scoreForHit > 0) {
+            fontColor = this.sizer.wrongFormulaHintColor();
             text = this.scene.settings.strings.game_scene.wrong_formula_tutorial_hint + prevFormula.unicode;
+            // text = this.scene.settings.strings.game_scene.wrong_formula_tutorial_hint;
         }
 
+        // if (formula.scoreForHit < 0) {
+        //     fontColor = this.sizer.correctFormulaHintColor();
+        //     text = this.scene.settings.strings.game_scene.correct_formula_tutorial_hint
+        //         + formula.unicode + ' = ' + prevFormula.unicode;
+        // }
+        // if (formula.scoreForHit > 0) {
+        //     fontColor = this.sizer.wrongFormulaHintColor();
+        //     text = this.scene.settings.strings.game_scene.wrong_formula_tutorial_hint
+        //         + formula.unicode + ' ≠ ' + prevFormula.unicode;
+        // }
+
         formula.hint = this.add.text(
-            rightX, topY, text,
+            leftX+10, centerY, text,
             { fontFamily: GC.FONTS.FORMULAS, fontSize: fontSize, color: fontColor }
         ).setOrigin(0, 0.5);
 
         formula.hint.setDepth(-1);
+    }
+
+    moveFormulaHint(formula, speedX, speedY) {
+        formula.hint.x += speedX;
+        formula.hint.y += speedY;
+        formula.hintBackground.x += speedX;
+        formula.hintBackground.y += speedY;
+    }
+
+    destroyFormulaHint(formula) {
+        formula.hint.destroy();
+        formula.hintBackground.destroy();
     }
 
     moveFormulas() {
@@ -255,16 +286,15 @@ class GameScene extends Phaser.Scene {
                 }
 
                 if (formula.hint) {
-                    formula.hint.x += this.sizer.card_SpeedX();
-                    formula.hint.y += this.sizer.card_SpeedY();
+                    this.moveFormulaHint(formula, this.sizer.card_SpeedX(), this.sizer.card_SpeedY());
                 }
 
                 if (this.levelNumber === 0 && !formula.score &&
-                    formula.background.y >= 100 && formula.formula.y < this.sizer.wallPosition().y)
+                    formula.background.y >= 100 && formula.formula.y < this.sizer.wallPosition().y - 200)
                     this.placeFormulaHint(index);
 
-                if (formula.formula.y >= this.sizer.wallPosition().y && formula.hint)
-                    formula.hint.destroy();
+                if (formula.formula.y >= this.sizer.wallPosition().y - 200 && formula.hint)
+                    this.destroyFormulaHint(formula);
 
                 if (formula.formula.y >= this.sizer.wallPosition().y && formula.score)
                     formula.score.destroy();
@@ -748,7 +778,7 @@ class GameScene extends Phaser.Scene {
 
         formula.isHit = true;
         if (formula.hint)
-            formula.hint.destroy();
+            this.destroyFormulaHint(formula);
 
         formula.background.setTexture('cardBackground_Hit');
 
@@ -786,12 +816,12 @@ class GameScene extends Phaser.Scene {
             scoreText = '+' + formula.scoreForHit;
         }
 
-        let scoreRightX = this.sizer.hitScore_RightX();
-        let scoreTopY = this.sizer.hitScoreTopY(formula.formula);
+        let scoreLeftX = this.sizer.hitScore_LeftX();
+        let scoreCenterY = this.sizer.hitScoreCenterY(formula.formula);
         let scoreFontSize = this.sizer.hitScoreFontSize();
 
         formula.score = this.add.text(
-            scoreRightX, scoreTopY, scoreText,
+            scoreLeftX, scoreCenterY, scoreText,
             { fontSize: scoreFontSize, color: scoreColor }
         ).setOrigin(0, 0.5).setDepth(-1);
 

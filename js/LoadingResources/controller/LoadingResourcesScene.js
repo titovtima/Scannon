@@ -24,6 +24,8 @@ class LoadingResourcesScene extends Phaser.Scene {
         this.load.image('cardBackground_Wall', GC.RESOURCES_PATH + '/assets/cardBackground_Wall.png');
         this.load.image('cardBackground_Green', GC.RESOURCES_PATH + '/assets/cardBackground_Green.png');
 
+        this.load.image('hintBackground', GC.RESOURCES_PATH + '/assets/hintBackground.png');
+
         this.load.image('arrow_question', GC.RESOURCES_PATH + '/assets/arrow_question.png');
         this.load.image('equals', GC.RESOURCES_PATH + '/assets/equals.png');
         this.load.image('not_equals', GC.RESOURCES_PATH + '/assets/not_equals.png');

@@ -220,11 +220,11 @@ class GameSizer {
         return 20;
     }
 
-    hitScore_RightX() {
+    hitScore_LeftX() {
         return this.cardBackground_LeftX() + this.cardBackground_Width() + 10;
     }
 
-    hitScoreTopY(formula) {
+    hitScoreCenterY(formula) {
         return formula.y;
     }
 
@@ -233,7 +233,7 @@ class GameSizer {
     }
 
     hitNegativeScoreColor() {
-        return '#F40'
+        return '#D00'
     }
 
     hitScoreFontSize() {
@@ -351,5 +351,19 @@ class GameSizer {
 
     textHintFontColor() {
         return '#000';
+    }
+
+    formulaHintFontSize() {
+        return 25;
+    }
+
+    correctFormulaHintColor() {
+        return '#F22';
+        // return '#000';
+    }
+
+    wrongFormulaHintColor() {
+        return '#0B0';
+        // return '#000';
     }
 }
