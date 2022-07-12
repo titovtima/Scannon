@@ -13,7 +13,7 @@ class GameCompleteSizer {
     }
 
     levelDescription_TopY() {
-        return 20;
+        return 50;
     }
 
     levelDescription_FontSize() {

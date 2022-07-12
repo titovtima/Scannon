@@ -85,7 +85,7 @@ class LoadingResourcesSizer {
     }
 
     levelInstructionsTopY() {
-        return 440 - this.formulaListRow()/2 * this.rowsNumber;
+        return 150;
     }
 
     levelInstructionsFontSize() {
@@ -101,7 +101,9 @@ class LoadingResourcesSizer {
     }
 
     startButton_Y() {
-        return 490 + this.formulaListRow()/2 * this.rowsNumber;
+        if (this.startButtonY)
+            return this.startButtonY;
+        return 850;
     }
 
     startButton_FontSize() {
@@ -134,7 +136,7 @@ class LoadingResourcesSizer {
     }
 
     formulasList_Y(indexRow) {
-        return 470 - this.formulaListRow()/2 * this.rowsNumber + indexRow * this.formulaListRow();
+        return 650 - indexRow * this.formulaListRow();
     }
 
     formulaListRow() {
@@ -155,7 +157,7 @@ class LoadingResourcesSizer {
     }
 
     levelName_TopY() {
-        return 20;
+        return 50;
     }
 
     levelName_FontSize() {
@@ -164,5 +166,18 @@ class LoadingResourcesSizer {
 
     levelName_FontColor() {
         return '#000';
+    }
+
+    centerVertically() {
+        let totalHeight = this.scene.levelInstructions.height + this.rowsNumber * this.formulaListRow();
+        let move = (500 - totalHeight) / 3;
+        console.log('total height: ', totalHeight);
+        this.scene.levelInstructions.y += move;
+        this.startButtonY = 850 - move * 2;
+        if (this.scene.startButton)
+            this.scene.startButton.y -= move * 2;
+        for (let formula of this.scene.instuctionFormulas) {
+            formula.y -= move * 2;
+        }
     }
 }
