@@ -240,14 +240,6 @@ class GameSizer {
         return 35;
     }
 
-    lastFormula_RightX() {
-        return 1580;
-    }
-
-    lastFormula_TopY() {
-        return this.bottomLine()+1;
-    }
-
     bottomLine() {
         return 750;
     }

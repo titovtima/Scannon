@@ -230,18 +230,6 @@ class GameScene extends Phaser.Scene {
 
         let fontSize = this.sizer.formulaHintFontSize();
         let fontColor = '#000';
-        // let text = "";
-        //
-        // if (formula.scoreForHit < 0) {
-        //     fontColor = this.sizer.correctFormulaHintColor();
-        //     text = this.scene.settings.strings.game_scene.correct_formula_tutorial_hint + prevFormula.unicode;
-        //     // text = this.scene.settings.strings.game_scene.correct_formula_tutorial_hint;
-        // }
-        // if (formula.scoreForHit > 0) {
-        //     fontColor = this.sizer.wrongFormulaHintColor();
-        //     text = this.scene.settings.strings.game_scene.wrong_formula_tutorial_hint + prevFormula.unicode;
-        //     // text = this.scene.settings.strings.game_scene.wrong_formula_tutorial_hint;
-        // }
 
         let textParts = [];
         if (formula.scoreForHit < 0) {
@@ -266,39 +254,6 @@ class GameScene extends Phaser.Scene {
             .setOrigin(0, 0).setDepth(-1);
 
         formula.hint = [text1, text2, text3, text4];
-
-        // let t = this.add.text(leftX + 5, centerY,
-        //     textParts[0] + '\n' + formula.unicode + textParts[1] + textParts[2] + prevFormula.unicode,
-        //     {fontFamily: GC.FONTS.FORMULAS, fontSize: fontSize, color: '#000'})
-        //     .setOrigin(0, 0.5).setDepth(-1);
-        // t.setShadow(2, 2, '#000', 3);
-        // let t2 = this.add.text(leftX + 6, centerY+1,
-        //     textParts[0] + '\n' + formula.unicode + textParts[1] + textParts[2] + prevFormula.unicode,
-        //     {fontFamily: GC.FONTS.FORMULAS, fontSize: fontSize, color: '#000'})
-        //     .setOrigin(0, 0.5).setDepth(-2);
-        // let t3 = this.add.text(leftX + 4, centerY,
-        //     textParts[0] + '\n' + formula.unicode + textParts[1] + textParts[2] + prevFormula.unicode,
-        //     {fontFamily: GC.FONTS.FORMULAS, fontSize: fontSize, color: '#000'})
-        //     .setOrigin(0, 0.5).setDepth(-2);
-        // formula.hint = [t];
-
-        // if (formula.scoreForHit < 0) {
-        //     fontColor = this.sizer.correctFormulaHintColor();
-        //     text = this.scene.settings.strings.game_scene.correct_formula_tutorial_hint
-        //         + formula.unicode + ' = ' + prevFormula.unicode;
-        // }
-        // if (formula.scoreForHit > 0) {
-        //     fontColor = this.sizer.wrongFormulaHintColor();
-        //     text = this.scene.settings.strings.game_scene.wrong_formula_tutorial_hint
-        //         + formula.unicode + ' ≠ ' + prevFormula.unicode;
-        // }
-
-        // formula.hint = this.add.text(
-        //     leftX+10, centerY, text,
-        //     { fontFamily: GC.FONTS.FORMULAS, fontSize: fontSize, color: fontColor }
-        // ).setOrigin(0, 0.5);
-        //
-        // formula.hint.setDepth(-1);
     }
 
     moveFormulaHint(formula, speedX, speedY) {
@@ -363,25 +318,11 @@ class GameScene extends Phaser.Scene {
     }
 
     removeFormulasIfNeeded() {
-        // if (this.needToRemoveFirstFormula()) {
         if (0 < this.displayingFormulas.length
             && this.displayingFormulas[0].background.x > this.sizer.field_Width()) {
             this.destroyFormulaObjects(this.displayingFormulas[0]);
             this.displayingFormulas.shift();
-            // this.removeFirstFormulaFromList();
         }
-    }
-
-    needToRemoveFirstFormula() {
-        return 0 < this.displayingFormulas.length
-            && this.displayingFormulas[0].background.x > this.sizer.field_Width();
-            // && (this.sizer.lastFormula_TopY() < this.fallingFormulas[0].background.y
-            //         && this.fallingFormulas[0].scoreForSkip < 0
-            //     || this.sizer.field_Height() < this.fallingFormulas[0].background.y);
-    }
-
-    removeFirstFormulaFromList() {
-        this.displayingFormulas.shift();
     }
 
     checkIfFormulaPassed() {
@@ -512,19 +453,6 @@ class GameScene extends Phaser.Scene {
         clearTimeout(this.blinkingTimeout);
     }
 
-    // blinkFormula(formula, firstBackground, secondBackground, duration, interval) {
-    //     let times = 0;
-    //     let blinking = setInterval(() => {
-    //         if (times % 2 === 0) {
-    //             formula.background.setTexture(firstBackground);
-    //         } else {
-    //             formula.background.setTexture(secondBackground);
-    //         }
-    //         times++;
-    //     }, interval);
-    //     setTimeout(() => { clearInterval(blinking); }, duration);
-    // }
-
     placeAddScore(score) {
         let rightX = this.sizer.addScore_RightX();
         let topY = 0;
@@ -573,12 +501,6 @@ class GameScene extends Phaser.Scene {
         formula.background.destroy();
         if (formula.arrow) formula.arrow.destroy();
         if (formula.score) formula.score.destroy();
-    }
-
-    placeBottomLine() {
-        let line = new Phaser.Geom.Line(0, this.sizer.bottomLine(), this.sizer.field_Width(), this.sizer.bottomLine());
-        let graphics = this.add.graphics({ lineStyle: { width: 4, color: '#000' }});
-        graphics.strokeLineShape(line);
     }
 
     // MARK: - Sizes based on the current game state
@@ -692,8 +614,7 @@ class GameScene extends Phaser.Scene {
         return pauseButton;
     }
 
-    placeTutorialButton() {
-        //TODO
+    placeTutorialButton() { //TODO
     }
 
     showMenu() {

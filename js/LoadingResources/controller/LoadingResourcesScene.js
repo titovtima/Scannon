@@ -47,7 +47,6 @@ class LoadingResourcesScene extends Phaser.Scene {
             this.sizer.rowsNumber = 0;
         }
 
-        // this.placeTextHint();
         this.placeLevelName();
         this.placeLevelInstructions();
         this.placeFormulasList();
@@ -137,18 +136,6 @@ class LoadingResourcesScene extends Phaser.Scene {
         this.levelInstructions = levelInstructions;
     }
 
-    // placeTextHint() {
-    //     let centerX = this.sizer.textHintCenterX();
-    //     let topY = this.sizer.textHintTopY();
-    //     let fontSize = this.sizer.textHintFontSize();
-    //     let fontColor = this.sizer.textHintFontColor();
-    //
-    //     let textHint = this.add.text(centerX, topY, this.scene.settings.strings.loading_resources_scene.hint,
-    //         { fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor});
-    //     textHint.setOrigin(0.5, 0);
-    //     textHint.setAlign('center');
-    // }
-
     placeStartButton() {
         let centerX = this.sizer.startButton_X();
         let bottomY = this.sizer.startButton_Y();
@@ -182,7 +169,6 @@ class LoadingResourcesScene extends Phaser.Scene {
 
     placeFormulasList() {
         if (!this.sizer.rowsNumber) return;
-        // this.placeFormulasHeader();
 
         let fontSize = this.sizer.formulasList_FontSize();
         let fontColor = this.sizer.formulasList_FontColor();
@@ -207,14 +193,4 @@ class LoadingResourcesScene extends Phaser.Scene {
         }
     }
 
-    // placeFormulasHeader() {
-    //     let centerX = this.sizer.formulasHeader_X();
-    //     let topY = this.sizer.formulasHeader_Y();
-    //     let fontSize = this.sizer.formulasHeader_FontSize();
-    //     let fontColor = this.sizer.formulasHeader_FontColor();
-    //
-    //     let header = this.add.text(centerX, topY, this.scene.settings.strings.loading_resources_scene.formulas_header,
-    //         { fontFamily: GC.FONTS.SCORE_LABELS, fontSize: fontSize, color: fontColor });
-    //     header.setOrigin(0.5, 0);
-    // }
 }
