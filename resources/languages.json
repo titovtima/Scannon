@@ -35,8 +35,8 @@
       "menu": "Menu"
     },
     "game_scene": {
-      "correct_formula_tutorial_hint": "don't hit this formula\nit's equal to previous ",
-      "wrong_formula_tutorial_hint": "hit this formula\nit's not equal the previous ",
+      "correct_formula_tutorial_hint": ["\uD83D\uDD12️ don't hit this expression", " =", " the previous "],
+      "wrong_formula_tutorial_hint": ["\uD83D\uDCA5hit this expression", " ≠", " the previous "],
       "score": "score",
       "hint": "shoot the wrong steps by click"
     },
@@ -88,8 +88,8 @@
       "menu": "Меню"
     },
     "game_scene": {
-      "correct_formula_tutorial_hint": "не сбивай это выражение\nоно равно предыдущему ",
-      "wrong_formula_tutorial_hint": "сбей это выражение\nоно не равно предыдущему ",
+      "correct_formula_tutorial_hint": ["\uD83D\uDD12️ не сбивай это выражение", " =", " предыдущему "],
+      "wrong_formula_tutorial_hint": ["\uD83D\uDCA5сбей это выражение", " ≠", " предыдущему "],
       "score": "счёт",
       "hint": "сбей выражения не равные предыдущим"
     },

@@ -29,6 +29,9 @@ class LevelMenuScene extends Phaser.Scene {
         let roboto = '@font-face { font-family: "Roboto"; src: url("' + GC.BASE_PATH + '/fonts/Roboto-Regular.ttf") format("truetype"); }\n';
         sheet.insertRule(roboto, 0);
 
+        let robotoBold = '@font-face { font-family: "Roboto-Bold"; src: url("' + GC.BASE_PATH + '/fonts/Roboto-Bold.ttf") format("truetype"); }\n';
+        sheet.insertRule(robotoBold, 0);
+
         // let alice = '@font-face { font-family: "Alice"; src: url("' + GC.BASE_PATH + '/fonts/Alice-Regular.ttf") format("truetype"); }\n';
         // sheet.insertRule(alice, 0);
 
@@ -62,7 +65,7 @@ class LevelMenuScene extends Phaser.Scene {
         let scene = this;
         WebFont.load({
             'custom': {
-                families: ['Roboto', 'PoetsenOne', 'PTMono', 'Cheque', 'ChequeBlack']
+                families: ['Roboto', 'Roboto-Bold', 'PoetsenOne', 'PTMono', 'Cheque', 'ChequeBlack']
             },
             active: function () {
                 scene.placeSettingsButton();

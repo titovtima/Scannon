@@ -358,12 +358,12 @@ class GameSizer {
     }
 
     correctFormulaHintColor() {
-        return '#F22';
-        // return '#000';
+        // return '#0B0';
+        return '#000';
     }
 
     wrongFormulaHintColor() {
-        return '#0B0';
-        // return '#000';
+        // return '#F22';
+        return '#000';
     }
 }

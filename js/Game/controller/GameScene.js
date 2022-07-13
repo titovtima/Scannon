@@ -226,22 +226,61 @@ class GameScene extends Phaser.Scene {
         let centerY = this.sizer.hitScoreCenterY(formula.formula);
 
         formula.hintBackground = this.add.image(leftX, centerY, 'hintBackground')
-            .setOrigin(0, 0.5).setDepth(-2);
+            .setOrigin(0, 0.5).setDepth(-10);
 
         let fontSize = this.sizer.formulaHintFontSize();
         let fontColor = '#000';
-        let text = "";
+        // let text = "";
+        //
+        // if (formula.scoreForHit < 0) {
+        //     fontColor = this.sizer.correctFormulaHintColor();
+        //     text = this.scene.settings.strings.game_scene.correct_formula_tutorial_hint + prevFormula.unicode;
+        //     // text = this.scene.settings.strings.game_scene.correct_formula_tutorial_hint;
+        // }
+        // if (formula.scoreForHit > 0) {
+        //     fontColor = this.sizer.wrongFormulaHintColor();
+        //     text = this.scene.settings.strings.game_scene.wrong_formula_tutorial_hint + prevFormula.unicode;
+        //     // text = this.scene.settings.strings.game_scene.wrong_formula_tutorial_hint;
+        // }
 
+        let textParts = [];
         if (formula.scoreForHit < 0) {
             fontColor = this.sizer.correctFormulaHintColor();
-            text = this.scene.settings.strings.game_scene.correct_formula_tutorial_hint + prevFormula.unicode;
-            // text = this.scene.settings.strings.game_scene.correct_formula_tutorial_hint;
+            textParts = this.scene.settings.strings.game_scene.correct_formula_tutorial_hint;
         }
         if (formula.scoreForHit > 0) {
             fontColor = this.sizer.wrongFormulaHintColor();
-            text = this.scene.settings.strings.game_scene.wrong_formula_tutorial_hint + prevFormula.unicode;
-            // text = this.scene.settings.strings.game_scene.wrong_formula_tutorial_hint;
+            textParts = this.scene.settings.strings.game_scene.wrong_formula_tutorial_hint;
         }
+        let text1 = this.add.text(leftX + 5, centerY, textParts[0],
+            { fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor})
+            .setOrigin(0, 1).setDepth(-1);
+        let text2 = this.add.text(leftX + 5, centerY, formula.unicode,
+            { fontFamily: GC.FONTS.FORMULAS_BOLD, fontSize: fontSize, color: fontColor })
+            .setOrigin(0, 0).setDepth(-1);
+        let text3 = this.add.text(text2.x + text2.width, centerY, textParts[1] + textParts[2],
+            {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor})
+            .setOrigin(0, 0).setDepth(-1);
+        let text4 = this.add.text(text3.x + text3.width, centerY, prevFormula.unicode,
+            {fontFamily: GC.FONTS.FORMULAS_BOLD, fontSize: fontSize, color: fontColor})
+            .setOrigin(0, 0).setDepth(-1);
+
+        formula.hint = [text1, text2, text3, text4];
+
+        // let t = this.add.text(leftX + 5, centerY,
+        //     textParts[0] + '\n' + formula.unicode + textParts[1] + textParts[2] + prevFormula.unicode,
+        //     {fontFamily: GC.FONTS.FORMULAS, fontSize: fontSize, color: '#000'})
+        //     .setOrigin(0, 0.5).setDepth(-1);
+        // t.setShadow(2, 2, '#000', 3);
+        // let t2 = this.add.text(leftX + 6, centerY+1,
+        //     textParts[0] + '\n' + formula.unicode + textParts[1] + textParts[2] + prevFormula.unicode,
+        //     {fontFamily: GC.FONTS.FORMULAS, fontSize: fontSize, color: '#000'})
+        //     .setOrigin(0, 0.5).setDepth(-2);
+        // let t3 = this.add.text(leftX + 4, centerY,
+        //     textParts[0] + '\n' + formula.unicode + textParts[1] + textParts[2] + prevFormula.unicode,
+        //     {fontFamily: GC.FONTS.FORMULAS, fontSize: fontSize, color: '#000'})
+        //     .setOrigin(0, 0.5).setDepth(-2);
+        // formula.hint = [t];
 
         // if (formula.scoreForHit < 0) {
         //     fontColor = this.sizer.correctFormulaHintColor();
@@ -254,23 +293,27 @@ class GameScene extends Phaser.Scene {
         //         + formula.unicode + ' ≠ ' + prevFormula.unicode;
         // }
 
-        formula.hint = this.add.text(
-            leftX+10, centerY, text,
-            { fontFamily: GC.FONTS.FORMULAS, fontSize: fontSize, color: fontColor }
-        ).setOrigin(0, 0.5);
-
-        formula.hint.setDepth(-1);
+        // formula.hint = this.add.text(
+        //     leftX+10, centerY, text,
+        //     { fontFamily: GC.FONTS.FORMULAS, fontSize: fontSize, color: fontColor }
+        // ).setOrigin(0, 0.5);
+        //
+        // formula.hint.setDepth(-1);
     }
 
     moveFormulaHint(formula, speedX, speedY) {
-        formula.hint.x += speedX;
-        formula.hint.y += speedY;
+        for (let text of formula.hint) {
+            text.x += speedX;
+            text.y += speedY;
+        }
         formula.hintBackground.x += speedX;
         formula.hintBackground.y += speedY;
     }
 
     destroyFormulaHint(formula) {
-        formula.hint.destroy();
+        for (let text of formula.hint)
+            text.destroy();
+        formula.hint = undefined;
         formula.hintBackground.destroy();
     }
 

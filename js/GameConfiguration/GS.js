@@ -31,6 +31,7 @@ const GC = {
         BUTTON_OVER: 'ChequeBlack',
         TEXT: 'sans-serif',
         FORMULAS: 'Roboto',
+        FORMULAS_BOLD: 'Roboto-Bold',
         SCORE_VALUE: 'PoetsenOne',
         SCORE_LABELS: 'PTMono',
         SCORE_COUNTER: 'Courier'
