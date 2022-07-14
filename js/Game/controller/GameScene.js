@@ -69,12 +69,12 @@ class GameScene extends Phaser.Scene {
         // this.placeTextHint();
 
         // this.keyM = this.input.keyboard.addKey('M');
-        this.keyEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+        // this.keyEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
     }
 
     update() {
         this.focusCannonOnPointer();
-        this.handleKeyboardInput();
+        // this.handleKeyboardInput();
 
         this.moveCannonBalls();
 
@@ -578,9 +578,9 @@ class GameScene extends Phaser.Scene {
         //     this.showMenu();
         // }
 
-        if (this.keyEnter.isDown) {
-            this.speedUpToTheEnd();
-        }
+        // if (this.keyEnter.isDown) {
+        //     this.speedUpToTheEnd();
+        // }
     }
 
     placePauseButton() {
