@@ -13,7 +13,7 @@ class GameCompleteSizer {
     }
 
     levelDescription_TopY() {
-        return 50;
+        return 100;
     }
 
     levelDescription_FontSize() {
@@ -29,7 +29,7 @@ class GameCompleteSizer {
     }
 
     levelScoreLabel_CenterY() {
-        return 187;
+        return 200;
     }
 
     levelScoreLabel_FontSize() {

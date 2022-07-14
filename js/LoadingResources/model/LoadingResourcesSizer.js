@@ -136,7 +136,7 @@ class LoadingResourcesSizer {
     }
 
     formulasList_Y(indexRow) {
-        return 650 - indexRow * this.formulaListRow();
+        return 700 - indexRow * this.formulaListRow();
     }
 
     formulaListRow() {
@@ -157,7 +157,7 @@ class LoadingResourcesSizer {
     }
 
     levelName_TopY() {
-        return 50;
+        return 100;
     }
 
     levelName_FontSize() {
@@ -170,7 +170,7 @@ class LoadingResourcesSizer {
 
     centerVertically() {
         let totalHeight = this.scene.levelInstructions.height + this.rowsNumber * this.formulaListRow();
-        let move = (500 - totalHeight) / 3;
+        let move = (580 - totalHeight) / 3;
         console.log('total height: ', totalHeight);
         this.scene.levelInstructions.y += move;
         this.startButtonY = 850 - move * 2;

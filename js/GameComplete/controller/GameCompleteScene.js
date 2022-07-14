@@ -60,7 +60,7 @@ class GameCompleteScene extends Phaser.Scene {
             + this.levelsInfo.levels[this.levelNumber]["description_" + this.scene.settings.language];
         let levelDescription = this.add.text(centerX, topY, text,
             {fontFamily: GC.FONTS.BUTTON_OVER, fontSize: fontSize, color: fontColor});
-        levelDescription.setOrigin(0.5, 0);
+        levelDescription.setOrigin(0.5, 0.5).setAlign('center');
     }
 
     placeTotalLevels() {

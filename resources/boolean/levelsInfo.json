@@ -5,8 +5,8 @@
       "index": 0,
       "description_en": "Tutorial",
       "description_ru": "Туториал",
-      "instructions_en": "click to shoot expressions\nthat are not equal to the previous one",
-      "instructions_ru": "сбей все выражения\nкоторые не равны предыдущим",
+      "instructions_en": "Click on expressions to shoot them.\nShoot only those that are not equal to the previous ones.",
+      "instructions_ru": "Нажми на выражение чтобы сбить его.\nСбивай только те выражения которые не равны предыдущим.",
       "autogenerate": false,
       "tutorial": "always",
       "sequences": [
@@ -17,8 +17,8 @@
       "index": 1,
       "description_en": "And, or, not - simple",
       "description_ru": "И, или, не - простой",
-      "instructions_en": "Formulas to practice:",
-      "instructions_ru": "Практикуемые формулы:",
+      "instructions_en": "\"And\"(∧) return \"true\" if all its arguments are \"true\"\n\"Or\"(∨) returns \"true\" if al least one of its arguments is \"true\"\n\"Not\"(¬) receives only one argument and returns \"true\" if its argument is \"false\"\nFormulas to practice:",
+      "instructions_ru": "\"И\"(∧) возвращает \"истину\" если все аргументы истинны\n\"Или\"(∨) возвращает \"истину\" если хотя бы один из аргументов - \"истина\"\n\"Не\"(¬) принимает один аргумент и возвращает \"истину\" если аргумент - \"ложь\"\nПрактикуемые формулы:",
       "autogenerate": false,
       "tutorial": "never",
       "sequences": [
@@ -63,8 +63,8 @@
       "index": 2,
       "description_en": "And, or, not - hard",
       "description_ru": "И, или, не - сложный",
-      "instructions_en": "Formulas to practice:",
-      "instructions_ru": "Практикуемые формулы:",
+      "instructions_en": "De Morgan laws and Absorption laws say this:",
+      "instructions_ru": "Законы де Моргана и законы поглощения утверждают что:",
       "autogenerate": false,
       "tutorial": "never",
       "sequences": [
@@ -88,7 +88,7 @@
       "description_en": "Implication - simple",
       "description_ru": "Импликация - простой",
       "instructions_en": "Implication is a binary operator which returns \"true\"\nunless its first argument is true and its second argument is false.\nFormulas to practice:",
-      "instructions_ru": "Практикуемые формулы:",
+      "instructions_ru": "Импликация - это бинарный логический оператор,\nкоторый возвращает \"истину\" всегда, кроме случая\nкогда его первый аргумент \"истина\" а второй - \"ложь\"\nПрактикуемые формулы:",
       "autogenerate": false,
       "tutorial": "never",
       "sequences": [
@@ -119,8 +119,8 @@
       "index": 4,
       "description_en": "Implication - hard",
       "description_ru": "Импликация - сложный",
-      "instructions_en": "Formulas to practice:",
-      "instructions_ru": "Практикуемые формулы:",
+      "instructions_en": "More implication properties:",
+      "instructions_ru": "Ещё свойства импликации:",
       "autogenerate": false,
       "tutorial": "never",
       "sequences": [
@@ -144,9 +144,9 @@
     {
       "index": 5,
       "description_en": "Xor - simple",
-      "description_ru": "Исключающее \"или\"\nпростой",
-      "instructions_en": "Formulas to practice:",
-      "instructions_ru": "Практикуемые формулы:",
+      "description_ru": "Исключающее или -\nпростой",
+      "instructions_en": "Binary operator \"Xor\"(⊕) returns \"true\"\nif its arguments are not equal to each other\nFormulas to practice:",
+      "instructions_ru": "Бинарный оператор \"Исключающее или\"(⊕, \"Xor\")\nвозвращает \"истину\" если его аргументы не равны друг другу\nПрактикуемые формулы:",
       "autogenerate": false,
       "tutorial": "never",
       "sequences": [
@@ -179,9 +179,9 @@
     {
       "index": 6,
       "description_en": "Xor - hard",
-      "description_ru": "Исключающее \"или\"\nсложный",
-      "instructions_en": "Formulas to practice:",
-      "instructions_ru": "Практикуемые формулы:",
+      "description_ru": "Исключающее или -\nсложный",
+      "instructions_en": "A little more about \"xor\":",
+      "instructions_ru": "Ещё немного об \"исключающем или\":",
       "autogenerate": false,
       "tutorial": "never",
       "sequences": [
