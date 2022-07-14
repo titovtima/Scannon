@@ -36,6 +36,8 @@ class LoadingResourcesScene extends Phaser.Scene {
 
         this.load.image('wall_right', GC.RESOURCES_PATH + '/assets/wall_right.png');
         this.load.image('wall_left', GC.RESOURCES_PATH + '/assets/wall_left.png');
+        this.load.image('finishButton', GC.RESOURCES_PATH + '/assets/finishButton.png');
+        this.load.image('finishButton_Over', GC.RESOURCES_PATH + '/assets/finishButton_Over.png');
 
         this.sizer = new LoadingResourcesSizer(this);
         this.levelsInfo = this.cache.json.get('levelsInfo');

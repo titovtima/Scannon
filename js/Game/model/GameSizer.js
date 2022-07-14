@@ -358,4 +358,16 @@ class GameSizer {
         // return '#F22';
         return '#000';
     }
+
+    finishButton_RightX() {
+        return 1550;
+    }
+
+    finishButton_BottomY() {
+        return this.bottomLine() - 20;
+    }
+
+    finishButton_Scale() {
+        return 0.13;
+    }
 }

@@ -58,9 +58,8 @@ class GameScene extends Phaser.Scene {
 
         this.placeCannon();
         this.placeScoreLabels();
-        // this.placeLastFormula();
-        // this.placeBottomLine();
         this.placeWall();
+        this.placeFinishButton();
 
         this.input.on('pointerdown', this.shoot(this));
 
@@ -584,18 +583,6 @@ class GameScene extends Phaser.Scene {
         }
     }
 
-    speedUpToTheEnd() {
-        if (this.speedUp) return;
-        this.speedUp = true;
-        this.sizer.mistakeTimeout = 0;
-        this.stopBlinking();
-        let interval = setInterval(() => {
-            if (this.sizer.formulasSpeed >= 10)
-                clearInterval(interval);
-            this.sizer.formulasSpeed += 0.1;
-        }, 100);
-    }
-
     placePauseButton() {
         let right = this.sizer.pauseButton_RightX();
         let top = this.sizer.pauseButton_TopY();
@@ -606,11 +593,12 @@ class GameScene extends Phaser.Scene {
 
         pauseButton.on('pointerup', () => {
             console.log('Pause button clicked');
+            this.stopSpeedingUp();
             this.showMenu();
-        })
+        });
         pauseButton.on('pointerdown', () => {
             // this.removeCannonBall(this.displayingCannonBalls.last);
-        })
+        });
         return pauseButton;
     }
 
@@ -854,6 +842,52 @@ class GameScene extends Phaser.Scene {
         let valueString = String(Math.abs(this.score)).padStart(6, '0');
 
         return signString + valueString;
+    }
+
+    placeFinishButton() {
+        let rightX = this.sizer.finishButton_RightX();
+        let bottomY = this.sizer.finishButton_BottomY();
+        let scale = this.sizer.finishButton_Scale();
+
+        let button = this.add.image(rightX, bottomY, 'finishButton')
+            .setOrigin(1, 1).setScale(scale).setDepth(256);
+
+        button.setInteractive();
+
+        button.on('pointerup', () => {
+            console.log('Finish button clicked');
+            this.speedUpToTheEnd();
+        });
+
+        button.on('pointerover', () => {
+            button.setTexture('finishButton_Over');
+        });
+        button.on('pointerout', () => {
+            if (!this.speedUp)
+                button.setTexture('finishButton');
+        });
+
+        this.finishButton = button;
+    }
+
+    speedUpToTheEnd() {
+        if (this.speedUp) return;
+        this.speedUp = true;
+        this.sizer.mistakeTimeout = 0;
+        this.stopBlinking();
+        let interval = setInterval(() => {
+            if (this.sizer.formulasSpeed >= 10)
+                clearInterval(interval);
+            this.sizer.formulasSpeed += 0.1;
+        }, 100);
+        this.speedingUpInterval = interval;
+    }
+
+    stopSpeedingUp() {
+        this.sizer.formulasSpeed = this.scene.settings.speed;
+        clearInterval(this.speedingUpInterval);
+        this.speedUp = false;
+        this.finishButton.setTexture('finishButton');
     }
 
 }
