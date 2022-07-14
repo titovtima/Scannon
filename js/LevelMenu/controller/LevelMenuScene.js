@@ -53,6 +53,10 @@ class LevelMenuScene extends Phaser.Scene {
         this.load.json('languages', GC.BASE_PATH + '/resources/languages.json');
         this.load.image('cardBackground', GC.RESOURCES_PATH + '/assets/cardBackground.png');
         this.load.image('cardBackground_Bordered', GC.RESOURCES_PATH + '/assets/cardBackground_Bordered.png');
+
+        this.load.image('languageTile', GC.RESOURCES_PATH + '/assets/languageTile.png');
+        this.load.image('languageTile_Over', GC.RESOURCES_PATH + '/assets/languageTile_Over.png');
+        this.load.image('languageTile_Select', GC.RESOURCES_PATH + '/assets/languageTile_Select.png');
     }
 
     create() {
@@ -68,14 +72,17 @@ class LevelMenuScene extends Phaser.Scene {
                 families: ['Roboto', 'Roboto-Bold', 'PoetsenOne', 'PTMono', 'Cheque', 'ChequeBlack']
             },
             active: function () {
+                scene.allTexts = {};
                 scene.placeSettingsButton();
                 scene.placeLevelCards();
                 scene.placeLabel();
+                scene.placeLanguageSetting();
             }
         });
     }
 
     placeLevelCards() {
+        this.allTexts.cardsDescriptions = [];
         for (let level of this.levelsInfo.levels) {
             let cardBackground = this.placeCardBackground(level.index);
             this.placeCardIndex(level.index, cardBackground);
@@ -88,10 +95,9 @@ class LevelMenuScene extends Phaser.Scene {
         let settingsButtonPosition = this.sizer.settingsButtonPosition();
         let fontSize = this.sizer.settingsButton_fontSize();
         let fontColor = this.sizer.settingsButton_fontColor();
-        let text = this.strings.settings;
         let settingsButton = this.add.text(
-            settingsButtonPosition.x, settingsButtonPosition.y,
-            text, {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
+            settingsButtonPosition.x, settingsButtonPosition.y, '',
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         settingsButton.setOrigin(1, 0);
         settingsButton.setInteractive();
         settingsButton.on('pointerover', () => {
@@ -106,6 +112,66 @@ class LevelMenuScene extends Phaser.Scene {
                 sceneFrom: GC.SCENES.LEVEL_MENU
             });
         });
+        this.allTexts.settingsButton = settingsButton;
+        this.setSettingsButtonText();
+    }
+
+    setSettingsButtonText() {
+        let text = this.strings.settings;
+        this.allTexts.settingsButton.setText(text);
+    }
+
+    placeLanguageSetting() {
+        let positionY = this.sizer.languageLineY();
+        let fontSize = this.sizer.languageTile_FontSize();
+        let fontColor = this.sizer.languageTile_FontColor();
+
+        this.langTiles = {};
+
+        let index = 0;
+        for (let lang of GC.LANGUAGES) {
+            let positionX = this.sizer.languageTileX(index);
+            let tileBackground = this.add.image(positionX, positionY, 'languageTile').setOrigin(0.5, 0.5);
+            this.add.text(positionX, positionY, lang,
+                {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor}).setOrigin(0.5, 0.5);
+
+            this.langTiles[lang] = tileBackground;
+
+            if (lang === this.scene.settings.language) {
+                tileBackground.setTexture('languageTile_Select');
+            } else {
+                tileBackground.setInteractive();
+            }
+
+            tileBackground.on('pointerover', () => {
+                tileBackground.setTexture('languageTile_Over');
+            });
+            tileBackground.on('pointerout', () => {
+                tileBackground.setTexture('languageTile');
+            });
+            tileBackground.on('pointerup', () => {
+                tileBackground.removeInteractive();
+                tileBackground.setTexture('languageTile_Select');
+                this.langTiles[this.scene.settings.language].setTexture('languageTile');
+                this.langTiles[this.scene.settings.language].setInteractive();
+                this.switchLanguage(lang);
+            });
+            index++;
+        }
+    }
+
+    switchLanguage(lang) {
+        console.log('Switch language to ', lang);
+        let languages = this.cache.json.get('languages');
+        this.scene.settings.strings = languages[lang];
+        this.scene.settings.language = lang;
+        this.strings = this.scene.settings.strings.menu;
+        this.setLabelText();
+        this.setSettingsButtonText();
+        for (let level of this.levelsInfo.levels) {
+            this.setCardDescriptionText(level.index);
+        }
+        this.setLastCardText();
     }
 
     placeCardBackground(index) {
@@ -154,18 +220,22 @@ class LevelMenuScene extends Phaser.Scene {
     }
 
     placeCardDescription(index) {
-        let description = this.levelsInfo.levels[index]["description_" + this.scene.settings.language];
-
         let centerX = this.sizer.cardDescription_CenterX(index);
         let centerY = this.sizer.cardDescription_CenterY(index);
         let fontSize = this.sizer.cardDescription_FontSize(index);
         let color = this.sizer.cardDescription_Color(index);
 
-        this.add.text(
-            centerX, centerY,
-            description,
+        let desc = this.add.text(
+            centerX, centerY, "",
             {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: color}
         ).setOrigin(0.5).setAlign('center');
+        this.allTexts.cardsDescriptions.push(desc);
+        this.setCardDescriptionText(index);
+    }
+
+    setCardDescriptionText(index) {
+        this.allTexts.cardsDescriptions[index]
+            .setText(this.levelsInfo.levels[index]["description_" + this.scene.settings.language]);
     }
 
     placeLastCard(index) {
@@ -179,11 +249,16 @@ class LevelMenuScene extends Phaser.Scene {
         let centerY = topY + this.sizer.lastCardTextCenterY();
         let fontSize = this.sizer.lastCardFontSize();
         let color = this.sizer.lastCardFontColor();
-        let text = this.strings.last_level;
 
-        let lastCardDescription = this.add.text(centerX, centerY, text,
+        let lastCardDescription = this.add.text(centerX, centerY, '',
             {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: color});
         lastCardDescription.setOrigin(0.5);
+        this.allTexts.lastCardText = lastCardDescription;
+        this.setLastCardText();
+    }
+
+    setLastCardText() {
+        this.allTexts.lastCardText.setText(this.strings.last_level);
     }
 
     setDefaultSettings() {
@@ -232,14 +307,22 @@ class LevelMenuScene extends Phaser.Scene {
         let labelFontSize = this.sizer.labelFontSize();
         let labelFontColor = this.sizer.labelFontColor();
 
+        let label = this.add.text(labelPosition.x, labelPosition.y, '',
+            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: labelFontSize, color: labelFontColor});
+        label.setOrigin(0, 0);
+        this.allTexts.label = label;
+        this.setLabelText();
+    }
+
+    setLabelText() {
+        let labelFontSize = this.sizer.labelFontSize();
         let text = "SCANNON - " + this.strings.game_name[GC.GAME_CODE];
 
         if (text.length > GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) {
             labelFontSize = (labelFontSize * GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) / text.length;
         }
 
-        let label = this.add.text(labelPosition.x, labelPosition.y, text,
-            {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: labelFontSize, color: labelFontColor});
-        label.setOrigin(0, 0);
+        this.allTexts.label.setText(text);
+        this.allTexts.label.setFontSize(labelFontSize);
     }
 }

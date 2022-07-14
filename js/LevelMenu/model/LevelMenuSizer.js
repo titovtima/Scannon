@@ -156,4 +156,20 @@ class LevelMenuSizer {
     lastCardFontSize() {
         return 40;
     }
+
+    languageLineY() {
+        return 90;
+    }
+
+    languageTile_FontSize() {
+        return 40;
+    }
+
+    languageTile_FontColor() {
+        return '#000';
+    }
+
+    languageTileX(index) {
+        return 1540 - index * 100;
+    }
 }
