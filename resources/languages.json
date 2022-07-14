@@ -59,7 +59,7 @@
         "trigonometry": "Тригонометрия"
       },
       "settings": "Настройки",
-      "last_level": "Coming soon..."
+      "last_level": "Скоро будут..."
     },
     "settings_scene": {
       "back": "назад",
@@ -90,9 +90,9 @@
       "hint": "сбей выражения не равные предыдущим"
     },
     "game_complete": {
-      "level_score": "Счёт уровеня",
+      "level_score": "Счёт уровня",
       "total_score": "Общий счёт",
-      "next_level": "Дальше",
+      "next_level": "Следующий уровень",
       "restart_level": "Рестарт уровня",
       "menu": "Меню",
       "save_sequence": "Сохранить цепочку",
