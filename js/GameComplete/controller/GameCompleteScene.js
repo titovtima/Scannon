@@ -57,7 +57,7 @@ class GameCompleteScene extends Phaser.Scene {
         let fontColor = this.sizer.levelDescription_FontColor();
 
         let text = this.levelNumber + " - "
-            + GC.LEVELS_INFO.levels[this.levelNumber]["description_" + this.scene.settings.language];
+            + GC.GAME_INFO.levels[this.levelNumber]["description_" + this.scene.settings.language];
         let levelDescription = this.add.text(centerX, topY, text,
             {fontFamily: GC.FONTS.BUTTON_OVER, fontSize: fontSize, color: fontColor});
         levelDescription.setOrigin(0.5, 0.5).setAlign('center');
@@ -134,7 +134,7 @@ class GameCompleteScene extends Phaser.Scene {
         let congratsLabel = this.strings.congrats;
 
         if (this.score > 0) {
-            if (this.levelNumber === GC.LEVELS_INFO.levelsNumber) {
+            if (this.levelNumber === GC.GAME_INFO.levelsNumber) {
                 labels.unshift(congratsLabel);
             } else {
                 labels.unshift(this.strings.next_level);

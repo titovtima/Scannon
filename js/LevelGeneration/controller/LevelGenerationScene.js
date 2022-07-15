@@ -32,22 +32,22 @@ class LevelGenerationScene extends Phaser.Scene {
     preload() {
         // this.levelsInfo = this.cache.json.get('levelsInfo');
 
-        this.autogenerate = GC.LEVELS_INFO.levels[this.levelNumber].autogenerate;
+        this.autogenerate = GC.GAME_INFO.levels[this.levelNumber].autogenerate;
         let basePath = GC.RESOURCES_PATH;
         if (this.autogenerate) {
-            this.initialExpressionPath = basePath + GC.LEVELS_INFO.levels[this.levelNumber].initialExpressions;
-            this.substitutionsPath = basePath + GC.LEVELS_INFO.levels[this.levelNumber].substitutions;
-            this.numberOfFormulas = GC.LEVELS_INFO.levels[this.levelNumber].numberOfFormulas;
-            this.rulePacksPath = basePath + GC.LEVELS_INFO.levels[this.levelNumber].rulePacks;
-            this.maxLength = GC.LEVELS_INFO.levels[this.levelNumber].maxLength;
-            this.minLength = GC.LEVELS_INFO.levels[this.levelNumber].minLength;
+            this.initialExpressionPath = basePath + GC.GAME_INFO.levels[this.levelNumber].initialExpressions;
+            this.substitutionsPath = basePath + GC.GAME_INFO.levels[this.levelNumber].substitutions;
+            this.numberOfFormulas = GC.GAME_INFO.levels[this.levelNumber].numberOfFormulas;
+            this.rulePacksPath = basePath + GC.GAME_INFO.levels[this.levelNumber].rulePacks;
+            this.maxLength = GC.GAME_INFO.levels[this.levelNumber].maxLength;
+            this.minLength = GC.GAME_INFO.levels[this.levelNumber].minLength;
 
             this.load.json(this.initialExpressionsPath, this.initialExpressionsPath);
             this.load.json(this.rulePacksPath, this.rulePacksPath);
             this.load.json(this.allRulePacksPath, this.allRulePacksPath);
             this.load.json(this.badRulePacksPath, this.badRulePacksPath);
         } else {
-            this.sequences = GC.LEVELS_INFO.levels[this.levelNumber].sequences;
+            this.sequences = GC.GAME_INFO.levels[this.levelNumber].sequences;
             this.sequences = this.sequences.map(function (seq) {
                 return basePath + seq;
             });

@@ -49,7 +49,7 @@ class LevelMenuScene extends Phaser.Scene {
     preload() {
         this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
 
-        this.load.json('levelsInfo', GC.RESOURCES_PATH + '/levelsInfo.json');
+        this.load.json('gameInfo', GC.RESOURCES_PATH + '/gameInfo.json');
         this.load.json('languages', GC.BASE_PATH + '/resources/languages.json');
         this.load.image('cardBackground', GC.RESOURCES_PATH + '/assets/cardBackground.png');
         this.load.image('cardBackground_Bordered', GC.RESOURCES_PATH + '/assets/cardBackground_Bordered.png');
@@ -61,7 +61,7 @@ class LevelMenuScene extends Phaser.Scene {
 
     create() {
         this.setDefaultSettings();
-        GC.LEVELS_INFO = this.cache.json.get('levelsInfo');
+        GC.GAME_INFO = this.cache.json.get('gameInfo');
         this.strings = this.scene.settings.strings.menu;
 
         this.sizer = new LevelMenuSizer(this);
@@ -84,14 +84,14 @@ class LevelMenuScene extends Phaser.Scene {
     placeLevelCards() {
         this.allTexts.cardsDescriptions = [];
         let count = 0;
-        for (let index in GC.LEVELS_INFO.levels) {
+        for (let index in GC.GAME_INFO.levels) {
             let cardBackground = this.placeCardBackground(count, index);
             this.placeCardIndex(count, index, cardBackground);
             this.placeCardDescription(count, index);
             count++;
         }
-        GC.LEVELS_INFO.levelsNumber = count;
-        this.placeLastCard(GC.LEVELS_INFO.levelsNumber);
+        GC.GAME_INFO.levelsNumber = count;
+        this.placeLastCard(GC.GAME_INFO.levelsNumber);
     }
 
     placeSettingsButton() {
@@ -171,7 +171,7 @@ class LevelMenuScene extends Phaser.Scene {
         this.strings = this.scene.settings.strings.menu;
         this.setLabelText();
         this.setSettingsButtonText();
-        for (let index in GC.LEVELS_INFO.levels) {
+        for (let index in GC.GAME_INFO.levels) {
             this.setCardDescriptionText(index);
         }
         this.setLastCardText();
@@ -238,7 +238,7 @@ class LevelMenuScene extends Phaser.Scene {
 
     setCardDescriptionText(configIndex) {
         this.allTexts.cardsDescriptions[configIndex]
-            .setText(GC.LEVELS_INFO.levels[configIndex]["description_" + this.scene.settings.language]);
+            .setText(GC.GAME_INFO.levels[configIndex]["description_" + this.scene.settings.language]);
     }
 
     placeLastCard(index) {
@@ -319,7 +319,7 @@ class LevelMenuScene extends Phaser.Scene {
 
     setLabelText() {
         let labelFontSize = this.sizer.labelFontSize();
-        let text = "SCANNON - " + GC.LEVELS_INFO['game_name_' + this.scene.settings.language];
+        let text = "SCANNON - " + GC.GAME_INFO['game_name_' + this.scene.settings.language];
 
         if (text.length > GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) {
             labelFontSize = (labelFontSize * GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) / text.length;

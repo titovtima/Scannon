@@ -29,7 +29,7 @@ class GameScene extends Phaser.Scene {
         this.speedUp = false;
 
         // this.levelsInfo = this.cache.json.get('levelsInfo');
-        this.tutorialStatus = GC.LEVELS_INFO.levels[this.levelNumber].tutorial;
+        this.tutorialStatus = GC.GAME_INFO.levels[this.levelNumber].tutorial;
         if (params.isTutorial !== undefined)
             this.isTutorial = params.isTutorial
         else
