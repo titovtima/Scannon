@@ -36,7 +36,7 @@ class GameCompleteScene extends Phaser.Scene {
             ym(88802966, 'params', JSON.parse(jsonString));
         }
 
-        this.levelsInfo = this.cache.json.get('levelsInfo');
+        // this.levelsInfo = this.cache.json.get('levelsInfo');
         this.sizer = new GameCompleteSizer(this);
 
         this.placeLevelDescription();
@@ -57,7 +57,7 @@ class GameCompleteScene extends Phaser.Scene {
         let fontColor = this.sizer.levelDescription_FontColor();
 
         let text = this.levelNumber + " - "
-            + this.levelsInfo.levels[this.levelNumber]["description_" + this.scene.settings.language];
+            + GC.LEVELS_INFO.levels[this.levelNumber]["description_" + this.scene.settings.language];
         let levelDescription = this.add.text(centerX, topY, text,
             {fontFamily: GC.FONTS.BUTTON_OVER, fontSize: fontSize, color: fontColor});
         levelDescription.setOrigin(0.5, 0.5).setAlign('center');
@@ -134,7 +134,7 @@ class GameCompleteScene extends Phaser.Scene {
         let congratsLabel = this.strings.congrats;
 
         if (this.score > 0) {
-            if (this.levelNumber === this.levelsInfo.levelsNumber) {
+            if (this.levelNumber === GC.LEVELS_INFO.levelsNumber) {
                 labels.unshift(congratsLabel);
             } else {
                 labels.unshift(this.strings.next_level);

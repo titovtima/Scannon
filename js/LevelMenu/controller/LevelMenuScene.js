@@ -61,7 +61,7 @@ class LevelMenuScene extends Phaser.Scene {
 
     create() {
         this.setDefaultSettings();
-        this.levelsInfo = this.cache.json.get('levelsInfo');
+        GC.LEVELS_INFO = this.cache.json.get('levelsInfo');
         this.strings = this.scene.settings.strings.menu;
 
         this.sizer = new LevelMenuSizer(this);
@@ -83,12 +83,12 @@ class LevelMenuScene extends Phaser.Scene {
 
     placeLevelCards() {
         this.allTexts.cardsDescriptions = [];
-        for (let index in this.levelsInfo.levels) {
+        for (let index in GC.LEVELS_INFO.levels) {
             let cardBackground = this.placeCardBackground(index);
             this.placeCardIndex(index, cardBackground);
             this.placeCardDescription(index);
         }
-        this.placeLastCard(this.levelsInfo.levelsNumber + 1);
+        this.placeLastCard(GC.LEVELS_INFO.levelsNumber + 1);
     }
 
     placeSettingsButton() {
@@ -168,7 +168,7 @@ class LevelMenuScene extends Phaser.Scene {
         this.strings = this.scene.settings.strings.menu;
         this.setLabelText();
         this.setSettingsButtonText();
-        for (let index in this.levelsInfo.levels) {
+        for (let index in GC.LEVELS_INFO.levels) {
             this.setCardDescriptionText(index);
         }
         this.setLastCardText();
@@ -181,7 +181,7 @@ class LevelMenuScene extends Phaser.Scene {
         let cardBackground = this.add.image(leftX, topY, 'cardBackground');
         cardBackground.setOrigin(0);
 
-        // if (index !== this.levelsInfo.levels.length - 1) {
+        // if (index !== GC.LEVELS_INFO.levels.length - 1) {
         cardBackground.setInteractive();
         cardBackground.on('pointerover', () => {
             cardBackground.setTexture('cardBackground_Bordered');
@@ -235,7 +235,7 @@ class LevelMenuScene extends Phaser.Scene {
 
     setCardDescriptionText(index) {
         this.allTexts.cardsDescriptions[index]
-            .setText(this.levelsInfo.levels[index]["description_" + this.scene.settings.language]);
+            .setText(GC.LEVELS_INFO.levels[index]["description_" + this.scene.settings.language]);
     }
 
     placeLastCard(index) {

@@ -40,9 +40,9 @@ class LoadingResourcesScene extends Phaser.Scene {
         this.load.image('finishButton_Over', GC.RESOURCES_PATH + '/assets/finishButton_Over.png');
 
         this.sizer = new LoadingResourcesSizer(this);
-        this.levelsInfo = this.cache.json.get('levelsInfo');
+        // this.levelsInfo = this.cache.json.get('levelsInfo');
 
-        this.formulasList = this.levelsInfo.levels[this.levelNumber].formulas_list;
+        this.formulasList = GC.LEVELS_INFO.levels[this.levelNumber].formulas_list;
         if (this.formulasList !== undefined) {
             this.sizer.rowsNumber = this.formulasList.rows.length;
         } else {
@@ -116,7 +116,7 @@ class LoadingResourcesScene extends Phaser.Scene {
         let fontColor = this.sizer.levelName_FontColor();
 
         let text = this.levelNumber + " - "
-            + this.levelsInfo.levels[this.levelNumber]["description_" + this.scene.settings.language];
+            + GC.LEVELS_INFO.levels[this.levelNumber]["description_" + this.scene.settings.language];
         let levelName = this.add.text(centerX, topY, text,
             {fontFamily: GC.FONTS.BUTTON_OVER, fontSize: fontSize, color: fontColor});
         levelName.setOrigin(0.5, 0.5).setAlign('center');
@@ -128,7 +128,7 @@ class LoadingResourcesScene extends Phaser.Scene {
         let fontSize = this.sizer.levelInstructionsFontSize();
         let fontColor = this.sizer.levelInstructionsFontColor();
 
-        let text = this.levelsInfo.levels[this.levelNumber]['instructions_' + this.scene.settings.language];
+        let text = GC.LEVELS_INFO.levels[this.levelNumber]['instructions_' + this.scene.settings.language];
         if (!text) return;
 
         let levelInstructions = this.add.text(centerX, topY, text,
