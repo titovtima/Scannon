@@ -83,12 +83,15 @@ class LevelMenuScene extends Phaser.Scene {
 
     placeLevelCards() {
         this.allTexts.cardsDescriptions = [];
+        let count = 0;
         for (let index in GC.LEVELS_INFO.levels) {
-            let cardBackground = this.placeCardBackground(index);
-            this.placeCardIndex(index, cardBackground);
-            this.placeCardDescription(index);
+            let cardBackground = this.placeCardBackground(count, index);
+            this.placeCardIndex(count, index, cardBackground);
+            this.placeCardDescription(count, index);
+            count++;
         }
-        this.placeLastCard(GC.LEVELS_INFO.levelsNumber + 1);
+        GC.LEVELS_INFO.levelsNumber = count;
+        this.placeLastCard(GC.LEVELS_INFO.levelsNumber);
     }
 
     placeSettingsButton() {
@@ -174,7 +177,7 @@ class LevelMenuScene extends Phaser.Scene {
         this.setLastCardText();
     }
 
-    placeCardBackground(index) {
+    placeCardBackground(index, configIndex) {
         const leftX = this.sizer.backgroundRectangle_LeftX(index);
         const topY = this.sizer.backgroundRectangle_TopY(index);
 
@@ -192,7 +195,7 @@ class LevelMenuScene extends Phaser.Scene {
         cardBackground.on('pointerup', () => {
             ym(88802966,'reachGoal','openLevel');
             this.scene.start(GC.SCENES.LEVEL_GENERATION, {
-                "levelNumber": index,
+                "levelNumber": configIndex,
                 "settings": this.scene.settings
             });
         });
@@ -200,7 +203,7 @@ class LevelMenuScene extends Phaser.Scene {
         return cardBackground;
     }
 
-    placeCardIndex(index, cardBackground) {
+    placeCardIndex(index, configIndex, cardBackground) {
         let centerX = this.sizer.cardIndex_CenterX(index);
         let topY = this.sizer.cardIndex_TopY(index);
 
@@ -208,7 +211,7 @@ class LevelMenuScene extends Phaser.Scene {
         let fontColor = this.sizer.cardIndex_fontColor();
 
         let cardIndex = this.add.text(centerX, topY,
-            index, {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
+            configIndex, {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: fontSize, color: fontColor});
         cardIndex.setOrigin(0.5, 0);
 
         cardBackground.on('pointerover', () => {
@@ -219,7 +222,7 @@ class LevelMenuScene extends Phaser.Scene {
         })
     }
 
-    placeCardDescription(index) {
+    placeCardDescription(index, configIndex) {
         let centerX = this.sizer.cardDescription_CenterX(index);
         let centerY = this.sizer.cardDescription_CenterY(index);
         let fontSize = this.sizer.cardDescription_FontSize(index);
@@ -229,13 +232,13 @@ class LevelMenuScene extends Phaser.Scene {
             centerX, centerY, "",
             {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: color}
         ).setOrigin(0.5).setAlign('center');
-        this.allTexts.cardsDescriptions.push(desc);
-        this.setCardDescriptionText(index);
+        this.allTexts.cardsDescriptions[configIndex] = desc;
+        this.setCardDescriptionText(configIndex);
     }
 
-    setCardDescriptionText(index) {
-        this.allTexts.cardsDescriptions[index]
-            .setText(GC.LEVELS_INFO.levels[index]["description_" + this.scene.settings.language]);
+    setCardDescriptionText(configIndex) {
+        this.allTexts.cardsDescriptions[configIndex]
+            .setText(GC.LEVELS_INFO.levels[configIndex]["description_" + this.scene.settings.language]);
     }
 
     placeLastCard(index) {

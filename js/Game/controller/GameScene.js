@@ -43,7 +43,7 @@ class GameScene extends Phaser.Scene {
 
         if (!this.isRestarted) {
             console.log('not restarted');
-            let jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_start": ${this.startLevel}}`;
+            let jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_start": "${this.startLevel}"}`;
             ym(88802966, 'params', JSON.parse(jsonString));
         }
 
