@@ -319,7 +319,7 @@ class LevelMenuScene extends Phaser.Scene {
 
     setLabelText() {
         let labelFontSize = this.sizer.labelFontSize();
-        let text = "SCANNON - " + this.strings.game_name[GC.GAME_CODE];
+        let text = "SCANNON - " + GC.LEVELS_INFO['game_name_' + this.scene.settings.language];
 
         if (text.length > GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) {
             labelFontSize = (labelFontSize * GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) / text.length;

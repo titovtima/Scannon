@@ -1,4 +1,6 @@
 {
+  "game_name_en": "Logic",
+  "game_name_ru": "Логика",
   "levels": {
     "0": {
       "description_en": "Tutorial",
