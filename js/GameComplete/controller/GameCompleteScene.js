@@ -56,7 +56,7 @@ class GameCompleteScene extends Phaser.Scene {
         let fontSize = this.sizer.levelDescription_FontSize();
         let fontColor = this.sizer.levelDescription_FontColor();
 
-        let text = this.levelsInfo.levels[this.levelNumber].index + " - "
+        let text = this.levelNumber + " - "
             + this.levelsInfo.levels[this.levelNumber]["description_" + this.scene.settings.language];
         let levelDescription = this.add.text(centerX, topY, text,
             {fontFamily: GC.FONTS.BUTTON_OVER, fontSize: fontSize, color: fontColor});

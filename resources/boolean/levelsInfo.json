@@ -1,8 +1,7 @@
 {
   "levelsNumber": 6,
-  "levels": [
-    {
-      "index": 0,
+  "levels": {
+    "0": {
       "description_en": "Tutorial",
       "description_ru": "Туториал",
       "instructions_en": "Click on expressions to shoot them.\nShoot only those that are not equal to the previous ones.",
@@ -13,8 +12,7 @@
         "/lvl0/seq.json"
       ]
     },
-    {
-      "index": 1,
+    "1": {
       "description_en": "And, or, not - simple",
       "description_ru": "И, или, не - простой",
       "instructions_en": "\"And\"(∧) return \"true\" if all its arguments are \"true\"\n\"Or\"(∨) returns \"true\" if al least one of its arguments is \"true\"\n\"Not\"(¬) receives only one argument and returns \"true\" if its argument is \"false\"\nFormulas to practice:",
@@ -59,8 +57,7 @@
         ]
       ]}
     },
-    {
-      "index": 2,
+    "2": {
       "description_en": "And, or, not - hard",
       "description_ru": "И, или, не - сложный",
       "instructions_en": "De Morgan laws and Absorption laws say this:",
@@ -83,8 +80,7 @@
         ]
       ]}
     },
-    {
-      "index": 3,
+    "3": {
       "description_en": "Implication - simple",
       "description_ru": "Импликация - простой",
       "instructions_en": "Implication is a binary operator which returns \"true\"\nunless its first argument is true and its second argument is false.\nFormulas to practice:",
@@ -115,8 +111,7 @@
         ]
       ]}
     },
-    {
-      "index": 4,
+    "4": {
       "description_en": "Implication - hard",
       "description_ru": "Импликация - сложный",
       "instructions_en": "More implication properties:",
@@ -141,8 +136,7 @@
         [ { "left": "a→(b∨c)", "right": "(a→b)v(a→c)" } ]
       ]}
     },
-    {
-      "index": 5,
+    "5": {
       "description_en": "Xor - simple",
       "description_ru": "Исключающее или -\nпростой",
       "instructions_en": "Binary operator \"Xor\"(⊕) returns \"true\"\nif its arguments are not equal to each other\nFormulas to practice:",
@@ -176,8 +170,7 @@
         ]
       ]}
     },
-    {
-      "index": 6,
+    "6": {
       "description_en": "Xor - hard",
       "description_ru": "Исключающее или -\nсложный",
       "instructions_en": "A little more about \"xor\":",
@@ -193,5 +186,5 @@
         ]
       ]}
     }
-  ]
+  }
 }

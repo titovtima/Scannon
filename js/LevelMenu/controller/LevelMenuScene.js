@@ -83,10 +83,10 @@ class LevelMenuScene extends Phaser.Scene {
 
     placeLevelCards() {
         this.allTexts.cardsDescriptions = [];
-        for (let level of this.levelsInfo.levels) {
-            let cardBackground = this.placeCardBackground(level.index);
-            this.placeCardIndex(level.index, cardBackground);
-            this.placeCardDescription(level.index);
+        for (let index in this.levelsInfo.levels) {
+            let cardBackground = this.placeCardBackground(index);
+            this.placeCardIndex(index, cardBackground);
+            this.placeCardDescription(index);
         }
         this.placeLastCard(this.levelsInfo.levelsNumber + 1);
     }
@@ -168,8 +168,8 @@ class LevelMenuScene extends Phaser.Scene {
         this.strings = this.scene.settings.strings.menu;
         this.setLabelText();
         this.setSettingsButtonText();
-        for (let level of this.levelsInfo.levels) {
-            this.setCardDescriptionText(level.index);
+        for (let index in this.levelsInfo.levels) {
+            this.setCardDescriptionText(index);
         }
         this.setLastCardText();
     }
