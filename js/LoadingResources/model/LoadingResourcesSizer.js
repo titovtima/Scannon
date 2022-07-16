@@ -136,7 +136,7 @@ class LoadingResourcesSizer {
     }
 
     formulasList_Y(indexRow) {
-        return 700 - indexRow * this.formulaListRow();
+        return 700 - (this.rowsNumber - indexRow - 1) * this.formulaListRow();
     }
 
     formulaListRow() {

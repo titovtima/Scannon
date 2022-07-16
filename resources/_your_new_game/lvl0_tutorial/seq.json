@@ -15,27 +15,6 @@
       "unicode": "b∨a",
       "scoreForHit": 10,
       "scoreForSkip": -30
-    },
-    {
-      "unicode": "b∨¬a",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "¬b∨¬a",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
-    },
-    {
-      "unicode": "¬(a∧b)",
-      "scoreForHit": -25,
-      "scoreForSkip": 15,
-      "substitution": { "left": "¬b∨¬a", "right": "¬(a∧b)" }
-    },
-    {
-      "unicode": "a∧b",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
     }
   ]
 }
