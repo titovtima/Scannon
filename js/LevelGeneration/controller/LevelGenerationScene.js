@@ -18,8 +18,6 @@ class LevelGenerationScene extends Phaser.Scene {
         // this.minLength = params.minLength;
         // this.autogenerate = params.autogenerate;
         // this.sequences = params.sequences;
-        this.allRulePacksPath = GC.RESOURCES_PATH + '/allRulePacks.json';
-        this.badRulePacksPath = GC.RESOURCES_PATH + '/badRulePacks.json';
 
         this.generator = undefined;
         this.formulas = [];
@@ -32,139 +30,35 @@ class LevelGenerationScene extends Phaser.Scene {
     preload() {
         // this.levelsInfo = this.cache.json.get('levelsInfo');
 
-        this.autogenerate = GC.GAME_INFO.levels[this.levelNumber].autogenerate;
         let basePath = GC.RESOURCES_PATH;
-        if (this.autogenerate) {
-            this.initialExpressionPath = basePath + GC.GAME_INFO.levels[this.levelNumber].initialExpressions;
-            this.substitutionsPath = basePath + GC.GAME_INFO.levels[this.levelNumber].substitutions;
-            this.numberOfFormulas = GC.GAME_INFO.levels[this.levelNumber].numberOfFormulas;
-            this.rulePacksPath = basePath + GC.GAME_INFO.levels[this.levelNumber].rulePacks;
-            this.maxLength = GC.GAME_INFO.levels[this.levelNumber].maxLength;
-            this.minLength = GC.GAME_INFO.levels[this.levelNumber].minLength;
-
-            this.load.json(this.initialExpressionsPath, this.initialExpressionsPath);
-            this.load.json(this.rulePacksPath, this.rulePacksPath);
-            this.load.json(this.allRulePacksPath, this.allRulePacksPath);
-            this.load.json(this.badRulePacksPath, this.badRulePacksPath);
-        } else {
-            this.sequences = GC.GAME_INFO.levels[this.levelNumber].sequences;
-            this.sequences = this.sequences.map(function (seq) {
-                return basePath + seq;
-            });
-            this.sequence = this.pickRandomElement(this.sequences);
-            this.load.json(this.sequence, this.sequence);
-        }
+        this.sequences = GC.GAME_INFO.levels[this.levelNumber].sequences;
+        this.sequences = this.sequences.map(function (seq) {
+            return basePath + seq;
+        });
+        this.sequence = this.pickRandomElement(this.sequences);
+        this.load.json(this.sequence, this.sequence);
     }
 
     create() {
-        this.needRestart = false;
-        if (this.autogenerate) {
-            this.initialExpressions = this.copy_object(this.cache.json.get(this.initialExpressionsPath));
-            this.substitutions = this.copy_object(this.cache.json.get(this.substitutionsPath));
-            this.rulePacks = this.copy_object(this.cache.json.get(this.rulePacksPath));
-            this.rulePacks = this.rulePacks.rulePacks;
-            this.allRulePacks = this.cache.json.get(this.allRulePacksPath);
-            this.badRulePacks = this.cache.json.get(this.badRulePacksPath);
-            this.rulesFromPacks = [];
-            for (let rulePack of this.allRulePacks.rulePacks) {
-                if (this.rulePacks.includes(rulePack.code))
-                    this.rulesFromPacks = this.rulesFromPacks.concat(rulePack.rules);
-            }
-            for (let rulePack of this.badRulePacks.rulePacks) {
-                if (this.rulePacks.includes(rulePack.code))
-                    this.rulesFromPacks = this.rulesFromPacks.concat(rulePack.rules);
-            }
+        this.formulas = this.copy_object(this.cache.json.get(this.sequence)).sequence;
+        // this.formulas = <autogeneration_function(this.levelRequirements) -> expression[]>
 
-            this.generator = new LevelFormulaGenerator(this, {
-                'numberOfFormulas': this.numberOfFormulas,
-                'initialExpressions': this.initialExpressions.expressions,
-                'rulesFromPacks': this.rulesFromPacks,
-                'maxLength': this.maxLength,
-                'minLength': this.minLength
-            });
-        } else {
-            this.formulas = this.copy_object(this.cache.json.get(this.sequence)).sequence;
-            this.scene.start(GC.SCENES.LOADING_RESOURCES, {
-                'formulas': this.formulas,
-                'levelNumber': this.levelNumber,
-                'settings': this.scene.settings,
-                'totalScore': this.totalScore,
-                'startLevel': this.startLevel,
-                'isRestarted': this.isRestarted
-            });
-        }
+        this.scene.start(GC.SCENES.LOADING_RESOURCES, {
+            'formulas': this.formulas,
+            'levelNumber': this.levelNumber,
+            'settings': this.scene.settings,
+            'totalScore': this.totalScore,
+            'startLevel': this.startLevel,
+            'isRestarted': this.isRestarted
+        });
 
         this.sizer = new LevelGenerationSizer(this);
-
-        this.placeDescription();
-        this.placeLoadingBarBackground();
 
         this.loadingBar = this.add.graphics({
             fillStyle: {
                 color: 0x6B4800
             }
-        })
-    }
-
-    update() {
-        if (this.needRestart) return;
-        if (!this.autogenerate || this.generator === undefined) {
-            this.needRestart = true;
-            this.scene.restart();
-        } else {
-            if (this.generator.levelComplete()) {
-                this.scene.start(GC.SCENES.LOADING_RESOURCES, {
-                    'formulas': this.formulas,
-                    'levelNumber': this.levelNumber,
-                    'settings': this.scene.settings,
-                    'totalScore': this.totalScore,
-                    'startLevel': this.startLevel,
-                    'isRestarted': this.isRestarted
-                });
-            }
-
-            let formula = this.generator.nextFormula();
-            this.formulas.push(formula);
-
-            let progress = this.generator.progress();
-
-            let leftX = this.sizer.loadingBar_LeftX();
-            let topY = this.sizer.loadingBar_TopY();
-            let width = progress * this.sizer.loadingBar_Width();
-            let height = this.sizer.loadingBar_Height();
-            let radius = this.sizer.loadingBar_Radius();
-
-            this.loadingBar.fillRoundedRect(leftX, topY, width, height, radius);
-        }
-    }
-
-    placeDescription() {
-        let centerX = this.sizer.description_CenterX();
-        let centerY = this.sizer.description_CenterY();
-
-        let fontSize = this.sizer.description_FontSize();
-        let fontColor = this.sizer.description_FontColor();
-        let text = this.scene.settings.strings.level_generation;
-
-        let description = this.add.text(centerX, centerY,
-            text, {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor});
-        description.setOrigin(0.5);
-    }
-
-    placeLoadingBarBackground() {
-        let leftX = this.sizer.loadingBarBackground_LeftX();
-        let topY = this.sizer.loadingBarBackground_TopY();
-        let width = this.sizer.loadingBarBackground_Width();
-        let height = this.sizer.loadingBarBackground_Height();
-        let radius = this.sizer.loadingBarBackground_Radius();
-
-        let loadingBarBackground = this.add.graphics({
-            fillStyle: {
-                color: 0xD3A447
-            }
         });
-
-        loadingBarBackground.fillRoundedRect(leftX, topY, width, height, radius);
     }
 
     pickRandomElement(items) {
