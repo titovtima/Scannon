@@ -298,7 +298,7 @@ class LevelMenuScene extends Phaser.Scene {
             let possibleLanguages = GC.LANGUAGES;
             this.scene.settings.language = getUrlParams.get("lang")?.toLowerCase();
             if (!possibleLanguages.includes(this.scene.settings.language))
-                this.scene.settings.language = 'en';
+                this.scene.settings.language = 'ru';
 
             let languages = this.cache.json.get('languages');
             this.scene.settings.strings = languages[this.scene.settings.language];
