@@ -13,8 +13,8 @@
       ]
     },
     "1": {
-      "description_en": "Logical AND",
-      "description_ru": "Логическое И",
+      "name_en": "Logical AND",
+      "name_ru": "Логическое И",
       "instructions_en": "\"And\"(∧) return \"true\" if all its arguments are \"true\"\n\nFormulas to practice:",
       "instructions_ru": "\"И\"(∧) возвращает \"истину\" если все аргументы истинны\n\nПрактикуемые формулы:",
       "sequences": [
@@ -36,8 +36,8 @@
       ]}
     },
     "2": {
-      "description_en": "Logical OR",
-      "description_ru": "Логическое ИЛИ",
+      "name_en": "Logical OR",
+      "name_ru": "Логическое ИЛИ",
       "instructions_en": "\"Or\"(∨) returns \"true\" if al least one of its arguments is \"true\"\nFormulas to practice:",
       "instructions_ru": "\"Или\"(∨) возвращает \"истину\" если хотя бы один из аргументов - \"истина\"\nПрактикуемые формулы:",
       "sequences": [
@@ -57,8 +57,8 @@
       ]}
     },
     "3": {
-      "description_en": "Logical NOT",
-      "description_ru": "Логическое НЕ",
+      "name_en": "Logical NOT",
+      "name_ru": "Логическое НЕ",
       "instructions_en": "\"Not\"(¬) receives only one argument and returns \"true\" if its argument is \"false\"\nFormulas to practice:",
       "instructions_ru": "\"Не\"(¬) принимает один аргумент и возвращает \"истину\" если аргумент - \"ложь\"\nПрактикуемые формулы:",
       "sequences": [
