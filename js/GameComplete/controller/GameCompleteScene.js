@@ -57,7 +57,7 @@ class GameCompleteScene extends Phaser.Scene {
         let fontColor = this.sizer.levelDescription_FontColor();
 
         let text = this.levelNumber + " - "
-            + GC.GAME_INFO.levels[this.levelNumber]["description_" + this.scene.settings.language];
+            + GC.GAME_INFO.levels[this.levelNumber]["name_" + this.scene.settings.language];
         let levelDescription = this.add.text(centerX, topY, text,
             {fontFamily: GC.FONTS.BUTTON_OVER, fontSize: fontSize, color: fontColor});
         levelDescription.setOrigin(0.5, 0.5).setAlign('center');
@@ -262,7 +262,7 @@ class GameCompleteScene extends Phaser.Scene {
     startNextLevel() {
         ym(88802966,'reachGoal','pushNextLevelButton');
         this.scene.start(GC.SCENES.LEVEL_GENERATION, {
-            levelNumber: this.levelNumber + 1,
+            levelNumber: Number(this.levelNumber) + 1,
             settings: this.scene.settings,
             totalScore: this.totalScore,
             startLevel: this.startLevel

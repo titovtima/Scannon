@@ -238,7 +238,7 @@ class LevelMenuScene extends Phaser.Scene {
 
     setCardDescriptionText(configIndex) {
         this.allTexts.cardsDescriptions[configIndex]
-            .setText(GC.GAME_INFO.levels[configIndex]["description_" + this.scene.settings.language]);
+            .setText(GC.GAME_INFO.levels[configIndex]["name_" + this.scene.settings.language]);
     }
 
     placeLastCard(index) {

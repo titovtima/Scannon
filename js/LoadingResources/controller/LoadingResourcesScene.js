@@ -116,7 +116,7 @@ class LoadingResourcesScene extends Phaser.Scene {
         let fontColor = this.sizer.levelName_FontColor();
 
         let text = this.levelNumber + " - "
-            + GC.GAME_INFO.levels[this.levelNumber]["description_" + this.scene.settings.language];
+            + GC.GAME_INFO.levels[this.levelNumber]["name_" + this.scene.settings.language];
         let levelName = this.add.text(centerX, topY, text,
             {fontFamily: GC.FONTS.BUTTON_OVER, fontSize: fontSize, color: fontColor});
         levelName.setOrigin(0.5, 0.5).setAlign('center');

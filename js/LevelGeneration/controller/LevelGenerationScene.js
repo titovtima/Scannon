@@ -31,6 +31,9 @@ class LevelGenerationScene extends Phaser.Scene {
         // this.levelsInfo = this.cache.json.get('levelsInfo');
 
         let basePath = GC.RESOURCES_PATH;
+        console.log(GC.GAME_INFO);
+        console.log(this.levelNumber);
+        console.log(GC.GAME_INFO.levels[this.levelNumber]);
         this.sequences = GC.GAME_INFO.levels[this.levelNumber].sequences;
         this.sequences = this.sequences.map(function (seq) {
             return basePath + seq;

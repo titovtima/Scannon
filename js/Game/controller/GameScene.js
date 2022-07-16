@@ -102,6 +102,7 @@ class GameScene extends Phaser.Scene {
 
     finishGameIfNeeded() {
         if (this.isGameFinished()) {
+            this.stopSpeedingUp();
             this.scene.start(GC.SCENES.GAME_COMPETE, {
                 'score': this.score,
                 'sequence': this.formulas,
