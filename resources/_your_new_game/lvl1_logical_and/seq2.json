@@ -6,7 +6,7 @@
       "scoreForSkip": 0
     },
     {
-      "unicode": "(c∧c)∧b)",
+      "unicode": "(c∧c)∧b",
       "scoreForHit": -30,
       "scoreForSkip": 10,
       "substitution": { "left": "a", "right": "a∧a" }

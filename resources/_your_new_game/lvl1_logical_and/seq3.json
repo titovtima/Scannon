@@ -11,7 +11,7 @@
       "scoreForSkip": -30
     },
     {
-      "unicode": "(a∧a∧a)∧b)",
+      "unicode": "(a∧a∧a)∧b",
       "scoreForHit": -30,
       "scoreForSkip": 10,
       "substitution": { "left": "a", "right": "a∧a∧a" }
