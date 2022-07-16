@@ -1,18 +1,51 @@
 {
   "sequence": [
     {
-      "unicode": "a∧b",
+      "unicode": "3 * \uD83C\uDF4F",
       "scoreForHit": 0,
       "scoreForSkip": 0
     },
     {
-      "unicode": "b∧a",
+      "unicode": "\uD83C\uDF4F + 2 * \uD83C\uDF4F",
       "scoreForHit": -30,
       "scoreForSkip": 10,
-      "substitution": { "left": "a∧b", "right": "b∧a" }
+      "substitution": { "left": "3*a", "right": "a+2*a" }
     },
     {
-      "unicode": "b∨a",
+      "unicode": "6 * \uD83C\uDF4F",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "2 * \uD83C\uDF4F + 3 * \uD83C\uDF4F",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "6 * \uD83C\uDF4F",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "2 * 3 * \uD83C\uDF4F",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "6", "right": "2 * 3" }
+    },
+    {
+      "unicode": "2 * (3 * \uD83C\uDF4F)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "a * b * c", "right": "a * (b * c)" }
+    },
+    {
+      "unicode": "2 * (\uD83C\uDF4F + \uD83C\uDF4F + \uD83C\uDF4F)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "3 * a", "right": "a + a + a" }
+    },
+    {
+      "unicode": "\uD83C\uDF4F + \uD83C\uDF4F + \uD83C\uDF4F + \uD83C\uDF4F + \uD83C\uDF4F",
       "scoreForHit": 10,
       "scoreForSkip": -30
     }
