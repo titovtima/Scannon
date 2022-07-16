@@ -190,21 +190,25 @@ class GameCompleteScene extends Phaser.Scene {
     }
 
     showScientist() {
-        this.load.json('showScientists', GC.RESOURCES_PATH + '/scientists/showScientists.json');
+        this.load.json('pass_level_screens', GC.RESOURCES_PATH + '/pass_level_screens/pass_level_screens.json');
 
         this.load.once('complete', () => {
-            let showScientists = this.cache.json.get('showScientists');
-            console.log('showScientists', showScientists);
+            let pass_level_screens = this.cache.json.get('pass_level_screens');
 
-            for (let rule of showScientists.scoreToScientist) {
+            let scientists_is_shown = false;
+            for (let rule of pass_level_screens.scoreToScientist) {
                 if (this.totalScore >= rule.score) {
                     this.showScientistPortrait(rule.scientist.portrait);
                     this.placeScientistDescription(rule.scientist["description_" + this.scene.settings.language]);
-                    if (!rule.scientist.name_en.startsWith("Start")) {
-                        this.placeScientistName(rule.scientist["name_" + this.scene.settings.language]);
-                    }
+                    this.placeScientistName(rule.scientist["name_" + this.scene.settings.language]);
+                    scientists_is_shown = true;
                     break;
                 }
+            }
+            if (!scientists_is_shown) {
+                this.showScientistPortrait(pass_level_screens.start_pass_level_screen.picture);
+                this.placeScientistDescription(pass_level_screens
+                    .start_pass_level_screen["description_" + this.scene.settings.language]);
             }
         }, this);
         this.load.start();
