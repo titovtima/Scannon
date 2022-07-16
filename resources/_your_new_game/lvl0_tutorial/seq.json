@@ -45,7 +45,7 @@
       "substitution": { "left": "3 * a", "right": "a + a + a" }
     },
     {
-      "unicode": "\uD83C\uDF4F + \uD83C\uDF4F + \uD83C\uDF4F + \uD83C\uDF4F + \uD83C\uDF4F",
+      "unicode": "\uD83C\uDF4F + \uD83C\uDF4F + \uD83C\uDF4F + \uD83C\uDF4F",
       "scoreForHit": 10,
       "scoreForSkip": -30
     }
