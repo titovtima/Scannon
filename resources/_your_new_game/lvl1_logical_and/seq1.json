@@ -6,15 +6,15 @@
       "scoreForSkip": 0
     },
     {
-      "unicode": "a∧(b∧a)",
+      "unicode": "1∧(a∧b)",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "1∧(b∧a)",
       "scoreForHit": -30,
       "scoreForSkip": 10,
       "substitution": { "left": "a∧b", "right": "b∧a" }
-    },
-    {
-      "unicode": "a",
-      "scoreForHit": 10,
-      "scoreForSkip": -30
     }
   ]
 }
