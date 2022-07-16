@@ -190,7 +190,7 @@ class GameCompleteSizer {
     }
 
     scientistName_TopY() {
-        return 550;
+        return 600;
     }
 
     scientistName_FontSize() {
