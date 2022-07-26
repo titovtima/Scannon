@@ -1,6 +1,6 @@
 {
   "game_name_en": "Short Multiplication",
-  "game_name_ru": "Сокращенное умножение",
+  "game_name_ru": "Умное умножение",
   "levels": {
     "0": {
       "name_en": "Tutorial",
@@ -15,44 +15,31 @@
     "1": {
       "name_en": "Sum, diff, square",
       "name_ru": "Сумма, разность, квадрат",
+      "instructions_en": "Formulas to practice:",
+      "instructions_ru": "Практикуемые формулы:",
       "sequences": [
         "/lvl1/seq1.json",
         "/lvl1/seq2.json",
         "/lvl1/seq3.json"
       ],
-      "formulas_list": {
-        "rows": [
+      "formulas_list": {"rows": [
           [
-            {
-              "left": "a²-b²",
-              "right": "(a+b)(a-b)"
-            },
-            {
-              "left": "(a+b)²",
-              "right": "a²+2ab+b²"
-            },
-            {
-              "left": "(a-b)²",
-              "right": "a²-2ab+b²"
-            }
+            {"left": "a²-b²", "right": "(a+b)(a-b)"},
+            {"left": "(a+b)²", "right": "a²+2ab+b²"},
+            {"left": "(a-b)²", "right": "a²-2ab+b²"}
           ],
           [],
           [
-            {
-              "left": "(a-b)²",
-              "right": "(b-a)²"
-            },
-            {
-              "left": "(ca+cb)²",
-              "right": "c²(a+b)²"
-            }
+            {"left": "(a-b)²", "right": "(b-a)²"},
+            {"left": "(ca+cb)²", "right": "c²(a+b)²"}
           ]
-        ]
-      }
+        ]}
     },
     "2": {
       "name_en": "Cube of sum & diff",
       "name_ru": "Куб суммы, разности",
+      "instructions_en": "Formulas to practice:",
+      "instructions_ru": "Практикуемые формулы:",
       "sequences": [
         "/lvl2/seq1.json"
       ],
@@ -60,12 +47,12 @@
         "rows": [
           [
             {
-              "left": "(a-b)³",
-              "right": "a³-3a²b+3ab²-b³"
-            },
-            {
               "left": "(a+b)³",
               "right": "a³+3a²b+3ab²+b³"
+            },
+            {
+              "left": "(a-b)³",
+              "right": "a³-3a²b+3ab²-b³"
             }
           ]
         ]
@@ -74,6 +61,8 @@
     "3": {
       "name_en": "Sum & diff of cubes",
       "name_ru": "Сумма, разность кубов",
+      "instructions_en": "Formulas to practice:",
+      "instructions_ru": "Практикуемые формулы:",
       "sequences": [
         "/lvl3/seq1.json"
       ],
@@ -81,12 +70,12 @@
         "rows": [
           [
             {
-              "left": "a³-b³",
-              "right": "(a-b)(a²+ab+b²)"
-            },
-            {
               "left": "a³+b³",
               "right": "(a+b)(a²-ab+b²)"
+            },
+            {
+              "left": "a³-b³",
+              "right": "(a-b)(a²+ab+b²)"
             }
           ]
         ]
