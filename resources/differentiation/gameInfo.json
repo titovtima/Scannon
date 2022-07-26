@@ -15,6 +15,9 @@
     "1": {
       "name_en": "Exponentiation",
       "name_ru": "Экспонента",
+      "instructions_en": "Differentiation of the exponentiation practice\n",
+      "instructions_ru": "Практика дифференцирования экспоненты\n",
+      "formulas_list": {"rows": []},
       "sequences": [
         "/lvl1/seq1.json"
       ]
@@ -22,6 +25,9 @@
     "2": {
       "name_en": "Trigonometry",
       "name_ru": "Тригонометрия",
+      "instructions_en": "Differentiation of the trigonometry formulas practice\n",
+      "instructions_ru": "Практика дифференцирования тригонометрических формул\n",
+      "formulas_list": {"rows": []},
       "sequences": [
         "/lvl2/seq1.json"
       ]
@@ -29,6 +35,9 @@
     "3": {
       "name_en": "Logarithm",
       "name_ru": "Логарифм",
+      "instructions_en": "Differentiation of the logarithm practice\n",
+      "instructions_ru": "Практика дифференцирования логарифма\n",
+      "formulas_list": {"rows": []},
       "sequences": [
         "/lvl3/seq1.json"
       ]
@@ -36,6 +45,9 @@
     "4": {
       "name_en": "Mix - simple",
       "name_ru": "Микс",
+      "instructions_en": "Mix of differentiations",
+      "instructions_ru": "Микс дифференцирований",
+      "formulas_list": {"rows": []},
       "sequences": [
         "/lvl4/seq1.json"
       ]

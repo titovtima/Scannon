@@ -15,6 +15,9 @@
     "1": {
       "name_en": "Pythagorean Identity",
       "name_ru": "Основное тождество",
+      "instructions_en": "Click on expressions to shoot them.\nShoot only those that are not equal to the previous ones.",
+      "instructions_ru": "Нажми на выражение чтобы сбить его.\nСбивай только те выражения которые не равны предыдущим.",
+      "formulas_list": {"rows": []},
       "sequences": [
         "/lvl1/seq1.json"
       ]
@@ -22,6 +25,9 @@
     "2": {
       "name_en": "Reflections",
       "name_ru": "Отражения",
+      "instructions_en": "Click on expressions to shoot them.\nShoot only those that are not equal to the previous ones.",
+      "instructions_ru": "Нажми на выражение чтобы сбить его.\nСбивай только те выражения которые не равны предыдущим.",
+      "formulas_list": {"rows": []},
       "sequences": [
         "/lvl2/seq1.json"
       ]
@@ -29,6 +35,9 @@
     "3": {
       "name_en": "Angle Sum Diff",
       "name_ru": "Сумма и разность углов",
+      "instructions_en": "Click on expressions to shoot them.\nShoot only those that are not equal to the previous ones.",
+      "instructions_ru": "Нажми на выражение чтобы сбить его.\nСбивай только те выражения которые не равны предыдущим.",
+      "formulas_list": {"rows": []},
       "sequences": [
         "/lvl3/seq1.json"
       ]
@@ -36,6 +45,9 @@
     "4": {
       "name_en": "Sum Product sin cos",
       "name_ru": "Сумма синусов, косинусов",
+      "instructions_en": "Click on expressions to shoot them.\nShoot only those that are not equal to the previous ones.",
+      "instructions_ru": "Нажми на выражение чтобы сбить его.\nСбивай только те выражения которые не равны предыдущим.",
+      "formulas_list": {"rows": []},
       "sequences": [
         "/lvl4/seq1.json"
       ]

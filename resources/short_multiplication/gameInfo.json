@@ -15,14 +15,15 @@
     "1": {
       "name_en": "Sum, diff, square",
       "name_ru": "Сумма, разность, квадрат",
-      "instructions_en": "Formulas to practice:",
-      "instructions_ru": "Практикуемые формулы:",
+      "instructions_en": "New formulas:",
+      "instructions_ru": "Новые формулы:",
       "sequences": [
         "/lvl1/seq1.json",
         "/lvl1/seq2.json",
         "/lvl1/seq3.json"
       ],
       "formulas_list": {"rows": [
+          [],
           [
             {"left": "a²-b²", "right": "(a+b)(a-b)"},
             {"left": "(a+b)²", "right": "a²+2ab+b²"},
@@ -32,58 +33,54 @@
           [
             {"left": "(a-b)²", "right": "(b-a)²"},
             {"left": "(ca+cb)²", "right": "c²(a+b)²"}
-          ]
-        ]}
+          ],
+          []
+      ]}
     },
     "2": {
       "name_en": "Cube of sum & diff",
       "name_ru": "Куб суммы, разности",
-      "instructions_en": "Formulas to practice:",
-      "instructions_ru": "Практикуемые формулы:",
+      "instructions_en": "New formulas:",
+      "instructions_ru": "Новые формулы:",
       "sequences": [
         "/lvl2/seq1.json"
       ],
       "formulas_list": {
         "rows": [
+          [],
           [
-            {
-              "left": "(a+b)³",
-              "right": "a³+3a²b+3ab²+b³"
-            },
-            {
-              "left": "(a-b)³",
-              "right": "a³-3a²b+3ab²-b³"
-            }
-          ]
+            {"left": "(a+b)³", "right": "a³+3a²b+3ab²+b³"},
+            {"left": "(a-b)³", "right": "a³-3a²b+3ab²-b³"}
+          ],
+          []
         ]
       }
     },
     "3": {
       "name_en": "Sum & diff of cubes",
       "name_ru": "Сумма, разность кубов",
-      "instructions_en": "Formulas to practice:",
-      "instructions_ru": "Практикуемые формулы:",
+      "instructions_en": "New formulas:",
+      "instructions_ru": "Новые формулы:",
       "sequences": [
         "/lvl3/seq1.json"
       ],
       "formulas_list": {
         "rows": [
+          [],
           [
-            {
-              "left": "a³+b³",
-              "right": "(a+b)(a²-ab+b²)"
-            },
-            {
-              "left": "a³-b³",
-              "right": "(a-b)(a²+ab+b²)"
-            }
-          ]
+            {"left": "a³+b³", "right": "(a+b)(a²-ab+b²)"},
+            {"left": "a³-b³", "right": "(a-b)(a²+ab+b²)"}
+          ],
+          []
         ]
       }
     },
     "4": {
       "name_en": "Squares & cubes - simple",
       "name_ru": "Квадраты и кубы - лёгкий",
+      "instructions_en": "Mix of short multiplication formulas\nto make computations easier",
+      "instructions_ru": "Микс формул сокращенного умножения",
+      "formulas_list": {"rows": []},
       "sequences": [
         "/lvl4/seq1.json"
       ]
@@ -91,6 +88,9 @@
     "5": {
       "name_en": "Squares & cubes - hard",
       "name_ru": "Квадраты и кубы - сложный",
+      "instructions_en": "Mix of short multiplication formulas\n",
+      "instructions_ru": "Микс формул сокращенного умножения\n",
+      "formulas_list": {"rows": []},
       "sequences": [
         "/lvl5/seq1.json"
       ]
