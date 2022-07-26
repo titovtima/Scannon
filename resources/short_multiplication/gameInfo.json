@@ -1,0 +1,110 @@
+{
+  "game_name_en": "Short Multiplication",
+  "game_name_ru": "Сокращенное умножение",
+  "levels": {
+    "0": {
+      "name_en": "Tutorial",
+      "name_ru": "Туториал",
+      "instructions_en": "Click on expressions to shoot them.\nShoot only those that are not equal to the previous ones.",
+      "instructions_ru": "Нажми на выражение чтобы сбить его.\nСбивай только те выражения которые не равны предыдущим.",
+      "tutorial": "always",
+      "sequences": [
+        "/lvl0/seq.json"
+      ]
+    },
+    "1": {
+      "name_en": "Sum, diff, square",
+      "name_ru": "Сумма, разность, квадрат",
+      "sequences": [
+        "/lvl1/seq1.json",
+        "/lvl1/seq2.json",
+        "/lvl1/seq3.json"
+      ],
+      "formulas_list": {
+        "rows": [
+          [
+            {
+              "left": "a²-b²",
+              "right": "(a+b)(a-b)"
+            },
+            {
+              "left": "(a+b)²",
+              "right": "a²+2ab+b²"
+            },
+            {
+              "left": "(a-b)²",
+              "right": "a²-2ab+b²"
+            }
+          ],
+          [],
+          [
+            {
+              "left": "(a-b)²",
+              "right": "(b-a)²"
+            },
+            {
+              "left": "(ca+cb)²",
+              "right": "c²(a+b)²"
+            }
+          ]
+        ]
+      }
+    },
+    "2": {
+      "name_en": "Cube of sum & diff",
+      "name_ru": "Куб суммы, разности",
+      "sequences": [
+        "/lvl2/seq1.json"
+      ],
+      "formulas_list": {
+        "rows": [
+          [
+            {
+              "left": "(a-b)³",
+              "right": "a³-3a²b+3ab²-b³"
+            },
+            {
+              "left": "(a+b)³",
+              "right": "a³+3a²b+3ab²+b³"
+            }
+          ]
+        ]
+      }
+    },
+    "3": {
+      "name_en": "Sum & diff of cubes",
+      "name_ru": "Сумма, разность кубов",
+      "sequences": [
+        "/lvl3/seq1.json"
+      ],
+      "formulas_list": {
+        "rows": [
+          [
+            {
+              "left": "a³-b³",
+              "right": "(a-b)(a²+ab+b²)"
+            },
+            {
+              "left": "a³+b³",
+              "right": "(a+b)(a²-ab+b²)"
+            }
+          ]
+        ]
+      }
+    },
+    "4": {
+      "name_en": "Squares & cubes - simple",
+      "name_ru": "Квадраты и кубы - лёгкий",
+      "sequences": [
+        "/lvl4/seq1.json"
+      ]
+    },
+    "5": {
+      "name_en": "Squares & cubes - hard",
+      "name_ru": "Квадраты и кубы - сложный",
+      "sequences": [
+        "/lvl5/seq1.json"
+      ]
+    }
+  }
+}

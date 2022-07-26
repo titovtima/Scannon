@@ -1,0 +1,39 @@
+{
+  "scoreToScientist" : [
+    {
+      "score": 350,
+      "scientist": {
+        "name_en": "George Boole",
+        "name_ru": "Джордж Буль",
+        "portrait": "/pass_level_screens/pictures/Boole.png",
+        "description_en" : "Modern logic begins with Boole's seminal work \"Mathematical Analysis of Logic\". Boole's fundamental idea is using algebraic formulas to express logical relations.",
+        "description_ru" : "Современная логика начинается с книги Буля \"Mathematical Analysis of Logic\". Основополагающей идеей Буля было использование алгебраических формул для логических выражений."
+      }
+    },
+    {
+      "score": 200,
+      "scientist": {
+        "name_en": "Leibniz",
+        "name_ru": "Лейбниц",
+        "portrait": "/pass_level_screens/pictures/Leibniz.png",
+        "description_en": "Leibniz developed the notion of a logical calculus and formulated the principal properties of logical operators.",
+        "description_ru": "Лейбниц разработал систему обозначений логического счисления и сформуровал главные свойства логических операторов."
+      }
+    },
+    {
+      "score": 100,
+      "scientist": {
+        "name_en": "Aristotle",
+        "name_ru": "Аристотель",
+        "portrait": "/pass_level_screens/pictures/Aristotle.png",
+        "description_en": "Aristotle was the first formal logician. He demonstrated the principles of reasoning and employed variables.",
+        "description_ru": "Аристотель - основоположник формальной логики. Он сформулировал принципи причинности и ввёл переменные."
+      }
+    }
+  ],
+  "start_pass_level_screen": {
+    "picture": "/pass_level_screens/pictures/StartLogicIdea.png",
+    "description_en": "The object of science is the knowledge of laws and relations - George Boole, An Investigation of the Laws of Thought",
+    "description_ru": "Объектом науки, правильно так называемой, является знание законов и отношений - Джордж Буль, An Investigation of the Laws of Thought"
+  }
+}
