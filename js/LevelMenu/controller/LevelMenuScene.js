@@ -312,7 +312,7 @@ class LevelMenuScene extends Phaser.Scene {
 
         let label = this.add.text(labelPosition.x, labelPosition.y, '',
             {fontFamily: GC.FONTS.BUTTON_OUT, fontSize: labelFontSize, color: labelFontColor});
-        label.setOrigin(0, 0);
+        label.setOrigin(0, 0.5);
         this.allTexts.label = label;
         this.setLabelText();
     }
@@ -320,12 +320,13 @@ class LevelMenuScene extends Phaser.Scene {
     setLabelText() {
         let labelFontSize = this.sizer.labelFontSize();
         let text = "SCANNON - " + GC.GAME_INFO['game_name_' + this.scene.settings.language];
+        this.allTexts.label.setText(text);
+        this.allTexts.label.setFontSize(labelFontSize);
 
-        if (text.length > GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) {
-            labelFontSize = (labelFontSize * GC.GAME_NAME_MAX_NON_SCALABLE_LENGTH) / text.length;
+        if (this.allTexts.label.width > GC.GAME_NAME_MAX_NON_SCALABLE_WIDTH) {
+            labelFontSize = (labelFontSize * GC.GAME_NAME_MAX_NON_SCALABLE_WIDTH) / this.allTexts.label.width;
         }
 
-        this.allTexts.label.setText(text);
         this.allTexts.label.setFontSize(labelFontSize);
     }
 }

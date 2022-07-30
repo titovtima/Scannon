@@ -38,7 +38,7 @@ const GC = {
     },
     LANGUAGES: ['en', 'ru'],
     GAME_CODE: gameCode,
-    GAME_NAME_MAX_NON_SCALABLE_LENGTH: 24,
+    GAME_NAME_MAX_NON_SCALABLE_WIDTH: 1100,
     BASE_PATH: basePath,
     RESOURCES_PATH: basePath + "/resources/" + gameCode
 };

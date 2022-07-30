@@ -130,7 +130,7 @@ class LevelMenuSizer {
     }
 
     labelPosition() {
-        return { x: this.backgroundRectangle_HorizontalDistanceBetween(), y: 10 };
+        return { x: this.backgroundRectangle_HorizontalDistanceBetween(), y: 60 };
     }
 
     labelFontSize() {
