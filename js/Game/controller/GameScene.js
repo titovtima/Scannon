@@ -52,9 +52,9 @@ class GameScene extends Phaser.Scene {
         //     console.log('Awake game. Settings:', this.scene.settings);
         // });
 
-        console.log('Level started, formulas:', this.formulas.map(function (formula) {
-            return formula.unicode;
-        }))
+        // console.log('Level started, formulas:', this.formulas.map(function (formula) {
+        //     return formula.unicode;
+        // }))
 
         this.placeCannon();
         this.placeScoreLabels();
@@ -155,6 +155,8 @@ class GameScene extends Phaser.Scene {
     }
 
     placeNewFormula() {
+        // if (this.indexOfLastDisplayingFormula >= 0)
+        //     this.changeDomToImage(this.displayingFormulas[this.indexOfLastDisplayingFormula]);
         let index = this.indexOfLastDisplayingFormula + 1;
 
         let background_LeftX = this.sizer.cardBackground_LeftX();
@@ -171,15 +173,50 @@ class GameScene extends Phaser.Scene {
         let formulaCenterX = this.sizer.formula_CenterX();
         let formulaCenterY = this.spanFormula_CenterY();
         let fontSize = this.sizer.formula_FontSize();
-        let formula = this.add.text(formulaCenterX, formulaCenterY, this.formulas[index].unicode,
-            {
-                fontFamily: GC.FONTS.FORMULAS,
-                color: '#000',
-                fontSize: fontSize
+        let formula;
+        if (this.formulas[index].unicode) {
+            formula = this.add.text(formulaCenterX, formulaCenterY, this.formulas[index].unicode,
+                {
+                    fontFamily: GC.FONTS.FORMULAS,
+                    color: '#000',
+                    fontSize: fontSize
+                });
+            formula.setOrigin(0.5);
+            formula.setDepth(index * 2 + 1);
+        } else if (this.formulas[index].tex) {
+            console.log('tex: ', this.formulas[index].tex);
+
+            let dom = document.createElement('div');
+            katex.render(this.formulas[index].tex, dom);
+            
+            formula = this.add.dom(formulaCenterX, formulaCenterY, dom);
+            formula.node.style.fontFamily = GC.FONTS.FORMULAS;
+            formula.node.style.fontSize = fontSize + 'px';
+
+            if (formula.node.scrollHeight > 95)
+                fontSize = fontSize * 95 / formula.node.scrollHeight;
+            formula.node.style.fontSize = fontSize + 'px';
+
+            formula.x -= formula.width;
+            formula.y -= formula.height - (this.sizer.formula_FontSize() - fontSize);
+        } else if (this.formulas[index].image) {
+            formula = this.add.image(formulaCenterX, formulaCenterY, '');
+            formula.setOrigin(0.5);
+            formula.setDepth(index * 2 + 1);
+            this.load.image(this.formulas[index].image, GC.RESOURCES_PATH + this.formulas[index].image);
+            this.load.once('complete', () => {
+                formula.setTexture(this.formulas[index].image);
+                // if (formula.height > 95 || formula.height < 85) {
+                if (formula.height > 95) {
+                    formula.setScale(90 / formula.height);
+                }
             });
-        formula.setOrigin(0.5);
-        formula.setDepth(index * 2 + 1);
-        formula.wanted_y = formula.y;
+            this.load.start();
+        }
+
+        if (!formula) {
+            formula = this.add.image(formulaCenterX, formulaCenterY, '');
+        }
 
         let scoreForHit = this.formulas[index].scoreForHit;
         let scoreForSkip = this.formulas[index].scoreForSkip;
@@ -607,6 +644,9 @@ class GameScene extends Phaser.Scene {
     }
 
     showMenu() {
+        let tex = document.querySelectorAll('.texFormula');
+        // console.log('tex formulas: ', tex);
+        // tex.forEach(value => { value.style.visibility = 'hidden'; });
         this.scene.pause(GC.SCENES.GAME);
         this.showPauseMenu();
     }
