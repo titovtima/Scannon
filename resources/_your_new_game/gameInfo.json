@@ -33,7 +33,8 @@
         "/lvl1_logical_and/seq1.json",
         "/lvl1_logical_and/seq2.json",
         "/lvl1_logical_and/seq3.json"
-      ]
+      ],
+      "card_variant": "lowest"
     },
     "2": {
       "name_en": "Logical OR",
@@ -54,7 +55,8 @@
         "/lvl2_logical_or/seq1.json",
         "/lvl2_logical_or/seq2.json",
         "/lvl2_logical_or/seq3.json"
-      ]
+      ],
+      "card_variant": "highest"
     },
     "3": {
       "name_en": "Logical NOT",

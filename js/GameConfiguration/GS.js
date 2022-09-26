@@ -42,3 +42,5 @@ const GC = {
     BASE_PATH: basePath,
     RESOURCES_PATH: basePath + "/resources/" + gameCode
 };
+
+const defaultCardVariant = 'low';

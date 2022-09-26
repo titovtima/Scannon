@@ -18,10 +18,19 @@ class LoadingResourcesScene extends Phaser.Scene {
     preload() {
         this.load.image('cannon', GC.RESOURCES_PATH + '/assets/cannon.png');
         this.load.image('cannonBall', GC.RESOURCES_PATH + '/assets/cannonBall.png');
-        this.load.image('cardBackground_Regular', GC.RESOURCES_PATH + '/assets/808-80.png');
-        this.load.image('cardBackground_Hit', GC.RESOURCES_PATH + '/assets/808-80_hit.png');
-        this.load.image('cardBackground_Wall', GC.RESOURCES_PATH + '/assets/808-80_bottom.png');
-        this.load.image('cardBackground_Green', GC.RESOURCES_PATH + '/assets/808-80_green.png');
+
+        let card_variant = GC.GAME_INFO.levels[this.levelNumber].card_variant;
+        if (!card_variant)
+            card_variant = defaultCardVariant;
+
+        this.load.image('cardBackground_Regular_' + card_variant,
+            GC.RESOURCES_PATH + '/assets/cardBackground_' + card_variant +'.png');
+        this.load.image('cardBackground_Hit_' + card_variant,
+            GC.RESOURCES_PATH + '/assets/cardBackground_' + card_variant +'_hit.png');
+        this.load.image('cardBackground_Wall_' + card_variant,
+            GC.RESOURCES_PATH + '/assets/cardBackground_' + card_variant +'_bottom.png');
+        this.load.image('cardBackground_Green_' + card_variant,
+            GC.RESOURCES_PATH + '/assets/cardBackground_' + card_variant +'_green.png');
 
         this.load.image('hintBackground', GC.RESOURCES_PATH + '/assets/hintBackground.png');
 

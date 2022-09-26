@@ -10,9 +10,8 @@ class GameSizer {
     }
 
     setCardHeight() {
-        let card = this.scene.add.image(-1000, -1000, 'cardBackground_Regular');
+        let card = this.scene.add.image(-1000, -1000, 'cardBackground_Regular_' + this.scene.cardVariant);
         this.cardHeight = (card.height - this.cardBackground_ShadowY()) * this.cardBackground_Scale();
-        console.log('card height:', this.cardHeight);
     }
 
     field_Width() {

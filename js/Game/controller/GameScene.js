@@ -30,6 +30,9 @@ class GameScene extends Phaser.Scene {
 
         // this.levelsInfo = this.cache.json.get('levelsInfo');
         this.tutorialStatus = GC.GAME_INFO.levels[this.levelNumber].tutorial;
+        this.cardVariant = GC.GAME_INFO.levels[this.levelNumber].card_variant;
+        if (!this.cardVariant)
+            this.cardVariant = defaultCardVariant;
         if (params.isTutorial !== undefined)
             this.isTutorial = params.isTutorial
         else
@@ -161,7 +164,8 @@ class GameScene extends Phaser.Scene {
 
         let background_LeftX = this.sizer.cardBackground_LeftX();
         let background_TopY = this.spanCardBackground_TopY();
-        let background = this.physics.add.image(background_LeftX, background_TopY, 'cardBackground_Regular');
+        let background = this.physics.add.image(background_LeftX, background_TopY,
+            'cardBackground_Regular_' + this.cardVariant);
         background.setDepth(index * 2);
         background.setOrigin(0, 0);
         let scale = this.sizer.cardBackground_Scale();
@@ -389,7 +393,7 @@ class GameScene extends Phaser.Scene {
             formula.formula.x += this.sizer.hitFormulaMoveLeft();
         }
 
-        formula.background.setTexture('cardBackground_Wall');
+        formula.background.setTexture('cardBackground_Wall_' + this.cardVariant);
 
         if (!formula.isHit) {
             this.score += formula.scoreForSkip;
@@ -448,7 +452,7 @@ class GameScene extends Phaser.Scene {
         let correctRuleBackgroundPosition = this.sizer.correctRuleBackgroundPosition();
         this.correctRuleBackground = this.add.image(
             correctRuleBackgroundPosition.x, correctRuleBackgroundPosition.y,
-            'cardBackground_Green');
+            'cardBackground_Green_' + this.cardVariant);
         this.correctRuleBackground.setOrigin(1, 0);
         this.correctRuleBackground.setScale(scale);
 
@@ -790,7 +794,7 @@ class GameScene extends Phaser.Scene {
         if (formula.hint)
             this.destroyFormulaHint(formula);
 
-        formula.background.setTexture('cardBackground_Hit');
+        formula.background.setTexture('cardBackground_Hit_' + this.cardVariant);
 
         let shadowX = this.sizer.cardBackground_ShadowX();
         formula.formula.x += shadowX;
