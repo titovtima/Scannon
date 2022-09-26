@@ -83,7 +83,7 @@ class GameSizer {
 
     cannon_MovingCenterY() {
         // return this.scene.game.renderer.height / 2;
-        return this.bottomLine() * 3 / 5;
+        return this.bottomLine() * 2 / 3;
     }
 
     cannon_Scale() {
