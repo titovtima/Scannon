@@ -18,10 +18,9 @@ class LoadingResourcesScene extends Phaser.Scene {
     preload() {
         this.load.image('cannon', GC.RESOURCES_PATH + '/assets/cannon.png');
         this.load.image('cannonBall', GC.RESOURCES_PATH + '/assets/cannonBall.png');
-        this.load.image('cardBackground_Regular', GC.RESOURCES_PATH + '/assets/cardBackground_NoShadow.png');
-        this.load.image('cardBackground_Hit', GC.RESOURCES_PATH + '/assets/cardBackground_Hit.png');
-        this.load.image('cardBackground_Red', GC.RESOURCES_PATH + '/assets/cardBackground_Red.png');
-        this.load.image('cardBackground_Wall', GC.RESOURCES_PATH + '/assets/cardBackground_Wall.png');
+        this.load.image('cardBackground_Regular', GC.RESOURCES_PATH + '/assets/808-80.png');
+        this.load.image('cardBackground_Hit', GC.RESOURCES_PATH + '/assets/808-80_hit.png');
+        this.load.image('cardBackground_Wall', GC.RESOURCES_PATH + '/assets/808-80_bottom.png');
         this.load.image('cardBackground_Green', GC.RESOURCES_PATH + '/assets/cardBackground_Green.png');
 
         this.load.image('hintBackground', GC.RESOURCES_PATH + '/assets/hintBackground.png');

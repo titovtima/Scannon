@@ -5,6 +5,14 @@ class GameSizer {
 
         this.formulasSpeed = scene.scene.settings.speed;
         this.mistakeTimeout = scene.scene.settings.mistakeTimeout;
+
+        this.setCardHeight();
+    }
+
+    setCardHeight() {
+        let card = this.scene.add.image(-1000, -1000, 'cardBackground_Regular');
+        this.cardHeight = (card.height - this.cardBackground_ShadowY()) * this.cardBackground_Scale();
+        console.log('card height:', this.cardHeight);
     }
 
     field_Width() {
@@ -20,7 +28,7 @@ class GameSizer {
     }
 
     cardBackground_Height() {
-        return 110 * this.cardBackground_Scale();
+        return this.cardHeight;
     }
 
     cardBackground_Scale() {
@@ -74,7 +82,8 @@ class GameSizer {
     }
 
     cannon_MovingCenterY() {
-        return this.scene.game.renderer.height / 2;
+        // return this.scene.game.renderer.height / 2;
+        return this.bottomLine() * 3 / 5;
     }
 
     cannon_Scale() {
@@ -241,7 +250,7 @@ class GameSizer {
     }
 
     bottomLine() {
-        return 750;
+        return 900 - 50 - this.cardHeight;
     }
 
     slowSpeed() {
@@ -305,11 +314,13 @@ class GameSizer {
     }
 
     lastLineFormula_SpeedX() {
-        return 5 * this.formulasSpeed;
+        return this.formulasSpeed *
+            (this.cardBackground_Width() + 90) /
+            (this.cardHeight + this.cardBackground_DistanceBetween() + this.cardBackground_ShadowY());
     }
 
     formulasCheckLineY() {
-        return 780;
+        return this.bottomLine() + 30;
     }
 
     wallPosition() {
