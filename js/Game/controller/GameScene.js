@@ -497,6 +497,7 @@ class GameScene extends Phaser.Scene {
                 this.placeBottomLineFormulaSign(formula, imageName);
             times++;
         }, interval);
+        this.blinkingSignFormula = formula;
         this.blinkingTimeout = setTimeout(() => {
             clearInterval(this.blinkingInterval);
             if (!formula.arrow)
@@ -507,6 +508,8 @@ class GameScene extends Phaser.Scene {
     stopBlinking() {
         clearInterval(this.blinkingInterval);
         clearTimeout(this.blinkingTimeout);
+        if (!this.blinkingSignFormula.arrow)
+            this.placeBottomLineFormulaSign(this.blinkingSignFormula, 'not_equals_red');
     }
 
     placeAddScore(score) {
@@ -650,6 +653,7 @@ class GameScene extends Phaser.Scene {
 
         pauseButton.on('pointerup', () => {
             console.log('Pause button clicked');
+            this.stopBlinking();
             this.stopSpeedingUp();
             this.showMenu();
         });
