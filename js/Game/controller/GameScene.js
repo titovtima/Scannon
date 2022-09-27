@@ -178,6 +178,7 @@ class GameScene extends Phaser.Scene {
         let formulaCenterY = this.spanFormula_CenterY();
         let fontSize = this.sizer.formula_FontSize();
         let backgroundHeight = this.sizer.cardBackground_Height();
+        let backgroundWidth = this.sizer.cardBackground_Width();
         let formula;
         if (this.formulas[index].unicode) {
             formula = this.add.text(formulaCenterX, formulaCenterY, this.formulas[index].unicode,
@@ -188,6 +189,8 @@ class GameScene extends Phaser.Scene {
                 });
             if (formula.height > backgroundHeight - 10)
                 fontSize = fontSize * (backgroundHeight - 10) / formula.height;
+            if (formula.width > backgroundWidth - 10)
+                fontSize = fontSize * (backgroundWidth - 10) / formula.width;
             formula.setFontSize(fontSize);
             formula.setOrigin(0.5);
             formula.setDepth(index * 2 + 1);
@@ -204,6 +207,8 @@ class GameScene extends Phaser.Scene {
 
             if (formula.node.scrollHeight > backgroundHeight - 10)
                 fontSize = fontSize * (backgroundHeight - 10) / formula.node.scrollHeight;
+            if (formula.node.scrollWidth > backgroundWidth - 10)
+                fontSize = fontSize * (backgroundWidth - 10) / formula.node.scrollWidth;
             formula.node.style.fontSize = fontSize + 'px';
 
             formula.x -= formula.node.scrollWidth / 2;
@@ -215,8 +220,14 @@ class GameScene extends Phaser.Scene {
             this.load.image(this.formulas[index].image, GC.RESOURCES_PATH + this.formulas[index].image);
             this.load.once('complete', () => {
                 formula.setTexture(this.formulas[index].image);
+                let scale = 1;
                 if (formula.height > backgroundHeight - 10) {
-                    formula.setScale((backgroundHeight - 10) / formula.height);
+                    scale *= (backgroundHeight - 10) / formula.height;
+                    formula.setScale(scale);
+                }
+                if (formula.width > backgroundWidth - 10) {
+                    scale *= (backgroundWidth - 10) / formula.width;
+                    formula.setScale(scale);
                 }
             });
             this.load.start();
