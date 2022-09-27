@@ -40,7 +40,8 @@ const GC = {
     GAME_CODE: gameCode,
     GAME_NAME_MAX_NON_SCALABLE_WIDTH: 1100,
     BASE_PATH: basePath,
-    RESOURCES_PATH: basePath + "/resources/" + gameCode
+    RESOURCES_PATH: basePath + "/resources/" + gameCode,
+    THREADS: 4
 };
 
 const defaultCardVariant = 'low';

@@ -11,6 +11,9 @@ class LoadingResourcesScene extends Phaser.Scene {
         this.isRestarted = params.isRestarted;
 
         this.scene.settings = params.settings;
+        this.cardVariant = GC.GAME_INFO.levels[this.levelNumber].card_variant;
+        if (!this.cardVariant)
+            this.cardVariant = defaultCardVariant;
 
         Scaler.setResolution(this, GC.RESOLUTIONS.MEDIUM.INTERFACE.width, GC.RESOLUTIONS.MEDIUM.INTERFACE.height);
     }
@@ -61,31 +64,45 @@ class LoadingResourcesScene extends Phaser.Scene {
         this.placeLevelInstructions();
         this.placeFormulasList();
         this.sizer.centerVertically();
+        // this.placeLoadingProcessText();
 
-        // this.placeDescription();
-        // this.placeLoadingBarBackground();
-        //
-        // let loadingBar = this.add.graphics({
-        //     fillStyle: {
-        //         color: 0x6B4800
-        //     }
-        // });
-        //
-        // this.load.on('progress', (progress) => {
-        //     let leftX = this.sizer.loadingBar_LeftX();
-        //     let topY = this.sizer.loadingBar_TopY();
-        //     let width = progress * this.sizer.loadingBar_Width();
-        //     let height = this.sizer.loadingBar_Height();
-        //     let radius = this.sizer.loadingBar_Radius();
-        //
-        //     if (30 <= width) {
-        //         loadingBar.fillRoundedRect(leftX, topY, width, height, radius);
-        //     }
-        // });
+        if (this.formulas.find(value => !!value.tex && !this.textures.exists(value.tex))) {
+            this.placeDescription();
+            this.placeLoadingBarBackground();
+
+            let loadingBar = this.add.graphics({
+                fillStyle: {
+                    color: 0x6B4800
+                }
+            });
+
+            this.loadingBar = loadingBar;
+            this.progress = 0;
+            this.loadingPicturesPart = 0.2;
+
+            this.load.on('progress', (progress) => {
+                this.progress = progress * this.loadingPicturesPart;
+                let leftX = this.sizer.loadingBar_LeftX();
+                let topY = this.sizer.loadingBar_TopY();
+                let width = this.progress * this.sizer.loadingBar_Width();
+                let height = this.sizer.loadingBar_Height();
+                let radius = this.sizer.loadingBar_Radius();
+
+                if (30 <= width) {
+                    loadingBar.fillRoundedRect(leftX, topY, width, height, radius);
+                }
+            });
+        }
     }
 
     create() {
-        this.placeStartButton();
+        this.imagesLoaded = [];
+        this.loadTexImages()
+            .then(() => {
+                Promise.all(this.imagesLoaded).then(() => {
+                    this.placeStartButton();
+                });
+            });
     }
 
     placeDescription() {
@@ -99,6 +116,7 @@ class LoadingResourcesScene extends Phaser.Scene {
         let description = this.add.text(centerX, centerY,
             text, {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor});
         description.setOrigin(0.5);
+        this.loadingBarDescription = description;
     }
 
     placeLoadingBarBackground() {
@@ -115,6 +133,7 @@ class LoadingResourcesScene extends Phaser.Scene {
         });
 
         loadingBarBackground.fillRoundedRect(leftX, topY, width, height, radius);
+        this.loadingBarBackground = loadingBarBackground;
     }
 
     placeLevelName() {
@@ -147,6 +166,12 @@ class LoadingResourcesScene extends Phaser.Scene {
     }
 
     placeStartButton() {
+        // clearInterval(this.loadingProcessTextInterval);
+        // this.loadingProcessText.destroy();
+        if (this.loadingBar) this.loadingBar.destroy();
+        if (this.loadingBarBackground) this.loadingBarBackground.destroy();
+        if (this.loadingBarDescription) this.loadingBarDescription.destroy();
+
         let centerX = this.sizer.startButton_X();
         let bottomY = this.sizer.startButton_Y();
         let fontSize = this.sizer.startButton_FontSize();
@@ -200,6 +225,89 @@ class LoadingResourcesScene extends Phaser.Scene {
                 this.instuctionFormulas.push(formulaText);
             }
             indexRow++;
+        }
+    }
+
+    placeLoadingProcessText() {
+        let centerX = this.sizer.loadingProcessText_X();
+        let bottomY = this.sizer.loadingProcessText_Y();
+        let fontSize = this.sizer.loadingProcessText_FontSize();
+        let fontColor = this.sizer.loadingProcessText_FontColor();
+
+        let loadingProcessText = this.add.text(centerX, bottomY,
+            this.scene.settings.strings.loading_resources_scene.loading_process_text,
+            { fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor });
+        loadingProcessText.setOrigin(0.5, 1);
+
+        let counter = 0;
+        this.loadingProcessTextInterval = setInterval(() => {
+            let text = this.scene.settings.strings.loading_resources_scene.loading_process_text;
+            for (let i = 0; i < counter % 4; i++)
+                text += '.';
+            loadingProcessText.setText(text);
+            counter++;
+        }, 200);
+
+        this.loadingProcessText = loadingProcessText;
+    }
+
+    async loadTexImages() {
+        this.sizer.setCardHeight();
+        let texToConvert = [];
+        this.formulas.filter(expression => !!expression.tex).forEach(expression => {
+            if (!texToConvert.includes(expression.tex) && !this.textures.exists(expression.tex))
+                texToConvert.push(expression.tex);
+        });
+        let numberToConvert = texToConvert.length;
+
+        let scene = this;
+        function countExpression(texExpression) {
+            texToConvert.filter(value => value !== texExpression);
+            scene.progress = Math.max(scene.progress,
+                texToConvert.length / numberToConvert * (1 - scene.loadingPicturesPart));
+        }
+
+        for (let expression of texToConvert) {
+            let leftX = this.sizer.loadingBar_LeftX();
+            let topY = this.sizer.loadingBar_TopY();
+            let width = this.progress * this.sizer.loadingBar_Width();
+            let height = this.sizer.loadingBar_Height();
+            let radius = this.sizer.loadingBar_Radius();
+            this.loadingBar.fillRoundedRect(leftX, topY, width, height, radius);
+
+            if (this.imagesLoaded.length >= GC.THREADS) {
+                await Promise.any(this.imagesLoaded);
+            }
+            let div = document.createElement('div');
+            div.style.float = 'right';
+            // div.style.display = 'inline-block';
+            document.body.append(div);
+            let fontSize = 50;
+            let backgroundWidth = this.sizer.cardBackground_Width();
+            let backgroundHeight = this.sizer.cardBackground_Height();
+            div.style.fontFamily = GC.FONTS.FORMULAS;
+            div.style.fontSize = fontSize + 'px';
+            katex.render(expression, div);
+
+            if (div.scrollHeight > backgroundHeight - 10)
+                fontSize = fontSize * (backgroundHeight - 10) / div.scrollHeight;
+            if (div.scrollWidth > backgroundWidth - 10)
+                fontSize = fontSize * (backgroundWidth - 10) / div.scrollWidth;
+            div.style.fontSize = fontSize + 'px';
+
+            let promise = new Promise((resolve, reject) => {
+                domtoimage.toPng(div)
+                    .then(url => {
+                        div.remove();
+                        this.textures.once('addtexture', () => {
+                            // expression.tex_image = expression.tex;
+                            countExpression(expression);
+                            resolve();
+                        }, this);
+                        this.textures.addBase64(expression, url);
+                    });
+            });
+            this.imagesLoaded.push(promise);
         }
     }
 

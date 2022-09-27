@@ -195,6 +195,10 @@ class GameScene extends Phaser.Scene {
             formula.setOrigin(0.5);
             formula.setDepth(index * 2 + 1);
         } else if (this.formulas[index].tex) {
+            formula = this.add.image(formulaCenterX, formulaCenterY, this.formulas[index].tex);
+            formula.setOrigin(0.5);
+            formula.setDepth(index * 2 + 1);
+        } else if (this.formulas[index].tex) {
             console.log('tex: ', this.formulas[index].tex);
 
             let dom = document.createElement('div');

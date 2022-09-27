@@ -4,12 +4,37 @@ class LoadingResourcesSizer {
         this.scene = scene;
     }
 
+    setCardHeight() {
+        let card = this.scene.add.image(-1000, -1000, 'cardBackground_Regular_' + this.scene.cardVariant);
+        this.cardHeight = (card.height - this.cardBackground_ShadowY()) * this.cardBackground_Scale();
+    }
+
+    cardBackground_Width() {
+        return 800 * this.cardBackground_Scale();
+    }
+
+    cardBackground_Height() {
+        return this.cardHeight;
+    }
+
+    cardBackground_Scale() {
+        return 0.85;
+    }
+
+    cardBackground_ShadowY() {
+        return 10;
+    }
+
+    cardBackground_ShadowX() {
+        return 8;
+    }
+
     description_CenterX() {
         return this.scene.game.renderer.width / 2;
     }
 
     description_CenterY() {
-        return this.scene.game.renderer.height / 2;
+        return this.loadingBar_TopY() - 70;
     }
 
     description_FontSize() {
@@ -25,9 +50,7 @@ class LoadingResourcesSizer {
     }
 
     loadingBarBackground_TopY() {
-        let height = this.scene.game.renderer.height;
-
-        return height / 2 + 130;
+        return this.loadingBar_TopY();
     }
 
     loadingBarBackground_Width() {
@@ -47,9 +70,7 @@ class LoadingResourcesSizer {
     }
 
     loadingBar_TopY() {
-        let height = this.scene.game.renderer.height;
-
-        return height / 2 + 130;
+        return 800;
     }
 
     loadingBar_Width() {
@@ -111,6 +132,23 @@ class LoadingResourcesSizer {
     }
 
     startButton_FontColor() {
+        return '#000';
+    }
+
+    loadingProcessText_X() {
+        return this.startButton_X();
+    }
+
+    loadingProcessText_Y() {
+        // return this.startButtonY - (this.startButton_FontSize() - this.loadingProcessText_FontSize()) / 2;
+        return this.startButtonY;
+    }
+
+    loadingProcessText_FontSize() {
+        return 40;
+    }
+
+    loadingProcessText_FontColor() {
         return '#000';
     }
 
@@ -176,6 +214,8 @@ class LoadingResourcesSizer {
         this.startButtonY = 850 - move * 2;
         if (this.scene.startButton)
             this.scene.startButton.y -= move * 2;
+        if (this.scene.loadingProcessText)
+            this.scene.loadingProcessText.y -= move * 2;
         if (this.rowsNumber)
             for (let formula of this.scene.instuctionFormulas) {
                 formula.y -= move * 2;
