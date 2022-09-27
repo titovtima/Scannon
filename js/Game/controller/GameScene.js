@@ -508,7 +508,7 @@ class GameScene extends Phaser.Scene {
     stopBlinking() {
         clearInterval(this.blinkingInterval);
         clearTimeout(this.blinkingTimeout);
-        if (!this.blinkingSignFormula.arrow)
+        if (this.blinkingSignFormula && !this.blinkingSignFormula.arrow)
             this.placeBottomLineFormulaSign(this.blinkingSignFormula, 'not_equals_red');
     }
 
