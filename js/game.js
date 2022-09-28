@@ -25,7 +25,7 @@ const config = {
         width: 1600,
         height: 900
     },
-    parent: 'divId',
+    parent: 'div_for_canvas',
     dom: {
         createContainer: true
     },

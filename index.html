@@ -53,6 +53,7 @@
     <script type="text/javascript" src="js/game.js"></script>
 </head>
 <body>
+<div id="div_for_canvas"></div>
 <style>
     * {
         /*overflow: hidden;*/
@@ -60,7 +61,9 @@
         margin: 0;
         /*background-color: #ffcc66;*/
     }
-    body {
+    #div_for_canvas {
+        position: absolute;
+        z-index: 1;
         background-color: #fc6;
     }
 </style>
