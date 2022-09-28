@@ -41,7 +41,8 @@ const GC = {
     GAME_NAME_MAX_NON_SCALABLE_WIDTH: 1100,
     BASE_PATH: basePath,
     RESOURCES_PATH: basePath + "/resources/" + gameCode,
-    THREADS: 4
+    THREADS: 4,
+    EXPRESSION_CARD_PADDING: 5,
 };
 
 const defaultCardVariant = 'low';

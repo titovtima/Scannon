@@ -158,8 +158,6 @@ class GameScene extends Phaser.Scene {
     }
 
     placeNewFormula() {
-        // if (this.indexOfLastDisplayingFormula >= 0)
-        //     this.changeDomToImage(this.displayingFormulas[this.indexOfLastDisplayingFormula]);
         let index = this.indexOfLastDisplayingFormula + 1;
 
         let background_LeftX = this.sizer.cardBackground_LeftX();
@@ -179,6 +177,7 @@ class GameScene extends Phaser.Scene {
         let fontSize = this.sizer.formula_FontSize();
         let backgroundHeight = this.sizer.cardBackground_Height();
         let backgroundWidth = this.sizer.cardBackground_Width();
+        let padding = GC.EXPRESSION_CARD_PADDING * 2;
         let formula;
         if (this.formulas[index].unicode) {
             formula = this.add.text(formulaCenterX, formulaCenterY, this.formulas[index].unicode,
@@ -187,10 +186,10 @@ class GameScene extends Phaser.Scene {
                     color: '#000',
                     fontSize: fontSize
                 });
-            if (formula.height > backgroundHeight - 10)
-                fontSize = fontSize * (backgroundHeight - 10) / formula.height;
-            if (formula.width > backgroundWidth - 10)
-                fontSize = fontSize * (backgroundWidth - 10) / formula.width;
+            if (formula.height > backgroundHeight - padding)
+                fontSize = fontSize * (backgroundHeight - padding) / formula.height;
+            if (formula.width > backgroundWidth - padding)
+                fontSize = fontSize * (backgroundWidth - padding) / formula.width;
             formula.setFontSize(fontSize);
             formula.setOrigin(0.5);
             formula.setDepth(index * 2 + 1);
@@ -198,25 +197,6 @@ class GameScene extends Phaser.Scene {
             formula = this.add.image(formulaCenterX, formulaCenterY, this.formulas[index].tex);
             formula.setOrigin(0.5);
             formula.setDepth(index * 2 + 1);
-        } else if (this.formulas[index].tex) {
-            console.log('tex: ', this.formulas[index].tex);
-
-            let dom = document.createElement('div');
-
-            formula = this.add.dom(formulaCenterX, formulaCenterY, dom);
-            // formula.setOrigin(0.5);
-            formula.node.style.fontFamily = GC.FONTS.FORMULAS;
-            formula.node.style.fontSize = fontSize + 'px';
-            katex.render(this.formulas[index].tex, dom);
-
-            if (formula.node.scrollHeight > backgroundHeight - 10)
-                fontSize = fontSize * (backgroundHeight - 10) / formula.node.scrollHeight;
-            if (formula.node.scrollWidth > backgroundWidth - 10)
-                fontSize = fontSize * (backgroundWidth - 10) / formula.node.scrollWidth;
-            formula.node.style.fontSize = fontSize + 'px';
-
-            formula.x -= formula.node.scrollWidth / 2;
-            formula.y -= formula.node.scrollHeight / 2;
         } else if (this.formulas[index].image) {
             formula = this.add.image(formulaCenterX, formulaCenterY, '');
             formula.setOrigin(0.5);
@@ -225,12 +205,12 @@ class GameScene extends Phaser.Scene {
             this.load.once('complete', () => {
                 formula.setTexture(this.formulas[index].image);
                 let scale = 1;
-                if (formula.height > backgroundHeight - 10) {
-                    scale *= (backgroundHeight - 10) / formula.height;
+                if (formula.height > backgroundHeight - padding) {
+                    scale *= (backgroundHeight - padding) / formula.height;
                     formula.setScale(scale);
                 }
-                if (formula.width > backgroundWidth - 10) {
-                    scale *= (backgroundWidth - 10) / formula.width;
+                if (formula.width > backgroundWidth - padding) {
+                    scale *= (backgroundWidth - padding) / formula.width;
                     formula.setScale(scale);
                 }
             });
@@ -410,7 +390,13 @@ class GameScene extends Phaser.Scene {
 
         formula.background.setTexture('cardBackground_Wall_' + this.cardVariant);
 
-        if (!formula.isHit) {
+        if (formula.isHit) {
+            let shadowX = this.sizer.cardBackground_ShadowX();
+            formula.formula.x -= shadowX;
+
+            let shadowY = this.sizer.cardBackground_ShadowY();
+            formula.formula.y -= shadowY;
+        } else {
             this.score += formula.scoreForSkip;
 
             if (formula.scoreForSkip < 0)

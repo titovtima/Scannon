@@ -265,22 +265,22 @@ class LoadingResourcesScene extends Phaser.Scene {
             texToConvert.filter(value => value !== texExpression);
             scene.progress = Math.max(scene.progress,
                 texToConvert.length / numberToConvert * (1 - scene.loadingPicturesPart));
+
+            let leftX = scene.sizer.loadingBar_LeftX();
+            let topY = scene.sizer.loadingBar_TopY();
+            let width = scene.progress * scene.sizer.loadingBar_Width();
+            let height = scene.sizer.loadingBar_Height();
+            let radius = scene.sizer.loadingBar_Radius();
+            scene.loadingBar.fillRoundedRect(leftX, topY, width, height, radius);
         }
 
         for (let expression of texToConvert) {
-            let leftX = this.sizer.loadingBar_LeftX();
-            let topY = this.sizer.loadingBar_TopY();
-            let width = this.progress * this.sizer.loadingBar_Width();
-            let height = this.sizer.loadingBar_Height();
-            let radius = this.sizer.loadingBar_Radius();
-            this.loadingBar.fillRoundedRect(leftX, topY, width, height, radius);
-
             if (this.imagesLoaded.length >= GC.THREADS) {
                 await Promise.any(this.imagesLoaded);
             }
             let div = document.createElement('div');
-            div.style.float = 'right';
-            // div.style.display = 'inline-block';
+            div.style.padding = '2px';
+            div.style.display = 'inline-block';
             document.body.append(div);
             let fontSize = 50;
             let backgroundWidth = this.sizer.cardBackground_Width();
@@ -289,18 +289,18 @@ class LoadingResourcesScene extends Phaser.Scene {
             div.style.fontSize = fontSize + 'px';
             katex.render(expression, div);
 
-            if (div.scrollHeight > backgroundHeight - 10)
-                fontSize = fontSize * (backgroundHeight - 10) / div.scrollHeight;
-            if (div.scrollWidth > backgroundWidth - 10)
-                fontSize = fontSize * (backgroundWidth - 10) / div.scrollWidth;
+            let padding = GC.EXPRESSION_CARD_PADDING * 2;
+            if (div.scrollHeight > backgroundHeight - padding)
+                fontSize = fontSize * (backgroundHeight - padding) / div.scrollHeight;
+            if (div.scrollWidth > backgroundWidth - padding)
+                fontSize = fontSize * (backgroundWidth - padding) / div.scrollWidth;
             div.style.fontSize = fontSize + 'px';
 
-            let promise = new Promise((resolve, reject) => {
+            let promise = new Promise((resolve) => {
                 domtoimage.toPng(div)
                     .then(url => {
                         div.remove();
                         this.textures.once('addtexture', () => {
-                            // expression.tex_image = expression.tex;
                             countExpression(expression);
                             resolve();
                         }, this);
