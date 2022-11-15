@@ -281,10 +281,10 @@ class GameScene extends Phaser.Scene {
             textParts = this.scene.settings.strings.game_scene.wrong_formula_tutorial_hint;
         }
         let text1 = this.add.text(leftX + 5, centerY, textParts[0],
-            { fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor})
+            {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor})
             .setOrigin(0, 1).setDepth(-1);
         let text2 = this.add.text(leftX + 5, centerY, formula.unicode,
-            { fontFamily: GC.FONTS.FORMULAS_BOLD, fontSize: fontSize, color: fontColor })
+            {fontFamily: GC.FONTS.FORMULAS_BOLD, fontSize: fontSize, color: fontColor})
             .setOrigin(0, 0).setDepth(-1);
         let text3 = this.add.text(text2.x + text2.width, centerY, textParts[1] + textParts[2],
             {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor})
@@ -433,7 +433,9 @@ class GameScene extends Phaser.Scene {
         let realSpeed = this.sizer.formulasSpeed;
         this.sizer.formulasSpeed = this.sizer.slowSpeed();
         let mistakeTimeout = this.scene.settings.mistakeTimeout * 1000;
-        setTimeout(() => { if (!this.speedUp) this.sizer.formulasSpeed = realSpeed; }, mistakeTimeout);
+        setTimeout(() => {
+            if (!this.speedUp) this.sizer.formulasSpeed = realSpeed;
+        }, mistakeTimeout);
         let interval = this.sizer.blinkingInterval();
         this.blinkLastLineFormulaSign(formula, 'not_equals_red', mistakeTimeout, interval);
         // this.blinkFormula(formula, 'cardBackground_Regular', 'cardBackground_Red', 5000, interval);
@@ -441,7 +443,7 @@ class GameScene extends Phaser.Scene {
 
     correctFormulaPassed(formula) {
         // if (formula.substitution !== undefined)
-            // this.addCorrectRule(formula.substitution);
+        // this.addCorrectRule(formula.substitution);
     }
 
     addCorrectRule(rule) {
@@ -461,11 +463,13 @@ class GameScene extends Phaser.Scene {
         let correctRuleTextPosition = this.sizer.correctRuleTextPosition();
         this.correctRuleText = this.add.text(
             correctRuleTextPosition.x, correctRuleTextPosition.y,
-            rule, { fontFamily: GC.FONTS.FORMULAS, color: '#000', fontSize: fontSize });
+            rule, {fontFamily: GC.FONTS.FORMULAS, color: '#000', fontSize: fontSize});
         this.correctRuleText.setOrigin(0.5, 0.5);
 
         let timeout = this.scene.settings.showCorrectRule * 1000;
-        this.correctRuleTimer = setTimeout(() => { this.destroyCorrectRule(); }, timeout);
+        this.correctRuleTimer = setTimeout(() => {
+            this.destroyCorrectRule();
+        }, timeout);
     }
 
     destroyCorrectRule() {
@@ -492,7 +496,7 @@ class GameScene extends Phaser.Scene {
             clearInterval(this.blinkingInterval);
             if (!formula.arrow)
                 this.placeBottomLineFormulaSign(formula, imageName);
-            }, duration);
+        }, duration);
     }
 
     stopBlinking() {
@@ -637,7 +641,7 @@ class GameScene extends Phaser.Scene {
         let right = this.sizer.pauseButton_RightX();
         let top = this.sizer.pauseButton_TopY();
         let pauseButton = this.physics.add.image(right, top, 'pauseButton');
-        pauseButton.setOrigin(1,0);
+        pauseButton.setOrigin(1, 0);
 
         pauseButton.setInteractive();
 
@@ -681,7 +685,7 @@ class GameScene extends Phaser.Scene {
             if (pointer.x > pauseButtonLeftX && pointer.y < pauseButtonBottomY)
                 return;
 
-            ym(88802966,'reachGoal','firstShoot');
+            ym(88802966, 'reachGoal', 'firstShoot');
             let shootDirection = scene.calculateShootDirection();
             let speed = scene.sizer.cannonBall_Speed();
 
@@ -793,7 +797,7 @@ class GameScene extends Phaser.Scene {
     formulaHasBeenHit(formula) {
         this.hitFormulasNumber++;
         if (this.hitFormulasNumber >= 3)
-            ym(88802966,'reachGoal','threeFormulasHit');
+            ym(88802966, 'reachGoal', 'threeFormulasHit');
 
         formula.isHit = true;
         if (formula.hint)
@@ -821,9 +825,15 @@ class GameScene extends Phaser.Scene {
                 this.addCorrectRule(formula.substitution);
 
 
-            let jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_wrongHit": "${formula.unicode}"}`;
-            console.log(jsonString);
-            ym(88802966, 'params', JSON.parse(jsonString));
+
+            /*
+            * Вызывает краши если в equation есть перенос строки \n
+            * При этом вроде как не несет функц. нагрузки
+            * */
+
+            //let jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_wrongHit": "${formula.unicode}"}`;
+            //let jsonParse = JSON.parse(jsonString);
+            //ym(88802966, 'params', jsonParse);
         }
 
         if (formula.arrow && 0 < formula.scoreForHit) {
@@ -843,7 +853,7 @@ class GameScene extends Phaser.Scene {
 
         formula.score = this.add.text(
             scoreLeftX, scoreCenterY, scoreText,
-            { fontSize: scoreFontSize, color: scoreColor }
+            {fontSize: scoreFontSize, color: scoreColor}
         ).setOrigin(0, 0.5).setDepth(-1);
 
         this.score += formula.scoreForHit;
@@ -860,7 +870,7 @@ class GameScene extends Phaser.Scene {
         let text = this.scene.settings.strings.game_scene.score + ":";
 
         this.scoreLabel = this.add.text(labelRightX, labelBottomY, text,
-            { fontFamily: GC.FONTS.SCORE_LABELS, fontSize: labelFontSize, color: labelColor })
+            {fontFamily: GC.FONTS.SCORE_LABELS, fontSize: labelFontSize, color: labelColor})
             .setOrigin(1);
 
         let valueRightX = this.sizer.scoreValue_RightX();
@@ -868,7 +878,7 @@ class GameScene extends Phaser.Scene {
         let valueFontSize = this.sizer.scoreValue_FontSize();
         let valueColor = this.sizer.scoreValue_Color();
         this.scoreValueText = this.add.text(valueRightX, valueBottomY, '000000',
-            { fontFamily: GC.FONTS.SCORE_COUNTER, fontSize: valueFontSize, color: valueColor })
+            {fontFamily: GC.FONTS.SCORE_COUNTER, fontSize: valueFontSize, color: valueColor})
             .setOrigin(1);
     }
 
@@ -884,7 +894,7 @@ class GameScene extends Phaser.Scene {
         let text = this.scene.settings.strings.game_scene.hint;
 
         this.textHint = this.add.text(rightX, topY, text,
-            { fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor});
+            {fontFamily: GC.FONTS.TEXT, fontSize: fontSize, color: fontColor});
         this.textHint.setOrigin(1, 0);
     }
 
