@@ -1,0 +1,55 @@
+{
+  "sequence": [
+    {
+      "unicode": "12-2*(3*x-5)+8*(3+x)=22",
+      "scoreForHit": 0,
+      "scoreForSkip": 0
+    },
+    {
+      "unicode": "12-2*3*x-5+8*(3+x)=22",
+      "scoreForHit": 30,
+      "scoreForSkip": -10,
+      "substitution": { "left": "2*(3*x-5)", "right": "6*x-10" }
+    },
+    {
+      "unicode": "-2*(3*x-5)+8*(3+x)=10",
+      "scoreForHit": -10,
+      "scoreForSkip": 30
+    },
+    {
+      "unicode": "(3*x-5)+8*(3+x)=-5",
+      "scoreForHit": 30,
+      "scoreForSkip": -10,
+      "substitution": { "left": "-2*(3*x-5)+8*(3+x)=10", "right": "(3*x-5)-4*(3+x)=-5" }
+    },
+    {
+      "unicode": "-2*(3*x-5)+8*(3+x)=20",
+      "scoreForHit": 30,
+      "scoreForSkip": -10,
+      "substitution": { "left": "-2*(3*x-5)+8*(3+x)=10", "right": "(3*x-5)-4*(3+x)=-5" }
+    },
+    {
+      "unicode": "-6*x+10+8*(3+x)=10",
+      "scoreForHit": -10,
+      "scoreForSkip": 30
+    },
+    {
+      "unicode": "-6*x+10+24+8*x=10",
+      "scoreForHit": -10,
+      "scoreForSkip": 30
+    },
+    {
+      "unicode": "2*x+34=10",
+      "scoreForHit": -10,
+      "scoreForSkip": 30
+    },{
+      "unicode": "2*x=-24",
+      "scoreForHit": -10,
+      "scoreForSkip": 30
+    },{
+      "unicode": "x=-12",
+      "scoreForHit": -10,
+      "scoreForSkip": 30
+    }
+  ]
+}

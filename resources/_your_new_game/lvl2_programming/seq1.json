@@ -1,0 +1,26 @@
+{
+  "sequence": [
+    {
+      "unicode": "print(10)\nprint(10)\nprint(10)\nprint(10)",
+      "scoreForHit": 0,
+      "scoreForSkip": 0
+    },
+    {
+      "unicode": "print(10 + '\\n' + 10 + '\\n' + 10 + '\\n' + 10)",
+      "scoreForHit": 30,
+      "scoreForSkip": -10
+    },
+    {
+      "unicode": "for(int I =0; I < 4; I++)\n{\nprint(10)\n}",
+      "scoreForHit": -10,
+      "scoreForSkip": 30,
+      "substitution": { "left": "", "right": "" }
+    },
+    {
+      "unicode": "arr = [10,10,10,10]\narr.foreach{print(it)}",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "", "right": "" }
+    }
+  ]
+}

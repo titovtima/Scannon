@@ -19,8 +19,8 @@ class LoadingResourcesScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('cannon', GC.RESOURCES_PATH + '/assets/cannon.png');
-        this.load.image('cannonBall', GC.RESOURCES_PATH + '/assets/cannonBall.png');
+        this.load.image('cannon', GC.ASSETS_PATH + '/assets/cannon.svg');
+        this.load.image('cannonBall', GC.ASSETS_PATH + '/assets/stone.svg');
 
         let card_variant = GC.GAME_INFO.levels[this.levelNumber].card_variant;
         if (!card_variant)

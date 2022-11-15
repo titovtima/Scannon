@@ -13,8 +13,8 @@
       ]
     },
     "1": {
-      "name_en": "Logical AND",
-      "name_ru": "Логическое И",
+      "name_en": "Simple Equations",
+      "name_ru": "Простые уравнения",
       "instructions_en": "\"And\"(∧) return \"true\" if all its arguments are \"true\"\n\nFormulas to practice:",
       "instructions_ru": "\"И\"(∧) возвращает \"истину\" если все аргументы истинны\n\nПрактикуемые формулы:",
       "formulas_list": { "rows": [
@@ -30,15 +30,15 @@
         ]
       ]},
       "sequences": [
-        "/lvl1_logical_and/seq1.json",
-        "/lvl1_logical_and/seq2.json",
-        "/lvl1_logical_and/seq3.json"
+        "/lvl1_equations/seq1.json",
+        "/lvl1_equations/seq2.json",
+        "/lvl1_equations/seq3.json"
       ],
       "card_variant": "lowest"
     },
     "2": {
-      "name_en": "Logical OR",
-      "name_ru": "Логическое ИЛИ",
+      "name_en": "Programming",
+      "name_ru": "Программирование",
       "instructions_en": "\"Or\"(∨) returns \"true\" if al least one of its arguments is \"true\"\nFormulas to practice:",
       "instructions_ru": "\"Или\"(∨) возвращает \"истину\" если хотя бы один из аргументов - \"истина\"\nПрактикуемые формулы:",
       "formulas_list": { "rows": [
@@ -52,15 +52,14 @@
         ]
       ]},
       "sequences": [
-        "/lvl2_logical_or/seq1.json",
-        "/lvl2_logical_or/seq2.json",
-        "/lvl2_logical_or/seq3.json"
+        "/lvl2_programming/seq1.json",
+        "/lvl2_programming/seq2.json"
       ],
       "card_variant": "highest"
     },
     "3": {
-      "name_en": "Logical NOT",
-      "name_ru": "Логическое НЕ",
+      "name_en": "Binary",
+      "name_ru": "Системы счисления",
       "instructions_en": "\"Not\"(¬) receives only one argument and returns \"true\" if its argument is \"false\"\nFormulas to practice:",
       "instructions_ru": "\"Не\"(¬) принимает один аргумент и возвращает \"истину\" если аргумент - \"ложь\"\nПрактикуемые формулы:",
       "formulas_list": { "rows": [
@@ -82,9 +81,7 @@
         ]
       ]},
       "sequences": [
-        "/lvl3_logical_not/seq1.json",
-        "/lvl3_logical_not/seq2.json",
-        "/lvl3_logical_not/seq3.json"
+        "/lvl3_binary/seq1.json"
       ]
     }
   }

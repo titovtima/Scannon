@@ -1,7 +1,0 @@
-{
-  "expressions": [
-    "alleq(a,b,c)",
-    "alleq(a,(b|(alleq(c,a))))",
-    "a^(alleq(b,c))^(alleq(c,b))"
-  ]
-}

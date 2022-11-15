@@ -41,6 +41,7 @@ const GC = {
     GAME_NAME_MAX_NON_SCALABLE_WIDTH: 1100,
     BASE_PATH: basePath,
     RESOURCES_PATH: basePath + "/resources/" + gameCode,
+    ASSETS_PATH: basePath + "/resources/",
     THREADS: 4,
     EXPRESSION_CARD_PADDING: 5,
 };

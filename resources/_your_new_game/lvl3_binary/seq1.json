@@ -1,0 +1,50 @@
+{
+  "sequence": [
+    {
+      "unicode": "110101\u2082",
+      "scoreForHit": 0,
+      "scoreForSkip": 0
+    },
+    {
+      "unicode": "53",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "110101\u2082", "right": "53" }
+    },
+    {
+      "unicode": "10001\u2082",
+      "scoreForHit": 10,
+      "scoreForSkip": -30,
+      "substitution": { "left": "10001\u2082", "right": "17" }
+    },
+    {
+      "unicode": "35\u2088",
+      "scoreForHit": 10,
+      "scoreForSkip": -30,
+      "substitution": { "left": "35\u2088", "right": "29" }
+    },
+    {
+      "unicode": "29",
+      "scoreForHit": -30,
+      "scoreForSkip": 10
+    },
+    {
+      "unicode": "11101\u2082",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "11101\u2082", "right": "29" }
+    },
+    {
+      "unicode": "10\u2088",
+      "scoreForHit": 10,
+      "scoreForSkip": -30,
+      "substitution": { "left": "10\u2088", "right": "8" }
+    },
+    {
+      "unicode": "111\u2082",
+      "scoreForHit": 10,
+      "scoreForSkip": -30,
+      "substitution": { "left": "111\u2082", "right": "7" }
+    }
+  ]
+}

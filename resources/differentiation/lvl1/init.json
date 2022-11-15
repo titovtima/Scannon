@@ -1,6 +1,0 @@
-{
-  "expressions": [
-    "a|b",
-    "!a|b"
-  ]
-}

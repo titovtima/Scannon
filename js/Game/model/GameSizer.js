@@ -86,7 +86,11 @@ class GameSizer {
     }
 
     cannon_Scale() {
-        return 0.35;
+        return 1.0;
+    }
+
+    cannonStartRotation() {
+        return -45;
     }
 
     cannon_OriginX() {
@@ -94,7 +98,7 @@ class GameSizer {
     }
 
     cannon_OriginY() {
-        return 0.7;
+        return 0.5;
     }
 
     cannonBall_StartPositionX() {
@@ -114,7 +118,7 @@ class GameSizer {
     }
 
     cannonBall_Scale() {
-        return this.cannon_Scale();
+        return 0.3;
     }
 
     menu_Width() {

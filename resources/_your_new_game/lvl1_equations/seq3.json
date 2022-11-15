@@ -1,0 +1,47 @@
+{
+  "sequence": [
+    {
+      "unicode": "8*(x-3)/2=6",
+      "scoreForHit": 0,
+      "scoreForSkip": 0
+    },
+    {
+      "unicode": "4*(x-3)=6",
+      "scoreForHit": -10,
+      "scoreForSkip": 30
+    },
+    {
+      "unicode": "x-3=24",
+      "scoreForHit": 30,
+      "scoreForSkip": -10,
+      "substitution": { "left": "x-3", "right": "6/4" }
+    },
+    {
+      "unicode": "4*x-12=6",
+      "scoreForHit": -10,
+      "scoreForSkip": 30
+    },
+    {
+      "unicode": "4*x=20",
+      "scoreForHit": 30,
+      "scoreForSkip": -10,
+      "substitution": { "left": "4*x", "right": "6+12" }
+    },
+    {
+      "unicode": "x-3=6",
+      "scoreForHit": 30,
+      "scoreForSkip": -10,
+      "substitution": { "left": "x-3", "right": "6/4" }
+    },
+    {
+      "unicode": "4*x=18",
+      "scoreForHit": -10,
+      "scoreForSkip": 30
+    },
+    {
+      "unicode": "x=4.5",
+      "scoreForHit": -10,
+      "scoreForSkip": 30
+    }
+  ]
+}

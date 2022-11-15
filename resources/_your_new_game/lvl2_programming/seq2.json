@@ -1,0 +1,32 @@
+{
+  "sequence": [
+    {
+      "unicode": "print(1 + '\\n' + 2 + '\\n' + 3)",
+      "scoreForHit": 0,
+      "scoreForSkip": 0
+    },
+    {
+      "unicode": "arr = [3,2,1]\ntmp = arr[0]\narr[0] = arr[2]\narr[2] = tmp\nprint(arr)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "", "right": "" }
+    },
+    {
+      "unicode": "arr = [3,2,1]\narr.sort()\nprint('arr')",
+      "scoreForHit": 10,
+      "scoreForSkip": -30
+    },
+    {
+      "unicode": "print(1)\nprint(2)\nprint(3)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "", "right": "" }
+    },
+    {
+      "unicode": "arr = [3,2,1]\narr.sort()\nprint(arr)",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "", "right": "" }
+    }
+  ]
+}

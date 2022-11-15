@@ -617,7 +617,7 @@ class GameScene extends Phaser.Scene {
         let wrappedAngleToPointer
             = Phaser.Math.Angle.Wrap(angleToPointer + Phaser.Math.TAU);
 
-        this.cannon.rotation = wrappedAngleToPointer;
+        this.cannon.rotation = wrappedAngleToPointer + this.sizer.cannonStartRotation();
 
         return this;
     }
@@ -705,8 +705,8 @@ class GameScene extends Phaser.Scene {
 
     calculateShootDirection() {
         return {
-            x: Math.cos(this.cannon.rotation - Phaser.Math.TAU),
-            y: Math.sin(this.cannon.rotation - Phaser.Math.TAU)
+            x: Math.cos(this.cannon.rotation - Phaser.Math.TAU - this.sizer.cannonStartRotation()),
+            y: Math.sin(this.cannon.rotation - Phaser.Math.TAU - this.sizer.cannonStartRotation())
         };
     }
 
@@ -820,7 +820,9 @@ class GameScene extends Phaser.Scene {
             if (formula.substitution !== undefined)
                 this.addCorrectRule(formula.substitution);
 
+
             let jsonString = `{"${GC.GAME_CODE}_${this.levelNumber}_wrongHit": "${formula.unicode}"}`;
+            console.log(jsonString);
             ym(88802966, 'params', JSON.parse(jsonString));
         }
 

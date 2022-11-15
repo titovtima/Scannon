@@ -1,0 +1,35 @@
+{
+  "sequence": [
+    {
+      "unicode": "2*(x+3) - 72 = 12",
+      "scoreForHit": 0,
+      "scoreForSkip": 0
+    },
+    {
+      "unicode": "2*(x+3) = 84",
+      "scoreForHit": -10,
+      "scoreForSkip": 30
+    },
+    {
+      "unicode": "x+3 = 168",
+      "scoreForHit": 30,
+      "scoreForSkip": -10,
+      "substitution": { "left": "x+3", "right": "84 / 2" }
+    },
+    {
+      "unicode": "x+3 = 42",
+      "scoreForHit": -10,
+      "scoreForSkip": 30
+    },
+    {
+      "unicode": "x = 45",
+      "scoreForHit": 30,
+      "scoreForSkip": -10,
+      "substitution": { "left": "x", "right": "42-3" }
+    },
+    {
+      "unicode": "x = 39",
+      "scoreForHit": -10,
+      "scoreForSkip": 30}
+  ]
+}
