@@ -15,20 +15,26 @@
     "1": {
       "name_en": "Simple Equations",
       "name_ru": "Простые уравнения",
-      "instructions_en": "\"And\"(∧) return \"true\" if all its arguments are \"true\"\n\nFormulas to practice:",
-      "instructions_ru": "\"И\"(∧) возвращает \"истину\" если все аргументы истинны\n\nПрактикуемые формулы:",
-      "formulas_list": { "rows": [
-        [
-          { "left": "a∧1", "right": "a" },
-          { "left": "a∧0", "right": "0" },
-          { "left": "a∧a", "right": "a" }
-        ],
-        [],
-        [
-          { "left": "a∧b", "right": "b∧a" },
-          { "left": "(a∧b)∧c", "right": "a∧(b∧c)" }
+      "instructions_en": "",
+      "instructions_ru": "Уравнения с одним x",
+      "formulas_list": {
+        "rows": [
+          [
+            {
+              "left": "Приоритеты",
+              "right": "1:(), 2:*/, 3:+-"
+            },
+            {
+              "left": "Умножение",
+              "right": "6*x"
+            },
+            {
+              "left": "Деление",
+              "right": "x/3"
+            }
+          ]
         ]
-      ]},
+      },
       "sequences": [
         "/lvl1_equations/seq1.json",
         "/lvl1_equations/seq2.json",
@@ -39,18 +45,22 @@
     "2": {
       "name_en": "Programming",
       "name_ru": "Программирование",
-      "instructions_en": "\"Or\"(∨) returns \"true\" if al least one of its arguments is \"true\"\nFormulas to practice:",
-      "instructions_ru": "\"Или\"(∨) возвращает \"истину\" если хотя бы один из аргументов - \"истина\"\nПрактикуемые формулы:",
-      "formulas_list": { "rows": [
-        [
-          { "left": "¬(a∨b)", "right": "¬a∧¬b" },
-          { "left": "a∧(a∨b)", "right": "a" }
-        ],
-        [
-          { "left": "¬(a∧b)", "right": "¬a∨¬b" },
-          { "left": "a∨(a∧b)", "right": "a" }
+      "instructions_en": "",
+      "instructions_ru": "Базовые навыки программирования",
+      "formulas_list": {
+        "rows": [
+          [
+            {
+              "left": "Циклы",
+              "right": "for{}"
+            },
+            {
+              "left": "Массивы",
+              "right": "[]"
+            }
+          ]
         ]
-      ]},
+      },
       "sequences": [
         "/lvl2_programming/seq1.json",
         "/lvl2_programming/seq2.json"
@@ -60,28 +70,15 @@
     "3": {
       "name_en": "Binary",
       "name_ru": "Системы счисления",
-      "instructions_en": "\"Not\"(¬) receives only one argument and returns \"true\" if its argument is \"false\"\nFormulas to practice:",
-      "instructions_ru": "\"Не\"(¬) принимает один аргумент и возвращает \"истину\" если аргумент - \"ложь\"\nПрактикуемые формулы:",
-      "formulas_list": { "rows": [
-        [
-          { "left": "a→b", "right": "¬a∨b" },
-          { "left": "1→a", "right": "a" },
-          { "left": "a→1", "right": "0" }
-        ],
-        [
-          { "left": "a→b", "right": "¬(a∧¬b)" },
-          { "left": "0→a", "right": "1" },
-          { "left": "a→0", "right": "¬a" }
-        ],
-        [],
-        [
-          { "left": "a→b", "right": "¬b→¬a" },
-          { "left": "a→a", "right": "1" },
-          { "left": "a→¬a", "right": "¬a" }
+      "instructions_en": "",
+      "instructions_ru": "Существуют различые системы счисления",
+      "formulas_list": {
+        "rows": [
         ]
-      ]},
+      },
       "sequences": [
-        "/lvl3_binary/seq1.json"
+        "/lvl3_binary/seq1.json",
+        "/lvl3_binary/seq2.json"
       ]
     }
   }
