@@ -1,0 +1,63 @@
+{
+  "sequence": [
+    {
+      "unicode": "97",
+      "scoreForHit": 0,
+      "scoreForSkip": 0
+    },
+    {
+      "unicode": "101\u2088",
+      "scoreForHit": 10,
+      "scoreForSkip": -30,
+      "substitution": { "left": "101\u2088", "right": "65" }
+    },
+    {
+      "unicode": "110110\u2082",
+      "scoreForHit": 10,
+      "scoreForSkip": -30,
+      "substitution": { "left": "110110\u2082", "right": "54" }
+    },
+    {
+      "unicode": "54",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "110110\u2082", "right": "54" }
+    },
+    {
+      "unicode": "1110\u2082",
+      "scoreForHit": 10,
+      "scoreForSkip": -30,
+      "substitution": { "left": "1110\u2082", "right": "14" }
+    },
+    {
+      "unicode": "14",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "1110\u2082", "right": "14" }
+    },
+    {
+      "unicode": "16\u2088",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "16\u2088", "right": "14" }
+    },
+    {
+      "unicode": "23\u2088",
+      "scoreForHit": 10,
+      "scoreForSkip": -30,
+      "substitution": { "left": "23\u2088", "right": "19" }
+    },
+    {
+      "unicode": "88",
+      "scoreForHit": 10,
+      "scoreForSkip": -30,
+      "substitution": { "left": "23\u2088", "right": "19" }
+    },
+    {
+      "unicode": "130\u2088",
+      "scoreForHit": -30,
+      "scoreForSkip": 10,
+      "substitution": { "left": "130\u2088", "right": "88" }
+    }
+  ]
+}

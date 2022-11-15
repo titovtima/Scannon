@@ -78,7 +78,8 @@
       },
       "sequences": [
         "/lvl3_binary/seq1.json",
-        "/lvl3_binary/seq2.json"
+        "/lvl3_binary/seq2.json",
+        "/lvl3_binary/seq3.json"
       ]
     }
   }
