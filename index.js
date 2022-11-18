@@ -2,8 +2,7 @@ var express = require('express')
 var app = express()
 var server = require('http').Server(app)
 
-app.use(express.json({limit: '80mb'}));
-app.use(express.urlencoded({limit: '80mb'}));
+app.use(express.bodyParser({limit: '50mb'}));
 
 app.use("/js", express.static('./js/'))
 app.use("/resources", express.static('./resources/'))

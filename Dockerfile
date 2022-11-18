@@ -1,19 +1,17 @@
-FROM node:12
+FROM centos:8
 
-# создание директории приложения
-WORKDIR /usr/src/app
+MAINTAINER Bogdan Madzhuga <crewdown@yandex.ru>
 
-# установка зависимостей
-# символ астериск ("*") используется для того чтобы по возможности
-# скопировать оба файла: package.json и package-lock.json
-COPY package*.json ./
+ENV TZ=Europe/Moscow
 
-RUN npm install
-# Если вы создаете сборку для продакшн
-# RUN npm ci --only=production
+RUN dnf update -y
+RUN dnf install -y nginx php php-fpm php-mysqli
+RUN dnf clean all
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+RUN mkdir /run/php-fpm
 
-# копируем исходный код
-COPY . .
+COPY ./ /usr/share/nginx/html/
 
-EXPOSE 8081
-CMD [ "node", "index.js" ]
+CMD php-fpm -D ; nginx
+
+EXPOSE 80
