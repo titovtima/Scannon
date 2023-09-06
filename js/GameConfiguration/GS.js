@@ -1,4 +1,4 @@
-const gameCode = "_your_new_game"; //"boolean"; //"differentiation"; //"short_multiplication"; //"trigonometry"
+const gameCode = "boolean"; //"boolean"; //"differentiation"; //"short_multiplication"; //"trigonometry"
 const basePath = ""; //"/scannon/" + gameCode
 
 const GC = {
